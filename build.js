@@ -1,6 +1,7 @@
 const marked = require('marked');
 const fs = require('fs');
 const pdf = require('html-pdf');
+const multilang = require('multilang');
 
 const TEMPLATE_STRING = '<!--content-->';
 
@@ -15,18 +16,18 @@ marked.setOptions({
     xhtml: false
 });
 
-const mdInHtml = marked(markdownString);
+const ruMd = multilang.changeDoc(markdownString,'ru');
+const enMd = multilang.changeDoc(markdownString,'en');
 
-(async () => {
-    const resultHtml = htmlTemplate.replace(TEMPLATE_STRING, mdInHtml)
+const ruHtml = marked(ruMd);
+const enHtml = marked(enMd);
 
-    fs.writeFileSync('./dist/index.html', resultHtml, 'utf8');
-
-    await new Promise((resolve, reject) => {
-        pdf.create(mdInHtml, {
+function writePdf(lang, mdString) {
+    return new Promise((resolve, reject) => {
+        pdf.create(mdString, {
             "format": "A4",
             "border": '0.2in'
-        }).toFile('./dist/index.pdf', (err, res) => {
+        }).toFile(`./dist/${lang}.pdf`, (err, res) => {
             if (err) {
                 reject(err);
             } else {
@@ -34,4 +35,19 @@ const mdInHtml = marked(markdownString);
             }
         });
     })
+}
+
+
+(async () => {
+    const resultHtmlRu = htmlTemplate.replace(TEMPLATE_STRING, ruHtml);
+    const resultHtmlEn = htmlTemplate.replace(TEMPLATE_STRING, enHtml);
+
+    fs.writeFileSync('./dist/ru.html', resultHtmlRu, 'utf8');
+    fs.writeFileSync('./dist/en.html', resultHtmlEn, 'utf8');
+
+    fs.writeFileSync('./dist/ru.md', ruMd, 'utf8');
+    fs.writeFileSync('./dist/en.md', enMd, 'utf8');
+
+    await writePdf('ru', resultHtmlRu);
+    await writePdf('en', resultHtmlEn);
 })();

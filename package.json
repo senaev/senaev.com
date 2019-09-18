@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "html-pdf": "2.2.0",
-    "marked": "0.7.0"
+    "marked": "0.7.0",
+    "multilang": "^1.0.23"
   }
 }
