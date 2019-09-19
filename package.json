@@ -1,6 +1,6 @@
 {
   "name": "senaev.com",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Andrei Senaev website",
   "main": "index.js",
   "repository": "git@github.com:senaev/senaev.com.git",
@@ -10,7 +10,7 @@
   "scripts": {
     "build": "node build.js"
   },
-  "dependencies": {
+  "devDependencies": {
     "html-pdf": "2.2.0",
     "marked": "0.7.0",
     "multilang": "^1.0.23"

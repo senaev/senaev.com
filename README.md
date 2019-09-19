@@ -1,5 +1,8 @@
 <!--multilang v0  ru:README.md en:EN.md-->
 
+* English [html](https://senaev.com/dist/en.html) [pdf](https://senaev.com/dist/en.pdf) [md](https://github.com/senaev/senaev.com/blob/master/dist/en.md)
+* Русский [html](https://senaev.com/dist/ru.html) [pdf](https://senaev.com/dist/ru.pdf) [md](https://github.com/senaev/senaev.com/blob/master/dist/ru.md)
+
 <!--lang:ru-->
 # Андрей Сенаев
 <!--lang:en--]
@@ -11,7 +14,7 @@
 <!--lang:ru-->
 Родился 10 января 1991 года, холост, детей нет.
 Разработчик веб-приложений, мобильных приложений, веб-сервисов.
-Мною движет стремление к непрерывному профессиональному и личностному росту.
+Мной движет стремление к непрерывному профессиональному и личностному росту.
 <!--lang:en--]
 Born January 10, 1991, single, no children.
 Developer of web applications, mobile applications, web services.
