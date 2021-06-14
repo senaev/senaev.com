@@ -145,13 +145,13 @@ I am driven by the desire for continuous professional and personal growth.
 
 * [gsacryfice@gmail.com](mailto:gsacryfice@gmail.com)
 * [+7 (982) 699-04-00](tel:+79826990400)
-* [vk.com](https://vk.com/senaev)
-* [github](https://github.com/senaev)
-* [linkedin.com](https://www.linkedin.com/in/andrey-senaev-942232137/)
+* [Vk.com](https://vk.com/senaev)
+* [GitHub.com](https://github.com/senaev)
+* [LinkedIn.com](https://www.linkedin.com/in/andrey-senaev-942232137/)
 
 <!--lang:ru-->
 Исходный код на
 <!--lang:en--]
 Sources on
 [!--lang:*-->
-[guthub.com](https://github.com/senaev/senaev.com)
+[GitHub.com](https://github.com/senaev/senaev.com)
