@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/senaev/senaev.com#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "4.18.2"
   }
 }
