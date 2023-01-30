@@ -1,18 +1,24 @@
 {
   "name": "senaev.com",
-  "version": "1.0.1",
-  "description": "Andrei Senaev website",
-  "main": "index.js",
-  "repository": "git@github.com:senaev/senaev.com.git",
-  "author": "Andrey Senaev <senaev@yandex-team.ru>",
-  "license": "MIT",
-  "private": false,
+  "version": "1.0.0",
+  "description": "Senaev Andrei personal website",
   "scripts": {
-    "build": "node build.js"
+    "test": "npm run test"
   },
-  "devDependencies": {
-    "html-pdf": "2.2.0",
-    "marked": "0.7.0",
-    "multilang": "^1.0.23"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senaev/senaev.com.git"
+  },
+  "keywords": [
+    "senaev"
+  ],
+  "author": "gsacryfice@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/senaev/senaev.com/issues"
+  },
+  "homepage": "https://github.com/senaev/senaev.com#readme",
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
