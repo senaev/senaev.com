@@ -13,13 +13,14 @@
 
     color: rgba(34, 40, 46, 1);
     background-color: rgba(202, 227, 255, 0.3);
-
-    transition: top 0.5s ease-in-out, left 0.5s ease-in-out, width 0.5s ease-in-out, height 0.5s ease-in-out;
 }
 
 .container.container_stick {
     top: 1em;
     left: 1em;
+    margin-left: 0;
+    height: 4em;
+    width: 8.1em;
 }
 
 .leftSide {
@@ -29,11 +30,19 @@
     width: 49%;
 }
 
+.container_stick .leftSide {
+    width: 4em;
+}
+
 .centralSeparator {
     width: 1%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.container_stick .centralSeparator {
+    width: 0.1em;
 }
 
 .centralSeparator_line {
@@ -50,6 +59,17 @@
     width: 49%;
 }
 
+.container_stick .rightSide {
+    width: 4em;
+}
+
 .avatarImage {
+    width: 9em;
+    height: 9em;
     border-radius: 9999px;
+}
+
+.container_stick .avatarImage {
+    width: 3em;
+    height: 3em;
 }

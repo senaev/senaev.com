@@ -1,3 +1,5 @@
+import { BusinessCardHorizontal } from "components/BusinessCardHorizontal";
+
 export default function Me() {
-  return <div>123</div>;
+  return <BusinessCardHorizontal stick={true} />;
 }

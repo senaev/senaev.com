@@ -1,4 +1,4 @@
-import { name } from "const/const";
+import { SENAEV_FULL_NAME } from "const/const";
 import Image from "next/image";
 
 import styles from "./index.module.css";
@@ -15,7 +15,7 @@ export function Resume() {
           width={144}
           alt=""
         />
-        <h1 className={styles.heading2Xl}>{name}</h1>
+        <h1 className={styles.heading2Xl}>{SENAEV_FULL_NAME}</h1>
       </header>
       <main>
         <section className={styles.headingMd}>
