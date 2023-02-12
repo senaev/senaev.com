@@ -19,16 +19,35 @@ export function BusinessCardAbout() {
       </div>
       <div>
         <span>
-          <a href={`tel:${SENAEV_PHONE}`}>+7 (982) 699-04-00</a>
+          Phone:{" "}
+          <a target={"_blank"} rel={"noreferrer"} href={`tel:${SENAEV_PHONE}`}>
+            +7 (982) 699-04-00
+          </a>
         </span>
       </div>
       <div>
         <span>
-          <a href={`mailto:${SENAEV_EMAIL}`}>{SENAEV_EMAIL}</a>
+          Email:{" "}
+          <a
+            target={"_blank"}
+            rel={"noreferrer"}
+            href={`mailto:${SENAEV_EMAIL}`}
+          >
+            {SENAEV_EMAIL}
+          </a>
         </span>
       </div>
       <div>
         <span>
+          Telegram:{" "}
+          <a target={"_blank"} rel={"noreferrer"} href={`https://senaev.t.me`}>
+            @senaev
+          </a>
+        </span>
+      </div>
+      <div>
+        <span>
+          Site:{" "}
           <Link
             href={ME_PAGE_LINK}
           >{`${SENAEV_SITE_DOMAIN}${ME_PAGE_LINK}`}</Link>

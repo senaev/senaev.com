@@ -2,6 +2,7 @@ import { BusinessCardAbout } from "components/BusinessCardAbout";
 import { SENAEV_FULL_NAME } from "const/const";
 import Image from "next/image";
 import Link from "next/link";
+import clsx from "clsx";
 
 import styles from "./index.module.css";
 
@@ -11,7 +12,9 @@ const PHOTO_SIZE_STICKY = 48;
 export function BusinessCardHorizontal({ stick }: { stick: boolean }) {
   return (
     <div
-      className={`${styles.container} ${stick ? styles.container_stick : ""}`}
+      className={clsx(styles.container, {
+        [styles.container_stick!]: stick,
+      })}
     >
       <div className={styles.leftSide}>
         <Image
