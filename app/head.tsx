@@ -14,11 +14,6 @@ export default function Head() {
       />
       <meta name="og:title" content={SENAEV_SITE_TITLE} />
       <meta name="twitter:card" content="summary_large_image" />        
-      {/* <!-- Yandex.RTB --> */}
-        <script dangerouslySetInnerHTML={{
-          __html: 'window.yaContextCb=window.yaContextCb||[]'
-        }} />
-        <script src="https://yandex.ru/ads/system/context.js" async></script>
     </>
   );
 }
