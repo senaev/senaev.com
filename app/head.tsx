@@ -13,7 +13,12 @@ export default function Head() {
         )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
       />
       <meta name="og:title" content={SENAEV_SITE_TITLE} />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary_large_image" />        
+      {/* <!-- Yandex.RTB --> */}
+        <script dangerouslySetInnerHTML={{
+          __html: 'window.yaContextCb=window.yaContextCb||[]'
+        }} />
+        <script src="https://yandex.ru/ads/system/context.js" async></script>
     </>
   );
 }

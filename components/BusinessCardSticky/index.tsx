@@ -1,24 +1,23 @@
-import { BusinessCardAbout } from "components/BusinessCardAbout";
 import { SENAEV_FULL_NAME } from "const/const";
 import Image from "next/image";
-import clsx from "clsx";
+import Link from "next/link";
 
 import styles from "./index.module.css";
 
-const PHOTO_SIZE_BIG = 144;
+const PHOTO_SIZE_STICKY = 48;
 
-export function BusinessCardHorizontal() {
+export function BusinessCardSticky() {
   return (
     <div
-      className={clsx(styles.container)}
+      className={styles.container}
     >
       <div className={styles.leftSide}>
         <Image
           priority
           src="/img/avatar-head.jpg"
           className={styles.avatarImage}
-          height={PHOTO_SIZE_BIG}
-          width={PHOTO_SIZE_BIG}
+          height={PHOTO_SIZE_STICKY}
+          width={PHOTO_SIZE_STICKY}
           alt={SENAEV_FULL_NAME}
         />
       </div>
@@ -26,7 +25,9 @@ export function BusinessCardHorizontal() {
         <div className={styles.centralSeparator_line} />
       </div>
       <div className={styles.rightSide}>
-      <BusinessCardAbout />
+      <div>
+            <Link href="/">Home</Link>
+          </div>
       </div>
     </div>
   );

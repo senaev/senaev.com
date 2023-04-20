@@ -1,5 +1,9 @@
 import { BusinessCardHorizontal } from "components/BusinessCardHorizontal";
+import Link from "next/link";
 
 export function HomePage() {
-  return <BusinessCardHorizontal stick={false} />;
+  return <>
+    <Link href={'/more'}>more</Link>
+    <BusinessCardHorizontal />
+  </>;
 }

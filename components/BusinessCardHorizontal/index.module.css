@@ -1,75 +1,89 @@
 .container {
-    position: absolute;
-    top: 8em;
-    left: 50%;
-    width: calc(90em / 2.5);
-    height: calc(50em / 2.5);
-    margin-left: calc(90em / (-2.5 * 2));
-
-    display: flex;
-
-    box-shadow: 1em 1em 3em 0 rgb(0 0 0 / 60%);
-    border-radius: 0.5em;
-
-    color: rgba(34, 40, 46, 1);
-    background-color: rgba(202, 227, 255, 0.3);
+  --card-top-size: 90em;
+  --card-left-size: 50em;
 }
 
-.container.container_stick {
-    top: 1em;
-    left: 1em;
-    margin-left: 0;
-    height: 4em;
-    width: 8.1em;
+.container {
+  position: absolute;
+  top: 8em;
+  left: 50%;
+  width: calc(var(--card-top-size) / 2.5);
+  height: calc(var(--card-left-size) / 2.5);
+  margin-left: calc(var(--card-top-size) / (-2.5 * 2));
+
+  display: flex;
+
+  box-shadow: 1em 1em 3em 0 rgb(0 0 0 / 60%);
+  border-radius: 0.5em;
+
+  color: rgba(34, 40, 46, 1);
+  background-color: rgba(202, 227, 255, 0.3);
 }
 
 .leftSide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 49%;
-}
-
-.container_stick .leftSide {
-    width: 4em;
-}
-
-.centralSeparator {
-    width: 1%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container_stick .centralSeparator {
-    width: 0.1em;
-}
-
-.centralSeparator_line {
-    background-color: #7676762b;
-    width: 0.1em;
-    height: 65%;
-    border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rightSide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 49%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.container_stick .rightSide {
-    width: 4em;
+.leftSide,
+.rightSide {
+  width: calc(var(--card-top-size) - 1em);
+  height: 100%;
+}
+
+.centralSeparator {
+  width: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centralSeparator_line {
+  background-color: #7676762b;
+  width: 0.1em;
+  height: 65%;
+  border-radius: 999px;
+}
+
+@media screen and (max-width: 750px) {
+  .container {
+    --card-top-size: 50em;
+    --card-left-size: 90em;
+  }
+
+  .container {
+    flex-direction: column;
+    top: 4em;
+  }
+
+  .leftSide,
+  .rightSide {
+    height: calc(var(--card-top-size) - 1em);
+    width: 100%;
+  }
+
+  .centralSeparator {
+    width: 100%;
+    height: 2em;
+  }
+
+  .centralSeparator_line {
+    background-color: #7676762b;
+    height: 0.1em;
+    width: 65%;
+    border-radius: 999px;
+  }
 }
 
 .avatarImage {
-    width: 9em;
-    height: 9em;
-    border-radius: 9999px;
-}
-
-.container_stick .avatarImage {
-    width: 3em;
-    height: 3em;
+  width: 9em;
+  height: 9em;
+  border-radius: 9999px;
 }

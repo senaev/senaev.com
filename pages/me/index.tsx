@@ -1,14 +1,18 @@
-import { BusinessCardHorizontal } from "components/BusinessCardHorizontal";
+import { BusinessCardSticky } from "components/BusinessCardSticky";
 import {
   getMyselfDataFromReadme,
   MyselfHtmlFromReadme,
 } from "utils/getMyselfDataFromReadme";
 
+import styles from "./index.module.css";
+
 export default function Me(props: MyselfHtmlFromReadme) {
   return (
     <div>
-      <BusinessCardHorizontal stick={true} />
+      <BusinessCardSticky/>
+      <div className={styles.markdownContainer}>
       <div dangerouslySetInnerHTML={{ __html: props.contentHtml }} />
+      </div>
     </div>
   );
 }
