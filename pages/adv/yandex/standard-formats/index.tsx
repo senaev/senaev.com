@@ -26,7 +26,7 @@ function AdUnit({
     if (typeof Ya !== 'undefined' && Ya.Context) {
       callback();
     } else {
-      yaContextCb.push(()=>{callback});
+      yaContextCb.push(callback);
     }
   }, [blockId, elementId]);
 
