@@ -9,6 +9,7 @@ export default function Page() {
         <ul>
           <li>
             <Link href={'/adv/yandex/standard-formats'}>Yandex standard formats</Link>
+            <Link href={'/adv/air/standard-formats'}>Air standard formats</Link>
           </li>
         </ul>
       </li>

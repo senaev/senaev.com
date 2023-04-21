@@ -33,15 +33,7 @@ function AdUnit({
   return <div style={{
     width, height: height + 45
   }}>
-        {/* <!-- Yandex.RTB --> */}
-        <script 
-      // id={'ya-context-cb-global-initializer'} 
-      // strategy={'worker'}
-      dangerouslySetInnerHTML={{
-        __html: 'window.yaContextCb=window.yaContextCb||[]'
-      }} 
-    />
-    <script src="https://yandex.ru/ads/system/context.js" async></script>
+    <script src="https://air.tech/ads/scripts/loader.js" async></script>
     <h3>{`${width}x${height}`}</h3>
     <div 
       style={{
