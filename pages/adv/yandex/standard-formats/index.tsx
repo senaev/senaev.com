@@ -1,24 +1,37 @@
+import { useEffect } from "react";
+
+declare const Ya: any;
+
 function AdUnit({
   size,
-  insertCode,
+  blockId,
 }: {
   size: {
     width: number;
     height: number;
   }
-  insertCode: string;
+  blockId: string;
 }) {
   const {width, height} = size;
 
-  return <div>
+  const elementId = `${blockId}-element`;
+
+  useEffect(() => {
+    Ya.Context.AdvManager.render({
+      "blockId": blockId,
+      "renderTo": elementId
+    })
+  }, [blockId, elementId]);
+
+  return <div style={{
+    width, height: height + 45
+  }}>
     <h3>{`${width}x${height}`}</h3>
     <div 
-    style={{
-      width, height
-    }}
-    dangerouslySetInnerHTML={{
-      __html: insertCode
-    }}
+      style={{
+        width, height
+      }}
+      id={elementId}
     />
   </div>
 }
@@ -31,17 +44,7 @@ export default function Page() {
         width: 320,
         height: 180,
       }}
-      insertCode={`
-      <!-- Yandex.RTB R-A-2349763-1 -->
-      <div id="yandex_rtb_R-A-2349763-1"></div>
-      <script>window.yaContextCb.push(()=>{
-        Ya.Context.AdvManager.render({
-          "blockId": "R-A-2349763-1",
-          "renderTo": "yandex_rtb_R-A-2349763-1"
-        })
-      })
-      </script>
-      `}
+      blockId={'R-A-2349763-1'}
     />
   );
 }
