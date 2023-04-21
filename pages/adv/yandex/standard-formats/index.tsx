@@ -32,14 +32,15 @@ export default function Page() {
         height: 180,
       }}
       insertCode={`
-      <!-- Yandex.RTB R-A-2345633-1 -->
-      <div id="yandex_rtb_R-A-2345633-1"></div>
+      <!-- Yandex.RTB R-A-2349763-1 -->
+      <div id="yandex_rtb_R-A-2349763-1"></div>
       <script>window.yaContextCb.push(()=>{
         Ya.Context.AdvManager.render({
-          renderTo: 'yandex_rtb_R-A-2345633-1',
-          blockId: 'R-A-2345633-1'
+          "blockId": "R-A-2349763-1",
+          "renderTo": "yandex_rtb_R-A-2349763-1"
         })
-      })</script>
+      })
+      </script>
       `}
     />
   );
