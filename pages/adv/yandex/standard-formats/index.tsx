@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 declare const Ya: any;
+declare const yaContextCb: any;
 
 function AdUnit({
   size,
@@ -17,10 +18,16 @@ function AdUnit({
   const elementId = `${blockId}-element`;
 
   useEffect(() => {
-    Ya.Context.AdvManager.render({
+    const callback = () => Ya.Context.AdvManager.render({
       "blockId": blockId,
       "renderTo": elementId
-    })
+    });
+
+    if (typeof Ya !== 'undefined' && Ya.Context) {
+      callback();
+    } else {
+      yaContextCb.push(()=>{callback});
+    }
   }, [blockId, elementId]);
 
   return <div style={{
