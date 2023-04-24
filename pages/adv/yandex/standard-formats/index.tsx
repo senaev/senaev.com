@@ -33,10 +33,7 @@ function AdUnit({
   return <div style={{
     width, height: height + 45
   }}>
-        {/* <!-- Yandex.RTB --> */}
         <script 
-      // id={'ya-context-cb-global-initializer'} 
-      // strategy={'worker'}
       dangerouslySetInnerHTML={{
         __html: 'window.yaContextCb=window.yaContextCb||[]'
       }} 
