@@ -13,6 +13,9 @@ export default function Page() {
           <li> 
             <Link href={'/adv/air/standard-formats'}>Air standard formats</Link>
           </li>
+          <li> 
+            <Link href={'/adv/google/standard-formats'}>Google standard formats</Link>
+          </li>
         </ul>
       </li>
     </ul>
