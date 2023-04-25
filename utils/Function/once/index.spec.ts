@@ -28,9 +28,11 @@ describe('function', () => {
 
             expect(fn.mock.calls.length).toEqual(0);
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- ignore
             const result: number = onceFn(1, 2);
             expect(result).toEqual(3);
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- ignore
             const nextResult: number = onceFn(4, 5);
             expect(nextResult).toEqual(3);
 

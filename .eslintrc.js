@@ -1,11 +1,15 @@
 /** @type {import('eslint').ESLint.ConfigData} */
 module.exports = {
     root: true,
-    ignorePatterns: [],
+    ignorePatterns: ['*.js'],
     overrides: [
         {
             parserOptions: {
-                project: ["./tsconfig.json"]
+                project: ["./tsconfig.json"],
+                "ecmaVersion": "latest"
+            },
+            "env": {
+                "es6": true
             },
             files: ['*.ts', '*.tsx'],
             plugins: [
@@ -23,7 +27,6 @@ module.exports = {
                 'plugin:jsx-a11y/recommended',
                 'plugin:eslint-comments/recommended',
                 'plugin:@next/next/recommended',
-                "eslint:recommended",
                 "next/core-web-vitals"
             ],
             settings: {

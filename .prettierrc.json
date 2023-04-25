@@ -1,0 +1,20 @@
+{
+    "bracketSpacing": true,
+    "printWidth": 100,
+    "tabWidth": 4,
+    "useTabs": false,
+    "overrides": [
+        {
+            "files": ["*.yml", "*.yaml"],
+            "options": {
+                "tabWidth": 2
+            }
+        },
+        {
+            "files": ["*.css"],
+            "options": {
+                "parser": "css"
+            }
+        }
+    ]
+}

@@ -1,13 +1,13 @@
 .Navigation {
-  background-color: rgba(202, 227, 255, 0.3);
-  padding: 0px 12px;
+    background-color: rgba(202, 227, 255, 0.3);
+    padding: 0px 12px;
 }
 
 .Navigation a {
-  padding: 0 4px;
+    padding: 0 4px;
 }
 
 .Navigation_home {
-  padding: 0 14px;
-  font-size: 1.1em;
+    padding: 0 14px;
+    font-size: 1.1em;
 }

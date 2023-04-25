@@ -18,12 +18,15 @@ describe('tryCatch', () => {
                 error = e;
             },
         );
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- ignore
         expect(result === undefined).toEqual(true);
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- ignore
         expect(error !== undefined).toEqual(true);
     });
 
     it('should infer valid return type', () => {
         const fn = (): number => 10;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ignore
         expect(tryCatch(fn)! > 0).toEqual(true);
     });
 });
