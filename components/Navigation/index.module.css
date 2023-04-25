@@ -1,0 +1,8 @@
+.Navigation {
+  background-color: rgba(202, 227, 255, 0.3);
+  padding: 0px 12px;
+}
+
+.Navigation a {
+  padding: 0 4px;
+}

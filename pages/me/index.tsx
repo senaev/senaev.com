@@ -1,27 +1,28 @@
-import { BusinessCardSticky } from "components/BusinessCardSticky";
+import styles from './index.module.css';
+
+import { BusinessCardSticky } from 'components/BusinessCardSticky';
+import type { MyselfHtmlFromReadme } from 'utils/getMyselfDataFromReadme';
 import {
-  getMyselfDataFromReadme,
-  MyselfHtmlFromReadme,
-} from "utils/getMyselfDataFromReadme";
+    getMyselfDataFromReadme,
+} from 'utils/getMyselfDataFromReadme';
 
-import styles from "./index.module.css";
-
-export default function Me(props: MyselfHtmlFromReadme) {
-  return (
-    <div>
-      <BusinessCardSticky/>
-      <div className={styles.markdownContainer}>
-      <div dangerouslySetInnerHTML={{ __html: props.contentHtml }} />
-      </div>
-    </div>
-  );
+// eslint-disable-next-line no-restricted-exports -- page
+export default function Page(props: MyselfHtmlFromReadme) {
+    return (
+        <div>
+            <BusinessCardSticky />
+            <div className={styles.markdownContainer}>
+                <div dangerouslySetInnerHTML={{ __html: props.contentHtml }} />
+            </div>
+        </div>
+    );
 }
 
 export async function getStaticProps(): Promise<{
-  props: MyselfHtmlFromReadme;
+    props: MyselfHtmlFromReadme;
 }> {
-  const myselfHtmlFromReadme = await getMyselfDataFromReadme();
-  return {
-    props: myselfHtmlFromReadme,
-  };
+    const myselfHtmlFromReadme = await getMyselfDataFromReadme();
+    return {
+        props: myselfHtmlFromReadme,
+    };
 }
