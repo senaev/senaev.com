@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "docker": "docker build -t senaev.com . && docker tag senaev.com cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest && docker push cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest",
     "lint": "next lint"
   },
   "dependencies": {
