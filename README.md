@@ -1,4 +1,4 @@
-# Andrei Senaev!
+# Andrei Senaev
 
 [senaev.com](https://senaev.com)
 
