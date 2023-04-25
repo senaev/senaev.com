@@ -1,6 +1,5 @@
 import styles from './index.module.css';
 
-import { BusinessCardSticky } from 'components/BusinessCardSticky';
 import type { MyselfHtmlFromReadme } from 'utils/getMyselfDataFromReadme';
 import {
     getMyselfDataFromReadme,
@@ -10,7 +9,6 @@ import {
 export default function Page(props: MyselfHtmlFromReadme) {
     return (
         <div>
-            <BusinessCardSticky />
             <div className={styles.markdownContainer}>
                 <div dangerouslySetInnerHTML={{ __html: props.contentHtml }} />
             </div>
