@@ -1,15 +1,18 @@
-/* eslint-disable eslint-comments/disable-enable-pair -- TODO remove */
-/* eslint-disable logical-assignment-operators -- TODO remove */
-/* eslint-disable @typescript-eslint/no-unsafe-call  -- TODO remove */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment  -- TODO remove */
-/* eslint-disable @typescript-eslint/no-explicit-any  -- TODO remove */
-/* eslint-disable no-restricted-globals  -- TODO remove */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access  -- TODO remove */
-/* eslint-disable @typescript-eslint/no-unsafe-return  -- TODO remove  */
 import { useEffect } from 'react';
 
-declare const Ya: any;
-declare const yaContextCb: any;
+import { once } from 'utils/Function/once';
+import { loadScript } from 'utils/Script/loadScript';
+
+declare const Ya: {
+    Context: {
+        AdvManager: {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- ignore
+            render: (arg: any) => void;
+        };
+    };
+};
+
+const loadContextScript = once((): Promise<void> => loadScript('https://air.tech/ads/scripts/loader.js'));
 
 function AdUnit({
     size,
@@ -26,26 +29,22 @@ function AdUnit({
     const elementId = `${blockId}-element`;
 
     useEffect(() => {
-        const callback = () => Ya.Context.AdvManager.render({
-            blockId,
-            renderTo: elementId,
-        });
-
-        const win: any = window;
-        win.yaContextCb = win.yaContextCb || [];
-
-        if (typeof Ya !== 'undefined' && Ya.Context) {
-            callback();
-        } else {
-            yaContextCb.push(callback);
-        }
+        loadContextScript()
+            .then(() => {
+                Ya.Context.AdvManager.render({
+                    blockId,
+                    renderTo: elementId,
+                });
+            })
+            .catch((error) => {
+                throw error;
+            });
     }, [blockId, elementId]);
 
     return (
         <div style={{
             width, height: height + 45,
         }}>
-            <script src={'https://air.tech/ads/scripts/loader.js'} async={true}></script>
             <h3>{`${width}x${height}`}</h3>
             <div
                 style={{

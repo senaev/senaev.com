@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { once } from 'utils/Function/once';
+import { loadScript } from 'utils/Script/loadScript';
 
 declare const Ya: {
     Context: {
@@ -11,24 +12,7 @@ declare const Ya: {
     };
 };
 
-const loadContextScript = once((): Promise<void> => {
-    // eslint-disable-next-line no-restricted-globals -- ignore
-    const doc = document;
-
-    const script = doc.createElement('script');
-    script.src = 'https://yandex.ru/ads/system/context.js';
-
-    const promise = new Promise<void>((resolve, reject) => {
-        script.onload = () => {
-            resolve();
-        };
-        script.onerror = reject;
-    });
-
-    doc.head.appendChild(script);
-
-    return promise;
-});
+const loadContextScript = once((): Promise<void> => loadScript('https://yandex.ru/ads/system/context.js'));
 
 function AdUnit({
     size,

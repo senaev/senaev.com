@@ -17,7 +17,7 @@ export default function Page() {
                         <Link href={'https://partner.yandex.ru/v2/web/campaigns/2349763/'}>{'Yandex Advertising Network'}</Link>
                     </li>
                     <li>
-                        <Link href={'https://www.google.com/adsense/new/u/0/pub-5756750483186348/sites/detail/url=senaev.com'}>{'Google AdSense'}</Link>
+                        <Link href={'https://www.google.com/adsense/new/u/0/pub-5756750483186348/sites/list'}>{'Google AdSense'}</Link>
                     </li>
                 </ul>
             </li>
