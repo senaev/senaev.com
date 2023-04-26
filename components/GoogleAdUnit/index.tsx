@@ -1,6 +1,8 @@
+'use client';
+
 import { useEffect } from 'react';
 
-function AdUnit() {
+export function GoogleAdUnit() {
     useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- ignore
         const win: Window & {
@@ -26,12 +28,5 @@ function AdUnit() {
                 data-ad-client={'ca-pub-5756750483186348'}
                 data-ad-slot={'3155757085'} />
         </>
-    );
-}
-
-// eslint-disable-next-line no-restricted-exports -- page
-export default function Page() {
-    return (
-        <AdUnit />
     );
 }

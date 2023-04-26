@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 
 import { once } from 'utils/Function/once';
@@ -12,9 +14,9 @@ declare const Ya: {
     };
 };
 
-const loadContextScript = once((): Promise<void> => loadScript('https://air.tech/ads/scripts/loader.js'));
+const loadContextScript = once((): Promise<void> => loadScript('https://yandex.ru/ads/system/context.js'));
 
-function AdUnit({
+export function YandexAdUnit({
     size,
     blockId,
 }: {
@@ -53,18 +55,5 @@ function AdUnit({
                 id={elementId}
             />
         </div>
-    );
-}
-
-// eslint-disable-next-line no-restricted-exports -- page
-export default function Page() {
-    return (
-        <AdUnit
-            size={{
-                width: 320,
-                height: 180,
-            }}
-            blockId={'R-A-2349763-1'}
-        />
     );
 }
