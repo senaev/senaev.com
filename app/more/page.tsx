@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 // eslint-disable-next-line no-restricted-exports -- page
 export default function Page() {
     return (
