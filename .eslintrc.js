@@ -423,5 +423,11 @@ module.exports = {
                 'import/named': 'off',
             },
         },
+        {
+            files: 'next-env.d.ts',
+            rules: {
+                'spaced-comment': 'off',
+            }
+        }
     ],
 };
