@@ -428,6 +428,19 @@ module.exports = {
             rules: {
                 'spaced-comment': 'off',
             }
-        }
+        },
+        {
+            files: ['page.tsx', 'layout.tsx'],
+            rules: {
+                'no-restricted-exports': [
+                    'error',
+                    {
+                        restrictDefaultExports: {
+                            direct: false,
+                        },
+                    },
+                ],
+            }
+        },
     ],
 };

@@ -5,7 +5,6 @@ import {
     getMyselfDataFromReadme,
 } from 'utils/getMyselfDataFromReadme';
 
-// eslint-disable-next-line no-restricted-exports -- page
 export default async function Page() {
     const myselfHtmlFromReadme: MyselfHtmlFromReadme = await getMyselfDataFromReadme();
 

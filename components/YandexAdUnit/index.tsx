@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react';
 
+import styles from './index.module.css';
+
 import { once } from 'utils/Function/once';
 import { loadScript } from 'utils/Script/loadScript';
 
@@ -17,17 +19,10 @@ declare const Ya: {
 const loadContextScript = once((): Promise<void> => loadScript('https://yandex.ru/ads/system/context.js'));
 
 export function YandexAdUnit({
-    size,
     blockId,
 }: {
-    size: {
-        width: number;
-        height: number;
-    };
     blockId: string;
 }) {
-    const { width, height } = size;
-
     const elementId = `${blockId}-element`;
 
     useEffect(() => {
@@ -44,16 +39,6 @@ export function YandexAdUnit({
     }, [blockId, elementId]);
 
     return (
-        <div style={{
-            width, height: height + 45,
-        }}>
-            <h3>{`${width}x${height}`}</h3>
-            <div
-                style={{
-                    width, height,
-                }}
-                id={elementId}
-            />
-        </div>
+        <div className={styles.container} id={elementId} />
     );
 }
