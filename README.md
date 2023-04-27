@@ -33,3 +33,10 @@ Specialist at the intersection of multimedia and advertising technologies
 -   [Zenit](http://oneday-repair.ru/) november 2010 — august 2011, computer repate
 -   [Russian Army](http://mil.ru/index.htm) november 2009 — november 2010, military duties.
 -   [Megabum](http://sferamm.ru/) september 2009 — november 2009, porter-storekeeper
+
+## Education
+
+-   2012 — 2016
+    -   Ural Federal University named after the first President of Russia B.N.Yeltsin (Management in Technical Systems)
+-   2005 - 2009
+    -   Ural Radio Engineering College named after A.S.Popov (Maintenance of computer equipment and computer networks)
