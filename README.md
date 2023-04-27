@@ -1,70 +1,35 @@
 # Andrei Senaev
 
-[senaev.com](https://senaev.com)
+Born January 10, 1991
 
-Born January 10, 1991, single, no children.
-Developer of web applications, mobile applications, web services.
-I am driven by the desire for continuous professional and personal growth.
+## Links
 
-## More info
+-   [senaev.com](https://senaev.com)
+-   [guthub.com](https://github.com/senaev/senaev.com)
+-   [gsacryfice@gmail.com](mailto:gsacryfice@gmail.com)
+-   [+7 (982) 699-04-00](tel:+79826990400)
 
--   Originally from the [village](https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BC%D0%B8%D0%BD%D1%87%D0%B8)
--   After school moved to Yekaterinburg and graduated [College of a name of A.S.Popov](http://www.urtt.ru/)
--   Served in [army](https://vk.com/club22405400)
--   Graduated [Ural Federal University](https://urfu.ru/ru/)
--   Arter army I was repairing computers and phones for a few years
--   Like rock climbing and mountaineering:
-    -   [Elbrus](https://en.wikipedia.org/wiki/Mount_Elbrus)
-    -   [Lenin Peak](https://en.wikipedia.org/wiki/Lenin_Peak)
-    -   [Peak Korzhenevskaya](https://en.wikipedia.org/wiki/Peak_Korzhenevskaya)
-    -   [Ismoil Somoni Peak](https://en.wikipedia.org/wiki/Ismoil_Somoni_Peak)
--   Play guitar
--   Like snowboarding and playing volleyball
--   Love spending time in nature
--   Since 2019 I live in Moscow
+## About me
 
-## What I can
+Ambitious, enthusiastic
 
--   JavaScript (NodeJS, ES6, Webpack, Babel, jQuery, ReactJS, Typescript, AngularJS, BackboneJS …)
--   HTML (JADE, HTML5, SEO-optimization, semantic layout)
--   CSS (Bootstrap, LESS, PostCSS, CSS3, adaptive layout, layout for old browsers, mobile layout)
--   GIT, SVN, Mercurial
--   MySQL, PostgreSQL, MongoDB
--   Not so good, but I can write code in Go, Java, C++, Python, PHP (CodeIgniter, YII2)
+Driven by the desire for constant professional and personal growth
+
+Specialist at the intersection of multimedia and advertising technologies
 
 ## Work experience
 
--   [Yandex](http://yandex.ru/) _january 2016 — to whis day_
-    -   [Ad video-player](https://yandex.ru/dev/video-sdk/doc/dg/concepts/about-docpage/) for Yandex and external partners
-    -   Videoplayer for [Yandex.Efir](https://yandex.ru/efir), internal services and external sites
--   [LTC “MIRALOGIC Information Technologies”](https://miralogic.ru/) _june 2015 — january 2016_
-    -   Website [«Planeta»](https://planeta.tc/)
-    -   Website [Weburg](https://weburg.net/)
-    -   Personal account page for [MiraLogic](https://my.miralogic.ru/)
-    -   Promo website [ITMH](https://itmh.ru/)
--   [LTC “Tensor”](https://tensor.ru/) _october 2014 — june 2015_
-    -   Development of a [Tensor](https://tensor.ru/) website
-    -   Development of a electronic trading platform [SBIS](https://wi.sbis.ru/)
--   [LTC “MugunPRO”](http://mugun.pro/) _october 2013 — august 2014_
-    -   Development of a mobile application for taxi [ITAXIO](https://play.google.com/store/apps/details?id=com.itaxio.client)
--   [LTC “Digital Craft”](https://dicraft.ru/) _august 2011 — october 2013_
-    -   Computers and phones repairing
-    -   Self-employing experience
--   [LTC “Zenit”](http://oneday-repair.ru/) _november 2010 — august 2011_
-    -   Computers and phones repairing with departure on the house
--   [Russian Army](http://mil.ru/index.htm) _november 2009 — november 2010_
-    -   Maintenance and repair of radar equipment, communications and cable channels.
-    -   Performance of military duties.
--   [LTC “Megabum”](http://sferamm.ru/) _september 2009 — november 2009_
-    -   Porter-storekeeper
-
-## Contacts
-
--   [gsacryfice@gmail.com](mailto:gsacryfice@gmail.com)
--   [+7 (982) 699-04-00](tel:+79826990400)
--   [vk.com](https://vk.com/senaev)
--   [github](https://github.com/senaev)
--   [linkedin.com](https://www.linkedin.com/in/andrey-senaev-942232137/)
-
-Sources on
-[guthub.com](https://github.com/senaev/senaev.com)
+-   [Yandex](https://ya.ru/) january 2016 — until now (7+ years)
+    -   December 2022 - head of the International Advertising Interface Development Group
+    -   September 2019 - head of the Video Advertising Development Group
+    -   January 2016 - frontend developer of Yandex video players
+-   [MiraLogic IT](https://miralogic.ru/) jun 2015 — january 2016 (8 months)
+    -   Frontend, make website layout, develop and support of web applications
+-   [Tensor](https://tensor.ru/) october 2014 — june 2015 (9 months)
+    -   Frontend, development of web applications for business (electronic trading platforms)
+-   [MugunPRO](http://mugun.pro/) october 2013 — august 2014 (11 months)
+    -   Mobile and web application development
+-   [Digital Craft](https://dicraft.ru/) august 2011 — october 2013, computer repate
+-   [Zenit](http://oneday-repair.ru/) november 2010 — august 2011, computer repate
+-   [Russian Army](http://mil.ru/index.htm) november 2009 — november 2010, military duties.
+-   [Megabum](http://sferamm.ru/) september 2009 — november 2009, porter-storekeeper
