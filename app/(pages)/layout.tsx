@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css';
 
 import { PageLayoutWrapper } from 'components/PageLayoutWrapper';
 
