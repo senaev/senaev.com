@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 import { loadScript } from 'utils/Script/loadScript';
 import type { GlobalScope } from 'utils/types/GlobalScope';
