@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import { loadScript } from 'utils/Script/loadScript';
 import type { GlobalScope } from 'utils/types/GlobalScope';
 
-const win: GlobalScope & {
+type PrebidWindow = GlobalScope & {
     googletag?: {
         cmd?: object[];
         pubads?: () => {
@@ -33,14 +33,16 @@ const win: GlobalScope & {
         initAdserverSet?: true;
         setTargetingForGPTAsync?: VoidFunction;
     };
-// eslint-disable-next-line no-restricted-globals -- ignore
-} = window;
+};
 
 export default function Page() {
     const div1Ref = useRef<HTMLDivElement | null>(null);
     const div2Ref = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        // eslint-disable-next-line no-restricted-globals -- ignore
+        const win: PrebidWindow = window;
+
         loadScript('//www.googletagservices.com/tag/js/gpt.js')
             .then(() => {
                 return loadScript('//cdn.jsdelivr.net/npm/prebid.js@latest/dist/not-for-prod/prebid.js');
