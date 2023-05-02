@@ -23,16 +23,16 @@ Specialist at the intersection of multimedia and advertising technologies
     -   December 2022 - head of the International Advertising Interface Development Group
     -   September 2019 - head of the Video Advertising Development Group
     -   January 2016 - frontend developer of Yandex video players
--   [MiraLogic IT](https://miralogic.ru/) jun 2015 — january 2016 (8 months)
+-   [MiraLogic IT](https://miralogic.ru/) <sub>jun 2015 — january 2016 (8 months)</sub>
     -   Frontend, make website layout, develop and support of web applications
--   [Tensor](https://tensor.ru/) october 2014 — june 2015 (9 months)
+-   [Tensor](https://tensor.ru/) <sub>october 2014 — june 2015 (9 months)</sub>
     -   Frontend, development of web applications for business (electronic trading platforms)
--   [MugunPRO](http://mugun.pro/) october 2013 — august 2014 (11 months)
+-   "MugunPRO" <sub>october 2013 — august 2014 (11 months)</sub>
     -   Mobile and web application development
--   [Digital Craft](https://dicraft.ru/) august 2011 — october 2013, computer repate
--   [Zenit](http://oneday-repair.ru/) november 2010 — august 2011, computer repate
--   [Russian Army](http://mil.ru/index.htm) november 2009 — november 2010, military duties.
--   [Megabum](http://sferamm.ru/) september 2009 — november 2009, porter-storekeeper
+-   "Digital Craft" <sub>august 2011 — october 2013</sub> - computer repate
+-   "Zenit" <sub>november 2010 — august 2011</sub> - computer repate
+-   "Russian Army" <sub>november 2009 — november 2010</sub> - military duties
+-   "Megabum" <sub>september 2009 — november 2009</sub> - porter-storekeeper
 
 ## Education
 
