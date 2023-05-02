@@ -1,9 +1,9 @@
-import { BusinessCardHorizontal } from 'components/BusinessCardHorizontal';
+import { BusinessCard } from 'components/BusinessCard';
 
 export function HomePage() {
     return (
         <>
-            <BusinessCardHorizontal />
+            <BusinessCard />
         </>
     );
 }

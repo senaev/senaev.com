@@ -8,7 +8,7 @@ import { BusinessCardAbout } from 'components/BusinessCardAbout';
 
 const PHOTO_SIZE_BIG = 144;
 
-export function BusinessCardHorizontal() {
+export function BusinessCard() {
     return (
         <div
             className={clsx(styles.container)}
