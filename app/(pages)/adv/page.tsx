@@ -1,35 +1,39 @@
 import Link from 'next/link';
 
+const SUBPAGES = {
+    Yandex: {
+        'Standard formats': '/adv/yandex/standard-formats',
+        'Adaptive size': '/adv/yandex/adaptive-size',
+    },
+    Air: {
+        'Standard formats': '/adv/air/standard-formats',
+    },
+    Google: {
+        'Standard formats': '/adv/google/standard-formats',
+    },
+};
+
 export default function Page() {
     return (
         <ul>
-            <li>
-                {'Yandex'}
-                <ul>
-                    <li>
-                        <Link href={'/adv/yandex/standard-formats'}>{'Standard formats'}</Link>
-                    </li>
-                    <li>
-                        <Link href={'/adv/yandex/adaptive-size'}>{'Adaptive size'}</Link>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                {'Air'}
-                <ul>
-                    <li>
-                        <Link href={'/adv/air/standard-formats'}>{'Standard formats'}</Link>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                {'Google'}
-                <ul>
-                    <li>
-                        <Link href={'/adv/google/standard-formats'}>{'Standard formats'}</Link>
-                    </li>
-                </ul>
-            </li>
+            {
+                Object.entries(SUBPAGES).map(([chapter, pages], chapterIndex) => {
+                    return (
+                        <li key={chapterIndex}>
+                            {chapter}
+                            <ul>
+                                {Object.entries(pages).map(([page, address], pageIndex) => {
+                                    return (
+                                        <li key={pageIndex}>
+                                            <Link href={address}>{page}</Link>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </li>
+                    );
+                })
+            }
         </ul>
     );
 }

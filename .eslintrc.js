@@ -229,7 +229,7 @@ module.exports = {
                 'space-in-parens': ['error', 'never'],
                 'spaced-comment': ['error', 'always'],
                 'template-tag-spacing': ['error', 'never'],
-                'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
+                'arrow-body-style': ['error', 'always'],
                 'arrow-parens': ['error', 'always'],
                 'object-shorthand': [
                     'error',
