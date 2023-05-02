@@ -13,6 +13,7 @@ const SUBPAGES = {
     },
     Prebid: {
         'Default example': '/adv/prebid/default-example',
+        'Yandex example': '/adv/prebid/yandex-example',
     },
 };
 

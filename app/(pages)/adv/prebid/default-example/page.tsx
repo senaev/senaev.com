@@ -7,31 +7,31 @@ import type { GlobalScope } from 'utils/types/GlobalScope';
 
 type PrebidWindow = GlobalScope & {
     googletag?: {
-        cmd?: object[];
-        pubads?: () => {
+        cmd: object[];
+        pubads: () => {
             disableInitialLoad: VoidFunction;
             refresh: VoidFunction;
             enableSingleRequest: VoidFunction;
         };
-        defineSlot?: (
+        defineSlot: (
             TODO: string,
             size: unknown,
             id: string,
         ) => {
             addService: (arg: unknown) => void;
         };
-        enableServices?: VoidFunction;
-        display?: (id: string) => void;
+        enableServices: VoidFunction;
+        display: (id: string) => void;
     };
     pbjs?: {
-        que?: unknown[];
-        addAdUnits?: (adUnits: unknown) => void;
-        requestBids?: (params: {
+        que: unknown[];
+        addAdUnits: (adUnits: unknown) => void;
+        requestBids: (params: {
             bidsBackHandler: unknown;
             timeout: unknown;
         }) => void;
         initAdserverSet?: true;
-        setTargetingForGPTAsync?: VoidFunction;
+        setTargetingForGPTAsync: VoidFunction;
     };
 };
 
@@ -96,19 +96,27 @@ export default function Page() {
                 ];
 
                 // ======== DO NOT EDIT BELOW THIS LINE =========== //
-                win.googletag ||= {};
+
+                if (!win.googletag) {
+                    throw new Error('win.googletag is nod defined');
+                }
+
+                if (!win.pbjs) {
+                    throw new Error('win.pbjs is nod defined');
+                }
+
                 const { googletag } = win;
                 googletag.cmd ||= [];
                 googletag.cmd.push(() => {
-                    googletag.pubads?.().disableInitialLoad();
+                    googletag.pubads().disableInitialLoad();
                 });
 
-                const pbjs = win.pbjs ?? {};
+                const { pbjs } = win;
                 pbjs.que ||= [];
 
                 pbjs.que.push(() => {
-                    pbjs.addAdUnits?.(adUnits);
-                    pbjs.requestBids?.({
+                    pbjs.addAdUnits(adUnits);
+                    pbjs.requestBids({
                         bidsBackHandler: initAdserver,
                         timeout: PREBID_TIMEOUT,
                     });
@@ -119,11 +127,10 @@ export default function Page() {
                         return;
                     }
                     pbjs.initAdserverSet = true;
-                    googletag.cmd?.push(() => {
-                        pbjs.que?.push(() => {
-                            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- ignore
-                            pbjs?.setTargetingForGPTAsync?.();
-                            googletag.pubads?.().refresh();
+                    googletag.cmd.push(() => {
+                        pbjs.que.push(() => {
+                            pbjs.setTargetingForGPTAsync();
+                            googletag.pubads().refresh();
                         });
                     });
                 }
@@ -133,35 +140,35 @@ export default function Page() {
                 }, FAILSAFE_TIMEOUT);
 
                 googletag.cmd.push(() => {
-                    googletag.defineSlot?.('/19968336/header-bid-tag-0', div_1_sizes, 'div-1')
-                        .addService(googletag.pubads?.());
+                    googletag.defineSlot('/19968336/header-bid-tag-0', div_1_sizes, 'div-1')
+                        .addService(googletag.pubads());
 
-                    googletag.pubads?.().enableSingleRequest();
-                    googletag.enableServices?.();
+                    googletag.pubads().enableSingleRequest();
+                    googletag.enableServices();
                 });
 
                 googletag.cmd.push(() => {
-                    googletag.defineSlot?.('/19968336/header-bid-tag-1', div_2_sizes, 'div-2')
-                        .addService(googletag.pubads?.());
-                    googletag.pubads?.().enableSingleRequest();
-                    googletag.enableServices?.();
+                    googletag.defineSlot('/19968336/header-bid-tag-1', div_2_sizes, 'div-2')
+                        .addService(googletag.pubads());
+                    googletag.pubads().enableSingleRequest();
+                    googletag.enableServices();
                 });
 
                 console.log('googletag inited', googletag);
 
                 googletag.cmd.push(() => {
                     console.log('googletag starts displaying div-1');
-                    googletag.display?.('div-1');
+                    googletag.display('div-1');
                 });
 
                 googletag.cmd.push(() => {
                     console.log('googletag starts displaying div-2');
-                    googletag.display?.('div-2');
+                    googletag.display('div-2');
                 });
             })
             .catch((error: Error) => {
-
                 console.error(error);
+
                 // eslint-disable-next-line no-alert -- ignore
                 alert(error.message);
             });
