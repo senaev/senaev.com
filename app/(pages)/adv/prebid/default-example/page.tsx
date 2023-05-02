@@ -36,18 +36,19 @@ type PrebidWindow = GlobalScope & {
 };
 
 export default function Page() {
-    const div1Ref = useRef<HTMLDivElement | null>(null);
-    const div2Ref = useRef<HTMLDivElement | null>(null);
-
     useEffect(() => {
         // eslint-disable-next-line no-restricted-globals -- ignore
         const win: PrebidWindow = window;
+
+        /* eslint-disable no-console -- ignore */
+        console.log('start initialization');
 
         loadScript('//www.googletagservices.com/tag/js/gpt.js')
             .then(() => {
                 return loadScript('//cdn.jsdelivr.net/npm/prebid.js@latest/dist/not-for-prod/prebid.js');
             })
             .then(() => {
+                console.log('scripts are loaded');
                 const div_1_sizes = [
                     [300, 250],
                     [300, 600],
@@ -146,21 +147,27 @@ export default function Page() {
                     googletag.enableServices?.();
                 });
 
+                console.log('googletag inited', googletag);
+
                 googletag.cmd.push(() => {
+                    console.log('googletag starts displaying div-1');
                     googletag.display?.('div-1');
                 });
 
                 googletag.cmd.push(() => {
+                    console.log('googletag starts displaying div-2');
                     googletag.display?.('div-2');
                 });
             })
             .catch((error: Error) => {
-                // eslint-disable-next-line no-console -- ignore
+
                 console.error(error);
                 // eslint-disable-next-line no-alert -- ignore
                 alert(error.message);
             });
     }, []);
+
+    /* eslint-enable -- ignore */
 
     return (
         <>
@@ -168,10 +175,10 @@ export default function Page() {
             <a href={'https://docs.prebid.org/dev-docs/examples/basic-example.html'}>{'Source of example'}</a>
 
             <h5>{'Div-1'}</h5>
-            <div ref={div1Ref} />
+            <div id={'div-1'} />
 
             <h5>{'Div-2'}</h5>
-            <div ref={div2Ref} />
+            <div id={'div-2'} />
         </>
     );
 }
