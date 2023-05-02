@@ -11,6 +11,9 @@ const SUBPAGES = {
     Google: {
         'Standard formats': '/adv/google/standard-formats',
     },
+    Prebid: {
+        'Default example': '/adv/prebid/default-example',
+    },
 };
 
 export default function Page() {
