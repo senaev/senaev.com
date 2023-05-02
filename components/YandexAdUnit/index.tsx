@@ -16,7 +16,9 @@ declare const Ya: {
     };
 };
 
-const loadContextScript = once((): Promise<void> => loadScript('https://yandex.ru/ads/system/context.js'));
+const loadContextScript = once((): Promise<void> => {
+    return loadScript('https://yandex.ru/ads/system/context.js');
+});
 
 export function YandexAdUnit({
     blockId,

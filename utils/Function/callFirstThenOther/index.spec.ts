@@ -5,8 +5,12 @@ describe('callFirstThenOther', () => {
     let other: jest.Mock;
 
     beforeEach(() => {
-        first = jest.fn(() => 1);
-        other = jest.fn(() => 2);
+        first = jest.fn(() => {
+            return 1;
+        });
+        other = jest.fn(() => {
+            return 2;
+        });
     });
 
     it('should call first once and other for all other calls', () => {

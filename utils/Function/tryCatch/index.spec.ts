@@ -3,7 +3,9 @@ import { tryCatch } from '.';
 describe('tryCatch', () => {
     it('should execute valid function', () => {
         let x = 1;
-        tryCatch(() => x++);
+        tryCatch(() => {
+            return x++;
+        });
         expect(x).toEqual(2);
     });
 
@@ -25,7 +27,9 @@ describe('tryCatch', () => {
     });
 
     it('should infer valid return type', () => {
-        const fn = (): number => 10;
+        const fn = (): number => {
+            return 10;
+        };
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ignore
         expect(tryCatch(fn)! > 0).toEqual(true);
     });

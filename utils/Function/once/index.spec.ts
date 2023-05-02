@@ -5,7 +5,9 @@ describe('function', () => {
         let fn: jest.Mock;
 
         beforeEach(() => {
-            fn = jest.fn((x: number, y: number) => x + y);
+            fn = jest.fn((x: number, y: number) => {
+                return x + y;
+            });
         });
 
         it('should be called once', () => {
@@ -58,7 +60,9 @@ describe('function', () => {
                     a: boolean;
                     b: null;
                 };
-            }> = (obj) => obj;
+            }> = (obj) => {
+                return obj;
+            };
 
             const result = once(func)({
                 x: 1,

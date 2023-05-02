@@ -14,7 +14,9 @@ declare const Ya: {
     };
 };
 
-const loadContextScript = once((): Promise<void> => loadScript('https://air.tech/ads/scripts/loader.js'));
+const loadContextScript = once((): Promise<void> => {
+    return loadScript('https://air.tech/ads/scripts/loader.js');
+});
 
 export function AirAdUnit({
     size,

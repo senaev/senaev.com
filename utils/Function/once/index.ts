@@ -5,7 +5,9 @@ export function once<T extends (this: unknown, ...args: any[]) => unknown>(this:
         let result: unknown;
 
         // Assign function before to avoid loop call
-        onceFn = (() => result) as T;
+        onceFn = (() => {
+            return result;
+        }) as T;
 
         // eslint-disable-next-line prefer-rest-params -- use arguments as a native way to pass arguments
         result = fn.apply(this, arguments as unknown as Parameters<T>);
