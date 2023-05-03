@@ -34,6 +34,8 @@ export default function Page() {
         // eslint-disable-next-line no-restricted-globals -- ignore
         const win: PrebidWindow = window;
         const doc = win.document;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ignore
+        const div = doc.getElementById(BLOCK_ID)!;
 
         /* eslint-disable no-console -- ignore */
         console.log('start initialization');
@@ -78,12 +80,12 @@ export default function Page() {
                     console.log('renderOne', winningBid);
 
                     if (winningBid?.adId) {
-                        const div = doc.getElementById(winningBid.adUnitCode);
-                        if (div) {
+                        const renderToElement = doc.getElementById(winningBid.adUnitCode);
+                        if (renderToElement) {
                             const iframe = doc.createElement('iframe');
                             console.log('iframe', iframe);
                             iframe.frameBorder = '0';
-                            div.appendChild(iframe);
+                            renderToElement.appendChild(iframe);
                             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ignore
                             const iframeDoc = iframe.contentWindow!.document;
                             pbjs.renderAd(iframeDoc, winningBid.adId);
@@ -97,6 +99,12 @@ export default function Page() {
                         bidsBackHandler(bids?: unknown, timedOut?: boolean) {
 
                             const winners = pbjs.getHighestCpmBids();
+
+                            if (winners.length === 0) {
+                                div.innerText = 'No winners in this auction';
+                                return;
+                            }
+
                             for (const winner of winners) {
                                 renderOne(winner);
                             }
