@@ -1,0 +1,142 @@
+/*temporary*/
+
+.app-container {
+    display: block;
+    text-align: center;
+}
+
+/*game*/
+/*основной контейнер, класс присваивается элементу, передаваемому в приложение,
+он же срановится корневым для всех элементов игры*/
+.tenOnTenContainer {
+    display: inline-block;
+    font-family: sans-serif;
+}
+/* само главное поле бэкграунда*/
+.tenOnTenContainer>.backgroungField {
+    position: absolute;
+    background-color: #999;
+    border-radius: 3px;
+}
+/*кубики бэкграунда на главном поле*/
+.tenOnTenContainer>.backgroungField>.dCube{
+    height: 30px;
+    width: 30px;
+    margin: 1px;
+    background: #a0a0a0;
+    border-radius: 10px;
+    float: left;
+}
+
+/*панели с информацией и кнопками*/
+.tenOnTenContainer>.panel{
+    height: 96px;
+    width: 96px;
+    position: absolute;
+}
+.tenOnTenContainer>.panel.topRightPanel{
+    right: -96px;
+    top: -96px;
+}
+.tenOnTenContainer>.panel.topRightPanel>.undoButton{
+    font-weight: bold;
+    margin-top: 7px;
+    color: white;
+    cursor: pointer;
+}
+.tenOnTenContainer>.panel.topRightPanel>.undoButton.blocked{
+    color: #cccccc;
+}
+
+/*сам кубик*/
+
+.tenOnTenContainer>.cube {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    border-width: 0px;
+    border-style: solid;
+    /*background: grey;*/
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+}
+
+
+
+/*
+для скрытия кубиков в боковых панелях
+*/
+.tenOnTenContainer>.cube.cubeHidden{
+    display: none;
+}
+
+
+
+
+/*классы стрелок - могут быть у первого кубика под наведенной строкой в боковом меню,
+либо у кубика на главном поле, имеющего направление*/
+.tenOnTenContainer>.cube.firstInHoverLine, .tenOnTenContainer>.cube.dright{
+    background-image: url(../img/arrow.png);
+    background-repeat: no-repeat;
+    background-position: -1px;
+}
+.tenOnTenContainer>.cube.firstInHoverLine.ftop, .tenOnTenContainer>.cube.dbottom{
+    background-image: url(../img/arrow.png);
+    background-repeat: no-repeat;
+    background-position: -33px -1px;
+}
+.tenOnTenContainer>.cube.firstInHoverLine.fright, .tenOnTenContainer>.cube.dleft{
+    background-image: url(../img/arrow.png);
+    background-repeat: no-repeat;
+    background-position: -65px -1px;
+}
+.tenOnTenContainer>.cube.firstInHoverLine.fbottom, .tenOnTenContainer>.cube.dtop{
+    background-image: url(../img/arrow.png);
+    background-repeat: no-repeat;
+    background-position: -97px -1px;
+}
+
+/*расцветка кубиков*/
+.tenOnTenContainer>.cube.blue{
+    background-color: #4e7cff;
+    border-color: #7a9cff;
+}
+.tenOnTenContainer>.cube.green{
+    background-color: #0e9f0e;
+    border-color: #12b012;
+}
+.tenOnTenContainer>.cube.yellow{
+    background-color: #e7df00;
+    border-color: #fff600;
+}
+.tenOnTenContainer>.cube.red{
+    background-color: #ff4949;
+    border-color: #ff6f6f;
+}
+.tenOnTenContainer>.cube.brown{
+    background-color: #df690a;
+    border-color: #ee710b;
+}
+.tenOnTenContainer>.cube.pink{
+    background-color: #ffc0cb;
+    border-color: #fed6dd;
+}
+.tenOnTenContainer>.cube.white{
+    background-color: #ddd;
+    border-color: #e0e0e0;
+}
+.tenOnTenContainer>.cube.purple{
+    background-color: #ff46ff;
+    border-color: #fc69fc;
+}
+.tenOnTenContainer>.cube.lightblue{
+    background-color: #9bcada;
+    border-color: #add8e6;
+}
+.tenOnTenContainer>.cube.orange{
+    background-color: #ffb121;
+    border-color: #ffbb3f;
+}
