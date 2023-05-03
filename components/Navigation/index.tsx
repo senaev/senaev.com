@@ -11,10 +11,10 @@ const PAGES = {
         href: '/10x10',
         className: undefined,
     },
-    'adv': {
-        href: '/adv',
-        className: undefined,
-    },
+    // 'adv': {
+    //     href: '/adv',
+    //     className: undefined,
+    // },
     'more': {
         href: '/more',
         className: undefined,
