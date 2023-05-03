@@ -13,7 +13,7 @@ Born January 10, 1991
 
 Ambitious, enthusiastic
 
-Driven by the desire for constant professional and personal growth
+Strive to continuously improve professional and personal skills
 
 Specialist at the intersection of multimedia and advertising technologies
 

@@ -122,7 +122,7 @@ export default function Page() {
                     });
                 });
 
-                console.log('TODO: start prebid initialization');
+                console.log('start prebid initialization');
             })
             .catch((error: Error) => {
                 console.error(error);
