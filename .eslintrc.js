@@ -421,6 +421,7 @@ module.exports = {
                 ],
                 'import/no-unresolved': 'off',
                 'import/named': 'off',
+                "@next/next/no-html-link-for-pages": ["error", "app"]
             },
         },
         {
@@ -441,6 +442,12 @@ module.exports = {
                     },
                 ],
             }
+        },
+        {
+            files: ['*.typecheck.ts'],
+            rules: {
+                '@typescript-eslint/no-unused-vars': 'off',
+            },
         },
     ],
 };
