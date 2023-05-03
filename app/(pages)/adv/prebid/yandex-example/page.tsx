@@ -18,6 +18,8 @@ type PrebidWindow = GlobalScope & {
     };
 };
 
+type Bid = unknown;
+
 export default function Page() {
     useEffect(() => {
         // eslint-disable-next-line no-restricted-globals -- ignore
@@ -65,8 +67,8 @@ export default function Page() {
                 pbjs.que.push(() => {
                     pbjs.addAdUnits(adUnits);
                     pbjs.requestBids({
-                        bidsBackHandler() {
-                            console.log('bidsBackHandler');
+                        bidsBackHandler(bids?: Bid, timedOut?: boolean) {
+                            console.log('bidsBackHandler', bids, timedOut);
                         },
                         timeout: PREBID_TIMEOUT,
                     });
