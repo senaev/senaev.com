@@ -1,13 +1,16 @@
 # Andrei Senaev
 
+![](https://senaev.com/img/avatar-head.jpeg)
+
 Born January 10, 1991
 
 ## Links
 
--   [senaev.com](https://senaev.com)
--   [guthub.com](https://github.com/senaev/senaev.com)
--   [gsacryfice@gmail.com](mailto:gsacryfice@gmail.com)
--   [+7 (982) 699-04-00](tel:+79826990400)
+-   Website: [senaev.com](https://senaev.com)
+-   Github: [@senaev](https://github.com/senaev/senaev.com)
+-   Telegram: [@senaev](https://senaev.t.me)
+-   Email: [andrei@senaev.com](mailto:andrei@senaev.com)
+-   Phone: [+7 (982) 699-04-00](tel:+79826990400)
 
 ## About me
 

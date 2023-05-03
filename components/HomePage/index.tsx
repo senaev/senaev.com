@@ -1,9 +1,15 @@
-import { BusinessCard } from 'components/BusinessCard';
+import { MyselInfoFromReadme } from 'components/MyselInfoFromReadme';
+import type { MyselfHtmlFromReadme } from 'utils/getMyselfDataFromReadme';
 
-export function HomePage() {
+export function HomePage({
+    myselfHtmlFromReadme,
+}: {
+    myselfHtmlFromReadme: MyselfHtmlFromReadme;
+}) {
+
     return (
         <>
-            <BusinessCard />
+            <MyselInfoFromReadme myselfHtmlFromReadme={myselfHtmlFromReadme} />
         </>
     );
 }

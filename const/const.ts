@@ -9,7 +9,7 @@ export const SENAEV_SITE_DOMAIN = 'senaev.com';
 export const SENAEV_SITE_URL = `https://${SENAEV_SITE_DOMAIN}`;
 export const ME_PAGE_LINK = '/me';
 
-export const SENAEV_SITE_IMAGE_URL = 'https://senaev.com/img/avatar-head.jpg';
+export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.jpeg';
 
 export const SENAEV_SITE_METADATA: Metadata = {
     title: SENAEV_SITE_TITLE,

@@ -1,0 +1,17 @@
+.markdownContainer {
+    position: relative;
+    padding: 0 0 4em 0;
+    max-width: 35em;
+    margin: 1em;
+}
+
+.markdownContainer h1 {
+    background-color: green;
+}
+
+.markdownContainer h2 {
+    background-color: blue;
+}
+.markdownContainer li {
+    background-color: red;
+}
