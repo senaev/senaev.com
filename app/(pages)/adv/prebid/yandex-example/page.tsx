@@ -100,8 +100,16 @@ export default function Page() {
 
                             const winners = pbjs.getHighestCpmBids();
 
+                            console.log('bidsBackHandler', {
+                                bids,
+                                timedOut,
+                                winners,
+                            });
+
                             if (winners.length === 0) {
-                                div.innerText = 'No winners in this auction';
+                                const message = 'No winners in this auction';
+                                div.innerText = message;
+                                console.log(message);
                                 return;
                             }
 
@@ -109,11 +117,6 @@ export default function Page() {
                                 renderOne(winner);
                             }
 
-                            console.log('bidsBackHandler', {
-                                bids,
-                                timedOut,
-                                winners,
-                            });
                         },
                         timeout: PREBID_TIMEOUT,
                     });
