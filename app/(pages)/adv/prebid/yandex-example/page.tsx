@@ -26,6 +26,7 @@ type PrebidWindow = GlobalScope & {
 };
 
 const BLOCK_ID = 'test-block' as const;
+// https://paste.yandex-team.ru/a40c871e-e5a1-47c7-8903-71dd484777ad
 
 export default function Page() {
     useEffect(() => {
@@ -125,7 +126,7 @@ export default function Page() {
     return (
         <>
             <h5>{'320x180 || 180x320'}</h5>
-            <div id={'div-1'} />
+            <div id={BLOCK_ID} />
         </>
     );
 }
