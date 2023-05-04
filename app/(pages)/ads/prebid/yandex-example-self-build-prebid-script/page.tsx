@@ -40,7 +40,7 @@ export default function Page() {
         /* eslint-disable no-console -- ignore */
         console.log('start initialization');
 
-        loadScript('/prebid7.47.0.js')
+        loadScript('/prebid/github.com/senaev/prebid.js/build/dist/prebid.js')
             .then(() => {
                 console.log('scripts are loaded');
 
@@ -61,6 +61,13 @@ export default function Page() {
                         bids: [
                             {
                                 bidder: 'yandex',
+                                params: {
+                                    pageId: 2349763,
+                                    impId: 1,
+                                },
+                            },
+                            {
+                                bidder: 'air',
                                 params: {
                                     pageId: 2349763,
                                     impId: 1,
@@ -128,7 +135,7 @@ export default function Page() {
                 console.error(error);
 
                 // eslint-disable-next-line no-alert -- ignore
-                alert(error.message);
+                alert(`Error=[${String(error)}] message=[${error.message}]`);
             });
     }, []);
 

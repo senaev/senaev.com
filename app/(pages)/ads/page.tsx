@@ -2,18 +2,19 @@ import Link from 'next/link';
 
 const SUBPAGES = {
     Yandex: {
-        'Standard formats': '/adv/yandex/standard-formats',
-        'Adaptive size': '/adv/yandex/adaptive-size',
+        'Standard formats': '/ads/yandex/standard-formats',
+        'Adaptive size': '/ads/yandex/adaptive-size',
     },
     Air: {
-        'Standard formats': '/adv/air/standard-formats',
+        'Standard formats': '/ads/air/standard-formats',
     },
     Google: {
-        'Standard formats': '/adv/google/standard-formats',
+        'Standard formats': '/ads/google/standard-formats',
     },
     Prebid: {
-        'Default example': '/adv/prebid/default-example',
-        'Yandex example': '/adv/prebid/yandex-example',
+        'Default example': '/ads/prebid/default-example',
+        'Yandex example (no ad server)': '/ads/prebid/yandex-example-without-ad-server',
+        'Yandex example (self-build prebid script)': '/ads/prebid/yandex-example-self-build-prebid-script',
     },
 };
 

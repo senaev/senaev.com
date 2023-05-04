@@ -11,8 +11,8 @@ const PAGES = {
         href: '/10x10',
         className: undefined,
     },
-    // 'adv': {
-    //     href: '/adv',
+    // 'ads': {
+    //     href: '/ads',
     //     className: undefined,
     // },
     'more': {
