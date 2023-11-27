@@ -6,11 +6,12 @@ Born January 10, 1991
 
 ## Links
 
--   Website: [senaev.com](https://senaev.com)
--   Github: [@senaev](https://github.com/senaev/senaev.com)
+-   Site: [senaev.com](https://senaev.com)
 -   Telegram: [@senaev](https://senaev.t.me)
--   Email: [andrei@senaev.com](mailto:andrei@senaev.com)
+-   Email: [p9826990400@gmail.com](mailto:p9826990400@gmail.com)
 -   Phone: [+7 (982) 699-04-00](tel:+79826990400)
+-   Habr: [@senaev](https://habr.com/ru/users/senaev/publications/articles/)
+-   Github: [@senaev](https://github.com/senaev/senaev.com)
 
 ## About me
 
