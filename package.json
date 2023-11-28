@@ -7,8 +7,8 @@
         "build": "next build",
         "start": "next start",
         "docker": "npm run docker:build && npm run docker:upgrade",
-        "docker:build": "docker build -t senaev.com . && docker tag senaev.com cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest && docker push cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest",
-        "docker:upgrade": "ssh -t sacryfice@158.160.55.18 'sudo docker stop $(sudo docker ps -q --filter ancestor=cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest) && sudo docker pull cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest && sudo docker run -dp 80:3000 cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest'",
+        "docker:build": "docker build --platform linux/amd64 -t senaev.com . && docker tag senaev.com cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest && docker push cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest",
+        "docker:upgrade": "ssh -t senaev@51.250.86.35 'sudo docker stop $(sudo docker ps -q --filter ancestor=cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest) && sudo docker pull cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest && sudo docker run -dp 80:3000 cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest'",
         "lint": "eslint --cache . && npx prettier --check . --ignore-path .prettierignore",
         "typecheck": "tsc --noEmit"
     },
