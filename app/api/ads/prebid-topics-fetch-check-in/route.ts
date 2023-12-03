@@ -19,6 +19,7 @@ export function GET(request: Request) {
 
     return NextResponse.json({
         request: {
+            url: request.url,
             parsedTopics,
             secBrowsingTopics,
             headers: [...request.headers.entries()],
