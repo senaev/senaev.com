@@ -22,7 +22,7 @@ export function GET(request: Request) {
 
                 parsedTopics = topics;
 
-                version = split[1]?.split('=')[1];
+                version = split[1]?.split(',')[0]?.split('=')[1];
             }
         }
     }
