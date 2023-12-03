@@ -8,6 +8,7 @@ export type Bid = {
 export type BidderTopicsApiConfig = {
     bidder: string;
     iframeURL?: string;
+    fetchUrl?: string;
     expiry: number;
 };
 
