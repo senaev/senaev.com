@@ -13,6 +13,8 @@ export function GET(request: Request) {
         const split = secBrowsingTopics.split(';');
         const topicsPart = split[0];
 
+        // default is '();p=P0000000000000000000000000000000'
+        // when topic exists '(299 328);v=chrome.1:1:1, ();p=P00000'
         if (topicsPart && topicsPart.length > 2) {
             if (topicsPart.startsWith('(') && topicsPart.endsWith(')')) {
                 const topics = topicsPart.slice(1, -1).split(' ')
