@@ -3,27 +3,7 @@
 import { useEffect } from 'react';
 
 import { loadScript } from 'utils/Script/loadScript';
-import type { GlobalScope } from 'utils/types/GlobalScope';
-
-type Bid = {
-    adId: string;
-    adUnitCode: string;
-};
-
-type PrebidWindow = GlobalScope & {
-    pbjs?: {
-        que: unknown[];
-        addAdUnits: (adUnits: unknown) => void;
-        requestBids: (params: {
-            bidsBackHandler: unknown;
-            timeout: unknown;
-        }) => void;
-        initAdserverSet?: true;
-        setTargetingForGPTAsync: VoidFunction;
-        getHighestCpmBids: () => Bid[];
-        renderAd: (iframeDoc: Document, adId: string) => void;
-    };
-};
+import type { Bid, PrebidWindow } from 'utils/types/Prebid';
 
 const BLOCK_ID = 'test-block' as const;
 // https://paste.yandex-team.ru/a40c871e-e5a1-47c7-8903-71dd484777ad

@@ -14,6 +14,7 @@ export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.jpeg';
 export const SENAEV_SITE_METADATA: Metadata = {
     title: SENAEV_SITE_TITLE,
     description: SENAEV_SITE_TITLE,
+    metadataBase: new URL(SENAEV_SITE_URL),
     icons: {
         icon: '/favicon.ico',
     },

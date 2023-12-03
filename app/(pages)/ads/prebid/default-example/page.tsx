@@ -3,37 +3,7 @@
 import { useEffect } from 'react';
 
 import { loadScript } from 'utils/Script/loadScript';
-import type { GlobalScope } from 'utils/types/GlobalScope';
-
-type PrebidWindow = GlobalScope & {
-    googletag?: {
-        cmd: object[];
-        pubads: () => {
-            disableInitialLoad: VoidFunction;
-            refresh: VoidFunction;
-            enableSingleRequest: VoidFunction;
-        };
-        defineSlot: (
-            TODO: string,
-            size: unknown,
-            id: string,
-        ) => {
-            addService: (arg: unknown) => void;
-        };
-        enableServices: VoidFunction;
-        display: (id: string) => void;
-    };
-    pbjs?: {
-        que: unknown[];
-        addAdUnits: (adUnits: unknown) => void;
-        requestBids: (params: {
-            bidsBackHandler: unknown;
-            timeout: unknown;
-        }) => void;
-        initAdserverSet?: true;
-        setTargetingForGPTAsync: VoidFunction;
-    };
-};
+import type { PrebidWindow } from 'utils/types/Prebid';
 
 export default function Page() {
     useEffect(() => {
