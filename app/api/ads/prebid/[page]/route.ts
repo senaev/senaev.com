@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import { createCrossOriginHeaders } from 'utils/net/createCrossOriginHeaders/indes';
+import { createCrossOriginHeaders } from 'utils/net/createCrossOriginHeaders';
 
 export function POST(
     request: Request,
