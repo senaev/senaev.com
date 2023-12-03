@@ -40,7 +40,7 @@ export default function Page() {
         /* eslint-disable no-console -- ignore */
         console.log('start initialization');
 
-        loadScript('/prebid/v1/github.com/senaev/prebid.js/build/dist/prebid.js')
+        loadScript('/prebid/v2/prebid.js')
             .then(() => {
                 console.log('scripts are loaded');
 
@@ -67,7 +67,7 @@ export default function Page() {
                                 },
                             },
                             {
-                                bidder: 'air',
+                                bidder: 'senaev',
                                 params: {
                                     pageId: 2349763,
                                     impId: 1,

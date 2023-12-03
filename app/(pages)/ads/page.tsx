@@ -15,6 +15,7 @@ const SUBPAGES = {
         'Default example': '/ads/prebid/default-example',
         'Yandex example (no ad server)': '/ads/prebid/yandex-example-without-ad-server',
         'Yandex example (self-build prebid script)': '/ads/prebid/yandex-example-self-build-prebid-script',
+        'Senaev (with Topics Api)': '/ads/prebid/senaev-with-topics-api',
     },
 };
 

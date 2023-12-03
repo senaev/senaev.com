@@ -40,7 +40,7 @@ export default function Page() {
         /* eslint-disable no-console -- ignore */
         console.log('start initialization');
 
-        loadScript('/prebid/prebid7.47.0.js')
+        loadScript('/prebid/v1/prebid7.47.0.js')
             .then(() => {
                 console.log('scripts are loaded');
 
