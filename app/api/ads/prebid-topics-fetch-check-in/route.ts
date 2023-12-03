@@ -19,7 +19,7 @@ export function GET(request: Request) {
 
             parsedTopics = topics;
 
-            version = split[1];
+            version = split[1]?.split('=')[1];
         }
     }
 
@@ -29,7 +29,7 @@ export function GET(request: Request) {
         segment: {
             domain: hostname,
             topics: parsedTopics?.map((topic) => {
-                const versionSplit = version?.split('=')[1]?.split(':');
+                const versionSplit = version?.split(':');
 
                 return {
                     configVersion: versionSplit?.[0],
