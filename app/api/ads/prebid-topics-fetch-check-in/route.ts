@@ -43,7 +43,7 @@ export function GET(request: Request) {
                     topic,
                     version,
                 };
-            }),
+            }) ?? [],
             bidder,
         },
         ext: {
