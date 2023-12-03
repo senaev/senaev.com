@@ -143,7 +143,7 @@ export default function Page() {
 
     return (
         <>
-            <h5>{'320x180 || 180x320'}</h5>
+            <h5>{'Run this code in Topics API supported browser'}</h5>
             <div id={BLOCK_ID} />
         </>
     );
