@@ -63,25 +63,6 @@ export default function Page() {
 
                 const { pbjs } = win;
 
-                pbjs.setConfig({
-                    userSync: {
-                        topics: {
-                            maxTopicCaller: 2,
-                            bidders: [
-                                {
-                                    bidder: 'pubmatic',
-                                    iframeURL: 'https://ads.pubmatic.com/AdServer/js/topics/topics_frame.html',
-                                    expiry: 7,
-                                }, {
-                                    bidder: 'senaev',
-                                    iframeURL: 'https://senaev.com/iframes/prebid/topics-api-check-if-iframe',
-                                    expiry: 7,
-                                },
-                            ],
-                        },
-                    },
-                });
-
                 function renderOne(winningBid?: Bid) {
                     console.log('renderOne', winningBid);
 
@@ -101,6 +82,26 @@ export default function Page() {
 
                 pbjs.que.push(() => {
                     pbjs.addAdUnits(adUnits);
+
+                    pbjs.setConfig({
+                        userSync: {
+                            topics: {
+                                maxTopicCaller: 2,
+                                bidders: [
+                                    {
+                                        bidder: 'pubmatic',
+                                        iframeURL: 'https://ads.pubmatic.com/AdServer/js/topics/topics_frame.html',
+                                        expiry: 7,
+                                    }, {
+                                        bidder: 'senaev',
+                                        iframeURL: 'https://senaev.com/iframes/prebid/topics-api-check-if-iframe',
+                                        expiry: 7,
+                                    },
+                                ],
+                            },
+                        },
+                    });
+
                     pbjs.requestBids({
                         bidsBackHandler(bids?: unknown, timedOut?: boolean) {
 

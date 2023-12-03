@@ -12,6 +12,7 @@ export type BidderTopicsApiConfig = {
 };
 
 export type PrebidConfig = {
+    debug?: boolean;
     userSync?: {
         topics?: {
             maxTopicCaller?: number;
