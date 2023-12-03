@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
 
+import { SENAEV_SITE_DOMAIN } from 'const/const';
 import { createCrossOriginHeaders } from 'utils/net/createCrossOriginHeaders';
 
 export function GET(request: Request) {
     const secBrowsingTopics = request.headers.get('sec-browsing-topics');
 
-    const { searchParams, hostname } = new URL(request.url);
+    const { searchParams } = new URL(request.url);
 
     let parsedTopics: number[] | undefined;
     let version: string | undefined;
@@ -31,7 +32,7 @@ export function GET(request: Request) {
 
     return NextResponse.json({
         segment: {
-            domain: hostname,
+            domain: SENAEV_SITE_DOMAIN,
             topics: parsedTopics?.map((topic) => {
                 const versionSplit = version?.split(':');
 
