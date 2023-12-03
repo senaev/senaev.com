@@ -11,15 +11,17 @@ export function GET(request: Request) {
     let version: string | undefined;
     if (secBrowsingTopics) {
         const split = secBrowsingTopics.split(';');
-        const topicsOnly = split[0];
+        const topicsPart = split[0];
 
-        if (topicsOnly?.startsWith('(') && topicsOnly.endsWith(')')) {
-            const topics = topicsOnly.slice(1, -1).split(' ')
-                .map(Number);
+        if (topicsPart && topicsPart.length > 2) {
+            if (topicsPart.startsWith('(') && topicsPart.endsWith(')')) {
+                const topics = topicsPart.slice(1, -1).split(' ')
+                    .map(Number);
 
-            parsedTopics = topics;
+                parsedTopics = topics;
 
-            version = split[1]?.split('=')[1];
+                version = split[1]?.split('=')[1];
+            }
         }
     }
 
