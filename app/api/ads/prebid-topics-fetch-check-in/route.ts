@@ -2,11 +2,26 @@ import { NextResponse } from 'next/server';
 
 import { createCrossOriginHeaders } from 'utils/net/createCrossOriginHeaders';
 
-export async function GET(request: Request) {
+export function GET(request: Request) {
+    const secBrowsingTopics = request.headers.get('sec-browsing-topics');
+
+    let parsedTopics: number[] | undefined;
+    if (secBrowsingTopics) {
+        const topicsOnly = secBrowsingTopics.split(';')[0];
+
+        if (topicsOnly?.startsWith('(') && topicsOnly.endsWith(')')) {
+            const topics = topicsOnly.slice(1, -1).split(' ')
+                .map(Number);
+
+            parsedTopics = topics;
+        }
+    }
+
     return NextResponse.json({
         request: {
+            parsedTopics,
+            secBrowsingTopics,
             headers: [...request.headers.entries()],
-            body: await request.text(),
         },
     }, {
         headers: {
