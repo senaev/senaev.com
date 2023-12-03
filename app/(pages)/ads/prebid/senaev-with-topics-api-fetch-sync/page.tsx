@@ -94,7 +94,7 @@ export default function Page() {
                                         expiry: 7,
                                     }, {
                                         bidder: 'senaev',
-                                        fetchUrl: 'https://senaev.com/api/ads/prebid-topics-fetch-check-in/',
+                                        fetchUrl: 'https://senaev.com/api/ads/prebid-topics-fetch-check-in',
                                         expiry: 7,
                                     },
                                 ],
