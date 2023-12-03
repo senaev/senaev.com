@@ -2,8 +2,15 @@ import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
+function createCrossOriginHeaders(request: Request): Record<string, string> {
+    return {
+        'Access-Control-Allow-Origin': request.headers.get('origin') ?? '',
+        'Access-Control-Allow-Credentials': 'true',
+    };
+}
+
 export function POST(
-    _request: Request,
+    request: Request,
     { params }: { params: { page: string; }; },
 ) {
     return NextResponse.json({
@@ -34,5 +41,7 @@ export function POST(
         ext: {
             pageId: params.page,
         },
+    }, {
+        headers: createCrossOriginHeaders(request),
     });
 }
