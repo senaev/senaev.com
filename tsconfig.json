@@ -12,7 +12,7 @@
         "noUnusedParameters": true,
         "checkJs": true,
         "verbatimModuleSyntax": true,
-        "target": "es5",
+        "target": "ES2022",
         "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": true,
         "skipLibCheck": true,
