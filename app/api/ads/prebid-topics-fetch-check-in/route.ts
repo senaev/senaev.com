@@ -5,6 +5,8 @@ import { createCrossOriginHeaders } from 'utils/net/createCrossOriginHeaders';
 export function GET(request: Request) {
     const secBrowsingTopics = request.headers.get('sec-browsing-topics');
 
+    const { searchParams } = new URL(request.url);
+
     let parsedTopics: number[] | undefined;
     if (secBrowsingTopics) {
         const topicsOnly = secBrowsingTopics.split(';')[0];
@@ -19,9 +21,10 @@ export function GET(request: Request) {
 
     return NextResponse.json({
         request: {
-            url: request.url,
+            bidder: searchParams.get('bidder'),
             parsedTopics,
             secBrowsingTopics,
+            url: request.url,
             headers: [...request.headers.entries()],
         },
     }, {
