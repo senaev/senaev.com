@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title></title>
-  <link href="style.css" rel="stylesheet" />
+  <link href="/wedding/style.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -14,6 +14,7 @@
         <div class="photoContainer__grandChild">
           <!-- Slideshow container -->
           <div class="slideshowContainer">
+
             <!-- Full-width images with number and caption text -->
             <div class="mySlide"></div>
             <div class="mySlide"></div>
@@ -260,7 +261,7 @@
       }
 
       slides[slideIndex - 1].style.display = "block";
-      slides[slideIndex - 1].style.backgroundImage = `url(./img/${slideIndex - 1}.jpg)`;
+      slides[slideIndex - 1].style.backgroundImage = `url(/wedding/img/${slideIndex - 1}.jpg)`;
       clearTimeout(timeoutId)
 
       timeoutId = setTimeout(function () {
