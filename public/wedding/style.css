@@ -1,0 +1,187 @@
+:root {
+    --content-background: rgba(70, 68, 67, 0.97);
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+.photoContainer {
+    width: 100%;
+    position: sticky;
+    top: 0px;
+}
+
+.photoContainer__child {
+    text-align: center;
+    font-size: 0px;
+    width: 100%;
+    height: 100vh;
+    margin: 0px auto;
+}
+
+.photoContainer__grandChild {
+    text-align: center;
+    font-size: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.photoImage {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.textContent {
+    width: 100%;
+    position: relative;
+    background: var(--content-background);
+}
+
+@keyframes arrowBounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0px) translateX(-50%);
+    }
+
+    40% {
+        transform: translateY(-20px) translateX(-50%);
+    }
+
+    60% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
+
+.scrollDownButton__container {
+    display: none;
+    position: absolute;
+    padding: 20px;
+    top: -64px;
+    left: 50%;
+    z-index: 20;
+    cursor: pointer;
+    transform: translateY(-50%);
+    outline: none;
+    transition: all 500ms cubic-bezier(0.84, 0.04, 1, 1) 0s;
+    animation: 3s linear 0s infinite normal none running arrowBounce;
+}
+
+/* .scrollDownButton {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 3px;
+} */
+
+@media only screen and (max-width: 1024px) {
+    .scrollDownButton__container {
+        display: block;
+    }
+}
+
+.scrollDownButton {
+    fill: rgb(255, 255, 255);
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+}
+
+.slideshowContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hide the images by default */
+.mySlide {
+    display: none;
+    animation-name: fade;
+    animation-duration: 1.5s;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
