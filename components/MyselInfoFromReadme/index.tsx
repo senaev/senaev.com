@@ -1,15 +1,15 @@
-import styles from './index.module.css';
+import styles from './index.module.css'
 
-import type { MyselfHtmlFromReadme } from 'utils/getMyselfDataFromReadme';
+import type { MyselfHtmlFromReadme } from 'utils/getMyselfDataFromReadme'
 
-export function MyselInfoFromReadme({
-    myselfHtmlFromReadme,
+export function MyselInfoFromReadme ({
+  myselfHtmlFromReadme
 }: {
-    myselfHtmlFromReadme: MyselfHtmlFromReadme;
-}) { 
-    return ( 
+  myselfHtmlFromReadme: MyselfHtmlFromReadme
+}): JSX.Element {
+  return (
         <div className={styles.markdownContainer}>
             <div dangerouslySetInnerHTML={{ __html: myselfHtmlFromReadme.contentHtml }} />
         </div>
-    );
+  )
 }
