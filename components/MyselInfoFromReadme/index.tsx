@@ -6,8 +6,8 @@ export function MyselInfoFromReadme({
     myselfHtmlFromReadme,
 }: {
     myselfHtmlFromReadme: MyselfHtmlFromReadme;
-}) {
-    return (
+}) { 
+    return ( 
         <div className={styles.markdownContainer}>
             <div dangerouslySetInnerHTML={{ __html: myselfHtmlFromReadme.contentHtml }} />
         </div>

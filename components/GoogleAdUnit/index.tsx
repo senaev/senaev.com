@@ -1,32 +1,33 @@
-'use client';
+'use client'
 
-import { useEffect } from 'react';
+import React from 'react'
 
-export function GoogleAdUnit() {
-    useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- ignore
-        const win: Window & {
-            adsbygoogle?: unknown[];
-            // eslint-disable-next-line no-restricted-globals, @typescript-eslint/no-explicit-any -- ignore
-        } = window as any;
+export function GoogleAdUnit (): JSX.Element {
+  React.useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- ignore
+    const win: Window & {
+      adsbygoogle?: unknown[]
+      // eslint-disable-next-line no-restricted-globals, @typescript-eslint/no-explicit-any -- ignore
+    } = window as any
 
-        if (!win.adsbygoogle) {
-            win.adsbygoogle = [];
-        }
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    if (!win.adsbygoogle) {
+      win.adsbygoogle = []
+    }
 
-        win.adsbygoogle.push({});
-    });
+    win.adsbygoogle.push({})
+  })
 
-    return (
+  return (
         <>
             <ins className={'adsbygoogle'}
                 style={{
-                    display: 'inline-block',
-                    width: 320,
-                    height: 180,
+                  display: 'inline-block',
+                  width: 320,
+                  height: 180
                 }}
                 data-ad-client={'ca-pub-5756750483186348'}
                 data-ad-slot={'3155757085'} />
         </>
-    );
+  )
 }

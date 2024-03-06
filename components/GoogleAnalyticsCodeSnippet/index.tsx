@@ -1,7 +1,8 @@
-import Script from 'next/script';
+import React from 'react'
+import Script from 'next/script'
 
-export function GoogleAnalyticsCodeSnippet() {
-    return (
+export function GoogleAnalyticsCodeSnippet (): JSX.Element {
+  return (
         <>
             <Script
                 src={'https://www.googletagmanager.com/gtag/js?id=G-E0N21TH99Y'}
@@ -16,5 +17,5 @@ export function GoogleAnalyticsCodeSnippet() {
                 `}
             </Script>
         </>
-    );
+  )
 }

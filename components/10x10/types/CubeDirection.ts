@@ -1,1 +1,1 @@
-export type CubeDirection = 'bottom' | 'left' | 'right' | 'top';
+export type CubeDirection = 'bottom' | 'left' | 'right' | 'top'

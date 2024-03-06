@@ -8,7 +8,7 @@ const PAGES = {
         className: styles.Navigation_home,
     },
     '10x10': {
-        href: '/10x10',
+        href: '/10x10', 
         className: undefined,
     },
     // 'ads': {

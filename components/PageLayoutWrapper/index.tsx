@@ -1,10 +1,10 @@
 import React from 'react';
-
-import { Navigation } from 'components/Navigation';
+ 
 import { GoogleAdSenseCodeSnippet } from 'components/GoogleAdSenseCodeSnippet';
 import { GoogleAnalyticsCodeSnippet } from 'components/GoogleAnalyticsCodeSnippet';
-import { YandexMetrikaCounter } from 'components/YandexMetrikaCounter';
 import { GoogleTagManagerBody, GoogleTagManagerHead } from 'components/GoogleTagManager';
+import { Navigation } from 'components/Navigation';
+import { YandexMetrikaCounter } from 'components/YandexMetrikaCounter';
 
 export function PageLayoutWrapper({ children }: { children: React.ReactNode; }): JSX.Element {
     return (

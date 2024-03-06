@@ -1,8 +1,9 @@
-import Script from 'next/script';
+import Script from 'next/script'
+import React from 'react'
 
-export function YandexMetrikaCounter() {
-    return (
-        <>
+export function YandexMetrikaCounter (): JSX.Element {
+  return (
+        <React.Fragment>
             <Script
                 id={'yandex-metrika'}
                 strategy={'afterInteractive'}
@@ -21,6 +22,6 @@ export function YandexMetrikaCounter() {
                     });
                 `}
             </Script>
-        </>
-    );
+        </React.Fragment>
+  )
 }
