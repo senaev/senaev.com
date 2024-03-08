@@ -1,8 +1,7 @@
-import React from 'react'
-import Script from 'next/script'
+import Script from 'next/script';
 
 export function GoogleTagManagerHead (): JSX.Element {
-  return (
+    return (
         <Script
             id={'google-hag-manager-head-script'}
             strategy={'beforeInteractive'}>
@@ -14,11 +13,11 @@ export function GoogleTagManagerHead (): JSX.Element {
                 })(window,document,'script','dataLayer','GTM-PHN8D54');
             `}
         </Script>
-  )
+    );
 }
 
 export function GoogleTagManagerBody (): JSX.Element {
-  return (
+    return (
         <noscript>
             <iframe
                 title={'google-tag-manager-iframe'}
@@ -26,10 +25,10 @@ export function GoogleTagManagerBody (): JSX.Element {
                 height={'0'}
                 width={'0'}
                 style={{
-                  display: 'none',
-                  visibility: 'hidden'
+                    display: 'none',
+                    visibility: 'hidden',
                 }}>
             </iframe>
         </noscript>
-  )
+    );
 }

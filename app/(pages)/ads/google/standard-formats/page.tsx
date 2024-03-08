@@ -1,7 +1,7 @@
-import { GoogleAdUnit } from 'components/GoogleAdUnit'
+import { GoogleAdUnit } from 'components/GoogleAdUnit';
 
 export default function Page (): JSX.Element {
-  return (
+    return (
         <GoogleAdUnit />
-  )
+    );
 }

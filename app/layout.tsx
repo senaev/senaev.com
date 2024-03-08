@@ -1,17 +1,17 @@
-import type { Metadata } from 'next'
-import React from 'react'
-import './globals.css'
+import type { Metadata } from 'next';
+import React from 'react';
+import './globals.css';
 
-import { SENAEV_SITE_METADATA } from 'const/const'
+import { SENAEV_SITE_METADATA } from 'const/const';
 
-export const metadata: Metadata = SENAEV_SITE_METADATA
+export const metadata: Metadata = SENAEV_SITE_METADATA;
 
 export default function Layout ({ children }: { children: React.ReactNode }): JSX.Element {
-  return (
+    return (
         <html lang={'en'}>
             <body>
                 {children}
             </body>
         </html>
-  )
+    );
 }

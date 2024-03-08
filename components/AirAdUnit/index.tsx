@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { once } from 'utils/Function/once'
-import { loadScript } from 'utils/Script/loadScript'
+import React from 'react';
+import { once } from 'utils/Function/once';
+import { loadScript } from 'utils/Script/loadScript';
 
 declare const Ya: {
   Context: {
@@ -11,15 +11,15 @@ declare const Ya: {
       render: (arg: any) => void
     }
   }
-}
+};
 
 const loadContextScript = once(async (): Promise<void> => {
-  await loadScript('https://air.tech/ads/scripts/loader.js')
-})
+    await loadScript('https://air.tech/ads/scripts/loader.js');
+});
 
 export function AirAdUnit ({
-  size,
-  blockId
+    size,
+    blockId,
 }: {
   size: {
     width: number
@@ -27,34 +27,34 @@ export function AirAdUnit ({
   }
   blockId: string
 }): JSX.Element {
-  const { width, height } = size
+    const { width, height } = size;
 
-  const elementId = `${blockId}-element`
+    const elementId = `${blockId}-element`;
 
-  React.useEffect(() => {
-    loadContextScript()
-      .then(() => {
-        Ya.Context.AdvManager.render({
-          blockId,
-          renderTo: elementId
-        })
-      })
-      .catch((error) => {
-        throw error
-      })
-  }, [blockId, elementId])
+    React.useEffect(() => {
+        loadContextScript()
+            .then(() => {
+                Ya.Context.AdvManager.render({
+                    blockId,
+                    renderTo: elementId,
+                });
+            })
+            .catch((error) => {
+                throw error;
+            });
+    }, [blockId, elementId]);
 
-  return (
+    return (
         <div style={{
-          width, height: height + 45
+            width, height: height + 45,
         }}>
             <h3>{`${width}x${height}`}</h3>
             <div
                 style={{
-                  width, height
+                    width, height,
                 }}
                 id={elementId}
             />
         </div>
-  )
+    );
 }

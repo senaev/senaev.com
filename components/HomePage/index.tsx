@@ -1,15 +1,14 @@
-import React from 'react'
-import { MyselInfoFromReadme } from 'components/MyselInfoFromReadme'
-import type { MyselfHtmlFromReadme } from 'utils/getMyselfDataFromReadme'
+import { MyselInfoFromReadme } from 'components/MyselInfoFromReadme';
+import type { MyselfHtmlFromReadme } from 'utils/getMyselfDataFromReadme';
 
 export function HomePage ({
-  myselfHtmlFromReadme
+    myselfHtmlFromReadme,
 }: {
   myselfHtmlFromReadme: MyselfHtmlFromReadme
 }): JSX.Element {
-  return (
+    return (
         <>
             <MyselInfoFromReadme myselfHtmlFromReadme={myselfHtmlFromReadme} />
         </>
-  )
+    );
 }
