@@ -21,7 +21,7 @@ let slideIndex = 1
 
 export default function Page (): JSX.Element {
   React.useEffect(() => {
-    loadScript('http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js')
+    loadScript('https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js')
       .then(() => {
         $('.prev').click(() => {
           plusSlides(-1)
