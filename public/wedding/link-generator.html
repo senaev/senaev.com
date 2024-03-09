@@ -11,21 +11,30 @@
     <label for="input">Введи текст для приглашения</label>
     <input id="input" type="text">
     <button id="button">Generate</button>
-    <span id="result"></span>
+    <div id="result"></div>
     <script>
         const input = document.getElementById('input')
         const button = document.getElementById('button')
         const result = document.getElementById('result')
+        const CLCK_LINK = 'https://clck.ru/'
 
         button.onclick = () => {
             const link = `https://senaev.com/wedding?text=${encodeURIComponent(input.value)}`
-            const a = document.createElement('a')
-            a.setAttribute('target', '_blank')
-            a.setAttribute('href', link)
-            a.innerText = link;
 
-            result.innerHTML = ''
-            result.appendChild(a);
+            result.innerHTML = `
+                <div>
+                    Отлично, у нас получилась ссылка:
+                </div>
+                <div>
+                    <a target="_blank" href="${link}">${link}</a>
+                </div>
+                <div>
+                    Ее нужно скопировать и прогнать через укорачиватель (оригинальную ссылку лучше не пересылать, мессенджеры ее ломают):
+                </div>
+                <div>
+                    <a target="_blank" href="${CLCK_LINK}">${CLCK_LINK}</a>
+                </div>
+            `
         }
     </script>
 </body>
