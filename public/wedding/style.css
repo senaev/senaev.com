@@ -99,8 +99,8 @@ body {
 .scrollDownButton__container {
     display: none;
     position: absolute;
-    padding: 20px;
-    top: -150px;
+    padding: 40px;
+    top: -180px;
     left: 50%;
     z-index: 20;
     cursor: pointer;
