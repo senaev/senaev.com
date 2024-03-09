@@ -33,8 +33,9 @@
             <div class="photoContainer__child">
                 <div class="photoContainer__grandChild">
                     <div class="slideshowContainer">
-                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                        <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
                     </div>
                     <br>
                 </div>
@@ -60,12 +61,22 @@
                                 </figure>
                             </div>
                         </div>
-                        <h1 class="firstChapterHeader">Приглашаем Вас на нашу свадьбу!</h1>
+                        <h1 class="firstChapterHeader" id="text">
+                            <span id="text"></span>
+                        </h1>
+                        <p class="firstChapterBody">
+                            Приглашаем Вас на нашу свадьбу!
+                        </p>
                         <p class="firstChapterBody">
                             Как вы уже поняли, мы женимся ☺️
-                            Для нас это большое событие! Мы его очень ждем.
+                            И для нас это большое событие!
+                        </p>
+                        <p class="firstChapterBody">
                             Мы хотим отпраздновать этот день и не представляем этот праздник без <b>Вас</b>!
                             А значит <b>20 июля 2024</b> года ждем вас в Питере!
+                        </p>
+                        <p class="firstChapterBody">
+                            Ваши Андрей и Юлия ❤️
                         </p>
                     </div>
                     <div>
@@ -166,6 +177,11 @@
             </div>
         </div>
     </div>
+    <script>
+        const url = new URL(location.href);
+        const textParam = url.searchParams.get('text')
+        document.getElementById('text').innerText = textParam;
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script>
         $(".scrollDownButton__container").click(function () {
@@ -195,7 +211,7 @@
             }, 500);
         });
     </script>
-    <script>
+    <!-- <script>
         const slideshowContainer = $('.slideshowContainer');
         const slides = [...Array(8)].map((_, i) => {
             const div = document.createElement('div');
@@ -243,8 +259,8 @@
                 plusSlides(1);
             }, 5000);
         }
+    </script> -->
 
-    </script>
 </body>
 
 </html>

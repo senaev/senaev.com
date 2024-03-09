@@ -1,5 +1,5 @@
 :root {
-    --content-background: rgba(70, 68, 67, 1);
+    --content-background: rgb(99, 90, 75);
 }
 
 h1,
@@ -17,6 +17,11 @@ html,
 body {
     margin: 0;
     padding: 0;
+}
+
+html,
+body {
+    background: var(--content-background);
 }
 
 .container {
@@ -67,7 +72,6 @@ body {
 .textContent {
     width: 100%;
     position: relative;
-    background: var(--content-background);
     z-index: 1;
 }
 
@@ -94,7 +98,7 @@ body {
     display: none;
     position: absolute;
     padding: 20px;
-    top: -64px;
+    top: -150px;
     left: 50%;
     z-index: 20;
     cursor: pointer;
@@ -126,6 +130,9 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
+    background-image: url(/wedding/img/0.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 /* Hide the images by default */
@@ -188,7 +195,7 @@ body {
     align-items: center;
     position: relative;
     z-index: 2;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     width: 100% !important;
     max-width: 100% !important;
     color: rgb(255, 255, 255);
@@ -211,7 +218,7 @@ body {
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    background: rgb(70, 68, 67);
+    background: var(--content-background);
     width: 100%;
 }
 
@@ -309,9 +316,9 @@ body {
 
 .firstChapterHeader {
     font-family: "Merriweather", serif;
-    font-weight: 400;
+    font-weight: 800;
     font-style: italic;
-    font-size: 33.12px;
+    font-size: 29.12px;
 
     margin-bottom: 0px;
     width: 100%;
