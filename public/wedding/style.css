@@ -37,6 +37,7 @@ body {
     width: 100%;
     position: sticky;
     top: 0px;
+    z-index: 0;
 }
 
 .photoContainer__child {
@@ -67,6 +68,7 @@ body {
     width: 100%;
     position: relative;
     background: var(--content-background);
+    z-index: 1;
 }
 
 @keyframes arrowBounce {

@@ -33,14 +33,6 @@
             <div class="photoContainer__child">
                 <div class="photoContainer__grandChild">
                     <div class="slideshowContainer">
-                        <div class="mySlide"></div>
-                        <div class="mySlide"></div>
-                        <div class="mySlide"></div>
-                        <div class="mySlide"></div>
-                        <div class="mySlide"></div>
-                        <div class="mySlide"></div>
-                        <div class="mySlide"></div>
-                        <div class="mySlide"></div>
                         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                         <a class="next" onclick="plusSlides(1)">&#10095;</a>
                     </div>
@@ -174,7 +166,7 @@
             </div>
         </div>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script>
         $(".scrollDownButton__container").click(function () {
             $([document.documentElement, document.body]).animate({
@@ -204,6 +196,24 @@
         });
     </script>
     <script>
+        const slideshowContainer = $('.slideshowContainer');
+        const slides = [...Array(8)].map((_, i) => {
+            const div = document.createElement('div');
+            div.className = 'mySlide';
+            div.style.backgroundImage = `url(/wedding/webp/${i}.webp)`;
+
+
+            const imageForPreload = new Image()
+            imageForPreload.src = `/wedding/webp/${i}.webp`;
+            imageForPreload.style.width = '1px'
+            imageForPreload.style.height = '1px'
+            imageForPreload.style.visibility = 'hidden'
+            imageForPreload.style.pointerEvents = 'none'
+            slideshowContainer.append(imageForPreload)
+
+            return div;
+        })
+        slideshowContainer.prepend(slides)
         let slideIndex = 1;
         showSlides(slideIndex);
 
@@ -220,7 +230,6 @@
         var timeoutId = 0;
         function showSlides(n) {
             let i;
-            let slides = document.getElementsByClassName("mySlide");
             if (n > slides.length) { slideIndex = 1 }
             if (n < 1) { slideIndex = slides.length }
             for (i = 0; i < slides.length; i++) {
@@ -228,7 +237,6 @@
             }
 
             slides[slideIndex - 1].style.display = "block";
-            slides[slideIndex - 1].style.backgroundImage = `url(/wedding/webp/${slideIndex - 1}.webp)`;
             clearTimeout(timeoutId)
 
             timeoutId = setTimeout(function () {
