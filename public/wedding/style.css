@@ -100,7 +100,7 @@ body {
     display: none;
     position: absolute;
     padding: 40px;
-    top: -180px;
+    top: -210px;
     left: 50%;
     z-index: 20;
     cursor: pointer;
