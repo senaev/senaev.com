@@ -22,6 +22,8 @@ body {
 html,
 body {
     background: var(--content-background);
+    font-family: "Merriweather", serif;
+    color: rgb(255, 255, 255);
 }
 
 .container {
@@ -108,11 +110,6 @@ body {
     animation: 3s linear 0s infinite normal none running arrowBounce;
 }
 
-/* .scrollDownButton {
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 3px;
-} */
-
 @media only screen and (max-width: 1024px) {
     .scrollDownButton__container {
         display: block;
@@ -130,60 +127,9 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url(/wedding/img/0.jpg);
+    background-image: url(/wedding/img/background.webp);
     background-size: cover;
     background-position: center;
-}
-
-/* Hide the images by default */
-.mySlide {
-    display: none;
-    animation-name: fade;
-    animation-duration: 1.5s;
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-size: cover;
-}
-
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.prev,
-.next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-.prev {
-    left: 0;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-@keyframes fade {
-    from {
-        opacity: .4
-    }
-
-    to {
-        opacity: 1
-    }
 }
 
 .textContent_content {
@@ -198,7 +144,6 @@ body {
     /* margin-top: 20px; */
     width: 100% !important;
     max-width: 100% !important;
-    color: rgb(255, 255, 255);
     text-align: center;
 }
 
@@ -314,8 +259,7 @@ body {
     animation: 1.5s cubic-bezier(0.23, 1, 0.32, 1) 0.1s 1 normal forwards running fadeInImg;
 }
 
-.firstChapterHeader {
-    font-family: "Merriweather", serif;
+h1 {
     font-weight: 800;
     font-style: italic;
     font-size: 29.12px;
@@ -323,18 +267,27 @@ body {
     margin-bottom: 0px;
     width: 100%;
     position: relative;
-    white-space: pre-line;
 }
 
-.firstChapterBody {
-    font-family: "Merriweather", serif;
+h2 {
+    font-style: italic;
+    margin-bottom: 13px;
+}
+
+p {
     font-weight: 300;
     font-size: 18.56px;
-    margin-top: 20px;
-    color: rgb(255, 255, 255);
     width: 100%;
     text-align: center;
-    line-height: 1.4;
     position: relative;
-    white-space: pre-line;
+    line-height: 1.4;
+    margin-top: 20px;
+}
+
+.secondChapter div {
+    margin-top: 30px;
+}
+
+a {
+    color: #e8d7b7;
 }
