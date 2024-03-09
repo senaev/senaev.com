@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Generator</title>
+</head>
+
+<body>
+    <label for="input">Введи текст для приглашения</label>
+    <input id="input" type="text">
+    <button id="button">Generate</button>
+    <span id="result"></span>
+    <script>
+        const input = document.getElementById('input')
+        const button = document.getElementById('button')
+        const result = document.getElementById('result')
+
+        button.onclick = () => {
+            const link = `https://senaev.com/wedding?text=${encodeURIComponent(input.value)}`
+            const a = document.createElement('a')
+            a.setAttribute('target', '_blank')
+            a.setAttribute('href', link)
+            a.innerText = link;
+
+            result.innerHTML = ''
+            result.appendChild(a);
+        }
+    </script>
+</body>
+
+</html>
