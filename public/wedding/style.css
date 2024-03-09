@@ -103,7 +103,7 @@ body {
     top: -210px;
     left: 50%;
     z-index: 20;
-    cursor: pointer;
+    pointer-events: none;
     transform: translateY(-50%);
     outline: none;
     transition: all 500ms cubic-bezier(0.84, 0.04, 1, 1) 0s;
@@ -121,7 +121,6 @@ body {
     display: flex;
     width: 2rem;
     height: 2rem;
-    transform: scale(1.7);
 }
 
 .slideshowContainer {
@@ -181,11 +180,11 @@ body {
     box-sizing: border-box;
 }
 
-/* @media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
     .textContent_chapters>div {
         min-height: auto;
     }
-} */
+}
 
 .scrollTopButton {
     position: fixed;

@@ -135,7 +135,7 @@
                             </p>
                         </div>
                     </div>
-                    <div>
+                    <div style="min-height: 100vh;">
                         <h2 style="font-style: normal;">
                             Ваши Андрей и Юлия ❤️
                         </h2>
@@ -151,11 +151,12 @@
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script>
-        $(".scrollDownButton__container").click(function () {
+        const scrollToText = function () {
             $([document.documentElement, document.body]).animate({
                 scrollTop: $(".textContent").offset().top
             }, 500);
-        });
+        };
+        $(".slideshowContainer").click(scrollToText);
     </script>
     <script>
         let isVisible = false;
@@ -172,6 +173,7 @@
             }
 
         });
+
         $(".scrollTopButton").click(function () {
             $([document.documentElement, document.body]).animate({
                 scrollTop: 0
