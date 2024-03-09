@@ -1,7 +1,18 @@
 :root {
-    --content-background: rgba(70, 68, 67, 0.97);
+    --content-background: rgba(70, 68, 67, 1);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+address,
+ul,
+li,
+figure,
 html,
 body {
     margin: 0;
@@ -156,26 +167,6 @@ body {
     border-radius: 3px 0 0 3px;
 }
 
-/* Caption text */
-.text {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-}
-
 @keyframes fade {
     from {
         opacity: .4
@@ -184,4 +175,157 @@ body {
     to {
         opacity: 1
     }
+}
+
+.textContent_content {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+    width: 100% !important;
+    max-width: 100% !important;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+    .textContent_content {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+    }
+}
+
+
+.textContent_chapters {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(70, 68, 67);
+    width: 100%;
+}
+
+.textContent_chapters>div {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px 40px;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 1024px) {
+    .textContent_chapters>div {
+        min-height: auto;
+    }
+}
+
+.scrollTopButton {
+    position: fixed;
+    z-index: 19;
+    right: 20px;
+    top: auto;
+    bottom: 0px;
+    transform: none;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.scrollTopButton>button {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s ease 0s, visibility 0.2s ease 0s;
+    background: linear-gradient(rgb(255, 255, 255) 0%, rgb(232, 232, 232) 100%) 0% 0% no-repeat transparent;
+    border: 1px solid rgb(232, 232, 232);
+    border-radius: 50%;
+    box-shadow: rgba(70, 68, 67, 0.15) 0px 4px 8px;
+}
+
+.scrollTopButton__svgContainer {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+}
+
+.diamant {
+    text-align: center;
+    font-size: 0px;
+    width: 100%;
+    max-width: 150px;
+    margin: 0px auto 10px;
+    border-radius: 50%;
+}
+
+.diamant__container {
+    position: relative;
+    padding-top: 100%;
+    height: 100%;
+}
+
+.diamant__figure {
+    position: absolute;
+    top: 0px;
+    mask-image: -webkit-radial-gradient(center, white, black);
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+.diamant__image {
+    object-fit: cover;
+    width: 128px;
+    left: 11px;
+    top: 32px;
+    transform: rotate(0deg);
+    height: auto;
+    position: absolute;
+    animation: 1.5s cubic-bezier(0.23, 1, 0.32, 1) 0.1s 1 normal forwards running fadeInImg;
+}
+
+.firstChapterHeader {
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 33.12px;
+
+    margin-bottom: 0px;
+    width: 100%;
+    position: relative;
+    white-space: pre-line;
+}
+
+.firstChapterBody {
+    font-family: "Merriweather", serif;
+    font-weight: 300;
+    font-size: 18.56px;
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    text-align: center;
+    line-height: 1.4;
+    position: relative;
+    white-space: pre-line;
 }
