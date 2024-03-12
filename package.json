@@ -10,6 +10,7 @@
         "docker:build": "docker build --platform linux/amd64 -t senaev.com . && docker tag senaev.com cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest && docker push cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest",
         "docker:upgrade": "ssh -t senaev@51.250.86.35 'sudo docker stop $(sudo docker ps -q --filter ancestor=cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest) && sudo docker pull cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest && sudo docker run -dp 80:3000 cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest'",
         "lint": "next lint",
+        "lint:fix": "next lint --fix",
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {

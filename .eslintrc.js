@@ -57,5 +57,6 @@ module.exports = {
         'comma-dangle': ['error', 'always-multiline'],
         'object-curly-spacing': ['error', 'always'],
         'react/react-in-jsx-scope': 'off',
+        'eol-last': ['error', 'always'],
     },
 };
