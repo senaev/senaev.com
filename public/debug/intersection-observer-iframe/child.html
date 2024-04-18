@@ -6,41 +6,19 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no">
   <title></title>
   <style>
-    .contents {
+    .contents,
+    document,
+    body {
       position: absolute;
-      width: 700px;
-      height: 1725px;
+      width: 100%;
+      height: 100%;
     }
 
-    .wrapper {
+    #box {
+      height: 100%;
+      width: 100%;
       position: relative;
-      top: 600px;
-    }
-
-    .sampleBox {
-      position: relative;
-      left: 175px;
-      width: 150px;
       background-color: rgb(245 170 140);
-      border: 2px solid rgb(201 126 17);
-      padding: 4px;
-      margin-bottom: 6px;
-    }
-
-    #box1 {
-      height: 200px;
-    }
-
-    #box2 {
-      height: 75px;
-    }
-
-    #box3 {
-      height: 150px;
-    }
-
-    #box4 {
-      height: 100px;
     }
 
     .label {
@@ -81,77 +59,15 @@
 </head>
 
 <body style="margin:0">
-  <template id="boxTemplate">
-    <div class="sampleBox">
-      <div class="label topLeft"></div>
-      <div class="label topRight"></div>
-      <div class="label bottomLeft"></div>
-      <div class="label bottomRight"></div>
-    </div>
-  </template>
-
-  <main>
-    <div class="contents">
-      <div class="wrapper"></div>
-    </div>
-  </main>
+  <div id="box">
+    <div class="label topLeft"></div>
+    <div class="label topRight"></div>
+    <div class="label bottomLeft"></div>
+    <div class="label bottomRight"></div>
+  </div>
 </body>
 <script>
   let observers = [];
-
-  startup = () => {
-    let wrapper = document.querySelector(".wrapper");
-
-    // Options for the observers
-
-    let observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: [],
-    };
-
-    // An array of threshold sets for each of the boxes. The
-    // first box's thresholds are set programmatically
-    // since there will be so many of them (for each percentage
-    // point).
-
-    let thresholdSets = [
-      [],
-      [0.5],
-      [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
-      [0, 0.25, 0.5, 0.75, 1.0],
-    ];
-
-    for (let i = 0; i <= 1.0; i += 0.01) {
-      thresholdSets[0].push(i);
-    }
-
-    // Add each box, creating a new observer for each
-
-    for (let i = 0; i < 4; i++) {
-      let template = document
-        .querySelector("#boxTemplate")
-        .content.cloneNode(true);
-      let boxID = `box${i + 1}`;
-      template.querySelector(".sampleBox").id = boxID;
-      wrapper.appendChild(document.importNode(template, true));
-
-      // Set up the observer for this box
-
-      observerOptions.threshold = thresholdSets[i];
-      observers[i] = new IntersectionObserver(
-        intersectionCallback,
-        observerOptions,
-      );
-      observers[i].observe(document.querySelector(`#${boxID}`));
-    }
-
-    // Scroll to the starting position
-
-    document.scrollingElement.scrollTop =
-      wrapper.firstElementChild.getBoundingClientRect().top + window.scrollY;
-    document.scrollingElement.scrollLeft = 750;
-  };
 
   intersectionCallback = (entries) => {
     entries.forEach((entry) => {
@@ -165,7 +81,15 @@
     });
   };
 
-  startup();
+  const observer = new IntersectionObserver(
+    intersectionCallback,
+    {
+      root: null,
+      rootMargin: "0px",
+      threshold: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    },
+  );
+  observer.observe(document.querySelector(`#box`));
 
 </script>
 
