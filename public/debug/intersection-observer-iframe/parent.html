@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no">
+  <title></title>
+</head>
+
+<body style="margin:0">
+  <div id="container"></div>
+</body>
+<script>
+  const container = document.getElementById('container');
+  for (let i = 0; i <= 50; i++) {
+    const div = document.createElement('div');
+    div.innerHTML = `${i * 100}px`;
+    div.style.height = '100px'
+    div.style.borderTop = '1px solid red'
+    container.appendChild(div);
+
+    if (i === 25) {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://senaev.ru/debug/intersection-observer-iframe/child.html';
+
+      iframe.style.height = '100px'
+      iframe.style.width = '100%'
+      container.appendChild(iframe);
+    }
+  }
+</script>
+
+</html>
