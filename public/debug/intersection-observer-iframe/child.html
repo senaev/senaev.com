@@ -8,7 +8,8 @@
   <style>
     .contents,
     document,
-    body {
+    body,
+    #container {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -59,37 +60,36 @@
 </head>
 
 <body style="margin:0">
-  <div id="box">
-    <div class="label topLeft"></div>
-    <div class="label topRight"></div>
-    <div class="label bottomLeft"></div>
-    <div class="label bottomRight"></div>
+  <div id="container">
+    <div id="box">
+      <div class="label topLeft"></div>
+      <div class="label topRight"></div>
+      <div class="label bottomLeft"></div>
+      <div class="label bottomRight"></div>
+    </div>
   </div>
 </body>
 <script>
-  let observers = [];
-
-  intersectionCallback = (entries) => {
-    entries.forEach((entry) => {
-      let box = entry.target;
-      let visiblePct = `${Math.floor(entry.intersectionRatio * 100)}%`;
-
-      box.querySelector(".topLeft").innerHTML = visiblePct;
-      box.querySelector(".topRight").innerHTML = visiblePct;
-      box.querySelector(".bottomLeft").innerHTML = visiblePct;
-      box.querySelector(".bottomRight").innerHTML = visiblePct;
-    });
-  };
-
+  const threshold = new Array(101).fill(0).map((x, i) => i / 100)
   const observer = new IntersectionObserver(
-    intersectionCallback,
+    (entries) => {
+      entries.forEach((entry) => {
+        let box = entry.target;
+        let visiblePct = `${Math.floor(entry.intersectionRatio * 100)}%`;
+
+        console.log(visiblePct)
+
+        box.querySelector(".topLeft").innerHTML = visiblePct;
+        box.querySelector(".topRight").innerHTML = visiblePct;
+        box.querySelector(".bottomLeft").innerHTML = visiblePct;
+        box.querySelector(".bottomRight").innerHTML = visiblePct;
+      });
+    },
     {
-      root: null,
-      rootMargin: "0px",
-      threshold: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+      threshold,
     },
   );
-  observer.observe(document.querySelector(`#box`));
+  observer.observe(box);
 
 </script>
 
