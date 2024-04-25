@@ -12,6 +12,7 @@ sudo docker run \
 -v /mnt/content-storage/plex/config:/config \
 -v /mnt/content-storage/plex/transcode:/transcode \
 -v /mnt/content-storage/media:/data \
+--mount type=bind,source=/mnt/content-storage,target=/mnt/content-storage \
 plexinc/pms-docker
 ```
 
