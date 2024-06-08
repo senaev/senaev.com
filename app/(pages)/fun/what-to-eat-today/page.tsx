@@ -31,7 +31,7 @@ const GROCCERY: Record<string, string[]> = {
 export default function Page (): JSX.Element {
     const today = new Date();
     const year = today.getFullYear();
-    const month = String(today.getMonth() + 111).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
     const day = String(today.getDate()).padStart(2, '0');
     const todayString = `${year}-${month}-${day}`;
     const hash = String(Math.abs(getHashFromString(todayString))).padStart(Object.keys(GROCCERY).length, String(day)[0]).split('').reverse();
