@@ -2,7 +2,8 @@ import { getObjectEntries } from 'utils/Object/getObjectEntries';
 import { getHashFromString } from 'utils/Script/getHashFromString';
 
 import styles from './index.module.css';
-import { SENAEV_SITE_URL } from 'const/const';
+
+export const dynamic = 'force-dynamic';
 
 const GROCCERY: Record<string, string[]> = {
     'How to cook Main Course': [
@@ -29,7 +30,7 @@ const GROCCERY: Record<string, string[]> = {
     ],
 };
 
-export const dynamic = 'force-dynamic';
+const CURRENT_PAGE_URL = '/fun/what-to-eat-today';
 
 export default function Page ({ searchParams }: {
     searchParams: Record<string, string>
@@ -43,14 +44,6 @@ export default function Page ({ searchParams }: {
 
         resultOffset = Number(offset);
     }
-
-    const currentUrl = `${SENAEV_SITE_URL}/fun/what-to-eat-today`;
-    const yesterday = new URL(currentUrl);
-    yesterday.searchParams.set('offset', String(resultOffset - 1));
-    const today = new URL(currentUrl);
-    today.searchParams.delete('offset');
-    const tomorrow = new URL(currentUrl);
-    tomorrow.searchParams.set('offset', String(resultOffset + 1));
 
     const date = new Date();
     date.setDate(date.getDate() + resultOffset);
@@ -70,13 +63,13 @@ export default function Page ({ searchParams }: {
     return (
         <div className={styles.Container}>
             <div className={styles.ServiceInfo}>
-                <a href={yesterday.toString()}>
+                <a href={`${CURRENT_PAGE_URL}?offset=${resultOffset - 1}`}>
                     Yesterday
                 </a>
                 <div>
-                    <a href={today.toString()}>Today</a>: {todayString}
+                    <a href={CURRENT_PAGE_URL}>Today</a>: {todayString}
                 </div>
-                <a href={tomorrow.toString()}>
+                <a href={`${CURRENT_PAGE_URL}?offset=${resultOffset + 1}`}>
                     Tomorrow
                 </a>
                 <div>
