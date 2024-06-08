@@ -1,9 +1,8 @@
 import { getObjectEntries } from 'utils/Object/getObjectEntries';
 import { getHashFromString } from 'utils/Script/getHashFromString';
 
-import { headers } from 'next/headers';
-
 import styles from './index.module.css';
+import { SENAEV_SITE_URL } from 'const/const';
 
 const GROCCERY: Record<string, string[]> = {
     'How to cook Main Course': [
@@ -45,8 +44,7 @@ export default function Page ({ searchParams }: {
         resultOffset = Number(offset);
     }
 
-    const headersList = headers();
-    const currentUrl = headersList.get('referer') ?? '';
+    const currentUrl = `${SENAEV_SITE_URL}/fun/what-to-eat-today`;
     const yesterday = new URL(currentUrl);
     yesterday.searchParams.set('offset', String(resultOffset - 1));
     const today = new URL(currentUrl);
