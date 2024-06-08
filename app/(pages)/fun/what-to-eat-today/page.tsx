@@ -1,6 +1,8 @@
 import { getObjectEntries } from 'utils/Object/getObjectEntries';
 import { getHashFromString } from 'utils/Script/getHashFromString';
 
+import { headers } from 'next/headers';
+
 import styles from './index.module.css';
 
 const GROCCERY: Record<string, string[]> = {
@@ -28,11 +30,35 @@ const GROCCERY: Record<string, string[]> = {
     ],
 };
 
-export default function Page (): JSX.Element {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
+export const dynamic = 'force-dynamic';
+
+export default function Page ({ searchParams }: {
+    searchParams: Record<string, string>
+}): JSX.Element {
+    let resultOffset = 0;
+    const { offset } = searchParams;
+    if (offset !== undefined) {
+        if (!Number.isInteger(Number(offset))) {
+            throw new Error(`offset=[${offset}] is NOT valid`);
+        }
+
+        resultOffset = Number(offset);
+    }
+
+    const headersList = headers();
+    const currentUrl = headersList.get('referer') ?? '';
+    const yesterday = new URL(currentUrl);
+    yesterday.searchParams.set('offset', String(resultOffset - 1));
+    const today = new URL(currentUrl);
+    today.searchParams.delete('offset');
+    const tomorrow = new URL(currentUrl);
+    tomorrow.searchParams.set('offset', String(resultOffset + 1));
+
+    const date = new Date();
+    date.setDate(date.getDate() + resultOffset);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
     const todayString = `${year}-${month}-${day}`;
     const hash = String(Math.abs(getHashFromString(todayString))).padStart(Object.keys(GROCCERY).length, String(day)[0]).split('').reverse();
 
@@ -46,9 +72,15 @@ export default function Page (): JSX.Element {
     return (
         <div className={styles.Container}>
             <div className={styles.ServiceInfo}>
+                <a href={yesterday.toString()}>
+                    Yesterday
+                </a>
                 <div>
-                Today: {todayString}
+                    <a href={today.toString()}>Today</a>: {todayString}
                 </div>
+                <a href={tomorrow.toString()}>
+                    Tomorrow
+                </a>
                 <div>
                 Hash: {hash.join('')}
                 </div>
