@@ -1,6 +1,7 @@
 import { getObjectEntries } from 'utils/Object/getObjectEntries';
 import { getHashFromString } from 'utils/Script/getHashFromString';
 
+import type { PageProps } from '.next/types/app/layout';
 import styles from './index.module.css';
 
 export const dynamic = 'force-dynamic';
@@ -32,11 +33,9 @@ const GROCCERY: Record<string, string[]> = {
 
 const CURRENT_PAGE_URL = '/fun/what-to-eat-today';
 
-export default function Page ({ searchParams }: {
-    searchParams: Record<string, string>
-}): JSX.Element {
+export default async function Page ({ searchParams }: PageProps): Promise<JSX.Element> {
     let resultOffset = 0;
-    const { offset } = searchParams;
+    const { offset } = await searchParams;
     if (offset !== undefined) {
         if (!Number.isInteger(Number(offset))) {
             throw new Error(`offset=[${offset}] is NOT valid`);

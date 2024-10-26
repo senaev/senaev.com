@@ -2,10 +2,11 @@ import { NextResponse } from 'next/server';
 
 import { createCrossOriginHeaders } from 'utils/net/createCrossOriginHeaders';
 
-export function POST (
+export async function POST(
     request: Request,
-    { params }: { params: { page: string } },
-): NextResponse {
+    { params }: { params: Promise<{ page: string }> },
+): Promise<NextResponse> {
+    const { page } = await params;
     return NextResponse.json({
         id: '4b3afc8a28d955',
         seatbid: [
@@ -32,7 +33,7 @@ export function POST (
         ],
         cur: 'EUR',
         ext: {
-            pageId: params.page,
+            pageId: page,
         },
     }, {
         headers: createCrossOriginHeaders(request),
