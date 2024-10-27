@@ -1,12 +1,18 @@
-import { HomePage } from 'components/HomePage';
-import { getMyselfDataFromReadme, type MyselfHtmlFromReadme } from 'utils/getMyselfDataFromReadme';
+import { getNoteByFilePath } from 'components/Notes/getNoteByFilePath';
+import { renderNoteByMarkdownContent } from 'components/Notes/renderNoteByMarkdownContent';
+import { resolve } from 'path';
+import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
+
+import styles from './index.module.css';
 
 export default async function Page (): Promise<JSX.Element> {
-    const myselfHtmlFromReadme: MyselfHtmlFromReadme = await getMyselfDataFromReadme();
+    const readmeFilePath = resolve(getNextJsRootDirectory(), './README.md');
 
-    return (
-        <>
-            <HomePage myselfHtmlFromReadme={myselfHtmlFromReadme} />
-        </>
-    );
+    const { markdownContent } = await getNoteByFilePath({ filePath: readmeFilePath });
+
+    const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
+
+    return <div className={styles.Home__markdownContent}>
+        {markdownComponent}
+    </div>;
 }

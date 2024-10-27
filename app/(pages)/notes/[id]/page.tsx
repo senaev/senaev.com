@@ -1,30 +1,15 @@
-import { promises } from 'fs';
+import { ErrorPage } from 'components/ErrorPage';
+import { getNoteByFilePath } from 'components/Notes/getNoteByFilePath';
+import { renderNoteByMarkdownContent } from 'components/Notes/renderNoteByMarkdownContent';
 import { notFound } from 'next/navigation';
-import { basename, resolve } from 'path';
+import { resolve } from 'path';
+import { pathExists } from 'path-exists';
+import { findFileInFolder } from 'utils/Files/findFileInFolder';
+import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
 
-const NOTES_FOLDER = process.env.NOTES_FOLDER || '/app/notes-folder';
+import styles from './index.module.css';
 
-async function findFileInDirectory(dir: string, expectedFileName: string): Promise<string | undefined> {
-    const allFiles = await getFiles(dir);
-
-    return allFiles.find((file) => {
-        const fileName = basename(file);
-
-        return fileName === expectedFileName;
-    });
-}
-
-async function getFiles(dir: string): Promise<string[]> {
-    const subdirs = await promises.readdir(dir);
-
-    const files = await Promise.all(subdirs.map(async (subdir) => {
-        const res = resolve(dir, subdir);
-
-        return (await promises.stat(res)).isDirectory() ? getFiles(res) : [res];
-    }));
-
-    return files.reduce((a, f) => a.concat(f), []);
-}
+const NOTES_FOLDER = process.env.NOTES_FOLDER || resolve(getNextJsRootDirectory(), 'notes-folder');
 
 export default async function Page({
     params,
@@ -33,32 +18,31 @@ export default async function Page({
     const { id } = await params;
     const decodedId = decodeURIComponent(id);
 
+    const doesNotedDirectoryExist = await pathExists(NOTES_FOLDER);
+    if (!doesNotedDirectoryExist) {
+        return <ErrorPage message={'NOTES_FOLDER does not exist'}/>;
+    }
 
-    const file = await findFileInDirectory(NOTES_FOLDER, `${decodedId}.md`);
+    const filePath = await findFileInFolder(NOTES_FOLDER, `${decodedId}.md`);
 
-    if (!file) {
+    if (!filePath) {
         return notFound();
     }
 
-    const fileContent = (await promises.readFile(file)).toString();
+    const {
+        markdownContent,
+        isPublic,
+    } = await getNoteByFilePath({ filePath });
 
-    const mdPart = fileContent.split('---');
-
-    if (mdPart[0] !== '' || mdPart.length < 2) {
+    if (!isPublic) {
         return notFound();
     }
 
-    const yamlPart = mdPart[1]!.split('\n');
+    const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
-    if (!yamlPart.includes('public: true')) {
-        return notFound();
-    }
-
-    const content = mdPart.splice(2);
-
-    return <div>
-        {
-            content
-        }
-    </div>;
+    return <main className={styles.NotePage__main}>
+        <article>
+            {markdownComponent}
+        </article>
+    </main>;
 }

@@ -26,12 +26,14 @@
         "jquery": "3.6.4",
         "jquery.transit": "0.9.12",
         "next": "15.0.1",
+        "path-exists": "5.0.0",
         "prettier": "2.8.8",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "remark": "14.0.2",
-        "remark-html": "15.0.2",
-        "sass": "1.58.0"
+        "remark": "15.0.1",
+        "remark-html": "16.0.1",
+        "sass": "1.58.0",
+        "yaml": "2.6.0"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "6.21.0",
