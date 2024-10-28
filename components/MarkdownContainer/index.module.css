@@ -2,15 +2,17 @@
 
 .markdownContainer {
     --avatar-size: 5em;
+    --text-margin: 0.6em;
+
     font-family: "EB Garamond", serif;
     font-optical-sizing: auto;
     line-height: 1.4em;
+    font-size: 20px;
 }
 
 .markdownContainer {
     position: relative;
     padding: 0 0 4em 0;
-    max-width: 35em;
 }
 
 .markdownContainer img {
@@ -21,25 +23,73 @@
 }
 
 .markdownContainer p {
-    margin: 1em 0 0.5em 0;
+    margin: var(--text-margin) 0;
     white-space: pre-wrap;
-    font-size: 1.1em;
+}
+
+.markdownContainer h1,
+.markdownContainer h2,
+.markdownContainer h3,
+.markdownContainer h4,
+.markdownContainer h5,
+.markdownContainer h6 {
+    margin: var(--text-margin) 0;
+    font-weight: 600;
 }
 
 .markdownContainer h1 {
-    font-size: 1.4em;
-    margin: 0.3em 0 0.9em 0;
+    font-size: 1.3em;
+    height: 1.1em;
+}
+
+.markdownContainer h1::before {
+    content: '📝';
+    position: absolute;
+    right: 100%;
+    margin-right: 0.3em;
+    font-size: 0.75em;
+}
+
+@media (max-width: 900px) {
+    .markdownContainer h1::before {
+        position: relative;
+        right: auto;
+        bottom: 0.15em;
+    }
 }
 
 .markdownContainer h2 {
-    margin: 0.5em 0;
     font-size: 1.2em;
 }
 
-.markdownContainer ul {
-    margin: 0.5em 0;
+.markdownContainer h3 {
+    font-size: 1.1em;
 }
 
-.markdownContainer li li {
-    font-size: 1.1em;
+.markdownContainer h4,
+.markdownContainer h5,
+.markdownContainer h6 {
+    font-size: 1em;
+}
+
+.markdownContainer>div>ul {
+    padding-left: 0;
+}
+
+@media (max-width: 900px) {
+    .markdownContainer>div>ul {
+        padding-left: 1em;
+    }
+
+}
+
+.markdownContainer ul {
+    margin: 0;
+    padding-left: 1em;
+    list-style-type: disc;
+}
+
+.markdownContainer li::marker,
+.markdownContainer dt::marker {
+    font-size: 0.75em;
 }

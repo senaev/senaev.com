@@ -1,12 +1,11 @@
 import { ErrorPage } from 'components/ErrorPage';
-import { getNoteByFilePath } from 'components/Notes/getNoteByFilePath';
-import { renderNoteByMarkdownContent } from 'components/Notes/renderNoteByMarkdownContent';
 import { notFound } from 'next/navigation';
-import { resolve } from 'path';
+import { relative, resolve } from 'path';
 import { pathExists } from 'path-exists';
 import { findFileInFolder } from 'utils/Files/findFileInFolder';
 import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
-
+import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
+import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import styles from './index.module.css';
 
 const NOTES_FOLDER = process.env.NOTES_FOLDER || resolve(getNextJsRootDirectory(), 'notes-folder');
@@ -29,12 +28,16 @@ export default async function Page({
         return notFound();
     }
 
+    const relativePath = relative(NOTES_FOLDER, filePath);
+    const isInPublicFolder = relativePath.startsWith('public/');
+
+
     const {
         markdownContent,
         isPublic,
     } = await getNoteByFilePath({ filePath });
 
-    if (!isPublic) {
+    if (!isPublic && !isInPublicFolder) {
         return notFound();
     }
 

@@ -1,8 +1,7 @@
-import { getNoteByFilePath } from 'components/Notes/getNoteByFilePath';
-import { renderNoteByMarkdownContent } from 'components/Notes/renderNoteByMarkdownContent';
 import { resolve } from 'path';
 import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
-
+import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
+import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import styles from './index.module.css';
 
 export default async function Page (): Promise<JSX.Element> {
