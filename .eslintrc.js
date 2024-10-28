@@ -3,6 +3,11 @@
  * (typescript, custom rules)
  */
 module.exports = {
+    setting: {
+        react: {
+            version: "detect",
+        },
+    },
     env: {
         browser: true,
         es2021: true,
