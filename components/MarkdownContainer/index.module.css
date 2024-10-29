@@ -69,10 +69,16 @@
     font-size: 1.1em;
 }
 
-.markdownContainer h4,
-.markdownContainer h5,
-.markdownContainer h6 {
+.markdownContainer h4 {
     font-size: 1em;
+}
+
+.markdownContainer h5 {
+    font-size: 0.9em;
+}
+
+.markdownContainer h6 {
+    font-size: 0.8em;
 }
 
 .markdownContainer>div>ul {
