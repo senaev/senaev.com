@@ -51,11 +51,15 @@
     font-size: 0.75em;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .markdownContainer h1::before {
         position: relative;
         right: auto;
         bottom: 0.15em;
+    }
+
+    .markdownContainer>div>ul {
+        padding-left: 1em;
     }
 }
 
@@ -77,12 +81,6 @@
     padding-left: 0;
 }
 
-@media (max-width: 900px) {
-    .markdownContainer>div>ul {
-        padding-left: 1em;
-    }
-
-}
 
 .markdownContainer ul {
     margin: 0;
