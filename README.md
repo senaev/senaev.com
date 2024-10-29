@@ -8,7 +8,7 @@ Born January 10, 1991
 
 -   Site: [senaev.com](https://senaev.com)
 -   Telegram: [@senaev](https://senaev.t.me)
--   Email: [p9826990400@gmail.com](mailto:p9826990400@gmail.com)
+-   Email: [gsacryfice@gmail.com](mailto:gsacryfice@gmail.com)
 -   Schedule: [arrange a meeting](https://cal.com/senaev/new)
 -   Phone: [+7 (982) 699-04-00](tel:+79826990400)
 -   Habr: [@senaev](https://habr.com/ru/users/senaev/publications/articles/)
