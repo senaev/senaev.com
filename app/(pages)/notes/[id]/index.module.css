@@ -1,6 +1,7 @@
 .NotePage__main {
     position: relative;
-    max-width: 630px;
+    /* 640 px like in excalidraw */
+    max-width: 640px;
     height: 100%;
     margin: 0 auto;
 }
