@@ -23,6 +23,16 @@
     margin: 0;
 }
 
+.markdownContainer strong {
+    font-weight: 600;
+}
+
+.markdownContainer blockquote {
+    border-left: 0.1em solid grey;
+    margin: 1em;
+    padding-left: 0.5em;
+}
+
 .markdownContainer p {
     margin: var(--text-margin) 0;
     white-space: pre-wrap;
