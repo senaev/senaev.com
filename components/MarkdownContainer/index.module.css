@@ -50,13 +50,13 @@
     height: 1.1em;
 }
 
-.markdownContainer h1::before {
+/* .markdownContainer h1::before {
     content: '📝';
     position: absolute;
     right: 100%;
     margin-right: 0.3em;
     font-size: 0.75em;
-}
+} */
 
 .markdownContainer h2 {
     font-size: 1.2em;
