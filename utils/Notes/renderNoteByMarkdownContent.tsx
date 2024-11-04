@@ -13,22 +13,30 @@ const marked = new Marked({
     async: true,
 });
 
+
+let slugger = new GithubSlugger();
 marked.use({
+    hooks: {
+        preprocess(src) {
+            // https://github.com/markedjs/marked-gfm-heading-id/blob/eeb9d48df948a6a78d1c52095b381868ea5120fb/src/index.js#L58
+            slugger = new GithubSlugger();
+
+            return src;
+        },
+    },
     renderer: {
         heading({
             raw,
             depth,
             tokens,
         }) {
-            const slugger = new GithubSlugger();
             const text = this.parser.parseInline(tokens);
-            const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
 
             const id = slugger.slug(raw.trim().split(' ').splice(1).join(' ').toLowerCase());
 
             return `
               <h${depth} id="${id}">
-                <a name="${escapedText}" class="MarkdownContainer_anchor" href="#${escapedText}">
+                <a name="${id}" class="MarkdownContainer_anchor" href="#${id}">
                   #
                 </a>
                 ${text}
