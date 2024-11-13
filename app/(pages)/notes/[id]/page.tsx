@@ -1,36 +1,33 @@
 import { ErrorPage } from 'components/ErrorPage';
+import { NOTES_FOLDER } from 'const/NOTES_FOLDER';
 import { notFound } from 'next/navigation';
-import { relative, resolve } from 'path';
 import { pathExists } from 'path-exists';
 import { findFileInFolder } from 'utils/Files/findFileInFolder';
-import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
 import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
 import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import styles from './index.module.css';
 
-const NOTES_FOLDER = process.env.NOTES_FOLDER || resolve(getNextJsRootDirectory(), 'notes-folder');
 
 export default async function Page({
     params,
 }: {
-    params: Promise<{id: string}>}) {
+    params: Promise<{id: string}>
+}) {
     const { id } = await params;
     const decodedId = decodeURIComponent(id);
 
-    const doesNotedDirectoryExist = await pathExists(NOTES_FOLDER);
-    if (!doesNotedDirectoryExist) {
+    const doesNotesDirectoryExist = await pathExists(NOTES_FOLDER);
+    if (!doesNotesDirectoryExist) {
         return <ErrorPage message={'NOTES_FOLDER does not exist'}/>;
     }
 
-    const filePath = await findFileInFolder(NOTES_FOLDER, `${decodedId}.md`);
+    const file = await findFileInFolder(NOTES_FOLDER, `${decodedId}.md`);
 
-    if (!filePath) {
+    if (!file) {
         return notFound();
     }
 
-    const relativePath = relative(NOTES_FOLDER, filePath);
-    const isInPublicFolder = relativePath.startsWith('public/');
-
+    const { path: filePath, isInPublicFolder } = file;
 
     const {
         markdownContent,

@@ -5,6 +5,7 @@ import GithubSlugger from 'github-slugger';
 import hljs from 'highlight.js';
 import { Marked } from 'marked';
 import { markedHighlight } from 'marked-highlight';
+import { basename } from 'path';
 import { prepareMarkdownContentForNote } from 'utils/prepareMarkdownContentForNote';
 
 const marked = new Marked({
@@ -25,11 +26,12 @@ marked.use({
         },
     },
     renderer: {
-        heading({
-            raw,
-            depth,
-            tokens,
-        }) {
+        heading(input) {
+            const {
+                raw,
+                depth,
+                tokens,
+            } = input;
             const text = this.parser.parseInline(tokens);
 
             const id = slugger.slug(raw.trim().split(' ').splice(1).join(' ').toLowerCase());
@@ -41,6 +43,12 @@ marked.use({
                 </a>
                 ${text}
               </h${depth}>`;
+        },
+        image(input) {
+            const { href } = input;
+            const filename = basename(href);
+
+            return `<img src="/notes_file/${filename}">`;
         },
     },
 });

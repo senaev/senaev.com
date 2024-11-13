@@ -1,7 +1,10 @@
 import { promises } from 'fs';
-import { resolve } from 'path';
+import { relative, resolve } from 'path';
 
-export async function findFileInFolder(rootDirectory: string, expectedFileName: string): Promise<string | undefined> {
+export async function findFileInFolder(rootDirectory: string, expectedFileName: string): Promise<{
+    path: string;
+    isInPublicFolder: boolean;
+} | undefined> {
     const directoriesStack = [rootDirectory];
 
     while (directoriesStack.length) {
@@ -17,7 +20,13 @@ export async function findFileInFolder(rootDirectory: string, expectedFileName: 
             if (pathStats.isDirectory()) {
                 directoriesStack.push(absolutePath);
             } else if (item === expectedFileName) {
-                return absolutePath;
+
+                const relativePath = relative(rootDirectory, absolutePath);
+                const isInPublicFolder = relativePath.startsWith('public/');
+                return {
+                    path: absolutePath,
+                    isInPublicFolder,
+                };
             }
         }
     }
