@@ -6,7 +6,7 @@ import { basename } from 'path';
 import { pathExists } from 'path-exists';
 import { findFileInFolder } from 'utils/Files/findFileInFolder';
 
-export async function GET(request: Request): Promise<Promise<Promise<NextResponse>>> {
+export async function GET(request: Request): Promise<NextResponse> {
     const decodedId = decodeURIComponent(basename(request.url));
 
     const doesNotesDirectoryExist = await pathExists(NOTES_FOLDER);
