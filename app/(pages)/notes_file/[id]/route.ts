@@ -1,5 +1,5 @@
 import { NOTES_FOLDER } from 'const/NOTES_FOLDER';
-import { readFileSync } from 'fs';
+import { promises } from 'fs';
 import { notFound } from 'next/navigation';
 import { NextResponse } from 'next/server';
 import { basename } from 'path';
@@ -20,7 +20,7 @@ export async function GET(request: Request): Promise<NextResponse> {
         return notFound();
     }
 
-    const imageBuffer = readFileSync(file.path);
+    const imageBuffer = await promises.readFile(file.path);
 
     return new NextResponse(imageBuffer, { status: 200, statusText: 'OK' });
 }

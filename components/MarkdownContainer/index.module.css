@@ -77,3 +77,7 @@
 .markdownContainer dt::marker {
     font-size: 0.75em;
 }
+
+.markdownContainer img {
+    max-width: 100%;
+}
