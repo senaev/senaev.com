@@ -1,4 +1,3 @@
-# https://github.com/nodejs/docker-node/issues/2009
 FROM node:21-alpine3.18 AS base
 
 # Install dependencies only when needed
