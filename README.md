@@ -2,7 +2,9 @@
 
 <img
   src="https://senaev.com/img/avatar-head.jpeg"
-  style="border-radius: 5em; height: 5em; width: 5em;"
+  width="100"
+  height="auto"
+  style="border-radius:50%"
 />
 
 Born January 10, 1991
