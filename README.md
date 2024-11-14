@@ -1,6 +1,9 @@
 # Andrei Senaev
 
-![](https://senaev.com/img/avatar-head.jpeg)
+<img
+  src="https://senaev.com/img/avatar-head.jpeg"
+  style="border-radius: 5em; height: 5em; width: 5em;"
+/>
 
 Born January 10, 1991
 

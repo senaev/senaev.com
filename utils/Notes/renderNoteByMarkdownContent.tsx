@@ -5,7 +5,7 @@ import GithubSlugger from 'github-slugger';
 import hljs from 'highlight.js';
 import { Marked } from 'marked';
 import { markedHighlight } from 'marked-highlight';
-import { basename } from 'path';
+import { basename, dirname } from 'path';
 import { prepareMarkdownContentForNote } from 'utils/prepareMarkdownContentForNote';
 
 const marked = new Marked({
@@ -46,9 +46,16 @@ marked.use({
         },
         image(input) {
             const { href } = input;
-            const filename = basename(href);
 
-            return `<img src="/notes_file/${filename}">`;
+            let url = href;
+
+            const isNoteRelativeLink = dirname(href) === '.';
+            if (isNoteRelativeLink) {
+                const filename = basename(href);
+                url = `/notes_file/${filename}`;
+            }
+
+            return `<img src="${url}">`;
         },
     },
 });
