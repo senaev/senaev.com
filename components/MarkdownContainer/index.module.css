@@ -27,28 +27,15 @@
     white-space: pre-wrap;
 }
 
-.markdownContainer h1,
-.markdownContainer h2,
-.markdownContainer h3,
-.markdownContainer h4,
-.markdownContainer h5,
-.markdownContainer h6 {
+.markdownContainer :is(h1, h2, h3, h4, h5, h6) {
     margin: var(--text-margin) 0;
     font-weight: 600;
 }
 
 .markdownContainer h1 {
-    font-size: 1.3em;
+    font-size: 1.4em;
     height: 1.1em;
 }
-
-/* .markdownContainer h1::before {
-    content: '📝';
-    position: absolute;
-    right: 100%;
-    margin-right: 0.3em;
-    font-size: 0.75em;
-} */
 
 .markdownContainer h2 {
     font-size: 1.2em;
@@ -75,12 +62,6 @@
 }
 
 @media (max-width: 800px) {
-    .markdownContainer h1::before {
-        position: relative;
-        right: auto;
-        bottom: 0.15em;
-    }
-
     .markdownContainer>div>ul {
         padding-left: 1em;
     }

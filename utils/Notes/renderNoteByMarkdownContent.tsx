@@ -3,6 +3,7 @@
 import { MarkdownContainer } from 'components/MarkdownContainer';
 import GithubSlugger from 'github-slugger';
 import hljs from 'highlight.js';
+import isNumber from 'is-number';
 import { Marked } from 'marked';
 import { markedHighlight } from 'marked-highlight';
 import { basename, dirname } from 'path';
@@ -13,7 +14,6 @@ const marked = new Marked({
     breaks: true,
     async: true,
 });
-
 
 let slugger = new GithubSlugger();
 marked.use({
@@ -45,17 +45,54 @@ marked.use({
               </h${depth}>`;
         },
         image(input) {
-            const { href } = input;
+            const { href, text } = input;
 
-            let url = href;
+            let src = href;
+            let width: string | undefined;
+            let height: string | undefined;
 
             const isNoteRelativeLink = dirname(href) === '.';
             if (isNoteRelativeLink) {
-                const filename = basename(href);
-                url = `/notes_file/${filename}`;
+                const description = text.trim();
+                const filename = decodeURIComponent(basename(href));
+                src = `/notes_file/${filename}`;
+
+                // Something is set as a title or size
+                // supports descriptions like:
+                // - 300 (width)
+                // - 300x150 (width x heigth)
+                // - 100% (width 100%)
+                if (description && filename !== description) {
+                    if (description.endsWith('%')){
+                        const rawWidthInPercent = description.split('%')[0];
+
+                        if (isNumber(rawWidthInPercent)) {
+                            width = description;
+                        }
+                    } else if (isNumber(description)) {
+                        width = description;
+                    } else {
+                        const [w, h] = description.split('x');
+
+                        if (isNumber(w) && isNumber(h)) {
+                            width = w;
+                            height = h;
+                        }
+                    }
+                }
             }
 
-            return `<img src="${url}">`;
+            const attributes = Object
+                .entries({
+                    src,
+                    width,
+                    height,
+                })
+                .filter(([, value]) => Boolean(value));
+
+            const attributesString = attributes.map(([key, value]) => `${key}="${value}"`).join(' ');
+
+            return `<img ${attributesString}>`;
         },
     },
 });
