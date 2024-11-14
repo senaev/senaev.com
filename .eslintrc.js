@@ -13,6 +13,11 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:@next/next/recommended',
     ],
+    settings: {
+        react: {
+            version: 'detect',
+        },
+    },
     overrides: [
         {
             env: {
