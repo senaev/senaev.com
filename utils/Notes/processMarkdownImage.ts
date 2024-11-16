@@ -66,8 +66,6 @@ function getMarkdownImageAttributes({
     const isNoteRelativeLink = dirname(href) === '.';
     const filename = decodeURIComponent(basename(href));
 
-    console.log({ filename, annotation });
-
     // It's not a note's file
     if (!isNoteRelativeLink) {
         return {
