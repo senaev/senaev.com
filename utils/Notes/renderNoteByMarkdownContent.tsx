@@ -5,6 +5,7 @@ import GithubSlugger from 'github-slugger';
 import hljs from 'highlight.js';
 import { Marked } from 'marked';
 import { markedHighlight } from 'marked-highlight';
+import removeMarkdown from 'remove-markdown';
 import { prepareMarkdownContentForNote } from 'utils/prepareMarkdownContentForNote';
 import { processMarkdownImage } from './processMarkdownImage';
 
@@ -13,6 +14,7 @@ const marked = new Marked({
     breaks: true,
     async: true,
 });
+
 
 let slugger = new GithubSlugger();
 marked.use({
@@ -33,7 +35,7 @@ marked.use({
             } = input;
             const text = this.parser.parseInline(tokens);
 
-            const id = slugger.slug(raw.trim().split(' ').splice(1).join(' ').toLowerCase());
+            const id = slugger.slug(removeMarkdown(raw).trim().toLowerCase());
 
             return `
               <h${depth} id="${id}">
