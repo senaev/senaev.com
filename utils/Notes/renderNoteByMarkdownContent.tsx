@@ -1,12 +1,15 @@
 
 
 import { MarkdownContainer } from 'components/MarkdownContainer';
+import { NOTES_FILE_MANAGER } from 'const/NOTES_FILE_MANAGER';
 import GithubSlugger from 'github-slugger';
 import hljs from 'highlight.js';
 import { Marked } from 'marked';
 import { markedHighlight } from 'marked-highlight';
+import { basename } from 'path';
 import removeMarkdown from 'remove-markdown';
 import { prepareMarkdownContentForNote } from 'utils/prepareMarkdownContentForNote';
+import { checkIfItIsNoteRelativeLink } from './checkIfItIsNoteRelativeLink';
 import { processMarkdownImage } from './processMarkdownImage';
 
 const marked = new Marked({
@@ -46,6 +49,23 @@ marked.use({
               </h${depth}>`;
         },
         image: processMarkdownImage,
+        link: (params) => {
+            const { href, text } = params;
+
+            const fileName = decodeURIComponent(basename(href));
+            const isNoteRelativeLink = checkIfItIsNoteRelativeLink(href);
+            if (isNoteRelativeLink) {
+                const isPublic = NOTES_FILE_MANAGER.isNotePublic(`${fileName}.md`);
+
+                if (isPublic) {
+                    return `<a href="${href}">📝 ${text}</a>`;
+                } else {
+                    return `<span class="MarkdownContainer_noteWithRestrictedAccess">${text}</span>`;
+                }
+            }
+
+            return `<a href="${href}">${text}</a>`;
+        },
     },
 });
 

@@ -7,25 +7,22 @@ export async function getNoteByFilePath({
     filePath: string
 }): Promise<{
     markdownContent: string;
-    isPublic: boolean;
+    yamlAttributes: ReturnType<typeof parse>;
 }> {
     const fileContent = (await promises.readFile(filePath)).toString();
 
     let markdownContent = fileContent;
-    let isPublic = false;
 
+    let yamlAttributes = undefined;
     const mdPart = fileContent.split('---');
     if (mdPart[0] === '' && mdPart.length > 2) {
-        const yamlAttributes = parse(mdPart[1]!);
-        if (yamlAttributes) {
-            isPublic = yamlAttributes.public === true;
-        }
+        yamlAttributes = parse(mdPart[1]!);
 
         markdownContent = mdPart.splice(2).join('\n');
     }
 
     return {
         markdownContent,
-        isPublic,
+        yamlAttributes,
     };
 }

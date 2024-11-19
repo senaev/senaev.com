@@ -1,6 +1,7 @@
 import isNumber from 'is-number';
 import { type Tokens } from 'marked';
-import { basename, dirname } from 'path';
+import { basename } from 'path';
+import { checkIfItIsNoteRelativeLink } from './checkIfItIsNoteRelativeLink';
 
 function getMarkdownSizeByAnnotation(annotationRaw: string): {
     width?: string;
@@ -30,7 +31,6 @@ function getMarkdownSizeByAnnotation(annotationRaw: string): {
         }
     }
 
-
     if (annotation.endsWith('%')) {
         const rawWidthInPercent = annotation.substring(0, annotation.length - 1);
 
@@ -43,6 +43,7 @@ function getMarkdownSizeByAnnotation(annotationRaw: string): {
 
     return {};
 }
+
 
 /**
  * Something is set as a title or size
@@ -62,8 +63,7 @@ function getMarkdownImageAttributes({
     width?: string;
     height?: string;
 } {
-
-    const isNoteRelativeLink = dirname(href) === '.';
+    const isNoteRelativeLink = checkIfItIsNoteRelativeLink(href);
     const filename = decodeURIComponent(basename(href));
 
     // It's not a note's file

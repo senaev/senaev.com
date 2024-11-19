@@ -1,8 +1,8 @@
 import { ErrorPage } from 'components/ErrorPage';
+import { NOTES_FILE_MANAGER } from 'const/NOTES_FILE_MANAGER';
 import { NOTES_FOLDER } from 'const/NOTES_FOLDER';
 import { notFound } from 'next/navigation';
 import { pathExists } from 'path-exists';
-import { findFileInFolder } from 'utils/Files/findFileInFolder';
 import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
 import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import styles from './index.module.css';
@@ -21,7 +21,8 @@ export default async function Page({
         return <ErrorPage message={'NOTES_FOLDER does not exist'}/>;
     }
 
-    const file = await findFileInFolder(NOTES_FOLDER, `${decodedId}.md`);
+
+    const file = await NOTES_FILE_MANAGER.findFile(`${decodedId}.md`);
 
     if (!file) {
         return notFound();
@@ -29,14 +30,13 @@ export default async function Page({
 
     const { path: filePath, isInPublicFolder } = file;
 
-    const {
-        markdownContent,
-        isPublic,
-    } = await getNoteByFilePath({ filePath });
-
-    if (!isPublic && !isInPublicFolder) {
+    if (!isInPublicFolder) {
         return notFound();
     }
+
+    const {
+        markdownContent,
+    } = await getNoteByFilePath({ filePath });
 
     const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
