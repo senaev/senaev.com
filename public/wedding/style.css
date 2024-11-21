@@ -2,6 +2,10 @@
     --content-background: rgb(99, 90, 75);
 }
 
+.strike-through {
+    text-decoration: line-through;
+}
+
 h1,
 h2,
 h3,

@@ -52,9 +52,11 @@ marked.use({
         link: (params) => {
             const { href, text } = params;
 
-            const fileName = decodeURIComponent(basename(href));
+
             const isNoteRelativeLink = checkIfItIsNoteRelativeLink(href);
+
             if (isNoteRelativeLink) {
+                const fileName = decodeURIComponent(basename(href));
                 const isPublic = NOTES_FILE_MANAGER.isNotePublic(`${fileName}.md`);
 
                 if (isPublic) {
@@ -64,7 +66,7 @@ marked.use({
                 }
             }
 
-            return `<a href="${href}">${text}</a>`;
+            return `<a href="${href}" target="_blank">${text}</a>`;
         },
     },
 });
