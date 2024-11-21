@@ -1,7 +1,13 @@
 import { promises } from 'fs';
 import { resolve } from 'path';
 
-export async function getAllFilesInFolder(rootDirectory: string, foldersToIgnore: Set<string>): Promise<Map<string, string>> {
+export async function getAllFilesInFolder({
+    rootDirectory,
+    foldersToIgnore,
+}: {
+    rootDirectory: string,
+    foldersToIgnore: Set<string>
+}): Promise<Map<string, string>> {
     const filesMap = new Map<string, string>();
     const directoriesStack = [rootDirectory];
 

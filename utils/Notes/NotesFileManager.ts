@@ -1,4 +1,4 @@
-import { relative } from 'path';
+import { relative, resolve } from 'path';
 import { pathExists } from 'path-exists';
 import { getAllFilesInFolder } from 'utils/Files/getAllFilesInFolder';
 
@@ -11,16 +11,18 @@ const FOLDERS_TO_IGNORE = new Set([
 
 const PUBLIC_FOLDER_NAME = 'public';
 
-
-
-
 export class NotesFileManager {
     private filesMap = new Map<string, string>();
 
     constructor(private readonly rootDirectory: string) { }
 
     private async rescan(): Promise<void> {
-        this.filesMap = await getAllFilesInFolder(this.rootDirectory, FOLDERS_TO_IGNORE);
+        const publicFolder = resolve(this.rootDirectory, PUBLIC_FOLDER_NAME);
+
+        this.filesMap = await getAllFilesInFolder({
+            rootDirectory: publicFolder,
+            foldersToIgnore: FOLDERS_TO_IGNORE,
+        });
     }
 
     public async findFile(fileName: string): Promise<{
