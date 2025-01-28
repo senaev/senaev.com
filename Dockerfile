@@ -1,3 +1,4 @@
+## use colima
 FROM node:23-alpine3.19 AS base
 
 # Install dependencies only when needed
