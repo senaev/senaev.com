@@ -1,4 +1,5 @@
 import styles from './index.module.css';
+import './MarkdownContainer.css';
 
 export function MarkdownContainer ({
     contentHtml,
