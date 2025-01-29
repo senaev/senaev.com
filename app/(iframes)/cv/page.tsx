@@ -1,8 +1,4 @@
 import classNames from 'classnames';
-import { resolve } from 'path';
-import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
-import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
-import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import './index.css';
 
 import { Merriweather } from 'next/font/google';
@@ -70,13 +66,13 @@ export default async function Page (): Promise<JSX.Element> {
         </main>
     </div>;
 
-    const readmeFilePath = resolve(getNextJsRootDirectory(), './README.md');
+    // const readmeFilePath = resolve(getNextJsRootDirectory(), './README.md');
 
-    const { markdownContent } = await getNoteByFilePath({ filePath: readmeFilePath });
+    // const { markdownContent } = await getNoteByFilePath({ filePath: readmeFilePath });
 
-    const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
+    // const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
-    return <div className={styles.Home__markdownContent_xxx}>
-        {markdownComponent}
-    </div>;
+    // return <div className={styles.Home__markdownContent_xxx}>
+    //     {markdownComponent}
+    // </div>;
 }
