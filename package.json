@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@next/eslint-plugin-next": "15.0.1",
+        "@next/font": "14.2.15",
         "@types/is-number": "7.0.5",
         "@types/jest": "29.5.1",
         "@types/jquery": "3.5.16",

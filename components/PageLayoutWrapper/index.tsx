@@ -5,6 +5,15 @@ import { GoogleAnalyticsCodeSnippet } from 'components/GoogleAnalyticsCodeSnippe
 import { GoogleTagManagerBody, GoogleTagManagerHead } from 'components/GoogleTagManager';
 import { Navigation } from 'components/Navigation';
 import { YandexMetrikaCounter } from 'components/YandexMetrikaCounter';
+import { Merriweather } from 'next/font/google';
+
+// Font from vas3k website
+const merriweather = Merriweather({
+    subsets: ['latin'],
+    weight: ['300', '400', '700', '900'], // Add the weights you need
+    style: ['normal', 'italic'], // Add styles if needed
+    display: 'swap', // Improves loading performance
+});
 
 export function PageLayoutWrapper ({ children }: { children: React.ReactNode }): JSX.Element {
     return (
@@ -15,7 +24,9 @@ export function PageLayoutWrapper ({ children }: { children: React.ReactNode }):
             <Navigation />
             <GoogleTagManagerHead />
             <GoogleTagManagerBody />
-            {children}
+            <main className={merriweather.className}>
+                {children}
+            </main>
         </>
     );
 }
