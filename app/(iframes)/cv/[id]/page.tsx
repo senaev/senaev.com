@@ -27,7 +27,7 @@ export default async function Page ({
         return <ErrorPage message={'CV with id=[${id}] doesn\'t exist'}/>;
     }
 
-    const readmeFilePath = resolve(getNextJsRootDirectory(), `./app/(iframes)/cv/[id]/${id}.md`);
+    const readmeFilePath = resolve(getNextJsRootDirectory(), `./public/cv/${id}.md`);
 
     const { markdownContent } = await getNoteByFilePath({ filePath: readmeFilePath });
 
