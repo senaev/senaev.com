@@ -1,0 +1,94 @@
+body {
+    font-size: 18px;
+
+    font-family: "Merriweather", Georgia, Times, serif;
+    font-style: normal;
+    font-weight: 400;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    color: rgb(51, 51, 51);
+    line-height: 1.7em;
+    letter-spacing: 0.01rem;
+
+}
+
+.main-page-photo-and-title {
+    display: flex;
+    padding-top: 2em;
+}
+
+.main-page-photo-and-title img {
+    border-radius: 50%;
+}
+
+.main-page-avatar-container {
+    margin-right: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-page-title p {
+    margin: 0;
+}
+
+.main-page-contacts-and-cv {
+    display: flex;
+    padding-top: 2em;
+}
+
+.main-page-container-center {
+    max-width: 30em;
+}
+
+.main-page-container {
+    display: flex;
+    justify-content: center;
+}
+
+.main-page-container h1,
+.main-page-container h2 {
+    margin: 0.3em 0;
+}
+
+.main-page-container .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-page-resume-container {
+    margin-left: 4em;
+}
+
+
+@media (max-width: 600px) {
+    .main-page-avatar-container {
+        display: block;
+    }
+
+    .main-page-container-center {
+        max-width: 100%;
+        padding: 0 1em;
+        text-align: center;
+    }
+
+    .main-page-contacts-and-cv {
+        flex-direction: column-reverse;
+        padding-top: 0;
+    }
+
+    .main-page-resume-container {
+        margin-left: 0;
+    }
+
+    .main-page-photo-and-title {
+        flex-direction: column;
+    }
+
+
+    .main-page-container h1,
+    .main-page-container h2 {
+        margin: 1em 0 0.2em 0;
+    }
+}

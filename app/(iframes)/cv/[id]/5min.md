@@ -26,7 +26,7 @@ Since 2021 we focused on attracting major international clients by developing co
 
 We consistently improved user experience and technical capabilities while maintaining high performance standards. Our achievements included streamlining deployment processes, enhancing cookie effectiveness, and implementing comprehensive telemetry and A/B experiments systems for quality assurance.
 
-#### Leading International Advertising Interfaces  (Dec 2022)
+#### Leading International Advertising Interfaces (Dec 2022)
 
 In December 2022, I embraced an opportunity at Yandex's International Advertising department in Belgrade, Serbia. I was tasked with building a team and developing infrastructure for a new advertising network interfaces. I was leading both Frontend and Backend teams, focusing primarily on recruitment and architectural decisions.
 
@@ -36,7 +36,7 @@ Our technical infrastructure combined [ClickHouse](https://clickhouse.com/), [YT
 
 Early 2024 brought significant restructuring as we organized into three specialized departments. We improved billing features, and integrated with CRM. My team has grown to 20 people.
 
-...to be updated
+🤷‍♂️ This part of the document is missing because the information is too recent. Please contact me if you would like to clarify the details.
 
 Over my career in Yandex, I've conducted more than 150 job interviews and hired about 20 people for my teams. I've given three public speeches in English and even created a programming championship task that's been solved over 1,500 times.
 

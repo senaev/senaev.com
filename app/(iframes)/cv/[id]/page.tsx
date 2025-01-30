@@ -1,5 +1,7 @@
 import classNames from 'classnames';
+import { ErrorPage } from 'components/ErrorPage';
 import {
+    SENAEV_AVAILABLE_CV_VERSIONS,
     SENAEV_EDUCATIONS,
     SENEAV_CONTACTS,
 } from 'const/const';
@@ -14,9 +16,18 @@ import './index.css';
 
 const AVATAR_SIZE = 150;
 
-export default async function Page (): Promise<JSX.Element> {
+export default async function Page ({
+    params,
+}: {
+    params: Promise<{id: string}>
+}): Promise<JSX.Element> {
+    const { id } = await params;
 
-    const readmeFilePath = resolve(getNextJsRootDirectory(), './app/(iframes)/cv/5min.md');
+    if (!SENAEV_AVAILABLE_CV_VERSIONS.includes(id)) {
+        return <ErrorPage message={'CV with id=[${id}] doesn\'t exist'}/>;
+    }
+
+    const readmeFilePath = resolve(getNextJsRootDirectory(), `./app/(iframes)/cv/[id]/${id}.md`);
 
     const { markdownContent } = await getNoteByFilePath({ filePath: readmeFilePath });
 

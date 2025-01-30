@@ -11,11 +11,19 @@ export const SENAEV_PHONE_LINK = `tel:${SENAEV_PHONE}`;
 
 export const SENAEV_LOCATION = 'Belgrade, Serbia';
 
+export const SENAEV_TELEGRAM_NICKNAME = 'senaev';
+export const SENAEV_TELEGRAM_LINK = `https://t.me/${SENAEV_TELEGRAM_NICKNAME}`;
 export const SENAEV_SITE_DOMAIN = 'senaev.com';
 export const SENAEV_SITE_URL = `https://${SENAEV_SITE_DOMAIN}`;
 export const ME_PAGE_LINK = '/me';
 
 export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.jpeg';
+
+export const SENAEV_AVAILABLE_CV_VERSIONS = [
+    '1min',
+    '5min',
+    '15min',
+];
 
 type Contact = {
     header: string;
@@ -24,6 +32,16 @@ type Contact = {
 }
 
 export const SENEAV_CONTACTS: Contact[] = [
+    {
+        header: 'Website',
+        title: SENAEV_SITE_DOMAIN,
+        link: SENAEV_SITE_URL,
+    },
+    {
+        header: 'Telegram',
+        title: `@${SENAEV_TELEGRAM_NICKNAME}`,
+        link: SENAEV_TELEGRAM_LINK,
+    },
     {
         header: 'Email',
         title: SENAEV_EMAIL,
@@ -37,11 +55,6 @@ export const SENEAV_CONTACTS: Contact[] = [
     {
         header: 'Location',
         title: SENAEV_LOCATION,
-    },
-    {
-        header: 'Website',
-        title: SENAEV_SITE_DOMAIN,
-        link: SENAEV_SITE_URL,
     },
 ];
 
