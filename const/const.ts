@@ -4,7 +4,13 @@ export const SENAEV_FULL_NAME = 'Andrei Senaev';
 export const SENAEV_SITE_TITLE = `${SENAEV_FULL_NAME} - personal website`;
 
 export const SENAEV_EMAIL = 'gsacryfice@gmail.com';
+export const SENAEV_EMAIL_ADDRESS = `mailto:${SENAEV_EMAIL}`;
+
 export const SENAEV_PHONE = '+79826990400';
+export const SENAEV_PHONE_ADDRESS = `tel:${SENAEV_PHONE}`;
+
+export const SENAEV_LOCATION = 'Belgrade, Serbia';
+
 export const SENAEV_SITE_DOMAIN = 'senaev.com';
 export const SENAEV_SITE_URL = `https://${SENAEV_SITE_DOMAIN}`;
 export const ME_PAGE_LINK = '/me';

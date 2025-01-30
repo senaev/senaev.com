@@ -1,5 +1,3 @@
-
-
 import { MarkdownContainer } from 'components/MarkdownContainer';
 import { NOTES_FILE_MANAGER } from 'const/NOTES_FILE_MANAGER';
 import GithubSlugger from 'github-slugger';
@@ -17,7 +15,6 @@ const marked = new Marked({
     breaks: true,
     async: true,
 });
-
 
 let slugger = new GithubSlugger();
 marked.use({
@@ -41,7 +38,7 @@ marked.use({
             const id = slugger.slug(removeMarkdown(raw).trim().toLowerCase());
 
             return `
-              <h${depth} id="${id}">
+              <h${depth} class="MarkdownContainer_header" id="${id}">
                 <a name="${id}" class="MarkdownContainer_anchor" href="#${id}">
                   #
                 </a>
@@ -51,7 +48,6 @@ marked.use({
         image: processMarkdownImage,
         link: (params) => {
             const { href, text } = params;
-
 
             const isNoteRelativeLink = checkIfItIsNoteRelativeLink(href);
 
@@ -88,5 +84,5 @@ export async function renderNoteByMarkdownContent({ markdownContent }: { markdow
     const processedContent = await marked.parse(preparedMarkdownContent);
     const contentHtml = processedContent.toString();
 
-    return <MarkdownContainer contentHtml={ contentHtml } />;
+    return <MarkdownContainer contentHtml={contentHtml} />;
 }

@@ -22,5 +22,8 @@ export async function GET(request: Request): Promise<NextResponse> {
 
     const imageBuffer = await promises.readFile(file.path);
 
-    return new NextResponse(imageBuffer, { status: 200, statusText: 'OK' });
+    return new NextResponse(imageBuffer, {
+        status: 200,
+        statusText: 'OK',
+    });
 }

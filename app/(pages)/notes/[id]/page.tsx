@@ -7,7 +7,6 @@ import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
 import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import styles from './index.module.css';
 
-
 export default async function Page({
     params,
 }: {
@@ -20,7 +19,6 @@ export default async function Page({
     if (!doesNotesDirectoryExist) {
         return <ErrorPage message={'NOTES_FOLDER does not exist'}/>;
     }
-
 
     const file = await NOTES_FILE_MANAGER.findFile(`${decodedId}.md`);
 

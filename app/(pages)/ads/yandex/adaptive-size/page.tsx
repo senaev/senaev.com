@@ -127,7 +127,8 @@ export default function Page (): JSX.Element {
                 >
                     <div
                         ref={sizerRightRef}
-                        className={clsx(styles.sizer, styles.sizer_right)}>
+                        className={clsx(styles.sizer, styles.sizer_right)}
+                    >
                         {'###'}
                     </div>
                     <div className={styles['frame-wrapper']}>
@@ -141,7 +142,8 @@ export default function Page (): JSX.Element {
                     </div>
                     <div
                         ref={sizerBottomRef}
-                        className={clsx(styles.sizer, styles.sizer_bottom)}>
+                        className={clsx(styles.sizer, styles.sizer_bottom)}
+                    >
                         {'###'}
                     </div>
                 </div>

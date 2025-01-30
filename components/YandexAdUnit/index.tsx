@@ -38,9 +38,15 @@ export function YandexAdUnit ({
             .catch((error) => {
                 throw error;
             });
-    }, [blockId, elementId]);
+    }, [
+        blockId,
+        elementId,
+    ]);
 
     return (
-        <div className={styles.container} id={elementId} />
+        <div
+            className={styles.container}
+            id={elementId}
+        />
     );
 }

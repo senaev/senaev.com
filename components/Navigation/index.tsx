@@ -26,21 +26,20 @@ export function Navigation (): JSX.Element {
         <nav className={styles.Navigation}>
             {
                 Object.entries(PAGES).map(([
-                    text, {
+                    text,
+                    {
                         href,
                         className,
                     },
-                ], key) => {
-                    return (
-                        <Link
-                            key={key}
-                            className={className}
-                            href={href}
-                        >
-                            {text}
-                        </Link>
-                    );
-                })
+                ], key) => (
+                    <Link
+                        key={key}
+                        className={className}
+                        href={href}
+                    >
+                        {text}
+                    </Link>
+                ))
             }
         </nav>
     );

@@ -13,10 +13,15 @@ function YandexAdUnitWrapped ({
     const { width, height } = size;
 
     return (
-        <div style={{
-            width, height: height + 45,
-        }}>
-            <h3>{`${width}x${height}`}</h3>
+        <div
+            style={{
+                width,
+                height: height + 45,
+            }}
+        >
+            <h3>
+                {`${width}x${height}`}
+            </h3>
             <YandexAdUnit blockId={blockId} />
         </div>
     );

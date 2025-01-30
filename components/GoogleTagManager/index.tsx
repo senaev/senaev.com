@@ -4,7 +4,8 @@ export function GoogleTagManagerHead (): JSX.Element {
     return (
         <Script
             id={'google-hag-manager-head-script'}
-            strategy={'beforeInteractive'}>
+            strategy={'beforeInteractive'}
+        >
             {`
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -27,7 +28,8 @@ export function GoogleTagManagerBody (): JSX.Element {
                 style={{
                     display: 'none',
                     visibility: 'hidden',
-                }}>
+                }}
+            >
             </iframe>
         </noscript>
     );

@@ -1,66 +1,121 @@
 import classNames from 'classnames';
+import {
+    SENAEV_EMAIL, SENAEV_EMAIL_ADDRESS, SENAEV_LOCATION, SENAEV_PHONE,
+    SENAEV_PHONE_ADDRESS,
+    SENAEV_SITE_DOMAIN,
+    SENAEV_SITE_URL,
+} from 'const/const';
+import { fontMerriweatherClassname } from 'const/fontMerriweatherClassname';
+import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
+import Image from 'next/image';
+import { resolve } from 'path';
+import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
+import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
+import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import './index.css';
 
-import { Merriweather } from 'next/font/google';
-
-// Font from vas3k website
-const merriweather = Merriweather({
-    subsets: ['latin'],
-    weight: ['300', '400', '700', '900'], // Add the weights you need
-    style: ['normal', 'italic'], // Add styles if needed
-    display: 'swap', // Improves loading performance
-});
-
 export default async function Page (): Promise<JSX.Element> {
-    return <div className={classNames('container', merriweather.className)}>
-        <aside className="sidebar">
-            <div className="profile-pic">
-                <img src="profile.jpg" alt="Profile Picture"/>
+
+    const readmeFilePath = resolve(getNextJsRootDirectory(), './app/(iframes)/cv/5min.md');
+
+    const { markdownContent } = await getNoteByFilePath({ filePath: readmeFilePath });
+
+    const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
+
+    return <div className={classNames('container', fontMerriweatherClassname)}>
+        <aside className={'sidebar'}>
+            <div className={'profile-pic'}>
+                <Image
+                    width={100}
+                    height={100}
+                    src={'/img/avatar-head.jpeg'}
+                    alt={'Profile Picture'}
+                />
             </div>
-            <h2>John Doe</h2>
-            <p className="title">Web Developer</p>
+            <h2>
+                {`Andrei${NON_BREAKING_SPACE}Senaev`}
+            </h2>
+            <p className={'title'}>
+                {`Frontend${NON_BREAKING_SPACE}Engineer,${NON_BREAKING_SPACE}Team${NON_BREAKING_SPACE}Leader`}
+            </p>
             <hr/>
-            <div className="contact-info">
-                <p><strong>Email:</strong> johndoe@email.com</p>
-                <p><strong>Phone:</strong> +123 456 7890</p>
-                <p><strong>Location:</strong> New York, USA</p>
-                <p><strong>Website:</strong> www.johndoe.com</p>
+            <div className={'contact-info'}>
+                <p>
+                    <strong>
+                        {'Email:'}
+                    </strong>
+                    {NON_BREAKING_SPACE}
+                    <a href={SENAEV_EMAIL_ADDRESS}>
+                        {SENAEV_EMAIL}
+                    </a>
+                </p>
+                <p>
+                    <strong>
+                        {'Phone:'}
+                    </strong>
+                    {NON_BREAKING_SPACE}
+                    <a href={SENAEV_PHONE_ADDRESS}>
+                        {SENAEV_PHONE}
+                    </a>
+
+                </p>
+                <p>
+                    <strong>
+                        {'Location:'}
+                    </strong>
+                    {NON_BREAKING_SPACE}
+                    {SENAEV_LOCATION}
+                </p>
+                <p>
+                    <strong>
+                        {'Website:'}
+                    </strong>
+                    {NON_BREAKING_SPACE}
+                    <a href={SENAEV_SITE_URL}>
+                        {SENAEV_SITE_DOMAIN}
+                    </a>
+                </p>
             </div>
         </aside>
 
-        <main className="content">
+        <main className={'content'}>
+            <div className={'job'}>
+                {markdownComponent}
+            </div>
+
             <section>
-                <h2>About Me</h2>
-                <p>I am a passionate web developer with 5+ years of experience in building modern, responsive websites and applications.</p>
+                <h2>
+                    {'Education'}
+                </h2>
+                <p>
+                    <strong>
+                        {'Bachelor’s in Computer Science'}
+                    </strong>
+                    {NON_BREAKING_SPACE}
+                    {'- XYZ University (2013 - 2017)'}
+                </p>
             </section>
 
             <section>
-                <h2>Experience</h2>
-                <div className="job">
-                    <h3>Senior Web Developer</h3>
-                    <p><strong>XYZ Company</strong> | 2020 - Present</p>
-                    <p>Developed and maintained e-commerce platforms, increasing sales by 30% through optimized UI/UX.</p>
-                </div>
-                <div className="job">
-                    <h3>Frontend Developer</h3>
-                    <p><strong>ABC Inc.</strong> | 2017 - 2020</p>
-                    <p>Implemented responsive web designs and interactive UI elements.</p>
-                </div>
-            </section>
-
-            <section>
-                <h2>Education</h2>
-                <p><strong>Bachelor’s in Computer Science</strong> - XYZ University (2013 - 2017)</p>
-            </section>
-
-            <section>
-                <h2>Skills</h2>
-                <ul className="skills">
-                    <li>HTML / CSS</li>
-                    <li>JavaScript / React</li>
-                    <li>Node.js / Express</li>
-                    <li>UI/UX Design</li>
-                    <li>SEO Optimization</li>
+                <h2>
+                    {'Skills'}
+                </h2>
+                <ul className={'skills'}>
+                    <li>
+                        {'HTML / CSS'}
+                    </li>
+                    <li>
+                        {'JavaScript / React'}
+                    </li>
+                    <li>
+                        {'Node.js / Express'}
+                    </li>
+                    <li>
+                        {'UI/UX Design'}
+                    </li>
+                    <li>
+                        {'SEO Optimization'}
+                    </li>
                 </ul>
             </section>
         </main>

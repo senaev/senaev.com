@@ -24,8 +24,14 @@ export default function Page (): JSX.Element {
                 console.log('scripts are loaded');
 
                 const div1Sizes = [
-                    [320, 180],
-                    [180, 320],
+                    [
+                        320,
+                        180,
+                    ],
+                    [
+                        180,
+                        320,
+                    ],
                 ];
                 const PREBID_TIMEOUT = 1000;
 
@@ -123,7 +129,9 @@ export default function Page (): JSX.Element {
 
     return (
         <>
-            <h5>{'320x180 || 180x320'}</h5>
+            <h5>
+                {'320x180 || 180x320'}
+            </h5>
             <div id={BLOCK_ID} />
         </>
     );

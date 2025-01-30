@@ -4,7 +4,7 @@ import { createCrossOriginHeaders } from 'utils/net/createCrossOriginHeaders';
 
 export async function POST(
     request: Request,
-    { params }: { params: Promise<{ page: string }> },
+    { params }: { params: Promise<{ page: string }> }
 ): Promise<NextResponse> {
     const { page } = await params;
     return NextResponse.json({

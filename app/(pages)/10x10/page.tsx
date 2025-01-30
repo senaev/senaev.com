@@ -27,7 +27,10 @@ export default function Page (): JSX.Element {
 
     return (
         <div className={'app-container'}>
-            <link href={'/10x10/css/main.css'} rel={'stylesheet'} />
+            <link
+                href={'/10x10/css/main.css'}
+                rel={'stylesheet'}
+            />
             <div id={'app'} />
         </div>
     );

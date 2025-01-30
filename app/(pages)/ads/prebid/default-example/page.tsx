@@ -20,12 +20,24 @@ export default function Page (): JSX.Element {
             .then(() => {
                 console.log('scripts are loaded');
                 const div1Sizes = [
-                    [300, 250],
-                    [300, 600],
+                    [
+                        300,
+                        250,
+                    ],
+                    [
+                        300,
+                        600,
+                    ],
                 ];
                 const div2Sizes = [
-                    [728, 90],
-                    [970, 250],
+                    [
+                        728,
+                        90,
+                    ],
+                    [
+                        970,
+                        250,
+                    ],
                 ];
                 const PREBID_TIMEOUT = 1000;
                 const FAILSAFE_TIMEOUT = 3000;
@@ -150,13 +162,21 @@ export default function Page (): JSX.Element {
 
     return (
         <>
-            <h2>{'Basic Prebid.js Example'}</h2>
-            <a href={'https://docs.prebid.org/dev-docs/examples/basic-example.html'}>{'Source of example'}</a>
+            <h2>
+                {'Basic Prebid.js Example'}
+            </h2>
+            <a href={'https://docs.prebid.org/dev-docs/examples/basic-example.html'}>
+                {'Source of example'}
+            </a>
 
-            <h5>{'Div-1'}</h5>
+            <h5>
+                {'Div-1'}
+            </h5>
             <div id={'div-1'} />
 
-            <h5>{'Div-2'}</h5>
+            <h5>
+                {'Div-2'}
+            </h5>
             <div id={'div-2'} />
         </>
     );

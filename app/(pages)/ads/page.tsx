@@ -24,22 +24,26 @@ export default function Page (): JSX.Element {
     return (
         <ul>
             {
-                Object.entries(SUBPAGES).map(([chapter, pages], chapterIndex) => {
-                    return (
-                        <li key={chapterIndex}>
-                            {chapter}
-                            <ul>
-                                {Object.entries(pages).map(([page, address], pageIndex) => {
-                                    return (
-                                        <li key={pageIndex}>
-                                            <Link href={address}>{page}</Link>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </li>
-                    );
-                })
+                Object.entries(SUBPAGES).map(([
+                    chapter,
+                    pages,
+                ], chapterIndex) => (
+                    <li key={chapterIndex}>
+                        {chapter}
+                        <ul>
+                            {Object.entries(pages).map(([
+                                page,
+                                address,
+                            ], pageIndex) => (
+                                <li key={pageIndex}>
+                                    <Link href={address}>
+                                        {page}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </li>
+                ))
             }
         </ul>
     );

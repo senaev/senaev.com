@@ -10,7 +10,7 @@
 
     color: rgb(51, 51, 51);
 
-    line-height: 1.7em;
+    line-height: 1.6em;
     letter-spacing: 0.01rem;
 
     font-size: 18px;
@@ -71,6 +71,10 @@
 @media (max-width: 800px) {
     .markdownContainer>div>ul {
         padding-left: 1em;
+    }
+
+    .markdownContainer {
+        font-size: 16px;
     }
 }
 

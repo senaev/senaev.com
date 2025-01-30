@@ -6,7 +6,10 @@ const EXAMPLE_HEADERS = {
     'Second-Header': 'second header value',
 };
 const exampleHeadersString = Object.entries(EXAMPLE_HEADERS)
-    .map(([key, value]) => `header=${encodeURIComponent(key)}:${encodeURIComponent(value)}`)
+    .map(([
+        key,
+        value,
+    ]) => `header=${encodeURIComponent(key)}:${encodeURIComponent(value)}`)
     .join('&');
 
 const EXAMPLE_SEARCH_PARAMS = `?html=${encodeURIComponent(EXAMPLE_PLACEHOLDER)}&${exampleHeadersString}`;
@@ -30,7 +33,10 @@ export function GET (request: Request): NextResponse {
 
     const responseHeadersFromRequest: Record<string, string> = {};
     searchParams.getAll('header').forEach((header) => {
-        const [key, value] = header.split(':');
+        const [
+            key,
+            value,
+        ] = header.split(':');
 
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         if (!key || !value) {

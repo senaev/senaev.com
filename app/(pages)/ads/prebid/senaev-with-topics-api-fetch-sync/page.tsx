@@ -24,8 +24,14 @@ export default function Page (): JSX.Element {
                 console.log('scripts are loaded');
 
                 const div1Sizes = [
-                    [320, 180],
-                    [180, 320],
+                    [
+                        320,
+                        180,
+                    ],
+                    [
+                        180,
+                        320,
+                    ],
                 ];
                 const PREBID_TIMEOUT = 1000;
 
@@ -94,7 +100,8 @@ export default function Page (): JSX.Element {
                                         bidder: 'pubmatic',
                                         iframeURL: 'https://ads.pubmatic.com/AdServer/js/topics/topics_frame.html',
                                         expiry: 7,
-                                    }, {
+                                    },
+                                    {
                                         bidder: 'senaev',
                                         fetchUrl: 'https://senaev.com/api/ads/prebid-topics-fetch-check-in',
                                         expiry: 7,
@@ -143,7 +150,9 @@ export default function Page (): JSX.Element {
 
     return (
         <>
-            <h5>{'Run this code in Topics API supported browser'}</h5>
+            <h5>
+                {'Run this code in Topics API supported browser'}
+            </h5>
             <div id={BLOCK_ID} />
         </>
     );

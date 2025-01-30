@@ -18,14 +18,16 @@ export function GoogleAdUnit (): JSX.Element {
 
     return (
         <>
-            <ins className={'adsbygoogle'}
+            <ins
+                className={'adsbygoogle'}
                 style={{
                     display: 'inline-block',
                     width: 320,
                     height: 180,
                 }}
                 data-ad-client={'ca-pub-5756750483186348'}
-                data-ad-slot={'3155757085'} />
+                data-ad-slot={'3155757085'}
+            />
         </>
     );
 }

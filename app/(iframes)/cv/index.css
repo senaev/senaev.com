@@ -16,9 +16,7 @@ body {
     letter-spacing: 0.01rem;
 
     font-size: 18px;
-    margin: 0 1em;
     position: relative;
-    padding: 0 0 4em 0;
     word-wrap: break-word;
 }
 
@@ -29,7 +27,6 @@ body {
 
 /* Sidebar */
 .sidebar {
-    width: 30%;
     background: #2c3e50;
     color: white;
     text-align: center;
@@ -37,7 +34,6 @@ body {
 }
 
 .sidebar .profile-pic img {
-    width: 100px;
     border-radius: 50%;
 }
 
@@ -51,13 +47,21 @@ body {
 }
 
 .sidebar .contact-info p {
-    font-size: 14px;
-    margin: 5px 0;
+    font-size: 0.8em;
+    margin: 0.4em 0;
+}
+
+.sidebar a {
+    color: #e9f5ff;
+    text-decoration: none
+}
+
+.sidebar a:hover {
+    text-decoration: underline
 }
 
 /* Main Content */
 .content {
-    width: 70%;
     padding: 20px;
 }
 
@@ -65,6 +69,18 @@ body {
     border-bottom: 2px solid #3498db;
     padding-bottom: 5px;
     color: #2c3e50;
+}
+
+.job {
+    max-width: 800px;
+}
+
+.job .MarkdownContainer_anchor {
+    opacity: 0;
+}
+
+.job .MarkdownContainer_header:hover .MarkdownContainer_anchor {
+    opacity: 1;
 }
 
 .job h3 {

@@ -42,16 +42,25 @@ export function AirAdUnit ({
             .catch((error) => {
                 throw error;
             });
-    }, [blockId, elementId]);
+    }, [
+        blockId,
+        elementId,
+    ]);
 
     return (
-        <div style={{
-            width, height: height + 45,
-        }}>
-            <h3>{`${width}x${height}`}</h3>
+        <div
+            style={{
+                width,
+                height: height + 45,
+            }}
+        >
+            <h3>
+                {`${width}x${height}`}
+            </h3>
             <div
                 style={{
-                    width, height,
+                    width,
+                    height,
                 }}
                 id={elementId}
             />

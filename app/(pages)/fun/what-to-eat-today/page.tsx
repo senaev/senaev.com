@@ -52,30 +52,42 @@ export default async function Page ({ searchParams }: PageProps): Promise<JSX.El
     const todayString = `${year}-${month}-${day}`;
     const hash = String(Math.abs(getHashFromString(todayString))).padStart(Object.keys(GROCCERY).length, String(day)[0]).split('').reverse();
 
-    const randoms = getObjectEntries(GROCCERY).map(([name, arr], i) => {
+    const randoms = getObjectEntries(GROCCERY).map(([
+        name,
+        arr,
+    ], i) => {
         const initialNumber = Number(hash[i]);
         const index = initialNumber % arr.length;
 
-        return [name, arr[index]];
+        return [
+            name,
+            arr[index],
+        ];
     });
 
     return (
         <div className={styles.Container}>
             <div className={styles.ServiceInfo}>
                 <a href={`${CURRENT_PAGE_URL}?offset=${resultOffset - 1}`}>
-                    Yesterday
+                    {'Yesterday'}
                 </a>
                 <div>
-                    <a href={CURRENT_PAGE_URL}>Today</a>: {todayString}
+                    <a href={CURRENT_PAGE_URL}>
+                        {'Today'}
+                    </a>
+                    {':'}
+                    {todayString}
                 </div>
                 <a href={`${CURRENT_PAGE_URL}?offset=${resultOffset + 1}`}>
-                    Tomorrow
+                    {'Tomorrow'}
                 </a>
                 <div>
-                Hash: {hash.join('')}
+                    {'Hash: '}
+                    {hash.join('')}
                 </div>
                 <div>
-                We are eating: {JSON.stringify(randoms)}
+                    {'We are eating: '}
+                    {JSON.stringify(randoms)}
                 </div>
             </div>
             <div className={styles.MainInfo}>
