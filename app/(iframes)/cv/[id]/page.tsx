@@ -24,7 +24,7 @@ export default async function Page ({
     const { id } = await params;
 
     if (!SENAEV_AVAILABLE_CV_VERSIONS.includes(id)) {
-        return <ErrorPage message={'CV with id=[${id}] doesn\'t exist'}/>;
+        return <ErrorPage message={`CV with id=[${id}] doesn't exist`}/>;
     }
 
     const readmeFilePath = resolve(getNextJsRootDirectory(), `./public/cv/${id}.md`);
