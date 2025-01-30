@@ -82,52 +82,6 @@ export default async function Page (): Promise<JSX.Element> {
             <div className={'job'}>
                 {markdownComponent}
             </div>
-
-            <section>
-                <h2>
-                    {'Education'}
-                </h2>
-                <p>
-                    <strong>
-                        {'Bachelor’s in Computer Science'}
-                    </strong>
-                    {NON_BREAKING_SPACE}
-                    {'- XYZ University (2013 - 2017)'}
-                </p>
-            </section>
-
-            <section>
-                <h2>
-                    {'Skills'}
-                </h2>
-                <ul className={'skills'}>
-                    <li>
-                        {'HTML / CSS'}
-                    </li>
-                    <li>
-                        {'JavaScript / React'}
-                    </li>
-                    <li>
-                        {'Node.js / Express'}
-                    </li>
-                    <li>
-                        {'UI/UX Design'}
-                    </li>
-                    <li>
-                        {'SEO Optimization'}
-                    </li>
-                </ul>
-            </section>
         </main>
     </div>;
-
-    // const readmeFilePath = resolve(getNextJsRootDirectory(), './README.md');
-
-    // const { markdownContent } = await getNoteByFilePath({ filePath: readmeFilePath });
-
-    // const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
-
-    // return <div className={styles.Home__markdownContent_xxx}>
-    //     {markdownComponent}
-    // </div>;
 }
