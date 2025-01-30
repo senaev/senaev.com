@@ -13,12 +13,13 @@
     line-height: 1.6em;
     letter-spacing: 0.01rem;
 
-    font-size: 18px;
     margin: 0 1em;
     position: relative;
     padding: 0 0 4em 0;
     word-wrap: break-word;
 }
+
+
 
 .markdownContainer strong {
     font-weight: 600;
@@ -66,16 +67,6 @@
 
 .markdownContainer>div>ul {
     padding-left: 0;
-}
-
-@media (max-width: 800px) {
-    .markdownContainer>div>ul {
-        padding-left: 1em;
-    }
-
-    .markdownContainer {
-        font-size: 16px;
-    }
 }
 
 .markdownContainer ul {

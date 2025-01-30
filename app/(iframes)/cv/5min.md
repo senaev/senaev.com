@@ -1,8 +1,9 @@
-# My Career 5 min version - v1 2025-01-30
 
-### About Me
+<!-- Version for senaev.com website from Obsidian Vault, copy content below  -->
 
-Experienced Frontend Engineer with a strong background in advertising and multimedia technologies and over five years of team leadership.
+## About Me
+
+Frontend Engineer with a strong background in advertising and multimedia technologies and over five years of team leadership.
 
 Strive to continuously improve professional and personal skills.
 
@@ -11,9 +12,7 @@ Strive to continuously improve professional and personal skills.
 
 #### Frontend developer in Advertising Player (Jan 2016)
 
-When I joined [Yandex](https://yandex.com/) in 2016. Starting as a junior frontend engineer in [video advertisement](https://yandex.com/adv/products/video), I found the work twice as demanding as my previous roles. I felt I had to prove myself worthy of their trust.
-
-I took on challenging projects like implementing [VPAID](https://iabtechlab.com/standards-old/video-player-ad-interface-definition-vpaid/) and [AdPod](https://www.iab.com/wp-content/uploads/2016/04/VAST4.0_Updated_April_2016.pdf) support, similar to YouTube's system. Over time, I mastered all the contemporary video ad standards. We created the [Content Video Player](https://yandex.ru/support2/video-player/en/) for [Kinopoisk](https://hd.kinopoisk.ru/), implemented [DRM](https://en.wikipedia.org/wiki/Digital_rights_management), and even developed a "[stitched ads](https://adcism.co.uk/what-is-ad-stitching/)" system for personalized streaming ads.
+Starting as a junior frontend engineer in [video advertisement](https://yandex.com/adv/products/video), I took on challenging projects like implementing [VPAID](https://iabtechlab.com/standards-old/video-player-ad-interface-definition-vpaid/) and [AdPod](https://www.iab.com/wp-content/uploads/2016/04/VAST4.0_Updated_April_2016.pdf) support. Over time, I mastered all the contemporary video ad standards. We created the [Content Video Player](https://yandex.ru/support2/video-player/en/) for [Kinopoisk](https://hd.kinopoisk.ru/), implemented [DRM](https://en.wikipedia.org/wiki/Digital_rights_management), and even developed a "[stitched ads](https://adcism.co.uk/what-is-ad-stitching/)" system for personalized streaming ads.
 
 #### Leading Advertising Player (Sep 2019)
 
@@ -23,17 +22,21 @@ Our team achieved significant revenue improvements through various innovations. 
 
 We implemented a comprehensive API rebuild and developed new standards for video creatives. Our performance optimization efforts were particularly successful – we achieved faster first-frame loading speeds and doubled our quality metrics to match YouTube's standards.
 
-One of major achievements was our anti-ad-blocker initiative, which recovered a big part of video ad revenue. We also successfully integrated it with various third-party platforms.
-
-In Media Advertisement project, where we focused on attracting major international clients by developing comprehensive brand safety and anti-fraud tools. We achieved [MRC standards](https://www.iab.com/wp-content/uploads/2015/06/MRC-Viewable-Ad-Impression-Measurement-Guideline.pdf) compliance for [Yandex Direct](https://yandex.com/support/direct/technologies-and-services/iab-compliance.html) and [AdFox](https://yandex.ru/adv/news/daydzhest-dlya-pablisherov-pryamye-razmescheniya-po-mezhdunarodnym-standartam-v-adfox-i-novye-obuchayuschie-roliki), successfully integrated multiple [verification services](https://clearcode.cc/blog/ad-verification/), and maintained an incident-free record from July 2022 through 2024 through the implementation of Zero Bug Policy.
+Since 2021 we focused on attracting major international clients by developing comprehensive brand safety and anti-fraud tools. We achieved [MRC standards](https://www.iab.com/wp-content/uploads/2015/06/MRC-Viewable-Ad-Impression-Measurement-Guideline.pdf) compliance for [Yandex Direct](https://yandex.com/support/direct/technologies-and-services/iab-compliance.html) and [AdFox](https://yandex.ru/adv/news/daydzhest-dlya-pablisherov-pryamye-razmescheniya-po-mezhdunarodnym-standartam-v-adfox-i-novye-obuchayuschie-roliki), successfully integrated multiple [verification services](https://clearcode.cc/blog/ad-verification/), and maintained an incident-free record from July 2022 through 2024 through the implementation of Zero Bug Policy.
 
 We consistently improved user experience and technical capabilities while maintaining high performance standards. Our achievements included streamlining deployment processes, enhancing cookie effectiveness, and implementing comprehensive telemetry and A/B experiments systems for quality assurance.
 
 #### Leading International Advertising Interfaces  (Dec 2022)
 
-👉
+In December 2022, I embraced an opportunity at Yandex's International Advertising department in Belgrade, Serbia. I was tasked with building a team and developing infrastructure for a new advertising network interfaces. I was leading both Frontend and Backend teams, focusing primarily on recruitment and architectural decisions.
 
-#### Looking Back
+We had chosen cloud infrastructure for our services, and by the four-month mark, we had a working proof of concept of cabinets. The team grew rapidly, and by fall 2023, we had ten employees and developed an MVP.
+
+Our technical infrastructure combined [ClickHouse](https://clickhouse.com/), [YTsaurus](https://ytsaurus.tech/), and [echarts](https://echarts.apache.org/en/index.html) for statistics, with [KeyCloak](https://www.keycloak.org/) handling authentication. We built a modern tech stack using React.js, Typescript, Java, Kotlin, and various other technologies, successfully decoupling our banner rendering infrastructure from Yandex's integrated tools within nine months.
+
+Early 2024 brought significant restructuring as we organized into three specialized departments. We improved billing features, and integrated with CRM. My team has grown to 20 people.
+
+...to be updated
 
 Over my career in Yandex, I've conducted more than 150 job interviews and hired about 20 people for my teams. I've given three public speeches in English and even created a programming championship task that's been solved over 1,500 times.
 
@@ -49,15 +52,21 @@ After improving my skills in OOP and [Backbone JS](https://backbonejs.org/), I l
 
 My first real break came with [iTaxio](https://vk.com/itaxio), a [Yandex Taxi](https://go.yandex/) competitor. I had to quickly switch from PHP to JavaScript, learning everything through trial and error. The salary was decent at 25-35 thousand rubles, and I gained valuable experience with [KnockoutJS](https://knockoutjs.com/), [jQuery](https://jquery.com/), and [Apache Cordova](https://cordova.apache.org/) (Phonegap).
 
-## Education
-
-Bachelor’s in Computer Science - XYZ University (2013 - 2017)
-
 ## Skills
 
-- HTML/CSS/JavaScript
-- React
+### Hard
+
+- HTML / CSS / JavaScript / TypeScript
+- React.js / Webpack
 - Node.js
-- ExpressUI/UX
-- DesignSEO
-- Optimization
+- Multimedia in browser (MSE, DRM, Encoding)
+- Jest / Selenium / Playwright
+- A/B Testing, Availability
+-  Browser Telemetry and Performance Optimization
+
+### Soft
+
+- Team Leadership / People and Project Management
+- Hiring / Technical Interviews
+- Mentoring
+- Public Speaking

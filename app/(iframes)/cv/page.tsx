@@ -1,9 +1,7 @@
 import classNames from 'classnames';
 import {
-    SENAEV_EMAIL, SENAEV_EMAIL_ADDRESS, SENAEV_LOCATION, SENAEV_PHONE,
-    SENAEV_PHONE_ADDRESS,
-    SENAEV_SITE_DOMAIN,
-    SENAEV_SITE_URL,
+    SENAEV_EDUCATIONS,
+    SENEAV_CONTACTS,
 } from 'const/const';
 import { fontMerriweatherClassname } from 'const/fontMerriweatherClassname';
 import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
@@ -13,6 +11,8 @@ import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
 import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
 import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import './index.css';
+
+const AVATAR_SIZE = 150;
 
 export default async function Page (): Promise<JSX.Element> {
 
@@ -24,64 +24,109 @@ export default async function Page (): Promise<JSX.Element> {
 
     return <div className={classNames('container', fontMerriweatherClassname)}>
         <aside className={'sidebar'}>
-            <div className={'profile-pic'}>
+            <div className={'avatar-container'}>
                 <Image
-                    width={100}
-                    height={100}
-                    src={'/img/avatar-head.jpeg'}
+                    width={AVATAR_SIZE}
+                    height={AVATAR_SIZE}
+                    src={'/img/avatar-head.webp'}
                     alt={'Profile Picture'}
                 />
             </div>
-            <h2>
-                {`Andrei${NON_BREAKING_SPACE}Senaev`}
-            </h2>
-            <p className={'title'}>
-                {`Frontend${NON_BREAKING_SPACE}Engineer,${NON_BREAKING_SPACE}Team${NON_BREAKING_SPACE}Leader`}
-            </p>
-            <hr/>
-            <div className={'contact-info'}>
-                <p>
-                    <strong>
-                        {'Email:'}
-                    </strong>
-                    {NON_BREAKING_SPACE}
-                    <a href={SENAEV_EMAIL_ADDRESS}>
-                        {SENAEV_EMAIL}
-                    </a>
-                </p>
-                <p>
-                    <strong>
-                        {'Phone:'}
-                    </strong>
-                    {NON_BREAKING_SPACE}
-                    <a href={SENAEV_PHONE_ADDRESS}>
-                        {SENAEV_PHONE}
-                    </a>
-
-                </p>
-                <p>
-                    <strong>
-                        {'Location:'}
-                    </strong>
-                    {NON_BREAKING_SPACE}
-                    {SENAEV_LOCATION}
-                </p>
-                <p>
-                    <strong>
-                        {'Website:'}
-                    </strong>
-                    {NON_BREAKING_SPACE}
-                    <a href={SENAEV_SITE_URL}>
-                        {SENAEV_SITE_DOMAIN}
-                    </a>
-                </p>
+            <div className={'sidebar-content'}>
+                <div>
+                    <div>
+                        <h1>
+                            {'Andrei Senaev'}
+                        </h1>
+                        <p className={'title'}>
+                            {'Frontend Engineer, Team Leader'}
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h2>
+                        {'Contact'}
+                    </h2>
+                    {
+                        SENEAV_CONTACTS.map(({
+                            header,
+                            title,
+                            link,
+                        }, i) => <div
+                            className={'contact'}
+                            key={i}
+                        >
+                            {`${header}:`}
+                            {NON_BREAKING_SPACE}
+                            {
+                                link
+                                    ? <a
+                                        href={link}
+                                        target={'_blank'}
+                                        rel={'noreferrer'}
+                                    >
+                                        {title}
+                                    </a>
+                                    : title
+                            }
+                        </div>)
+                    }
+                </div>
+                <div>
+                    <h2>
+                        {'Education'}
+                    </h2>
+                    {
+                        SENAEV_EDUCATIONS.map(({
+                            since,
+                            until,
+                            school,
+                            schoolLink,
+                            degree,
+                        }, i) => <div
+                            className={'education-item'}
+                            key={i}
+                        >
+                            <p>
+                                {`${since}–${until}`}
+                            </p>
+                            <p>
+                                <strong>
+                                    {degree}
+                                </strong>
+                            </p>
+                            <p>
+                                <i>
+                                    <a
+                                        href={schoolLink}
+                                        target={'_blank'}
+                                        rel={'noreferrer'}
+                                    >
+                                        {school}
+                                    </a>
+                                </i>
+                            </p>
+                        </div>)
+                    }
+                </div>
+                <div>
+                    <h2>
+                        {'Language'}
+                    </h2>
+                    <ul>
+                        <li>
+                            {'English'}
+                        </li>
+                        <li>
+                            {'Russian'}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </aside>
 
         <main className={'content'}>
-            <div className={'job'}>
-                {markdownComponent}
-            </div>
+            {markdownComponent}
         </main>
     </div>;
 }

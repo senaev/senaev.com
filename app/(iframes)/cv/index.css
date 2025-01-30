@@ -1,5 +1,6 @@
 html,
 body {
+    --line-width: 2px;
     margin: 0;
     padding: 0;
 
@@ -20,39 +21,96 @@ body {
     word-wrap: break-word;
 }
 
-/* Container */
+
+@media (max-width: 850px) {
+
+    html,
+    body {
+        font-size: 14px;
+    }
+}
+
+
 .container {
     display: flex;
 }
 
-/* Sidebar */
+
 .sidebar {
+    position: sticky;
+    overflow-y: auto;
+    top: 0;
+    height: 100vh;
     background: #2c3e50;
     color: white;
-    text-align: center;
-    padding: 20px;
+
+    font-size: 0.8em;
+    line-height: 1.7em;
+    min-width: 19em;
 }
 
-.sidebar .profile-pic img {
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: relative;
+        height: auto;
+    }
+}
+
+
+.sidebar h1 {
+    font-size: 2em;
+    margin: 0;
+    min-width: 20em;
+}
+
+.sidebar .avatar-container {
+    text-align: center;
+    padding-top: 2em;
+}
+
+.sidebar .avatar-container img {
     border-radius: 50%;
 }
 
+.sidebar .sidebar-content {
+    padding-left: 1.5em;
+}
+
+.sidebar .sidebar-content>div>div {
+    margin-right: 1em;
+}
+
+.sidebar ul {
+    padding-left: 0;
+}
+
 .sidebar h2 {
-    margin-top: 10px;
+    font-size: 1.5em;
+    margin: 1em 0 0.2em 0;
+    padding-bottom: 0.2em;
+    border-bottom: var(--line-width) solid white;
+    width: 100%;
+}
+
+.sidebar .education-item {
+    margin: 1em 0;
+}
+
+.sidebar .education-item p {
+    margin: 0;
 }
 
 .sidebar .title {
-    font-size: 14px;
     font-style: italic;
-}
-
-.sidebar .contact-info p {
-    font-size: 0.8em;
-    margin: 0.4em 0;
+    margin-top: 0.1em;
 }
 
 .sidebar a {
-    color: #e9f5ff;
+    color: #a4d5ff;
     text-decoration: none
 }
 
@@ -60,44 +118,36 @@ body {
     text-decoration: underline
 }
 
-/* Main Content */
 .content {
-    padding: 20px;
-}
-
-.content h2 {
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 5px;
-    color: #2c3e50;
-}
-
-.job {
+    padding: 1em;
     max-width: 800px;
 }
 
-.job .MarkdownContainer_anchor {
+.content h2 {
+    border-bottom: var(--line-width) solid #3498db;
+    padding-bottom: 0.2em;
+    color: #2c3e50;
+}
+
+
+.content .MarkdownContainer_anchor {
     opacity: 0;
 }
 
-.job .MarkdownContainer_header:hover .MarkdownContainer_anchor {
+.content .MarkdownContainer_header:hover .MarkdownContainer_anchor {
     opacity: 1;
 }
 
-.job h3 {
-    margin: 5px 0;
+.content h3 {
+    margin: 0.2em 0;
     color: #3498db;
 }
 
-.skills {
-    list-style: none;
-    padding: 0;
-}
-
-.skills li {
+.content li {
     display: inline-block;
     background: #3498db;
     color: white;
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 5px;
+    padding: 0.2em 0.4em;
+    margin: 0.2em;
+    border-radius: 0.2em;
 }
