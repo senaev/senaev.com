@@ -1,12 +1,6 @@
 
 <!-- Version for senaev.com website from Obsidian Vault, copy content below  -->
 
-## About Me
-
-Frontend Engineer with a strong background in advertising and multimedia technologies and over five years of team leadership.
-
-Strive to continuously improve professional and personal skills.
-
 ## Experience
 ### Yandex (January 2016 — until now)
 
@@ -51,22 +45,3 @@ After improving my skills in OOP and [Backbone JS](https://backbonejs.org/), I l
 ### iTaxio (Oct 2013)
 
 My first real break came with [iTaxio](https://vk.com/itaxio), a [Yandex Taxi](https://go.yandex/) competitor. I had to quickly switch from PHP to JavaScript, learning everything through trial and error. The salary was decent at 25-35 thousand rubles, and I gained valuable experience with [KnockoutJS](https://knockoutjs.com/), [jQuery](https://jquery.com/), and [Apache Cordova](https://cordova.apache.org/) (Phonegap).
-
-## Skills
-
-### Hard
-
-- HTML / CSS / JavaScript / TypeScript
-- React.js / Webpack
-- Node.js
-- Multimedia in browser (MSE, DRM, Encoding)
-- Jest / Selenium / Playwright
-- A/B Testing, Availability
--  Browser Telemetry and Performance Optimization
-
-### Soft
-
-- Team Leadership / People and Project Management
-- Hiring / Technical Interviews
-- Mentoring
-- Public Speaking

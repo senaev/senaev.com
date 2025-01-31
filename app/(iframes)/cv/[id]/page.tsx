@@ -1,17 +1,22 @@
 import classNames from 'classnames';
 import { ErrorPage } from 'components/ErrorPage';
+import { MarkdownHeader } from 'components/MarkdownHeader';
 import {
+    SENAEV_ABOUT_ME_INFO,
     SENAEV_AVAILABLE_CV_VERSIONS,
     SENAEV_EDUCATIONS,
+    SENAEV_SKILLS,
     SENEAV_CONTACTS,
 } from 'const/const';
 import { fontMerriweatherClassname } from 'const/fontMerriweatherClassname';
 import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
 import Image from 'next/image';
+import Link from 'next/link';
 import { resolve } from 'path';
 import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
 import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
 import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
+import { getObjectEntries } from 'utils/Object/getObjectEntries';
 import './index.css';
 
 const AVATAR_SIZE = 150;
@@ -36,12 +41,14 @@ export default async function Page ({
     return <div className={classNames('container', fontMerriweatherClassname)}>
         <aside className={'sidebar'}>
             <div className={'avatar-container'}>
-                <Image
-                    width={AVATAR_SIZE}
-                    height={AVATAR_SIZE}
-                    src={'/img/avatar-head.webp'}
-                    alt={'Profile Picture'}
-                />
+                <Link href={'/'}>
+                    <Image
+                        width={AVATAR_SIZE}
+                        height={AVATAR_SIZE}
+                        src={'/img/avatar-head.webp'}
+                        alt={'Profile Picture'}
+                    />
+                </Link>
             </div>
             <div className={'sidebar-content'}>
                 <div>
@@ -85,43 +92,6 @@ export default async function Page ({
                 </div>
                 <div>
                     <h2>
-                        {'Education'}
-                    </h2>
-                    {
-                        SENAEV_EDUCATIONS.map(({
-                            since,
-                            until,
-                            school,
-                            schoolLink,
-                            degree,
-                        }, i) => <div
-                            className={'education-item'}
-                            key={i}
-                        >
-                            <p>
-                                {`${since}–${until}`}
-                            </p>
-                            <p>
-                                <strong>
-                                    {degree}
-                                </strong>
-                            </p>
-                            <p>
-                                <i>
-                                    <a
-                                        href={schoolLink}
-                                        target={'_blank'}
-                                        rel={'noreferrer'}
-                                    >
-                                        {school}
-                                    </a>
-                                </i>
-                            </p>
-                        </div>)
-                    }
-                </div>
-                <div>
-                    <h2>
                         {'Language'}
                     </h2>
                     <ul>
@@ -137,7 +107,76 @@ export default async function Page ({
         </aside>
 
         <main className={'content'}>
+            <MarkdownHeader
+                depth={2}
+                id={'about-me'}
+                text={'About Me'}
+            />
+            {
+                SENAEV_ABOUT_ME_INFO.map((info, i) => <p key={i}>
+                    {info}
+                </p>)
+            }
             {markdownComponent}
+            <MarkdownHeader
+                depth={2}
+                id={'education'}
+                text={'Education'}
+            />
+            {
+                SENAEV_EDUCATIONS.map(({
+                    since,
+                    until,
+                    school,
+                    schoolLink,
+                    degree,
+                }, i) => <div
+                    className={'education-item'}
+                    key={i}
+                >
+                    <p>
+                        {`${since}–${until}`}
+                    </p>
+                    <p>
+                        <strong>
+                            {degree}
+                        </strong>
+                    </p>
+                    <p>
+                        <i>
+                            <a
+                                href={schoolLink}
+                                target={'_blank'}
+                                rel={'noreferrer'}
+                            >
+                                {school}
+                            </a>
+                        </i>
+                    </p>
+                </div>)
+            }
+            <MarkdownHeader
+                depth={2}
+                id={'skills'}
+                text={'Skills'}
+            />
+            {
+                getObjectEntries(SENAEV_SKILLS).map(([
+                    skillCategory,
+                    skillsArray,
+                ]) => <>
+                    <MarkdownHeader
+                        depth={3}
+                        id={`skill-category-${skillCategory}`}
+                        text={skillCategory}
+                    />
+                    <ul>
+                        {skillsArray.map((skill, i) => <li key={i}>
+                            {skill}
+                        </li>)}
+                    </ul>
+                </>)
+            }
         </main>
     </div>;
 }

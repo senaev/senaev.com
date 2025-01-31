@@ -12,6 +12,10 @@
     color: #284f72;
 }
 
+.MarkdownContainer_header {
+    position: relative;
+}
+
 
 /*
 https://github.com/highlightjs/highlight.js/blob/main/src/styles/atom-one-light.css

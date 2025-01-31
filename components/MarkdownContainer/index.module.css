@@ -3,26 +3,24 @@
 
     font-family: "Merriweather", Georgia, Times, serif;
     font-style: normal;
-    font-weight: 400;
+    /* font-weight: 400; */
 
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
 
     color: rgb(51, 51, 51);
 
-    line-height: 1.6em;
+    /* line-height: 1.6em; */
     letter-spacing: 0.01rem;
 
-    margin: 0 1em;
     position: relative;
-    padding: 0 0 4em 0;
     word-wrap: break-word;
 }
 
 
 
 .markdownContainer strong {
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 
 .markdownContainer blockquote {
@@ -38,10 +36,10 @@
 
 .markdownContainer :is(h1, h2, h3, h4, h5, h6) {
     margin: var(--text-margin) 0;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 
-.markdownContainer h1 {
+/* .markdownContainer h1 {
     font-size: 1.4em;
 }
 
@@ -63,16 +61,16 @@
 
 .markdownContainer h6 {
     font-size: 0.8em;
-}
+} */
 
 .markdownContainer>div>ul {
-    padding-left: 0;
+    /* padding-left: 0; */
 }
 
 .markdownContainer ul {
-    margin: 0.5em 0 0 0;
+    /* margin: 0.5em 0 0 0;
     padding-left: 1em;
-    list-style-type: disc;
+    list-style-type: disc; */
 }
 
 .markdownContainer li {

@@ -1,12 +1,6 @@
 
 <!-- Version for senaev.com website from Obsidian Vault, copy content below  -->
 
-## About Me
-
-Frontend Engineer with a strong background in advertising and multimedia technologies and over five years of team leadership.
-
-Strive to continuously improve professional and personal skills.
-
 ## My Journey to Becoming a Software Engineer
 
 My passion for software development started in childhood, though I initially believed it was "too cool and too smart for me."
@@ -114,22 +108,3 @@ After two weeks, I was appointed team leader of both Frontend and Backend teams.
 During my time at Yandex, I conducted over 150 job interviews covering layout, algorithms, system design, and culture fit. I personally hired around 20 people for my team.
 
 I have also delivered three public speeches in English and designed the “Knight’s Move” task for a programming championship, which has been solved more than 1,500 times to date.
-
-## Skills
-
-### Hard
-
-- HTML / CSS / JavaScript / TypeScript
-- React.js / Webpack
-- Node.js
-- Multimedia in browser (MSE, DRM, Encoding)
-- Jest / Selenium / Playwright
-- A/B Testing, Availability
--  Browser Telemetry and Performance Optimization
-
-### Soft
-
-- Team Leadership / People and Project Management
-- Hiring / Technical Interviews
-- Mentoring
-- Public Speaking

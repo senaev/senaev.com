@@ -19,6 +19,12 @@ export const ME_PAGE_LINK = '/me';
 
 export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.jpeg';
 
+export const SENAEV_ABOUT_ME_INFO = [
+    'Frontend Engineer with a strong background in advertising and multimedia technologies.',
+    'Extensive experience in leading Frontend and Cross-Functional teams.',
+    'Strive to continuously improve professional and personal skills',
+];
+
 export const SENAEV_AVAILABLE_CV_VERSIONS = [
     '1min',
     '5min',
@@ -81,6 +87,25 @@ export const SENAEV_EDUCATIONS: Education[] = [
         degree: 'Computer Equipment & Networks',
     },
 ];
+
+export const SENAEV_SKILLS: Record<string, string[]> = {
+    Hard: [
+        'HTML / CSS / JavaScript / TypeScript',
+        'React.js / Webpack',
+        'Node.js',
+        'Multimedia in browser (MSE, DRM, Encoding)',
+        'Jest / Selenium / Playwright',
+        'A/B Testing, Availability',
+        ' Browser Telemetry and Performance Optimization',
+
+    ],
+    Soft: [
+        'Team Leadership / People and Project Management',
+        'Hiring / Technical Interviews',
+        'Mentoring',
+        'Public Speaking',
+    ],
+};
 
 export const SENAEV_SITE_METADATA: Metadata = {
     title: SENAEV_SITE_TITLE,

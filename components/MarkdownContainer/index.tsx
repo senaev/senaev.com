@@ -1,4 +1,3 @@
-import styles from './index.module.css';
 import './MarkdownContainer.css';
 
 export function MarkdownContainer ({
@@ -7,8 +6,6 @@ export function MarkdownContainer ({
     contentHtml: string;
 }): JSX.Element {
     return (
-        <div className={styles.markdownContainer}>
-            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-        </div>
+        <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
     );
 }

@@ -11,7 +11,7 @@ body {
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
     color: rgb(51, 51, 51);
-    line-height: 1.7em;
+    line-height: 1.5em;
     letter-spacing: 0.01rem;
 
     font-size: 18px;
@@ -19,13 +19,9 @@ body {
     word-wrap: break-word;
 }
 
-
-
-
 .container {
     display: flex;
 }
-
 
 .sidebar {
     position: sticky;
@@ -72,6 +68,10 @@ body {
     padding-left: 0;
 }
 
+.content ul {
+    padding-left: 0;
+}
+
 .sidebar h2 {
     font-size: 1.5em;
     margin: 1em 0 0.2em 0;
@@ -80,11 +80,11 @@ body {
     width: 100%;
 }
 
-.sidebar .education-item {
+.content .education-item {
     margin: 1em 0;
 }
 
-.sidebar .education-item p {
+.content .education-item p {
     margin: 0;
 }
 
@@ -104,6 +104,7 @@ body {
 
 .content {
     padding: 1em;
+    margin: 0 1em;
     max-width: 800px;
 }
 
@@ -118,7 +119,7 @@ body {
     opacity: 0;
 }
 
-.content .MarkdownContainer_header:hover .MarkdownContainer_anchor {
+.content :is(h1, h2, h3, h4, h5, h6):hover .MarkdownContainer_anchor {
     opacity: 1;
 }
 

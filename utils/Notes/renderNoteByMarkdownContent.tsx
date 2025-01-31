@@ -8,6 +8,7 @@ import { basename } from 'path';
 import removeMarkdown from 'remove-markdown';
 import { prepareMarkdownContentForNote } from 'utils/prepareMarkdownContentForNote';
 import { checkIfItIsNoteRelativeLink } from './checkIfItIsNoteRelativeLink';
+import { createMarkdownHeaderText, type HeaderDepth } from './createMarkdownHeaderText';
 import { processMarkdownImage } from './processMarkdownImage';
 
 const marked = new Marked({
@@ -37,13 +38,11 @@ marked.use({
 
             const id = slugger.slug(removeMarkdown(raw).trim().toLowerCase());
 
-            return `
-              <h${depth} class="MarkdownContainer_header" id="${id}">
-                <a name="${id}" class="MarkdownContainer_anchor" href="#${id}">
-                  #
-                </a>
-                ${text}
-              </h${depth}>`;
+            return createMarkdownHeaderText({
+                id,
+                depth: depth as HeaderDepth,
+                text,
+            });
         },
         image: processMarkdownImage,
         link: (params) => {
