@@ -1,5 +1,9 @@
 .MainPage__container_center {
     max-width: 30em;
+
+    font-size: 18px;
+
+    line-height: 1.7em;
 }
 
 .MainPage__photoAndTitle {

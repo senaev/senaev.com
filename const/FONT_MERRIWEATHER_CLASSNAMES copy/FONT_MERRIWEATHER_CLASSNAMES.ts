@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import { Merriweather } from 'next/font/google';
+import { Ubuntu } from 'next/font/google';
 import styles from './index.module.css';
 
 // Font from vas3k website
-const merriweather = Merriweather({
+const merriweather = Ubuntu({
     subsets: [
         'cyrillic',
         'latin',
@@ -11,8 +11,8 @@ const merriweather = Merriweather({
     weight: [
         '300',
         '400',
+        '500',
         '700',
-        '900',
     ], // Add the weights you need
     style: [
         'normal',
@@ -20,13 +20,13 @@ const merriweather = Merriweather({
     ], // Add styles if needed
     display: 'swap', // Improves loading performance
     fallback: [
-        'Georgia',
-        'Times',
-        'serif',
+        'Helvetica',
+        'Verdana',
+        'sans-serif',
     ],
 });
 
-export const FONT_MERRIWEATHER_CLASSNAMES = classNames(
-    merriweather.className,
-    styles.FONT_MERRIWEATHER_CLASSNAME
+export const FONT_UBUNTU_CLASSNAMES = classNames(
+    styles.FONT_UBUNTU_CLASSNAME,
+    merriweather.className
 );
