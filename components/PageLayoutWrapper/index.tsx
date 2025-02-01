@@ -3,7 +3,7 @@ import { GoogleAnalyticsCodeSnippet } from 'components/GoogleAnalyticsCodeSnippe
 import { GoogleTagManagerBody, GoogleTagManagerHead } from 'components/GoogleTagManager';
 import { Navigation } from 'components/Navigation';
 import { YandexMetrikaCounter } from 'components/YandexMetrikaCounter';
-import { fontMerriweatherClassname } from 'const/fontMerriweatherClassname';
+import { FONT_MERRIWEATHER_CLASSNAMES } from 'const/FONT_MERRIWEATHER_CLASSNAMES/FONT_MERRIWEATHER_CLASSNAMES';
 import React from 'react';
 
 export function PageLayoutWrapper ({ children }: { children: React.ReactNode }): JSX.Element {
@@ -15,9 +15,9 @@ export function PageLayoutWrapper ({ children }: { children: React.ReactNode }):
             <Navigation />
             <GoogleTagManagerHead />
             <GoogleTagManagerBody />
-            <main className={fontMerriweatherClassname}>
+            <div className={FONT_MERRIWEATHER_CLASSNAMES}>
                 {children}
-            </main>
+            </div>
         </>
     );
 }

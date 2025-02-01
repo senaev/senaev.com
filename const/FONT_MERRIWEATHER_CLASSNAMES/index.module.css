@@ -1,0 +1,10 @@
+.FONT_MERRIWEATHER_CLASSNAME {
+    font-family: "Merriweather", Georgia, Times, serif;
+    font-style: normal;
+    font-weight: 400;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    color: rgb(51, 51, 51);
+    letter-spacing: 0.01rem;
+
+}

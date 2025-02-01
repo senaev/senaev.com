@@ -1,7 +1,85 @@
-.Home__markdownContent {
-    position: relative;
-    /* 640 px like in excalidraw */
-    max-width: 800px;
-    height: 100%;
-    margin: 0 auto;
+.MainPage__container_center {
+    max-width: 30em;
+}
+
+.MainPage__photoAndTitle {
+    display: flex;
+    padding: 2em 0;
+}
+
+.MainPage__photoAndTitle img {
+    border-radius: 50%;
+}
+
+.MainPage__avatarContainer {
+    margin-right: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.MainPage__title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.MainPage__title p {
+    margin: 0;
+}
+
+.MainPage__contactsAndCv {
+    display: flex;
+}
+
+.MainPage__container {
+    display: flex;
+    justify-content: center;
+}
+
+.MainPage__container h1,
+.MainPage__container h2 {
+    margin: 0.3em 0;
+}
+
+.MainPage__container .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.MainPage__resumeContainer {
+    margin-left: 4em;
+}
+
+
+@media (max-width: 600px) {
+    .MainPage__avatarContainer {
+        display: block;
+    }
+
+    .MainPage__container_center {
+        max-width: 100%;
+        padding: 0 1em;
+        text-align: center;
+    }
+
+    .MainPage__contactsAndCv {
+        flex-direction: column-reverse;
+        padding-top: 0;
+    }
+
+    .MainPage__resumeContainer {
+        margin-left: 0;
+    }
+
+    .MainPage__photoAndTitle {
+        flex-direction: column;
+    }
+
+
+    .MainPage__container h1,
+    .MainPage__container h2 {
+        margin: 1em 0 0.2em 0;
+    }
 }

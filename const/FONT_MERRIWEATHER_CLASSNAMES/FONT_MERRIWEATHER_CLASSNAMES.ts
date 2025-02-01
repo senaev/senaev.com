@@ -1,4 +1,6 @@
+import classNames from 'classnames';
 import { Merriweather } from 'next/font/google';
+import styles from './index.module.css';
 
 // Font from vas3k website
 const merriweather = Merriweather({
@@ -16,4 +18,7 @@ const merriweather = Merriweather({
     display: 'swap', // Improves loading performance
 });
 
-export const fontMerriweatherClassname = merriweather.className;
+export const FONT_MERRIWEATHER_CLASSNAMES = classNames(
+    merriweather.className,
+    styles.FONT_MERRIWEATHER_CLASSNAME
+);

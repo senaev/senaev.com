@@ -9,7 +9,7 @@ import {
     SENAEV_SKILLS,
     SENEAV_CONTACTS,
 } from 'const/const';
-import { fontMerriweatherClassname } from 'const/fontMerriweatherClassname';
+import { FONT_MERRIWEATHER_CLASSNAMES } from 'const/FONT_MERRIWEATHER_CLASSNAMES/FONT_MERRIWEATHER_CLASSNAMES';
 import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -39,7 +39,7 @@ export default async function Page ({
 
     const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
-    return <div className={classNames('container', fontMerriweatherClassname)}>
+    return <div className={classNames('container', FONT_MERRIWEATHER_CLASSNAMES)}>
         <aside className={'sidebar'}>
             <div className={'avatar-container'}>
                 <Link href={'/'}>

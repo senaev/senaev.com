@@ -3,19 +3,20 @@ import {
     SENAEV_ABOUT_ME_INFO,
     SENAEV_AVAILABLE_CV_VERSIONS, SENAEV_CURRENT_DUTY, SENAEV_FULL_NAME, SENEAV_CONTACTS,
 } from 'const/const';
-import { fontMerriweatherClassname } from 'const/fontMerriweatherClassname';
+import { FONT_MERRIWEATHER_CLASSNAMES } from 'const/FONT_MERRIWEATHER_CLASSNAMES/FONT_MERRIWEATHER_CLASSNAMES';
 import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
 import Image from 'next/image';
 import Link from 'next/link';
-import './main-page.css';
+import './index.css';
+import styles from './index.module.css';
 
 const AVATAR_SIZE = 150;
 
 export default async function Page (): Promise<JSX.Element> {
-    return <div className={classNames('main-page-container', fontMerriweatherClassname)}>
-        <div className={'main-page-container-center'}>
-            <div className={'main-page-photo-and-title'}>
-                <div className={'main-page-avatar-container'}>
+    return <main className={classNames(styles.MainPage__container, FONT_MERRIWEATHER_CLASSNAMES)}>
+        <div className={styles.MainPage__container_center}>
+            <div className={styles.MainPage__photoAndTitle}>
+                <div className={styles.MainPage__avatarContainer}>
                     <Image
                         width={AVATAR_SIZE}
                         height={AVATAR_SIZE}
@@ -23,7 +24,7 @@ export default async function Page (): Promise<JSX.Element> {
                         alt={'Profile Picture'}
                     />
                 </div>
-                <div className={'main-page-title'}>
+                <div className={styles.MainPage__title}>
                     <h1>
                         {SENAEV_FULL_NAME}
                     </h1>
@@ -42,7 +43,7 @@ export default async function Page (): Promise<JSX.Element> {
                     </p>)
                 }
             </div>
-            <div className={'main-page-contacts-and-cv'}>
+            <div className={styles.MainPage__contactsAndCv}>
                 <div>
                     <h2>
                         {'Contacts'}
@@ -53,7 +54,6 @@ export default async function Page (): Promise<JSX.Element> {
                             title,
                             link,
                         }, i) => <div
-                            className={'main-page-contact'}
                             key={i}
                         >
                             {`${header}:`}
@@ -72,7 +72,7 @@ export default async function Page (): Promise<JSX.Element> {
                         </div>)
                     }
                 </div>
-                <div className={'main-page-resume-container'}>
+                <div className={styles.MainPage__resumeContainer}>
                     <h2>
                         {'Resume'}
                     </h2>
@@ -91,5 +91,5 @@ export default async function Page (): Promise<JSX.Element> {
                 </div>
             </div>
         </div>
-    </div>;
+    </main>;
 }
