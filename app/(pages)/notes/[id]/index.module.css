@@ -1,6 +1,5 @@
 .NotePage__main {
     position: relative;
-    /* 640 px like in excalidraw */
     max-width: 800px;
     height: 100%;
     margin: 0 auto;
@@ -8,6 +7,82 @@
 
 .markdownContainer {
     font-size: 18px;
+}
+
+.markdownContainer {
+    --text-margin: 0.6em;
+
+    position: relative;
+    word-wrap: break-word;
+}
+
+
+
+.markdownContainer strong {
+    font-weight: 600;
+}
+
+.markdownContainer blockquote {
+    border-left: 0.1em solid grey;
+    margin: 1em;
+    padding-left: 0.5em;
+}
+
+.markdownContainer p {
+    margin: var(--text-margin) 0;
+    white-space: pre-wrap;
+}
+
+.markdownContainer :is(h1, h2, h3, h4, h5, h6) {
+    margin: var(--text-margin) 0;
+    font-weight: 600;
+}
+
+.markdownContainer h1 {
+    font-size: 1.4em;
+}
+
+.markdownContainer h2 {
+    font-size: 1.2em;
+}
+
+.markdownContainer h3 {
+    font-size: 1.1em;
+}
+
+.markdownContainer h4 {
+    font-size: 1em;
+}
+
+.markdownContainer h5 {
+    font-size: 0.9em;
+}
+
+.markdownContainer h6 {
+    font-size: 0.8em;
+}
+
+.markdownContainer>div>ul {
+    padding-left: 0;
+}
+
+.markdownContainer ul {
+    margin: 0.5em 0 0 0;
+    padding-left: 1em;
+    list-style-type: disc;
+}
+
+.markdownContainer li {
+    margin-top: 0.3em;
+}
+
+.markdownContainer li::marker,
+.markdownContainer dt::marker {
+    font-size: 0.75em;
+}
+
+.markdownContainer img {
+    max-width: 100%;
 }
 
 @media (max-width: 800px) {

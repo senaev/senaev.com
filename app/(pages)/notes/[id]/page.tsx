@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ErrorPage } from 'components/ErrorPage';
 import { NOTES_FILE_MANAGER } from 'const/NOTES_FILE_MANAGER';
 import { NOTES_FOLDER } from 'const/NOTES_FOLDER';
@@ -38,7 +39,7 @@ export default async function Page({
 
     const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
-    return <main className={styles.NotePage__main}>
+    return <main className={classNames(styles.NotePage__main, styles.markdownContainer)}>
         <article>
             {markdownComponent}
         </article>
