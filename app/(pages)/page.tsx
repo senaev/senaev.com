@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import {
-    SENAEV_AVAILABLE_CV_VERSIONS, SENAEV_FULL_NAME, SENEAV_CONTACTS,
+    SENAEV_ABOUT_ME_INFO,
+    SENAEV_AVAILABLE_CV_VERSIONS, SENAEV_CURRENT_DUTY, SENAEV_FULL_NAME, SENEAV_CONTACTS,
 } from 'const/const';
 import { fontMerriweatherClassname } from 'const/fontMerriweatherClassname';
 import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
@@ -27,9 +28,19 @@ export default async function Page (): Promise<JSX.Element> {
                         {SENAEV_FULL_NAME}
                     </h1>
                     <p>
-                        {'Team Leader of Yandex International Advertising Interfaces'}
+                        {SENAEV_CURRENT_DUTY}
                     </p>
                 </div>
+            </div>
+            <div>
+                <h2>
+                    {'About Me'}
+                </h2>
+                {
+                    SENAEV_ABOUT_ME_INFO.map((info, i) => <p key={i}>
+                        {info}
+                    </p>)
+                }
             </div>
             <div className={'main-page-contacts-and-cv'}>
                 <div>

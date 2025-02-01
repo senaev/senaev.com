@@ -4,6 +4,7 @@ import { MarkdownHeader } from 'components/MarkdownHeader';
 import {
     SENAEV_ABOUT_ME_INFO,
     SENAEV_AVAILABLE_CV_VERSIONS,
+    SENAEV_CURRENT_DUTY_SHORT,
     SENAEV_EDUCATIONS,
     SENAEV_SKILLS,
     SENEAV_CONTACTS,
@@ -57,7 +58,7 @@ export default async function Page ({
                             {'Andrei Senaev'}
                         </h1>
                         <p className={'title'}>
-                            {'Frontend Engineer, Team Leader'}
+                            {SENAEV_CURRENT_DUTY_SHORT}
                         </p>
                     </div>
                 </div>

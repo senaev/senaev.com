@@ -14,7 +14,7 @@ body {
 
 .main-page-photo-and-title {
     display: flex;
-    padding-top: 2em;
+    padding: 2em 0;
 }
 
 .main-page-photo-and-title img {
@@ -28,13 +28,18 @@ body {
     justify-content: center;
 }
 
+.main-page-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .main-page-title p {
     margin: 0;
 }
 
 .main-page-contacts-and-cv {
     display: flex;
-    padding-top: 2em;
 }
 
 .main-page-container-center {

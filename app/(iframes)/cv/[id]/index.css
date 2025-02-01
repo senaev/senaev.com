@@ -39,12 +39,6 @@ body {
     /* width: 18em; */
 }
 
-.main-page-title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .sidebar h1 {
     font-size: 2em;
     margin: 0;

@@ -20,8 +20,7 @@ export const ME_PAGE_LINK = '/me';
 export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.jpeg';
 
 export const SENAEV_ABOUT_ME_INFO = [
-    'Frontend Engineer with a strong background in advertising and multimedia technologies.',
-    'Extensive experience in leading Frontend and Cross-Functional teams.',
+    'Frontend Engineer and Team Leader with a strong background in advertising and multimedia.',
     'Strive to continuously improve professional and personal skills',
 ];
 
@@ -30,6 +29,9 @@ export const SENAEV_AVAILABLE_CV_VERSIONS = [
     '5min',
     '15min',
 ];
+
+export const SENAEV_CURRENT_DUTY = 'Team Leader of Yandex International Advertising Interfaces';
+export const SENAEV_CURRENT_DUTY_SHORT = 'Frontend Engineer, Team Leader';
 
 type Contact = {
     header: string;
