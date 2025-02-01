@@ -19,6 +19,7 @@ import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
 import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import { getObjectEntries } from 'utils/Object/getObjectEntries';
 import './index.css';
+import styles from './index.module.css';
 
 const AVATAR_SIZE = 150;
 
@@ -39,9 +40,9 @@ export default async function Page ({
 
     const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
-    return <div className={classNames('container', FONT_MERRIWEATHER_CLASSNAMES)}>
-        <aside className={'sidebar'}>
-            <div className={'avatar-container'}>
+    return <div className={classNames(styles.Container, FONT_MERRIWEATHER_CLASSNAMES, 'CvPage_container')}>
+        <aside className={styles.Sidebar}>
+            <div className={styles.AvatarContainer}>
                 <Link href={'/'}>
                     <Image
                         width={AVATAR_SIZE}
@@ -51,13 +52,13 @@ export default async function Page ({
                     />
                 </Link>
             </div>
-            <div className={'sidebar-content'}>
+            <div className={styles.SidebarContent}>
                 <div>
                     <div>
                         <h1>
                             {'Andrei Senaev'}
                         </h1>
-                        <p className={'title'}>
+                        <p className={styles.Title}>
                             {SENAEV_CURRENT_DUTY_SHORT}
                         </p>
                     </div>
@@ -107,7 +108,7 @@ export default async function Page ({
             </div>
         </aside>
 
-        <main className={'content'}>
+        <main className={styles.Content}>
             <MarkdownHeader
                 depth={2}
                 id={'about-me'}
@@ -132,7 +133,7 @@ export default async function Page ({
                     schoolLink,
                     degree,
                 }, i) => <div
-                    className={'education-item'}
+                    className={styles.EducationItem}
                     key={i}
                 >
                     <p>
