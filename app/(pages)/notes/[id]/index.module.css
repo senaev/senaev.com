@@ -1,96 +1,101 @@
+.NotePage_container {
+    display: flex;
+    justify-content: center;
+}
+
 .NotePage__main {
     position: relative;
     max-width: 800px;
     height: 100%;
-    margin: 0 auto;
-}
 
-.markdownContainer {
     font-size: 18px;
-}
+    line-height: 1.7em;
 
-.markdownContainer {
     --text-margin: 0.6em;
 
-    position: relative;
     word-wrap: break-word;
 }
 
+.NotePage__article {
+    position: relative;
+    margin: 0 1.5em;
+}
 
-
-.markdownContainer strong {
+.NotePage__main strong {
     font-weight: 600;
 }
 
-.markdownContainer blockquote {
+.NotePage__main blockquote {
     border-left: 0.1em solid grey;
     margin: 1em;
     padding-left: 0.5em;
 }
 
-.markdownContainer p {
+.NotePage__main p {
     margin: var(--text-margin) 0;
     white-space: pre-wrap;
 }
 
-.markdownContainer :is(h1, h2, h3, h4, h5, h6) {
+.NotePage__main :is(h1, h2, h3, h4, h5, h6) {
     margin: var(--text-margin) 0;
     font-weight: 600;
 }
 
-.markdownContainer h1 {
+.NotePage__main h1 {
     font-size: 1.4em;
 }
 
-.markdownContainer h2 {
+.NotePage__main h2 {
     font-size: 1.2em;
 }
 
-.markdownContainer h3 {
+.NotePage__main h3 {
     font-size: 1.1em;
 }
 
-.markdownContainer h4 {
+.NotePage__main h4 {
     font-size: 1em;
 }
 
-.markdownContainer h5 {
+.NotePage__main h5 {
     font-size: 0.9em;
 }
 
-.markdownContainer h6 {
+.NotePage__main h6 {
     font-size: 0.8em;
 }
 
-.markdownContainer>div>ul {
-    padding-left: 0;
-}
-
-.markdownContainer ul {
+.NotePage__main ul {
     margin: 0.5em 0 0 0;
     padding-left: 1em;
     list-style-type: disc;
 }
 
-.markdownContainer li {
+.NotePage__main div>ul {
+    padding-left: 0;
+}
+
+
+.NotePage__main li {
     margin-top: 0.3em;
 }
 
-.markdownContainer li::marker,
-.markdownContainer dt::marker {
+.NotePage__main li::marker,
+.NotePage__main dt::marker {
     font-size: 0.75em;
 }
 
-.markdownContainer img {
+.NotePage__main img {
     max-width: 100%;
 }
 
 @media (max-width: 800px) {
-    .markdownContainer>div>ul {
+    .NotePage__main div>ul {
         padding-left: 1em;
     }
 
-    .markdownContainer {
+    .NotePage__main {
+        width: 100%;
         font-size: 16px;
     }
 }

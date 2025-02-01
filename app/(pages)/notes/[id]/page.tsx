@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { ErrorPage } from 'components/ErrorPage';
+import { FONT_MERRIWEATHER_CLASSNAMES } from 'const/FONT_MERRIWEATHER_CLASSNAMES/FONT_MERRIWEATHER_CLASSNAMES';
 import { NOTES_FILE_MANAGER } from 'const/NOTES_FILE_MANAGER';
 import { NOTES_FOLDER } from 'const/NOTES_FOLDER';
 import { notFound } from 'next/navigation';
@@ -39,9 +40,11 @@ export default async function Page({
 
     const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
-    return <main className={classNames(styles.NotePage__main, styles.markdownContainer)}>
-        <article>
-            {markdownComponent}
-        </article>
-    </main>;
+    return <div className={styles.NotePage_container}>
+        <main className={classNames(styles.NotePage__main, FONT_MERRIWEATHER_CLASSNAMES)}>
+            <article className={styles.NotePage__article}>
+                {markdownComponent}
+            </article>
+        </main>
+    </div>;
 }

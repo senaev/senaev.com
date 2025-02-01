@@ -42,8 +42,6 @@ hue-6-2: #c18401
     color: #383a42;
     background: #fafafa;
     display: block;
-    width: calc(100% + 2em);
-    margin-left: -1em;
     padding: 1em;
     border-radius: 0.3em;
 }
