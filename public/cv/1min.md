@@ -1,6 +1,4 @@
 
-<!-- Version for senaev.com website from Obsidian Vault, copy content below  -->
-
 ## Experience
 
 ### [Yandex](https://ya.ru/)
@@ -9,7 +7,7 @@ Leading Yandex International Advertising Interfaces (Dec 2022)
 
 Leading Yandex Advertising Player (Sep 2019)
 
-Leading Yandex International Advertising Interfaces  (Dec 2022)
+Frontend developer in Advertising Player (Jan 2016)
 
 ### [MiraLogic IT](https://miralogic.ru/) 2015—2016
 
