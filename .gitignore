@@ -5,3 +5,4 @@ node_modules
 .idea
 .eslintcache
 tsconfig.tsbuildinfo
+.env.local

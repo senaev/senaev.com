@@ -25,9 +25,7 @@ module.exports = {
             env: {
                 node: true,
             },
-            files: [
-                '.eslintrc.{js,cjs}',
-            ],
+            files: ['.eslintrc.{js,cjs}'],
             parserOptions: {
                 sourceType: 'script',
             },
@@ -61,11 +59,20 @@ module.exports = {
         ],
         'no-trailing-spaces': 'error',
         'no-multi-spaces': 'error',
-        'quote-props': ['error', 'as-needed'],
-        'object-curly-spacing': ['error', 'always'],
+        'quote-props': [
+            'error',
+            'as-needed',
+        ],
+        'object-curly-spacing': [
+            'error',
+            'always',
+        ],
         'react/react-in-jsx-scope': 'off',
-        'eol-last': ['error', 'always'],
-
+        'eol-last': [
+            'error',
+            'always',
+        ],
+        '@next/next/no-img-element': 'off',
         'no-console': ['error'],
         'comma-dangle': [
             'error',

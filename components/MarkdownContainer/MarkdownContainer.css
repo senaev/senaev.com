@@ -44,6 +44,7 @@ hue-6-2: #c18401
     display: block;
     padding: 1em;
     border-radius: 0.3em;
+    white-space: pre-wrap;
 }
 
 .hljs-comment,
