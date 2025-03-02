@@ -2,10 +2,10 @@ import classNames from 'classnames';
 import { ErrorPage } from 'components/ErrorPage';
 import { MarkdownHeader } from 'components/MarkdownHeader';
 import {
-    SENAEV_ABOUT_ME_INFO,
     SENAEV_AVAILABLE_CV_VERSIONS,
     SENAEV_CURRENT_DUTY_SHORT,
     SENAEV_EDUCATIONS,
+    SENAEV_ELEVATOR_PITCH,
     SENAEV_LANGUAGE_LEVELS,
     SENAEV_SKILLS,
     SENEAV_CONTACTS,
@@ -118,7 +118,7 @@ export default async function Page ({
                 text={'About Me'}
             />
             {
-                SENAEV_ABOUT_ME_INFO.map((info, i) => <p key={i}>
+                SENAEV_ELEVATOR_PITCH.map((info, i) => <p key={i}>
                     {info}
                 </p>)
             }

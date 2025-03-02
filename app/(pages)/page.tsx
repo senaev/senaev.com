@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import {
-    SENAEV_ABOUT_ME_INFO,
-    SENAEV_AVAILABLE_CV_VERSIONS, SENAEV_CURRENT_DUTY, SENAEV_FULL_NAME, SENEAV_CONTACTS,
+    SENAEV_AVAILABLE_CV_VERSIONS, SENAEV_CURRENT_DUTY,
+    SENAEV_ELEVATOR_PITCH,
+    SENAEV_FULL_NAME, SENEAV_CONTACTS,
 } from 'const/const';
 import { FONT_MERRIWEATHER_CLASSNAMES } from 'const/FONT_MERRIWEATHER_CLASSNAMES/FONT_MERRIWEATHER_CLASSNAMES';
 import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
@@ -38,7 +39,7 @@ export default async function Page (): Promise<JSX.Element> {
                     {'About Me'}
                 </h2>
                 {
-                    SENAEV_ABOUT_ME_INFO.map((info, i) => <p key={i}>
+                    SENAEV_ELEVATOR_PITCH.map((info, i) => <p key={i}>
                         {info}
                     </p>)
                 }

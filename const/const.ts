@@ -19,7 +19,7 @@ export const ME_PAGE_LINK = '/me';
 
 export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.jpeg';
 
-export const SENAEV_ABOUT_ME_INFO = [
+export const SENAEV_ELEVATOR_PITCH = [
     'Frontend Engineer and Team Leader with a strong background in advertising and multimedia.',
     'Strive to continuously improve professional and personal skills',
 ];
