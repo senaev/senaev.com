@@ -29,8 +29,6 @@ function Auth0Layout() {
         );
     }
 
-    console.log('user', user);
-
     return <div>
         <img
             src={user.picture ?? undefined}
