@@ -39,6 +39,44 @@ type Contact = {
     link?: string;
 }
 
+export const SENAEV_SOCIALS: {
+    name: string;
+    link: string;
+}[] = [
+    {
+        name: '@senaev_speaks (telegram)',
+        link: 'https://t.me/senaev_speaks',
+    },
+    {
+        name: '@senaev_speaks (web)',
+        link: '/notes/all_senaev_speaks_posts',
+    },
+    {
+        name: 'LinkedIn',
+        link: 'https://www.linkedin.com/in/senaev/',
+    },
+    {
+        name: 'Habr',
+        link: 'https://habr.com/ru/users/senaev/articles/',
+    },
+    {
+        name: 'GitHub',
+        link: 'https://github.com/senaev',
+    },
+    {
+        name: 'X (Twitter)',
+        link: 'https://x.com/senaev',
+    },
+    {
+        name: '@senaev_career (teletype)',
+        link: 'https://teletype.in/@senaev_career',
+    },
+    {
+        name: '@senaev_tech (teletype)',
+        link: 'https://teletype.in/@senaev_tech',
+    },
+];
+
 export const SENEAV_CONTACTS: Contact[] = [
     {
         header: 'Website',

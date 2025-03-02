@@ -1,10 +1,9 @@
-import classNames from 'classnames';
 import {
     SENAEV_AVAILABLE_CV_VERSIONS, SENAEV_CURRENT_DUTY,
     SENAEV_ELEVATOR_PITCH,
-    SENAEV_FULL_NAME, SENEAV_CONTACTS,
+    SENAEV_FULL_NAME,
+    SENEAV_CONTACTS,
 } from 'const/const';
-import { FONT_MERRIWEATHER_CLASSNAMES } from 'const/FONT_MERRIWEATHER_CLASSNAMES/FONT_MERRIWEATHER_CLASSNAMES';
 import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,7 +13,7 @@ import styles from './index.module.css';
 const AVATAR_SIZE = 150;
 
 export default async function Page (): Promise<JSX.Element> {
-    return <main className={classNames(styles.MainPage__container, FONT_MERRIWEATHER_CLASSNAMES)}>
+    return <div className={styles.MainPage__container}>
         <div className={styles.MainPage__container_center}>
             <div className={styles.MainPage__photoAndTitle}>
                 <div className={styles.MainPage__avatarContainer}>
@@ -92,5 +91,5 @@ export default async function Page (): Promise<JSX.Element> {
                 </div>
             </div>
         </div>
-    </main>;
+    </div>;
 }

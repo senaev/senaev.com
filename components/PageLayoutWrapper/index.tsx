@@ -15,9 +15,9 @@ export function PageLayoutWrapper ({ children }: { children: React.ReactNode }):
             <Navigation />
             <GoogleTagManagerHead />
             <GoogleTagManagerBody />
-            <div className={FONT_MERRIWEATHER_CLASSNAMES}>
+            <main className={FONT_MERRIWEATHER_CLASSNAMES}>
                 {children}
-            </div>
+            </main>
         </>
     );
 }

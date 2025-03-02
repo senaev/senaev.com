@@ -7,11 +7,12 @@ import styles from './index.module.css';
 const PAGES = {
     '🏠': {
         href: '/',
-        className: styles.Navigation_home,
+    },
+    '💬': {
+        href: '/socials',
     },
     '10x10': {
         href: '/10x10',
-        className: undefined,
     },
     // 'ads': {
     //     href: '/ads',
@@ -19,7 +20,6 @@ const PAGES = {
     // },
     more: {
         href: '/more',
-        className: undefined,
     },
 };
 
@@ -31,12 +31,10 @@ export function Navigation (): JSX.Element {
                     text,
                     {
                         href,
-                        className,
                     },
                 ], key) => (
                     <Link
                         key={key}
-                        className={className}
                         href={href}
                     >
                         {text}
