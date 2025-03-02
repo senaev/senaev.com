@@ -72,6 +72,7 @@ type Education = {
     school: string;
     schoolLink: string;
     degree: string;
+    level: string;
 };
 export const SENAEV_EDUCATIONS: Education[] = [
     {
@@ -80,6 +81,7 @@ export const SENAEV_EDUCATIONS: Education[] = [
         school: 'Ural Federal University',
         schoolLink: 'https://urfu.ru/en/',
         degree: 'Management in Technical Systems',
+        level: 'Bachelor’s Degree',
     },
     {
         since: 2005,
@@ -87,6 +89,21 @@ export const SENAEV_EDUCATIONS: Education[] = [
         school: 'Ural Radio Engineering College',
         schoolLink: 'https://urtt.ru/',
         degree: 'Computer Equipment & Networks',
+        level: 'High School Diploma',
+    },
+];
+
+export const SENAEV_LANGUAGE_LEVELS: {
+    language: string;
+    level: string;
+}[] = [
+    {
+        language: 'English',
+        level: 'Full Professional',
+    },
+    {
+        language: 'Russian',
+        level: 'Native',
     },
 ];
 

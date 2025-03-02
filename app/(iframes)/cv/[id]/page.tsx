@@ -6,6 +6,7 @@ import {
     SENAEV_AVAILABLE_CV_VERSIONS,
     SENAEV_CURRENT_DUTY_SHORT,
     SENAEV_EDUCATIONS,
+    SENAEV_LANGUAGE_LEVELS,
     SENAEV_SKILLS,
     SENEAV_CONTACTS,
 } from 'const/const';
@@ -97,12 +98,14 @@ export default async function Page ({
                         {'Language'}
                     </h2>
                     <ul>
-                        <li>
-                            {'English'}
-                        </li>
-                        <li>
-                            {'Russian'}
-                        </li>
+                        {
+                            SENAEV_LANGUAGE_LEVELS.map(({
+                                language,
+                                level,
+                            }, i) => <li key={i}>
+                                {`${language} – ${level}`}
+                            </li>)
+                        }
                     </ul>
                 </div>
             </div>
@@ -132,6 +135,7 @@ export default async function Page ({
                     school,
                     schoolLink,
                     degree,
+                    level,
                 }, i) => <div
                     className={styles.EducationItem}
                     key={i}
@@ -153,6 +157,12 @@ export default async function Page ({
                             >
                                 {school}
                             </a>
+
+                            {NON_BREAKING_SPACE}
+                            {'–'}
+                            {NON_BREAKING_SPACE}
+
+                            {level}
                         </i>
                     </p>
                 </div>)
