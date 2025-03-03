@@ -31,7 +31,7 @@ export default async function Page ({
 }): Promise<JSX.Element> {
     const { id } = await params;
 
-    if (!SENAEV_AVAILABLE_CV_VERSIONS.includes(id)) {
+    if (!SENAEV_AVAILABLE_CV_VERSIONS.find((cvVersion) => cvVersion.id === id)) {
         return <ErrorPage message={`CV with id=[${id}] doesn't exist`}/>;
     }
 

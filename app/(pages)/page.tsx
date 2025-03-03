@@ -78,13 +78,11 @@ export default async function Page (): Promise<JSX.Element> {
                     </h2>
                     <div>
                         {
-                            SENAEV_AVAILABLE_CV_VERSIONS.map((version, i) => <div key={i}>
+                            SENAEV_AVAILABLE_CV_VERSIONS.map(({ id, name }, i) => <div key={i}>
                                 {'• '}
-                                <Link href={`/cv/${version}`}>
-                                    {version}
+                                <Link href={`/cv/${id}`}>
+                                    {name}
                                 </Link>
-                                {' '}
-                                {'version'}
                             </div>)
                         }
                     </div>

@@ -18,6 +18,6 @@
 
 ## My CV
 
-- [1 minute](/cv/1min) reading
-- [5 minute](/cv/5min) reading
-- [15 minute](/cv/15min) reading
+-   [Short](/cv/1min) reading
+-   [Detailed](/cv/5min) reading
+-   [Full story](/cv/15min) reading

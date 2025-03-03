@@ -25,9 +25,18 @@ export const SENAEV_ELEVATOR_PITCH = [
 ];
 
 export const SENAEV_AVAILABLE_CV_VERSIONS = [
-    '1min',
-    '5min',
-    '15min',
+    {
+        name: 'Short',
+        id: '1min',
+    },
+    {
+        name: 'Detailed',
+        id: '5min',
+    },
+    {
+        name: 'Full story',
+        id: '15min',
+    },
 ];
 
 export const SENAEV_CURRENT_DUTY = 'Team Leader of Yandex International Advertising Interfaces';
