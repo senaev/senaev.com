@@ -1,14 +1,14 @@
-
 <!-- Version for senaev.com website from Obsidian Vault, copy content below  -->
 
 ## Experience
+
 ### Yandex (January 2016 — until now)
 
 #### Frontend developer in Advertising Player (Jan 2016)
 
 Starting as a junior frontend engineer in [video advertisement](https://yandex.com/adv/products/video), I took on challenging projects like implementing [VPAID](https://iabtechlab.com/standards-old/video-player-ad-interface-definition-vpaid/) and [AdPod](https://www.iab.com/wp-content/uploads/2016/04/VAST4.0_Updated_April_2016.pdf) support. Over time, I mastered all the contemporary video ad standards. We created the [Content Video Player](https://yandex.ru/support2/video-player/en/) for [Kinopoisk](https://hd.kinopoisk.ru/), implemented [DRM](https://en.wikipedia.org/wiki/Digital_rights_management), and even developed a "[stitched ads](https://adcism.co.uk/what-is-ad-stitching/)" system for personalized streaming ads.
 
-#### Leading Advertising Player (Sep 2019)
+#### Leading Yandex Advertising Player (Sep 2019)
 
 After moving to Moscow in 2019, I took on team leadership. Initially managing three developers (later expanding to five), I balanced hands-on coding with leadership responsibilities while overseeing the complete renovation of both [Instream and Outstream](https://www.waytogrow.com/blog/instream-vs-outstream-video-ads-pros-cons/) advertising players.
 
@@ -20,7 +20,7 @@ Since 2021 we focused on attracting major international clients by developing co
 
 We consistently improved user experience and technical capabilities while maintaining high performance standards. Our achievements included streamlining deployment processes, enhancing cookie effectiveness, and implementing comprehensive telemetry and A/B experiments systems for quality assurance.
 
-#### Leading International Advertising Interfaces (Dec 2022)
+#### Leading Yandex International Advertising Interfaces (Dec 2022)
 
 In December 2022, I embraced an opportunity at Yandex's International Advertising department in Belgrade, Serbia. I was tasked with building a team and developing infrastructure for a new advertising network interfaces. I was leading both Frontend and Backend teams, focusing primarily on recruitment and architectural decisions.
 
@@ -32,7 +32,7 @@ Early 2024 brought significant restructuring as we organized into three speciali
 
 🤷‍♂️ This part of the document is missing because the information is too recent. Please contact me if you would like to clarify the details.
 
-Over my career in Yandex, I've conducted more than 150 job interviews and hired about 20 people for my teams. I've given three public speeches in English and even created a programming championship task that's been solved over 1,500 times.
+Over my career in Yandex, I've conducted more than 250 job interviews and hired about 20 people for my teams. I've given three public speeches in English and even created a programming championship task that's been solved over 1,500 times.
 
 ### MiraLogic (Jun 2015)
 

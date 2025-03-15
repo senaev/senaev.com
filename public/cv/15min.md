@@ -1,4 +1,3 @@
-
 <!-- Version for senaev.com website from Obsidian Vault, copy content below  -->
 
 ## My Journey to Becoming a Software Engineer
@@ -105,6 +104,6 @@ After two weeks, I was appointed team leader of both Frontend and Backend teams.
 
 ### Looking back
 
-During my time at Yandex, I conducted over 150 job interviews covering layout, algorithms, system design, and culture fit. I personally hired around 20 people for my team.
+During my time at Yandex, I conducted over 250 job interviews covering layout, algorithms, system design, and culture fit. I personally hired around 20 people for my team.
 
 I have also delivered three public speeches in English and designed the “Knight’s Move” task for a programming championship, which has been solved more than 1,500 times to date.

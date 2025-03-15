@@ -1,7 +1,7 @@
 # Andrei Senaev
 
 <img
-  src="https://senaev.com/img/avatar-head.jpeg"
+  src="https://senaev.com/img/avatar-head.webp"
   width="150"
   height="auto"
   style="border-radius:50%"
