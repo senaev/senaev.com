@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { ErrorPage } from 'components/ErrorPage';
 import { MarkdownHeader } from 'components/MarkdownHeader';
+import { PrintButton } from 'components/PrintButton/PrintButton';
 import {
     SENAEV_AVAILABLE_CV_VERSIONS,
     SENAEV_CURRENT_DUTY_SHORT,
@@ -112,6 +113,9 @@ export default async function Page ({
         </aside>
 
         <main className={styles.Content}>
+            <div className={styles.Content__noPrint}>
+                <PrintButton />
+            </div>
             <MarkdownHeader
                 depth={2}
                 id={'about-me'}

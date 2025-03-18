@@ -1,0 +1,9 @@
+.PrintButton {
+    cursor: pointer;
+}
+
+@media print {
+    .PrintButton {
+        display: none;
+    }
+}
