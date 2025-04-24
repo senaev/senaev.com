@@ -12,12 +12,18 @@ const FOLDERS_TO_IGNORE = new Set([
 const PUBLIC_FOLDER_NAME = 'public';
 
 export class NotesFileManager {
-    private filesMap = new Map<string, string>();
+    private filesMap: Map<string, string> = new Map();
 
     constructor(private readonly rootDirectory: string) { }
 
     private async rescan(): Promise<void> {
         const publicFolder = resolve(this.rootDirectory, PUBLIC_FOLDER_NAME);
+
+        const rootPathExists = await pathExists(publicFolder);
+        if (!rootPathExists) {
+            this.filesMap = new Map();
+            return;
+        }
 
         this.filesMap = await getAllFilesInFolder({
             rootDirectory: publicFolder,

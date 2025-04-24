@@ -25,7 +25,7 @@ export default async function Page({
     const file = await NOTES_FILE_MANAGER.findFile(`${decodedId}.md`);
 
     if (!file) {
-        return notFound();
+        return <ErrorPage message={'File does not exist'}/>;
     }
 
     const { path: filePath, isInPublicFolder } = file;
