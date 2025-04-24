@@ -22,10 +22,11 @@ export default async function Page({
         return <ErrorPage message={'NOTES_FOLDER does not exist'}/>;
     }
 
-    const file = await NOTES_FILE_MANAGER.findFile(`${decodedId}.md`);
+    const noteFileName = `${decodedId}.md`;
+    const file = await NOTES_FILE_MANAGER.findFile(noteFileName);
 
     if (!file) {
-        return <ErrorPage message={'File does not exist'}/>;
+        return <ErrorPage message={`Note=[${noteFileName}] does not exist`}/>;
     }
 
     const { path: filePath, isInPublicFolder } = file;
