@@ -1,7 +1,5 @@
-
 import { forOwn } from '../forOwn';
-
-import type { Invert } from 'utils/types/Invert';
+import type { Invert } from './Invert';
 
 /**
  * Changes keys with their corresponding values in the object
