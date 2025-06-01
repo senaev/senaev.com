@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Ad Placement API HTML5 demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <canvas id="gameContainer" height="300px" width="300px"></canvas>
+    <br>
+    <button id="playButton">Play</button>
+    <button style="display:none" id="headsButton">Heads</button>
+    <button style="display:none" id="tailsButton">Tails</button>
+    <button style="display:none" id="continueButton">Watch Ad to continue?</button>
+    <button id="muteButton">Mute sound</button>
+
+    <script async data-adbreak-test="on"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-123456789"
+        crossorigin="anonymous">
+        </script>
+    <script>
+        window.adsbygoogle = window.adsbygoogle || [];
+        const adBreak = adConfig = function (o) { adsbygoogle.push(o); }
+    </script>
+    <script src="game.js"></script>
+</body>
+
+</html>
