@@ -20,7 +20,7 @@ export const ME_PAGE_LINK = '/me';
 export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.webp';
 
 export const SENAEV_ELEVATOR_PITCH = [
-    'I\'m a Frontend Engineering Leader with over a decade of revenue-driven experience in Ad Tech and Digital Media. At Yandex, I advanced from developer to team leader, where I managed video advertising technology.',
+    'I\'m a Full Stack Engineering Leader with over a decade of revenue-driven experience in Ad Tech and Digital Media. At Yandex, I advanced from developer to team leader, where I managed video advertising technology.',
     'Recently, I built and led a 20+ person international team developing a new advertising network—establishing the architecture from scratch.',
     'Throughout my career, I\'ve conducted 250+ interviews, hired 20+ team members, delivered major public presentations, and maintained an unwavering focus on creating measurable business results.',
 ];
