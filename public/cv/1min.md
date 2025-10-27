@@ -1,12 +1,12 @@
 ## Experience
 
-### [Yandex](https://ya.ru/) (Jan 2016 - present)
+### [Yandex](https://ya.ru/) (Feb 2016 - present)
 
 Leading Yandex International Advertising Interfaces (from Dec 2022)
 
 Leading Yandex Advertising Player (from Sep 2019)
 
-Frontend developer in Advertising Player (from Jan 2016)
+Frontend developer in Advertising Player (from Feb 2016)
 
 ### [MiraLogic IT](https://miralogic.ru/) (Jun 2015 - Feb 2016)
 
