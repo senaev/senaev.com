@@ -26,5 +26,5 @@ docker push cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
 ## Remote server
 
 ```bash
-ssh senaev@51.250.86.35
+ssh ubuntu@51.250.80.209
 ```

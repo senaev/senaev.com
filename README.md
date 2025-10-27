@@ -20,4 +20,3 @@
 
 -   [Short](/cv/1min) reading
 -   [Detailed](/cv/5min) reading
--   [Full story](/cv/15min) reading

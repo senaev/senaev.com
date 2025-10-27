@@ -1,0 +1,32 @@
+services:
+  senaev-com:
+    image: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
+    container_name: senaev-com
+    restart: unless-stopped
+    ports:
+      - "80:3000"
+    volumes:
+      - /home/ubuntu/webdav/data/notes-folder:/app/notes-folder
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  webdav:
+    image: bytemark/webdav
+    container_name: webdav
+    restart: always
+    ports:
+      - "9050:80"
+    volumes:
+      - /home/ubuntu/webdav:/var/lib/dav
+    environment:
+      - AUTH_TYPE=Digest
+      - USERNAME=admin
+      # place password in .env file
+      - PASSWORD=${WEBDAV_PASSWORD}
+    hostname: webdav.local

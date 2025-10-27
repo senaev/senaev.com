@@ -34,10 +34,6 @@ export const SENAEV_AVAILABLE_CV_VERSIONS = [
         name: 'Detailed',
         id: '5min',
     },
-    {
-        name: 'Full story',
-        id: '15min',
-    },
 ];
 
 export const SENAEV_CURRENT_DUTY = 'Team Leader of Yandex International Advertising Interfaces';
