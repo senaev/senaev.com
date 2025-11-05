@@ -22,6 +22,7 @@ import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownCon
 import { getObjectEntries } from 'utils/Object/getObjectEntries';
 import './index.css';
 import styles from './index.module.css';
+import type { JSX } from 'react';
 
 const AVATAR_SIZE = 150;
 
