@@ -109,12 +109,15 @@
 }
 
 .Content li {
-    display: inline-block;
+    color: #fff;
     background: #3498db;
-    color: white;
-    padding: 0.2em 0.4em;
+    border-radius: 0.7em;
     margin: 0.2em;
-    border-radius: 0.2em;
+    padding: 0em 0.8em;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 0.7em;
+    font-weight: 600;
+    display: inline-block;
 }
 
 @media (max-width: 850px) {

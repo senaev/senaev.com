@@ -12,7 +12,8 @@
 }
 
 .CvPage_container time {
-    font-weight: 400;
-    font-size: 0.8em;
+    font-weight: 600;
+    font-size: 0.65em;
+    font-family: 'Ubuntu Mono', monospace;
     color: #333;
 }

@@ -159,7 +159,7 @@ export const SENAEV_SKILLS: Record<string, string[]> = {
         'Multimedia in browser (MSE, DRM, Encoding)',
         'Jest / Selenium / Playwright',
         'A/B Testing, Availability',
-        ' Browser Telemetry and Performance Optimization',
+        'Browser Telemetry and Performance Optimization',
 
     ],
     Soft: [

@@ -42,7 +42,13 @@ export default async function Page ({
 
     const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
-    return <div className={classNames(styles.Container, FONT_MERRIWEATHER_CLASSNAMES, 'CvPage_container')}>
+    return <div
+        className={classNames(
+            styles.Container,
+            FONT_MERRIWEATHER_CLASSNAMES,
+            'CvPage_container'
+        )}
+    >
         <aside className={styles.Sidebar}>
             <div className={styles.AvatarContainer}>
                 <Link href={'/'}>
@@ -180,7 +186,7 @@ export default async function Page ({
                 getObjectEntries(SENAEV_SKILLS).map(([
                     skillCategory,
                     skillsArray,
-                ]) => <>
+                ], i) => <div key={i}>
                     <MarkdownHeader
                         depth={3}
                         id={`skill-category-${skillCategory}`}
@@ -191,7 +197,7 @@ export default async function Page ({
                             {skill}
                         </li>)}
                     </ul>
-                </>)
+                </div>)
             }
         </main>
     </div>;

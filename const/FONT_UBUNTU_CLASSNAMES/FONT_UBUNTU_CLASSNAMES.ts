@@ -3,7 +3,7 @@ import { Ubuntu } from 'next/font/google';
 import styles from './index.module.css';
 
 // Font from vas3k website
-const merriweather = Ubuntu({
+const font = Ubuntu({
     subsets: [
         'cyrillic',
         'latin',
@@ -28,5 +28,5 @@ const merriweather = Ubuntu({
 
 export const FONT_UBUNTU_CLASSNAMES = classNames(
     styles.FONT_UBUNTU_CLASSNAME,
-    merriweather.className
+    font.className
 );

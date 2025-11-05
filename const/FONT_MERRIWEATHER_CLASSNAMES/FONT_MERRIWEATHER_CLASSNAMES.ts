@@ -3,7 +3,7 @@ import { Merriweather } from 'next/font/google';
 import styles from './index.module.css';
 
 // Font from vas3k website
-const merriweather = Merriweather({
+const font = Merriweather({
     subsets: [
         'cyrillic',
         'latin',
@@ -27,6 +27,6 @@ const merriweather = Merriweather({
 });
 
 export const FONT_MERRIWEATHER_CLASSNAMES = classNames(
-    merriweather.className,
+    font.className,
     styles.FONT_MERRIWEATHER_CLASSNAME
 );
