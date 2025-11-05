@@ -1,7 +1,7 @@
 'use client';
 
 import React, { type JSX } from 'react';
-import { once } from 'utils/Function/once';
+import { once } from 'senaev-utils/src/utils/Function/once/once';
 import { loadScript } from 'utils/Script/loadScript';
 
 declare const Ya: {

@@ -45,7 +45,7 @@ export const dynamic = 'force-dynamic';
 
 // const CURRENT_PAGE_URL = '/fun/what-to-eat-today';
 
-export default async function Page ({ searchParams }: { searchParams: Promise<{ offset: string }> }): Promise<JSX.Element> {
+export default async function Page (): Promise<JSX.Element> {
     return <>
         {null}
     </>;
