@@ -1,6 +1,6 @@
 import type { CubeDirection } from '../types/CubeDirection';
 
-import { getObjectKeys } from 'senaev-utils/src/utils/Object/getObjectKeys/getObjectKeys';
+import { getObjectKeys } from 'utils/Object/getObjectKeys';
 
 export const CUBE_COLORS = {
     blue: undefined,

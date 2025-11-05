@@ -16,13 +16,13 @@ import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
 import Image from 'next/image';
 import Link from 'next/link';
 import { resolve } from 'path';
-import type { JSX } from 'react';
-import { getObjectEntries } from 'senaev-utils/src/utils/Object/getObjectEntries/getObjectEntries';
 import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
 import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
 import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
+import { getObjectEntries } from 'utils/Object/getObjectEntries';
 import './index.css';
 import styles from './index.module.css';
+import type { JSX } from 'react';
 
 const AVATAR_SIZE = 150;
 
