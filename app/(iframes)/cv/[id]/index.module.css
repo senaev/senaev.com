@@ -71,6 +71,11 @@
     margin: 0;
 }
 
+.Content .EducationItem__degree {
+    display: flex;
+    justify-content: space-between;
+}
+
 .Sidebar .Title {
     font-style: italic;
     margin-top: 0.1em;

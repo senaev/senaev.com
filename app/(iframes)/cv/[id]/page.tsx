@@ -144,13 +144,13 @@ export default async function Page ({
                     className={styles.EducationItem}
                     key={i}
                 >
-                    <p>
-                        {`${since}–${until}`}
-                    </p>
-                    <p>
+                    <p className={styles.EducationItem__degree}>
                         <strong>
                             {degree}
                         </strong>
+                        <time>
+                            {`${since} – ${until}`}
+                        </time>
                     </p>
                     <p>
                         <i>
