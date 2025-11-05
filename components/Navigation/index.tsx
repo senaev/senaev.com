@@ -3,6 +3,7 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { FONT_UBUNTU_CLASSNAMES } from 'const/FONT_UBUNTU_CLASSNAMES/FONT_UBUNTU_CLASSNAMES';
 import styles from './index.module.css';
+import type { JSX } from 'react';
 
 const PAGES = {
     '🏠': {

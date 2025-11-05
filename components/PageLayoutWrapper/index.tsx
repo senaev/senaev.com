@@ -4,7 +4,7 @@ import { GoogleTagManagerBody, GoogleTagManagerHead } from 'components/GoogleTag
 import { Navigation } from 'components/Navigation';
 import { YandexMetrikaCounter } from 'components/YandexMetrikaCounter';
 import { FONT_MERRIWEATHER_CLASSNAMES } from 'const/FONT_MERRIWEATHER_CLASSNAMES/FONT_MERRIWEATHER_CLASSNAMES';
-import React from 'react';
+import React, { type JSX } from 'react';
 
 export function PageLayoutWrapper ({ children }: { children: React.ReactNode }): JSX.Element {
     return (

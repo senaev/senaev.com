@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { type JSX } from 'react';
 
 export function GoogleAdUnit (): JSX.Element {
     React.useEffect(() => {

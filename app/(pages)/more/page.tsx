@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 const SUBPAGES = {
     Administration: {
         'Google Analytics': 'https://analytics.google.com/analytics/web/#/p371912726/reports/intelligenthome',

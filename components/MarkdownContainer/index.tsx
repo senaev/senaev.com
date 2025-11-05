@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import './MarkdownContainer.css';
 
 export function MarkdownContainer ({

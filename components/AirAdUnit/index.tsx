@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { type JSX } from 'react';
 import { once } from 'utils/Function/once';
 import { loadScript } from 'utils/Script/loadScript';
 

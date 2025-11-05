@@ -1,5 +1,5 @@
 import Script from 'next/script';
-import React from 'react';
+import React, { type JSX } from 'react';
 
 export function YandexMetrikaCounter (): JSX.Element {
     return (
