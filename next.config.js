@@ -2,6 +2,18 @@
 const nextConfig = {
     output: 'standalone',
     reactStrictMode: false,
+
+    // Experimental features for faster builds
+    experimental: {
+        // Enable SWC minification optimizations
+        optimizePackageImports: [
+            'marked',
+            'highlight.js',
+            'react',
+            'react-dom',
+        ],
+    },
+
     async rewrites() {
         return [
             {
