@@ -7,7 +7,14 @@ describe('tryStringify', () => {
             baz: 1,
             a: null,
             b: undefined,
-            array: ['foo', 'bar', 'baz', 1, 2, 3],
+            array: [
+                'foo',
+                'bar',
+                'baz',
+                1,
+                2,
+                3,
+            ],
             foobar() {
                 return 0;
             },

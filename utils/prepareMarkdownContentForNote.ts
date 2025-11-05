@@ -1,4 +1,3 @@
-
 function replaceWikiLinksInTextWithRelativeLinks(text: string) {
     const regex = /\[\[([^\]]*)\]\]/gm;
 

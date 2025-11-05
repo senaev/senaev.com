@@ -2,7 +2,9 @@
 'use client';
 
 import clsx from 'clsx';
-import { useEffect, useRef } from 'react';
+import {
+    useEffect, useRef, type JSX,
+} from 'react';
 
 import styles from './index.module.css';
 

@@ -1,4 +1,5 @@
 import { AirAdUnit } from 'components/AirAdUnit';
+import type { JSX } from 'react';
 
 export default function Page (): JSX.Element {
     return (

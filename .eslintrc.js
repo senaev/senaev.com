@@ -13,7 +13,6 @@ module.exports = {
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
-        'plugin:@next/next/recommended',
     ],
     settings: {
         react: {
@@ -39,6 +38,7 @@ module.exports = {
     plugins: [
         '@typescript-eslint',
         'react',
+        '@next/next',
     ],
     rules: {
         indent: [
@@ -73,6 +73,7 @@ module.exports = {
             'always',
         ],
         '@next/next/no-img-element': 'off',
+        '@next/next/no-html-link-for-pages': 'off',
         'no-console': ['error'],
         'comma-dangle': [
             'error',

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import React from 'react';
+import React, { type JSX } from 'react';
 import './globals.css';
 
 import { SENAEV_SITE_METADATA } from 'const/const';

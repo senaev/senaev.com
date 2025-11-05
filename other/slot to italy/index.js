@@ -1,169 +1,155 @@
-const puppeteer = require('puppeteer');
-const TelegramBot = require('node-telegram-bot-api');
+// const puppeteer = require('puppeteer');
+// const TelegramBot = require('node-telegram-bot-api');
 
-// Токен вашего Telegram-бота
-const token = '######';
-const chatId = -123456789;
-const bot = new TelegramBot(token, { polling: true });
+// // Токен вашего Telegram-бота
+// const token = '######';
+// const chatId = -123456789;
+// const bot = new TelegramBot(token, { polling: true });
 
-const NO_SLOT_TEXT = 'Sorry, all appointments for this service are currently booked. Please check again tomorrow for cancellations or new appointments.';
+// const NO_SLOT_TEXT = 'Sorry, all appointments for this service are currently booked. Please check again tomorrow for cancellations or new appointments.';
 
-// Данные для входа на сайт
-const login = '####@gmail.com'; // Замените на ваш логин
-const password = '####'; // Замените на ваш пароль
+// // Данные для входа на сайт
+// const login = '####@gmail.com'; // Замените на ваш логин
+// const password = '####'; // Замените на ваш пароль
 
-// URL сайта посольства
-const url = 'https://prenotami.esteri.it/Services';
+// // URL сайта посольства
+// const url = 'https://prenotami.esteri.it/Services';
 
-function delay(time) {
-    return new Promise(function (resolve) {
-        setTimeout(resolve, time);
-    });
-}
+// function delay(time) {
+//     return new Promise(function (resolve) {
+//         setTimeout(resolve, time);
+//     });
+// }
 
-const browserSize = {
-    width: 1080,
-    height: 720,
-};
+// const browserSize = {
+//     width: 1080,
+//     height: 720,
+// };
 
-// Функция для проверки наличия слотов
-async function checkSlotAvailability() {
-    console.log('start browser');
-    const browser = await puppeteer.launch({
-        headless: false,
-        ignoreHTTPSErrors: true,
-        args: [`--window-size=${browserSize.width},${browserSize.height}`],
-    });
+// // Функция для проверки наличия слотов
+// async function checkSlotAvailability() {
+//     console.log('start browser');
+//     const browser = await puppeteer.launch({
+//         headless: false,
+//         ignoreHTTPSErrors: true,
+//         args: [`--window-size=${browserSize.width},${browserSize.height}`],
+//     });
 
+//     const page = await browser.newPage();
 
-    const page = await browser.newPage();
+//     await page.setViewport({
+//         ...browserSize,
+//         deviceScaleFactor: 1,
+//         isMobile: false,
+//     });
 
-    await page.setViewport({
-        ...browserSize,
-        deviceScaleFactor: 1,
-        isMobile: false,
-    });
+//     async function error(errorMessage) {
+//         // const html = await page.content();
+//         bot.sendMessage(chatId, `Error=[${errorMessage}]`);
+//     }
 
+//     try {
+//         // Переход на сайт
+//         await page.goto(url, { waitUntil: 'networkidle2' });
 
-    async function error(errorMessage) {
-        // const html = await page.content();
-        bot.sendMessage(chatId, `Error=[${errorMessage}]`);
-    }
+//         // Проверка наличия полей для логина
+//         const loginFieldExists = await page.evaluate(() => document.body.innerText.includes('Email') && document.body.innerText.includes('Password'));
 
+//         if (loginFieldExists) {
+//             await delay(1000);
+//             // Заполнение полей логина и пароля
+//             await page.type('input[name="Email"]', login);
+//             await delay(1000);
+//             await page.type('input[name="Password"]', password);
+//             await delay(1000);
+//             await page.click('button[type="submit"]');
 
-    try {
-        // Переход на сайт
-        await page.goto(url, { waitUntil: 'networkidle2' });
+//             console.log('inputs filled');
+//             await page.waitForNavigation({ waitUntil: 'networkidle2' });
+//         } else {
+//             throw new Error('no login fields');
+//         }
 
-        // Проверка наличия полей для логина
-        const loginFieldExists = await page.evaluate(() => {
-            return document.body.innerText.includes('Email') && document.body.innerText.includes('Password');
-        });
+//         console.log('Successfully login');
 
-        if (loginFieldExists) {
-            await delay(1000);
-            // Заполнение полей логина и пароля
-            await page.type('input[name="Email"]', login);
-            await delay(1000);
-            await page.type('input[name="Password"]', password);
-            await delay(1000);
-            await page.click('button[type="submit"]');
+//         await delay(1000);
 
-            console.log('inputs filled');
-            await page.waitForNavigation({ waitUntil: 'networkidle2' });
-        } else {
-            throw new Error('no login fields');
-        }
+//         // Проверка наличия текстов для записи на визу
+//         const slotAvailable = await page.evaluate(() => {
+//             const service1 = document.body.innerText.includes('Termini vize za: TURIZAM (šalter_1)');
+//             const service2 = document.body.innerText.includes('Termini vize za : TURIZAM (шalter_2)');
+//             return service1 || service2;
+//         });
 
-        console.log('Successfully login');
+//         console.log('Тексты записи на визу найдены');
+//         await delay(1000);
 
-        await delay(1000);
+//         if (!slotAvailable) {
+//             throw new Error('Тексты записи на визу НЕ найдены');
+//         }
 
-        // Проверка наличия текстов для записи на визу
-        const slotAvailable = await page.evaluate(() => {
-            const service1 = document.body.innerText.includes('Termini vize za: TURIZAM (šalter_1)');
-            const service2 = document.body.innerText.includes('Termini vize za : TURIZAM (шalter_2)');
-            return service1 || service2;
-        });
+//         const content = await page.evaluate(() => document.body.innerText);
+//         console.log('Page content]');
 
-        console.log('Тексты записи на визу найдены');
-        await delay(1000);
+//         await delay(1000);
 
+//         // Нажимаем кнопку "РЕЗЕРВИШИ"
+//         const buttons = await page.$$('button.primary');
+//         console.log(`Buttons.length=[${buttons.length}]`);
 
-        if (!slotAvailable) {
-            throw new Error('Тексты записи на визу НЕ найдены');
-        }
+//         const button = buttons[2];
+//         if (!button) {
+//             throw new Error(`Button has not been found, page content = [${content}]`);
+//         }
+//         console.log('Button found!');
 
-        const content = await page.evaluate(() => {
-            return document.body.innerText;
-        });
-        console.log('Page content]');
+//         button.evaluate((el) => {
+//             el.style.fontSize = 50 + 'px';
+//             el.style.color = 'red';
+//         });
 
-        await delay(1000);
+//         await delay(2000);
 
-        // Нажимаем кнопку "РЕЗЕРВИШИ"
-        const buttons = await page.$$('button.primary');
-        console.log(`Buttons.length=[${buttons.length}]`);
+//         await button.click();
+//         console.log('Button clicked!');
 
-        const button = buttons[2];
-        if (!button) {
-            throw new Error(`Button has not been found, page content = [${content}]`);
-        }
-        console.log('Button found!');
+//         console.log('Wait for second navigation!');
+//         await page.waitForNavigation({ waitUntil: 'networkidle2' });
+//         console.log('Second navigation successfull');
 
-        button.evaluate((el) => {
-            el.style.fontSize = 50 + 'px';
-            el.style.color = 'red';
-        });
+//         await delay(2000);
 
+//         const secondContent = await page.evaluate(() => document.body.innerText);
+//         console.log('Page content]');
 
-        await delay(2000);
+//         if (secondContent.includes(NO_SLOT_TEXT)) {
+//             throw new Error('There is no slot!!!');
+//         }
 
-        await button.click();
-        console.log('Button clicked!');
+//         await delay(1000000);
 
+//         // await button.click();
+//         // await page.waitForTimeout(2000); // Ждём загрузки окна
 
-        console.log('Wait for second navigation!');
-        await page.waitForNavigation({ waitUntil: 'networkidle2' });
-        console.log('Second navigation successfull');
+//         // // Проверяем, есть ли слоты
+//         // const slotMessage = await page.evaluate(() => {
+//         //     return document.body.innerText.includes('Sorry, all appointments for this service are currently booked.');
+//         // });
 
-        await delay(2000);
+//         // if (slotMessage) {
+//         //     console.log('Слотов нет');
+//         // } else {
+//         //     // Уведомление в Telegram
+//         //     bot.sendMessage(chatId, 'Есть свободный слот для записи на визу!');
+//         // }
 
-        const secondContent = await page.evaluate(() => {
-            return document.body.innerText;
-        });
-        console.log('Page content]');
+//     } catch (e) {
+//         error(`Ошибка при проверке наличия слотов [${e.message}]`);
+//     } finally {
+//         await browser.close();
+//     }
+// }
 
-        if (secondContent.includes(NO_SLOT_TEXT)) {
-            throw new Error('There is no slot!!!');
-        }
-
-        await delay(1000000);
-
-        // await button.click();
-        // await page.waitForTimeout(2000); // Ждём загрузки окна
-
-        // // Проверяем, есть ли слоты
-        // const slotMessage = await page.evaluate(() => {
-        //     return document.body.innerText.includes('Sorry, all appointments for this service are currently booked.');
-        // });
-
-        // if (slotMessage) {
-        //     console.log('Слотов нет');
-        // } else {
-        //     // Уведомление в Telegram
-        //     bot.sendMessage(chatId, 'Есть свободный слот для записи на визу!');
-        // }
-
-    } catch (e) {
-        error(`Ошибка при проверке наличия слотов [${e.message}]`);
-    } finally {
-        await browser.close();
-    }
-}
-
-
-
-// // Запуск проверки раз в минуту
-// setTimeout(checkSlotAvailability, 1000);
-checkSlotAvailability();
+// // // Запуск проверки раз в минуту
+// // setTimeout(checkSlotAvailability, 1000);
+// checkSlotAvailability();

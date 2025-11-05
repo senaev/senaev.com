@@ -2,7 +2,7 @@ export function callFirstThenOther<T extends (
     this: unknown, ...args: unknown[]) => unknown>(
     this: unknown,
     first: T,
-    other: T,
+    other: T
 ): T {
     let called = false;
     const wrapper = function (this: unknown) {

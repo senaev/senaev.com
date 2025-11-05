@@ -47,7 +47,9 @@ describe('filterObject', () => {
         },
     ];
 
-    testCases.forEach(({ name, filter, result }) => {
+    testCases.forEach(({
+        name, filter, result,
+    }) => {
         it(name, () => {
             expect(filterObject(object, filter)).toEqual(result);
         });

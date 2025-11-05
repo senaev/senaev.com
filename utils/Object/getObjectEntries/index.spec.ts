@@ -20,8 +20,14 @@ describe('getObjectEntries', () => {
 
     it('native (just own properties)', () => {
         expect(getObjectEntries(testInstance)).toStrictEqual([
-            ['prop1', 1],
-            ['prop2', 2],
+            [
+                'prop1',
+                1,
+            ],
+            [
+                'prop2',
+                2,
+            ],
         ]);
     });
 
@@ -35,9 +41,18 @@ describe('getObjectEntries', () => {
         const keys = getObjectEntries(StringEnum);
 
         expect(keys).toStrictEqual([
-            ['prop1', 'value1'],
-            ['prop2', 'value2'],
-            ['prop3', 'value3'],
+            [
+                'prop1',
+                'value1',
+            ],
+            [
+                'prop2',
+                'value2',
+            ],
+            [
+                'prop3',
+                'value3',
+            ],
         ]);
 
         // typescript passes through property name types

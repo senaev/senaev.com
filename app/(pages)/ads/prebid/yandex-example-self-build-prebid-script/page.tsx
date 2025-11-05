@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, type JSX } from 'react';
 
 import { loadScript } from 'utils/Script/loadScript';
 import type { Bid, PrebidWindow } from 'utils/types/Prebid';

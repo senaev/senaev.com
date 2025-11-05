@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import './index.css';
 import styles from './index.module.css';
+import type { JSX } from 'react';
 
 const AVATAR_SIZE = 150;
 

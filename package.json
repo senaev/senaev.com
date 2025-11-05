@@ -10,8 +10,8 @@
         "docker:build": "docker build --platform linux/amd64 -t senaev.com . && docker tag senaev.com cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest && docker push cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest",
         "docker:upgrade": "./docker-deploy.sh",
         "connect-to-cursor-ssh": "./connect-to-cursor-ssh.sh",
-        "lint": "next lint",
-        "lint:fix": "next lint --fix",
+        "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
+        "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {

@@ -1,4 +1,3 @@
-
 import { hasOwnProperty } from '../hasOwnProperty';
 
 export function deleteUndefinedProperties<T extends Record<string, unknown>>(obj: T): Partial<T> {

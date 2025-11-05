@@ -4,9 +4,7 @@ import { mapObjectKeys } from './';
 
 describe('mapObjectKeys', () => {
     it('empty object', () => {
-        expect(mapObjectKeys({}, () => {
-            return generateHexString(64);
-        })).toEqual({});
+        expect(mapObjectKeys({}, () => generateHexString(64))).toEqual({});
     });
     it('passing key and value params', () => {
         const initialObject = {
@@ -15,9 +13,7 @@ describe('mapObjectKeys', () => {
             3: 6,
         };
 
-        expect(mapObjectKeys(initialObject, (key, value) => {
-            return `propertyName_${key}_${value}`;
-        })).toEqual({
+        expect(mapObjectKeys(initialObject, (key, value) => `propertyName_${key}_${value}`)).toEqual({
             propertyName_1_4: 4,
             propertyName_2_5: 5,
             propertyName_3_6: 6,
@@ -35,9 +31,7 @@ describe('mapObjectKeys', () => {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ignore
         const lastIterableValue = entries[entries.length - 1]![1];
 
-        expect(mapObjectKeys(initialObject, () => {
-            return 'propertyName';
-        })).toEqual({
+        expect(mapObjectKeys(initialObject, () => 'propertyName')).toEqual({
             propertyName: lastIterableValue,
         });
     });

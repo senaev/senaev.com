@@ -3,8 +3,14 @@ import { entriesToObject } from './';
 describe('entriesToObject', () => {
     it('normal logic', () => {
         expect(entriesToObject([
-            ['prop1', 1],
-            ['prop2', 2],
+            [
+                'prop1',
+                1,
+            ],
+            [
+                'prop2',
+                2,
+            ],
         ])).toEqual({
             prop1: 1,
             prop2: 2,
@@ -13,11 +19,26 @@ describe('entriesToObject', () => {
 
     it('last value from the same object property names', () => {
         const object = entriesToObject([
-            ['prop1', 1],
-            ['prop2', 2],
-            ['prop2', 22],
-            ['prop3', 3],
-            ['prop2', 222],
+            [
+                'prop1',
+                1,
+            ],
+            [
+                'prop2',
+                2,
+            ],
+            [
+                'prop2',
+                22,
+            ],
+            [
+                'prop3',
+                3,
+            ],
+            [
+                'prop2',
+                222,
+            ],
         ]);
 
         expect(object).toEqual({

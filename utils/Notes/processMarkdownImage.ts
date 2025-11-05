@@ -18,10 +18,12 @@ function getMarkdownSizeByAnnotation(annotationRaw: string): {
         };
     }
 
-
     const parts = annotation.split('x');
     if (parts.length === 2) {
-        const [w, h] = parts;
+        const [
+            w,
+            h,
+        ] = parts;
 
         if (isNumber(w) && isNumber(h)) {
             return {
@@ -43,7 +45,6 @@ function getMarkdownSizeByAnnotation(annotationRaw: string): {
 
     return {};
 }
-
 
 /**
  * Something is set as a title or size
@@ -91,7 +92,9 @@ function getMarkdownImageAttributes({
 export function processMarkdownImage(input: Tokens.Image): string {
     const { href, text } = input;
 
-    const { src, width, height } = getMarkdownImageAttributes({
+    const {
+        src, width, height,
+    } = getMarkdownImageAttributes({
         href,
         annotation: text,
     });
@@ -102,9 +105,14 @@ export function processMarkdownImage(input: Tokens.Image): string {
             width,
             height,
         })
-        .filter(([, value]) => Boolean(value));
+        .filter(([
+            , value,
+        ]) => Boolean(value));
 
-    const attributesString = attributes.map(([key, value]) => `${key}="${value}"`).join(' ');
+    const attributesString = attributes.map(([
+        key,
+        value,
+    ]) => `${key}="${value}"`).join(' ');
 
     return `<img ${attributesString}>`;
 }

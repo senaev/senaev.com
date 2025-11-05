@@ -4,18 +4,31 @@ import { mapObjectValues } from '.';
 
 describe('mapObjectValues', () => {
     const testCases: [Record<string, unknown>, Record<string, unknown>][] = [
-        [{}, {}],
-        [{ foo: 1 }, { foo: 'foo-1' }],
         [
-            { foo: 1, bar: 2 },
-            { foo: 'foo-1', bar: 'bar-2' },
+            {},
+            {},
+        ],
+        [
+            { foo: 1 },
+            { foo: 'foo-1' },
+        ],
+        [
+            {
+                foo: 1,
+                bar: 2,
+            },
+            {
+                foo: 'foo-1',
+                bar: 'bar-2',
+            },
         ],
     ];
-    testCases.forEach(([obj, expectedResult]) => {
+    testCases.forEach(([
+        obj,
+        expectedResult,
+    ]) => {
         it(`${JSON.stringify(obj)} -> ${String(expectedResult)}`, () => {
-            expect(mapObjectValues(obj, (value, key) => {
-                return `${key}-${String(value)}`;
-            })).toEqual(expectedResult);
+            expect(mapObjectValues(obj, (value, key) => `${key}-${String(value)}`)).toEqual(expectedResult);
         });
     });
 

@@ -3,7 +3,7 @@ type Cb = (e: unknown) => unknown;
 
 export function tryCatch<T extends Fn, E extends Cb>(
     fn: T,
-    onError?: E,
+    onError?: E
 ): ReturnType<T> | undefined {
     try {
         return fn() as ReturnType<T>;

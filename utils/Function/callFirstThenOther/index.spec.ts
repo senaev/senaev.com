@@ -5,12 +5,8 @@ describe('callFirstThenOther', () => {
     let other: jest.Mock;
 
     beforeEach(() => {
-        first = jest.fn(() => {
-            return 1;
-        });
-        other = jest.fn(() => {
-            return 2;
-        });
+        first = jest.fn(() => 1);
+        other = jest.fn(() => 2);
     });
 
     it('should call first once and other for all other calls', () => {
@@ -19,12 +15,18 @@ describe('callFirstThenOther', () => {
         expect(wrapper('foo', 'bar')).toEqual(1);
         expect(first.mock.calls.length).toEqual(1);
         expect(other.mock.calls.length).toEqual(0);
-        expect(first.mock.calls[0]).toEqual(['foo', 'bar']);
+        expect(first.mock.calls[0]).toEqual([
+            'foo',
+            'bar',
+        ]);
 
         expect(wrapper('bla', 'foo')).toEqual(2);
         expect(first.mock.calls.length).toEqual(1);
         expect(other.mock.calls.length).toEqual(1);
-        expect(other.mock.calls[0]).toEqual(['bla', 'foo']);
+        expect(other.mock.calls[0]).toEqual([
+            'bla',
+            'foo',
+        ]);
 
         expect(wrapper('foobar')).toEqual(2);
         expect(first.mock.calls.length).toEqual(1);

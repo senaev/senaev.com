@@ -1,4 +1,5 @@
 import { YandexAdUnit } from 'components/YandexAdUnit';
+import type { JSX } from 'react';
 
 function YandexAdUnitWrapped ({
     size,

@@ -2,6 +2,7 @@ import { getObjectEntries } from 'utils/Object/getObjectEntries';
 import { getHashFromString } from 'utils/Script/getHashFromString';
 
 import styles from './index.module.css';
+import type { JSX } from 'react';
 
 export const dynamic = 'force-dynamic';
 

@@ -1,4 +1,3 @@
-
 /**
  * differs from Partial<T>
  * Partial doesn't requires keys to be defined in object

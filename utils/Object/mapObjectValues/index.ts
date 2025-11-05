@@ -3,7 +3,7 @@ import { getObjectKeys } from '../getObjectKeys';
 export function mapObjectValues<O extends Record<string, unknown>, F extends (
     value: O[keyof O], key: keyof O) => unknown>(
     object: O,
-    mapFunction: F,
+    mapFunction: F
 ): Record<keyof O, ReturnType<F>> {
     const resultObject = {} as Record<keyof O, ReturnType<F>>;
 

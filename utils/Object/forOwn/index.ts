@@ -3,7 +3,7 @@ import { hasOwnProperty } from '../hasOwnProperty';
 export function forOwn<Obj extends Record<string, unknown>>(
     obj: Obj,
     fn: (value: Obj[keyof Obj], key: keyof Obj, obj: Obj) => void,
-    context?: unknown,
+    context?: unknown
 ): void {
     for (const key in obj) {
         if (hasOwnProperty(obj, key)) {

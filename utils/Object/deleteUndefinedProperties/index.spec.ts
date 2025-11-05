@@ -1,4 +1,3 @@
-
 import { deleteUndefinedProperties } from './';
 
 describe('deleteUndefinedProperties', () => {

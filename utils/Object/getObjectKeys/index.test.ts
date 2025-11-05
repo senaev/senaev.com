@@ -12,7 +12,10 @@ describe('getObjectKeys', () => {
     const testInstance = new TestClass(1, 2);
 
     it('native (just own properties)', () => {
-        expect(getObjectKeys(testInstance)).toEqual(['prop1', 'prop2']);
+        expect(getObjectKeys(testInstance)).toEqual([
+            'prop1',
+            'prop2',
+        ]);
     });
 
     it('string enum', () => {
@@ -24,7 +27,11 @@ describe('getObjectKeys', () => {
 
         const keys = getObjectKeys(StringEnum);
 
-        expect(keys).toEqual(['prop1', 'prop2', 'prop3']);
+        expect(keys).toEqual([
+            'prop1',
+            'prop2',
+            'prop3',
+        ]);
 
         // typescript passes through property name types
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ignore
