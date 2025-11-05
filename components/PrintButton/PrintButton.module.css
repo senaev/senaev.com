@@ -1,5 +1,6 @@
 .PrintButton {
     cursor: pointer;
+    font-family: 'Ubuntu Mono', monospace;
 }
 
 @media print {
