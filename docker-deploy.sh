@@ -15,6 +15,8 @@ scp docker-compose.prod.yaml ubuntu@51.250.80.209:/home/ubuntu/docker-compose/
 echo "🔄 Deploying on server..."
 ssh -t ubuntu@51.250.80.209 '
     cd /home/ubuntu/docker-compose
+    echo "🛑 Stopping containers..."
+    sudo docker compose -f docker-compose.prod.yaml down || true
     echo "🗑️  Removing old image..."
     sudo docker image rm cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest || true
     echo "📥 Pulling latest image..."

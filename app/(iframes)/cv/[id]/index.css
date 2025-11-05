@@ -6,3 +6,13 @@
 .CvPage_container :is(h1, h2, h3, h4, h5, h6):hover .MarkdownContainer_anchor {
     opacity: 1;
 }
+
+.CvPage_container :is(h1, h2, h3, h4, h5, h6) time {
+    float: right;
+}
+
+.CvPage_container time {
+    font-weight: 400;
+    font-size: 0.8em;
+    color: #333;
+}
