@@ -37,7 +37,7 @@ export const SENAEV_AVAILABLE_CV_VERSIONS = [
 ];
 
 export const SENAEV_CURRENT_DUTY = 'Team Leader of Yandex International Advertising Interfaces';
-export const SENAEV_CURRENT_DUTY_SHORT = 'Frontend Engineer, Team Leader';
+export const SENAEV_CURRENT_DUTY_SHORT = 'Full-Stack Engineer, Team Leader';
 
 type Contact = {
     header: string;
