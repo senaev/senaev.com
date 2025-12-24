@@ -17,6 +17,14 @@
 }
 
 
+.MarkdownContainer_mark {
+    background-color: rgba(255, 177, 80, 0.3);
+    padding: 0.1em 0.2em;
+    border-radius: 0.2em;
+}
+
+
+
 /*
 https://github.com/highlightjs/highlight.js/blob/main/src/styles/atom-one-light.css
 

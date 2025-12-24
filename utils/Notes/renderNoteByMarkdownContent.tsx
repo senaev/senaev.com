@@ -66,6 +66,34 @@ marked.use({
     },
 });
 
+// Custom extension for Obsidian highlights (==text==)
+marked.use({
+    extensions: [
+        {
+            name: 'obsidianHighlight',
+            level: 'inline',
+            start(src) {
+                return src.match(/==/)?.index ?? undefined;
+            },
+            tokenizer(src) {
+                const rule = /^==([^=]+)==/;
+                const match = rule.exec(src);
+                if (match) {
+                    return {
+                        type: 'obsidianHighlight',
+                        raw: match[0],
+                        text: match[1],
+                    };
+                }
+                return undefined;
+            },
+            renderer(token) {
+                return `<mark class="MarkdownContainer_mark">${token.text}</mark>`;
+            },
+        },
+    ],
+});
+
 marked.use(markedHighlight({
     emptyLangClass: 'hljs',
     langPrefix: 'hljs language-',
