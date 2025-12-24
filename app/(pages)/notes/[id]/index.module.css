@@ -1,3 +1,7 @@
+:root {
+    --table-border-spacing: 0.5em;
+}
+
 .NotePage_container {
     display: flex;
     justify-content: center;
@@ -71,15 +75,6 @@
     list-style-type: disc;
 }
 
-.NotePage__main div>ul {
-    padding-left: 0;
-}
-
-
-.NotePage__main li {
-    margin-top: 0.3em;
-}
-
 .NotePage__main li::marker,
 .NotePage__main dt::marker {
     font-size: 0.75em;
@@ -88,6 +83,18 @@
 .NotePage__main img {
     max-width: 100%;
 }
+
+.NotePage__main code {
+    background-color: lightgray;
+    border-radius: 0.2em;
+}
+
+.NotePage__main table {
+    border-spacing: var(--table-border-spacing) 0;
+    margin: 0 calc(var(--table-border-spacing) * -1);
+}
+
+
 
 @media (max-width: 800px) {
     .NotePage__main div>ul {
