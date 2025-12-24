@@ -31,7 +31,7 @@
         "jquery": "3.7.1",
         "jquery.transit": "0.9.12",
         "marked": "17.0.1",
-        "marked-highlight": "2.2.2",
+        "marked-highlight": "2.2.3",
         "next": "16.0.7",
         "path-exists": "5.0.0",
         "prettier": "3.6.2",
