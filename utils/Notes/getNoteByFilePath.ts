@@ -16,7 +16,7 @@ function removeFrontmatter(markdown: string): string {
         return markdown;
     }
 
-    return markdown.substring(secondDelimiter + SECOND_DELIMITER.length);
+    return trimmed.substring(secondDelimiter + SECOND_DELIMITER.length);
 }
 
 export async function getNoteByFilePath({
