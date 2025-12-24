@@ -1,28 +1,32 @@
 import { promises } from 'fs';
-import { parse } from 'yaml';
+
+const FIRST_DELIMITER = '---\n';
+const SECOND_DELIMITER = '\n---\n';
+
+function removeFrontmatter(markdown: string): string {
+    const trimmed = markdown.trim();
+
+    if (!trimmed.startsWith(FIRST_DELIMITER)) {
+        return markdown;
+    }
+
+    const secondDelimiter = trimmed.indexOf(SECOND_DELIMITER, FIRST_DELIMITER.length);
+
+    if (secondDelimiter === -1) {
+        return markdown;
+    }
+
+    return markdown.substring(secondDelimiter + SECOND_DELIMITER.length);
+}
 
 export async function getNoteByFilePath({
     filePath,
 }: {
     filePath: string
-}): Promise<{
-    markdownContent: string;
-    yamlAttributes: ReturnType<typeof parse>;
-}> {
+}): Promise<string> {
     const fileContent = (await promises.readFile(filePath)).toString();
 
-    let markdownContent = fileContent;
+    const withoutFrontmatter = removeFrontmatter(fileContent);
 
-    let yamlAttributes = undefined;
-    const mdPart = fileContent.split('---');
-    if (mdPart[0] === '' && mdPart.length > 2) {
-        yamlAttributes = parse(mdPart[1]!);
-
-        markdownContent = mdPart.splice(2).join('\n');
-    }
-
-    return {
-        markdownContent,
-        yamlAttributes,
-    };
+    return withoutFrontmatter;
 }

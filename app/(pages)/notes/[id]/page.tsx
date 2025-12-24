@@ -35,9 +35,7 @@ export default async function Page({
         return notFound();
     }
 
-    const {
-        markdownContent,
-    } = await getNoteByFilePath({ filePath });
+    const markdownContent = await getNoteByFilePath({ filePath });
 
     const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
