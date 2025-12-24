@@ -16,13 +16,13 @@ import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
 import Image from 'next/image';
 import Link from 'next/link';
 import { resolve } from 'path';
+import type { JSX } from 'react';
 import { getNextJsRootDirectory } from 'utils/getNextJsRootDirectory';
 import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
 import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import { getObjectEntries } from 'utils/Object/getObjectEntries';
 import './index.css';
 import styles from './index.module.css';
-import type { JSX } from 'react';
 
 const AVATAR_SIZE = 150;
 
@@ -39,7 +39,7 @@ export default async function Page ({
 
     const readmeFilePath = resolve(getNextJsRootDirectory(), `./public/cv/${id}.md`);
 
-    const { markdownContent } = await getNoteByFilePath({ filePath: readmeFilePath });
+    const markdownContent = await getNoteByFilePath({ filePath: readmeFilePath });
 
     const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
