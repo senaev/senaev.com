@@ -90,9 +90,37 @@
 }
 
 .NotePage__main table {
-    border-spacing: var(--table-border-spacing) 0;
-    margin: 0 calc(var(--table-border-spacing) * -1);
+    border-collapse: collapse;
 }
+
+.NotePage__main th,
+.NotePage__main td {
+    border: 1px solid #00000022;
+    padding: 0.2em 0.4em;
+}
+
+.NotePage__main tr:first-child th {
+    border-top: none;
+}
+
+.NotePage__main tr:last-child td {
+    border-bottom: none;
+}
+
+.NotePage__main th:first-child,
+.NotePage__main td:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
+.NotePage__main th:last-child,
+.NotePage__main td:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+
+
 
 
 
