@@ -1,3 +1,5 @@
+import { ensureEmptyLineAfterTables } from './Notes/ensureEmptyLineAfterTables/ensureEmptyLineAfterTables';
+
 function replaceWikiLinksInTextWithRelativeLinks(text: string) {
     const regex = /\[\[([^\]]*)\]\]/gm;
 
@@ -19,5 +21,7 @@ function replaceWikiLinksInTextWithRelativeLinks(text: string) {
 }
 
 export async function prepareMarkdownContentForNote(rawMarkdown: string): Promise<string> {
-    return replaceWikiLinksInTextWithRelativeLinks(rawMarkdown);
+    let processed = replaceWikiLinksInTextWithRelativeLinks(rawMarkdown);
+    processed = ensureEmptyLineAfterTables(processed);
+    return processed;
 }

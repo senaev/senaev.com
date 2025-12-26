@@ -1,3 +1,8 @@
+import {
+    describe,
+    expect,
+    it,
+} from 'vitest';
 import { groupBy } from './';
 
 type Student = { name: string; score: number; };

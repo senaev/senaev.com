@@ -1,3 +1,8 @@
+import {
+    describe,
+    expect,
+    it,
+} from 'vitest';
 import { noop } from '../../Function';
 
 import { mapObjectValues } from '.';

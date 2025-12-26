@@ -12,12 +12,13 @@
         "connect-to-cursor-ssh": "./connect-to-cursor-ssh.sh",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
         "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "test": "vitest",
+        "test:run": "vitest run"
     },
     "dependencies": {
         "@next/font": "14.2.15",
         "@types/is-number": "7.0.5",
-        "@types/jest": "30.0.0",
         "@types/jquery": "3.5.33",
         "@types/jquery.transit": "0.9.33",
         "@types/node": "24.10.0",
@@ -51,6 +52,7 @@
         "eslint-plugin-n": "16.6.2",
         "eslint-plugin-promise": "6.6.0",
         "eslint-plugin-react": "7.37.5",
-        "typescript": "5.9.3"
+        "typescript": "5.9.3",
+        "vitest": "4.0.16"
     }
 }

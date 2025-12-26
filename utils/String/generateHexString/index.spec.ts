@@ -1,3 +1,8 @@
+import {
+    describe,
+    expect,
+    it
+} from 'vitest';
 import { generateHexString } from './';
 
 const RANDOM_INT = Math.floor(Math.random() * (2 ** 10));

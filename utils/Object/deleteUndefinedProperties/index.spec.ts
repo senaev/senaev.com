@@ -1,3 +1,8 @@
+import {
+    describe,
+    expect,
+    it,
+} from 'vitest';
 import { deleteUndefinedProperties } from './';
 
 describe('deleteUndefinedProperties', () => {

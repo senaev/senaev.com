@@ -1,3 +1,8 @@
+import {
+    describe,
+    expect,
+    it,
+} from 'vitest';
 import { generateHexString } from '../../String';
 
 import { mapObjectKeys } from './';

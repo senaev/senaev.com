@@ -1,12 +1,19 @@
+import {
+    beforeEach,
+    describe,
+    expect,
+    it,
+    vi, type Mock,
+} from 'vitest';
 import { callFirstThenOther } from '.';
 
 describe('callFirstThenOther', () => {
-    let first: jest.Mock;
-    let other: jest.Mock;
+    let first: Mock;
+    let other: Mock;
 
     beforeEach(() => {
-        first = jest.fn(() => 1);
-        other = jest.fn(() => 2);
+        first = vi.fn(() => 1);
+        other = vi.fn(() => 2);
     });
 
     it('should call first once and other for all other calls', () => {

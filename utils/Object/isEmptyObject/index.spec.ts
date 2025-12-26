@@ -1,3 +1,8 @@
+import {
+    describe,
+    expect,
+    it,
+} from 'vitest';
 import { isEmptyObject } from '.';
 
 describe('isEmptyObject', () => {
