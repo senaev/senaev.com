@@ -96,6 +96,7 @@
 
 
 .NotePage__main table {
+    margin: 0.5em 0;
     border-collapse: collapse;
 }
 
@@ -103,6 +104,10 @@
 .NotePage__main td {
     border: 1px solid #00000022;
     padding: 0.2em 0.4em;
+}
+
+.NotePage__main th {
+    padding-top: 0;
 }
 
 .NotePage__main tr:first-child th {
