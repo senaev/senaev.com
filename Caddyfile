@@ -1,0 +1,15 @@
+{
+  email gsacryfice@gmail.com
+}
+
+test.senaev.com {
+  respond "Hello World from Caddy (TLS ok)\n" 200
+}
+
+senaev.com {
+  reverse_proxy senaev-com:3000
+}
+
+webdav.senaev.com {
+  reverse_proxy webdav:80
+}

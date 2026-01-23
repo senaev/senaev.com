@@ -1,11 +1,26 @@
 services:
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - web
+
   senaev-com:
     image: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
     container_name: senaev-com
     restart: unless-stopped
     ports:
-      - "80:3000"
+      - "3000:3000"
     volumes:
+      # todo: use env variable for local path
       - /home/ubuntu/webdav/data/notes-folder:/app/notes-folder
     environment:
       - NODE_ENV=production
@@ -20,6 +35,8 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    networks:
+      - web
 
   webdav:
     image: bytemark/webdav
@@ -32,11 +49,20 @@ services:
     environment:
       - AUTH_TYPE=Digest
       - USERNAME=admin
-      # place password in .env file
       - PASSWORD=${WEBDAV_PASSWORD}
+    # todo: remove this
     hostname: webdav.local
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
+    networks:
+      - web
+
+networks:
+  web:
+
+volumes:
+  caddy_data:
+  caddy_config:
