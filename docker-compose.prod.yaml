@@ -19,7 +19,7 @@ services:
   webdav:
     image: bytemark/webdav
     container_name: webdav
-    restart: always
+    restart: unless-stopped
     ports:
       - "9050:80"
     volumes:
