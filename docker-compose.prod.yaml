@@ -15,6 +15,11 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   webdav:
     image: bytemark/webdav
@@ -30,3 +35,8 @@ services:
       # place password in .env file
       - PASSWORD=${WEBDAV_PASSWORD}
     hostname: webdav.local
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
