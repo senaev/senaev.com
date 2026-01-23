@@ -7,9 +7,15 @@ set -e  # Exit on any error
 
 echo "🚀 Starting deployment to production server..."
 
-# Upload docker-compose file to server
+# Ensure directory exists on server
+echo "📁 Ensuring directory exists on server..."
+ssh ubuntu@51.250.80.209 'mkdir -p /home/ubuntu/docker-compose'
+
+# Upload config files to server
 echo "📤 Uploading docker-compose.prod.yaml to server..."
 scp docker-compose.prod.yaml ubuntu@51.250.80.209:/home/ubuntu/docker-compose/
+echo "📤 Uploading Caddyfile to server..."
+scp Caddyfile ubuntu@51.250.80.209:/home/ubuntu/docker-compose/
 
 # Execute deployment commands on server
 echo "🔄 Deploying on server..."
