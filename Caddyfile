@@ -10,6 +10,10 @@ senaev.com {
   reverse_proxy senaev-com:3000
 }
 
+senaev.ru {
+  reverse_proxy senaev-com:3000
+}
+
 webdav.senaev.com {
   reverse_proxy webdav:80
 }
