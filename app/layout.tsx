@@ -1,12 +1,26 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import React, { type JSX } from 'react';
 import './globals.css';
 
 import { SENAEV_SITE_METADATA } from 'const/const';
+import { prometheusCounters } from 'utils/prometheus/nextjs-metrics';
 
 export const metadata: Metadata = SENAEV_SITE_METADATA;
 
-export default function Layout ({ children }: { children: React.ReactNode }): JSX.Element {
+export default async function Layout ({
+    children,
+}: {
+    children: React.ReactNode;
+}): Promise<JSX.Element> {
+    const headersList = await headers();
+    const path = headersList.get('x-pathname') ?? 'unknown';
+    const method = headersList.get('x-method') ?? 'unknown';
+    prometheusCounters.nextjsHttpRequestsTotal.inc({
+        path,
+        method,
+    });
+
     return (
         <html lang={'en'}>
             <body>
