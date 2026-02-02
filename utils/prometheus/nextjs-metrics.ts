@@ -2,7 +2,9 @@ import { Counter, Registry } from 'prom-client';
 
 type NextjsPrometheusSingletone = {
     registry: Registry;
-    nextjsHttpRequestsTotal: Counter<string>;
+    counters: {
+        nextjsHttpRequestsTotal: Counter<string>;
+    }
 };
 
 declare global {
@@ -21,18 +23,21 @@ if (g.__nextjs_prometheus_singletone__) {
 } else {
     prometheus = {
         registry: new Registry(),
-        nextjsHttpRequestsTotal: new Counter({
-            name: 'nextjs_http_requests_total',
-            help: 'Total number of HTTP requests (page views)',
-            labelNames: [
-                'path',
-                'method',
-            ],
-        }),
+        counters: {
+            nextjsHttpRequestsTotal: new Counter({
+                name: 'nextjs_http_requests_total',
+                help: 'Total number of HTTP requests (page views)',
+                labelNames: [
+                    'path',
+                    'method',
+                ],
+            }),
+        },
     };
 
-    prometheus.registry.registerMetric(prometheus.nextjsHttpRequestsTotal);
+    prometheus.registry.registerMetric(prometheus.counters.nextjsHttpRequestsTotal);
     g.__nextjs_prometheus_singletone__ = prometheus;
 }
 
-export { prometheus };
+export const prometheusRegistry = prometheus.registry;
+export const prometheusCounters = prometheus.counters;
