@@ -1,15 +1,15 @@
 import { NextResponse } from 'next/server';
-import { nextjsMetricsRegistry } from 'utils/prometheus/nextjs-metrics';
+import { prometheus } from 'utils/prometheus/nextjs-metrics';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
 export async function GET() {
     try {
-        const metrics = await nextjsMetricsRegistry.metrics();
+        const metrics = await prometheus.registry.metrics();
         return new NextResponse(metrics, {
             headers: {
-                'Content-Type': nextjsMetricsRegistry.contentType,
+                'Content-Type': prometheus.registry.contentType,
             },
         });
     } catch (err) {

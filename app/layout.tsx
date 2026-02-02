@@ -4,7 +4,7 @@ import React, { type JSX } from 'react';
 import './globals.css';
 
 import { SENAEV_SITE_METADATA } from 'const/const';
-import { nextjsHttpRequestsTotal } from 'utils/prometheus/nextjs-metrics';
+import { prometheus } from 'utils/prometheus/nextjs-metrics';
 
 export const metadata: Metadata = SENAEV_SITE_METADATA;
 
@@ -16,7 +16,7 @@ export default async function Layout ({
     const headersList = await headers();
     const path = headersList.get('x-pathname') ?? 'unknown';
     const method = headersList.get('x-method') ?? 'unknown';
-    nextjsHttpRequestsTotal.inc({
+    prometheus.nextjsHttpRequestsTotal.inc({
         path,
         method,
     });
