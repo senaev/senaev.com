@@ -1,4 +1,3 @@
-# ❗️ rename to docker-compose.yaml
 services:
   caddy:
     image: caddy:2
@@ -75,6 +74,16 @@ services:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/prometheus"
       - "--web.enable-lifecycle"
+      # Ограничение хранилища метрик (TSDB)
+      - "--storage.tsdb.retention.time=15d"
+      - "--storage.tsdb.retention.size=512MB"
+      # Меньше записей в stdout
+      - "--log.level=warn"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
       - web
 
