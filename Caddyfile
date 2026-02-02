@@ -2,18 +2,22 @@
   email gsacryfice@gmail.com
 }
 
-test.senaev.com {
-  respond "Hello World from Caddy (TLS ok)\n" 200
-}
-
 senaev.com {
   reverse_proxy senaev-com:3000
 }
 
-senaev.ru {
-  reverse_proxy senaev-com:3000
+test.senaev.com {
+  respond "Hello World from Caddy (TLS ok)\n" 200
+}
+
+grafana.senaev.com {
+  reverse_proxy grafana:3000
 }
 
 webdav.senaev.com {
   reverse_proxy webdav:80
+}
+
+senaev.ru {
+  reverse_proxy senaev-com:3000
 }
