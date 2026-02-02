@@ -1,4 +1,7 @@
 {
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
     "cSpell.language": "en,ru",
     "cSpell.words": [
         "Andrei",
