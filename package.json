@@ -33,7 +33,7 @@
         "jquery.transit": "0.9.12",
         "marked": "17.0.1",
         "marked-highlight": "2.2.3",
-        "next": "16.0.7",
+        "next": "16.1.6",
         "path-exists": "5.0.0",
         "prettier": "3.6.2",
         "prom-client": "15.1.3",
