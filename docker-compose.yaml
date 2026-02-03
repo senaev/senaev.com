@@ -75,7 +75,7 @@ services:
       - -storageDataPath=/victoriametrics-data
       - -retentionPeriod=15d
       - -httpListenAddr=:8428
-      - -loggerLevel=warn
+      - -loggerLevel=WARN
     logging:
       driver: "json-file"
       options:
