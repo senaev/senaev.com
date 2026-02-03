@@ -18,6 +18,8 @@ echo "📤 Uploading Caddyfile to server..."
 scp Caddyfile ubuntu@51.250.80.209:/home/ubuntu/docker-compose/
 echo "📤 Uploading scrape.yml to server..."
 scp scrape.yml ubuntu@51.250.80.209:/home/ubuntu/docker-compose/
+echo "📤 Uploading grafana-victoriametrics.yml to server..."
+scp grafana-victoriametrics.yml ubuntu@51.250.80.209:/home/ubuntu/docker-compose/
 
 # Execute deployment commands on server
 echo "🔄 Deploying on server..."
