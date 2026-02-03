@@ -1,9 +1,8 @@
-# Prometheus config for senaev.com
-# Scrape Next.js app metrics
+# Scrape config (Prometheus format, used by VictoriaMetrics)
 scrape_configs:
-  - job_name: "prometheus"
+  - job_name: "victoriametrics"
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets: ["localhost:8428"]
 
   - job_name: "nextjs-senaev-com"
     metrics_path: "/api/metrics"

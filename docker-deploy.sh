@@ -16,8 +16,8 @@ echo "📤 Uploading docker-compose.yaml to server..."
 scp docker-compose.yaml ubuntu@51.250.80.209:/home/ubuntu/docker-compose/
 echo "📤 Uploading Caddyfile to server..."
 scp Caddyfile ubuntu@51.250.80.209:/home/ubuntu/docker-compose/
-echo "📤 Uploading prometheus.yml to server..."
-scp prometheus.yml ubuntu@51.250.80.209:/home/ubuntu/docker-compose/
+echo "📤 Uploading scrape.yml to server..."
+scp scrape.yml ubuntu@51.250.80.209:/home/ubuntu/docker-compose/
 
 # Execute deployment commands on server
 echo "🔄 Deploying on server..."
