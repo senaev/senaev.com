@@ -97,7 +97,7 @@ services:
       - GF_SERVER_ROOT_URL=${GRAFANA_ROOT_URL}
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./grafana-victoriametrics.yml:/etc/grafana/provisioning/datasources/grafana-victoriametrics.yml:ro
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
     depends_on:
       - victoriametrics
     networks:
