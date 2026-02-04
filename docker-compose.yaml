@@ -1,8 +1,15 @@
+x-logging: &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
+
 services:
   caddy:
     image: caddy:2
     container_name: caddy
     restart: unless-stopped
+    logging: *default-logging
     ports:
       - "80:80"
       - "443:443"
@@ -29,11 +36,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+    logging: *default-logging
     networks:
       - web
 
@@ -51,11 +54,7 @@ services:
       - PASSWORD=${WEBDAV_PASSWORD}
     # todo: remove this
     hostname: webdav.local
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+    logging: *default-logging
     networks:
       - web
 
@@ -74,11 +73,7 @@ services:
       - -retentionPeriod=15d
       - -httpListenAddr=:8428
       - -loggerLevel=WARN
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+    logging: *default-logging
     networks:
       - web
 
@@ -98,6 +93,7 @@ services:
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
     depends_on:
       - victoriametrics
+    logging: *default-logging
     networks:
       - web
 
