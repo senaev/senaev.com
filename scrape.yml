@@ -4,9 +4,9 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:8428"]
 
-  - job_name: "nextjs-senaev-com"
+  - job_name: "nextjs-app"
     metrics_path: "/api/metrics"
     static_configs:
-      - targets: ["senaev-com:3000"]
+      - targets: ["nextjs-app:3000"]
     scrape_interval: 15s
     scrape_timeout: 10s

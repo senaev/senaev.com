@@ -13,10 +13,9 @@ services:
     networks:
       - web
 
-  # ❗️ rename to nextjs-app
-  senaev-com:
+  nextjs-app:
     image: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
-    container_name: senaev-com
+    container_name: nextjs-app
     restart: unless-stopped
     ports:
       - "3000:3000"

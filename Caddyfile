@@ -3,7 +3,7 @@
 }
 
 senaev.com {
-  reverse_proxy senaev-com:3000
+  reverse_proxy nextjs-app:3000
 }
 
 test.senaev.com {
@@ -19,5 +19,5 @@ webdav.senaev.com {
 }
 
 senaev.ru {
-  reverse_proxy senaev-com:3000
+  reverse_proxy nextjs-app:3000
 }
