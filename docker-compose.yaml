@@ -1,3 +1,4 @@
+# TODO: удалить лишний проброс портов, которые не используются
 x-logging: &default-logging
   driver: "json-file"
   options:
@@ -52,8 +53,6 @@ services:
       - AUTH_TYPE=Digest
       - USERNAME=admin
       - PASSWORD=${WEBDAV_PASSWORD}
-    # todo: remove this
-    hostname: webdav.local
     logging: *default-logging
     networks:
       - web
@@ -93,6 +92,42 @@ services:
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
     depends_on:
       - victoriametrics
+    logging: *default-logging
+    networks:
+      - web
+
+  node-exporter:
+    image: prom/node-exporter:v1.7.0
+    container_name: node-exporter
+    restart: unless-stopped
+    command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --path.rootfs=/host/root
+      - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/host/root:ro
+    ports:
+      - "9100:9100"
+    logging: *default-logging
+    networks:
+      - web
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.2
+    container_name: cadvisor
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
     logging: *default-logging
     networks:
       - web
