@@ -9,7 +9,6 @@ services:
   caddy:
     image: caddy:2.8.4-alpine
     container_name: caddy
-    restart: unless-stopped
     logging: *default-logging
     ports:
       - "80:80"
@@ -18,13 +17,14 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
       - caddy_config:/config
+    restart: unless-stopped
+    logging: *default-logging
     networks:
       - web
 
   nextjs-app:
     image: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
     container_name: nextjs-app
-    restart: unless-stopped
     ports:
       - "3000:3000"
     volumes:
@@ -37,6 +37,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+    restart: unless-stopped
     logging: *default-logging
     networks:
       - web
@@ -44,7 +45,6 @@ services:
   webdav:
     image: bytemark/webdav
     container_name: webdav
-    restart: unless-stopped
     ports:
       - "9050:80"
     volumes:
@@ -53,6 +53,7 @@ services:
       - AUTH_TYPE=Digest
       - USERNAME=admin
       - PASSWORD=${WEBDAV_PASSWORD}
+    restart: unless-stopped
     logging: *default-logging
     networks:
       - web
@@ -60,7 +61,6 @@ services:
   victoriametrics:
     image: victoriametrics/victoria-metrics:v1.100.0
     container_name: victoriametrics
-    restart: unless-stopped
     ports:
       - "8428:8428"
     volumes:
@@ -72,6 +72,7 @@ services:
       - -retentionPeriod=15d
       - -httpListenAddr=:8428
       - -loggerLevel=WARN
+    restart: unless-stopped
     logging: *default-logging
     networks:
       - web
@@ -79,7 +80,6 @@ services:
   grafana:
     image: grafana/grafana:11.2.0
     container_name: grafana
-    restart: unless-stopped
     ports:
       - "3001:3000"
     environment:
@@ -92,6 +92,7 @@ services:
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
     depends_on:
       - victoriametrics
+    restart: unless-stopped
     logging: *default-logging
     networks:
       - web
@@ -99,7 +100,6 @@ services:
   node-exporter:
     image: prom/node-exporter:v1.7.0
     container_name: node-exporter
-    restart: unless-stopped
     command:
       - --path.procfs=/host/proc
       - --path.sysfs=/host/sys
@@ -111,6 +111,7 @@ services:
       - /:/host/root:ro
     ports:
       - "9100:9100"
+    restart: unless-stopped
     logging: *default-logging
     networks:
       - web
@@ -118,7 +119,6 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.47.2
     container_name: cadvisor
-    restart: unless-stopped
     privileged: true
     ports:
       - "8080:8080"
@@ -128,6 +128,7 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
+    restart: unless-stopped
     logging: *default-logging
     networks:
       - web
