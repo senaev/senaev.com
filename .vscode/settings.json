@@ -1,9 +1,11 @@
 {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",  
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
+        "source.fixAll.eslint": "explicit",
     },
     "cSpell.language": "en,ru",
-    "cSpell.words": [
+    "cSpell.words": [ 
         "Andrei",
         "Caddyfile",
         "MERRIWEATHER",

@@ -1,188 +1,190 @@
-body, html, #container{
-	width: 100%;
-	padding: 0;
-	margin: 0;
+body,
+html,
+#container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
-#container{
-	position: relative;
-	font-family: Arial, Tahoma, sans-serif;
-	font-weight: bold;
-	min-width: 570px;
+#container {
+    position: relative;
+    font-family: Arial, Tahoma, sans-serif;
+    font-weight: bold;
+    min-width: 570px;
 }
 #container input:focus {
-	outline:none;
+    outline: none;
 }
 #container input[type="phone"] {
-	width: 60px;
-	margin: 5px auto 10px auto;
-	border-radius: 20px;
-	height: 19px;
-	border-width: 2px;
-	border-style: solid;
-	padding: 0 5px;
-	text-align: center;
-	font-size: 19px;
+    width: 60px;
+    margin: 5px auto 10px auto;
+    border-radius: 20px;
+    height: 19px;
+    border-width: 2px;
+    border-style: solid;
+    padding: 0 5px;
+    text-align: center;
+    font-size: 19px;
 }
 #container input[type="button"] {
-	height: 60px;
-	width: 60px;
-	padding: 0;
-	border-width: 2px;
-	border-radius: 30px;
-	border-style: solid;
-	cursor: pointer;
+    height: 60px;
+    width: 60px;
+    padding: 0;
+    border-width: 2px;
+    border-radius: 30px;
+    border-style: solid;
+    cursor: pointer;
 }
-#container .number{
-	font-size: 12px;
-	width: 20px;
-	height: 20px;
-	background: orange;
-	line-height: 20px;
-	padding: 2px;
-	border-radius: 12px;
-	margin: 2px;
-	cursor: context-menu;
-	vertical-align: middle;
-	
-	
-	transition-property: height, width, font-size, line-height, padding, margin, top;
-	transition-duration: 0.3s;
-	transition-timing-function: ease-in-out;
-}
-#container .number.unvisible{
-	visibility: hidden;
-}
-#container .number.hidden{
-	height: 0px;
-	width: 0px;
-	padding: 0;
-	font-size: 0px;
-	margin: 0;
-	line-height: 0px;
-}
-#container .number.flying{
-	position:absolute;
-	margin: 0;
-	z-index: 1;
+#container .number {
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    background: orange;
+    line-height: 20px;
+    padding: 2px;
+    border-radius: 12px;
+    margin: 2px;
+    cursor: context-menu;
+    vertical-align: middle;
 
-	transition-property: left, top;
-	transition-duration: 0.3s;
+    transition-property: height, width, font-size, line-height, padding, margin, top;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
 }
-#container .number.flying.ghost{
-	display:none;
+#container .number.unvisible {
+    visibility: hidden;
 }
+#container .number.hidden {
+    height: 0px;
+    width: 0px;
+    padding: 0;
+    font-size: 0px;
+    margin: 0;
+    line-height: 0px;
+}
+#container .number.flying {
+    position: absolute;
+    margin: 0;
+    z-index: 1;
 
+    transition-property: left, top;
+    transition-duration: 0.3s;
+}
+#container .number.flying.ghost {
+    display: none;
+}
 
 /*header*/
 
 .header {
-	display: block;
-	text-align: center;
+    display: block;
+    text-align: center;
 }
-.header>form {
-	display: inline-block;
-	padding: 0 10px;
-	vertical-align: bottom;
+.header > form {
+    display: inline-block;
+    padding: 0 10px;
+    vertical-align: bottom;
 }
-.header>form>* {
-	display: block;
-	margin: auto;
+.header > form > * {
+    display: block;
+    margin: auto;
 }
-.header>form>label {
-	font-size: 19px;
+.header > form > label {
+    font-size: 19px;
 }
-.header>form[name="generate"]>label{
-	color: #365a90;
+.header > form[name="generate"] > label {
+    color: #365a90;
 }
-.header>form[name="generate"]>input[type="phone"]{
-	border-color: #365a90;
+.header > form[name="generate"] > input[type="phone"] {
+    border-color: #365a90;
 }
-.header>form[name="generate"]>input[type="button"]{
-	border-color: #365a90;
-	background: #d5eaff;
+.header > form[name="generate"] > input[type="button"] {
+    border-color: #365a90;
+    background: #d5eaff;
 }
-.header>form[name="add"]>label{
-	color: #369047;
+.header > form[name="add"] > label {
+    color: #369047;
 }
-.header>form[name="add"]>input[type="phone"]{
-	border-color: #369047;
+.header > form[name="add"] > input[type="phone"] {
+    border-color: #369047;
 }
-.header>form[name="add"]>input[type="button"]{
-	border-color: #369047;
-	background: #cbffd5;
+.header > form[name="add"] > input[type="button"] {
+    border-color: #369047;
+    background: #cbffd5;
 }
-.header>form[name="start"]>input[type="button"],.header>form[name="finish"]>input[type="button"],.header>form[name="clear"]>input[type="button"]{
-	border-color: #903636;
-	background: #ff9393;
+.header > form[name="start"] > input[type="button"],
+.header > form[name="finish"] > input[type="button"],
+.header > form[name="clear"] > input[type="button"] {
+    border-color: #903636;
+    background: #ff9393;
 }
-.header>form>input[type="button"].fixed{
-	border-color: #555;
-	background: #ddd;
-	cursor: context-menu;
+.header > form > input[type="button"].fixed {
+    border-color: #555;
+    background: #ddd;
+    cursor: context-menu;
 }
-.header>form>input[type="button"]:active{
-	background: #fff;
+.header > form > input[type="button"]:active {
+    background: #fff;
 }
 
 /*pre-array*/
 .pre-array {
-	display: block;
-	text-align: center;
-	margin: 20px 0;
-	font-size: 0px;
-	height: 28px;
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 0px;
+    height: 28px;
 }
-.pre-array>.number {
-	display: inline-block;
+.pre-array > .number {
+    display: inline-block;
 }
 
 /*display*/
-.display{
-	display: block;
-	text-align: center;
-	margin: 20px 0;
-	font-size: 0px;
-	transition: height 0.3s ease-in-out;
-	height: 28px;
+.display {
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 0px;
+    transition: height 0.3s ease-in-out;
+    height: 28px;
 }
-.display-column{
-	display: inline-block;
+.display-column {
+    display: inline-block;
 }
-#container .display-column>.number{
-	position: relative;
-	top: 0;
+#container .display-column > .number {
+    position: relative;
+    top: 0;
 }
-#container .display-column>.number.unvisible{
-	transition-property: height, width, margin, pading;
+#container .display-column > .number.unvisible {
+    transition-property: height, width, margin, pading;
 }
-#container .display  svg{
-	position: absolute;
-	visibility: visible;
-	width: 1px;
-	height: 1px;
-	z-index: -1;
+#container .display svg {
+    position: absolute;
+    visibility: visible;
+    width: 1px;
+    height: 1px;
+    z-index: -1;
 
-	transition-property: height,width,opacity,top;
-	transition-duration: 0.3s;
-	transition-timing-function: ease-in-out;
+    transition-property: height, width, opacity, top;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
 }
-#container .display  svg.left{
-	right: 12px;
+#container .display svg.left {
+    right: 12px;
 }
-#container .display  svg.right{
-	left: 12px;
+#container .display svg.right {
+    left: 12px;
 }
 
 /*fly-box*/
-.fly-box{
-	text-align: center;
+.fly-box {
+    text-align: center;
 }
 
 /*anotation*/
 
 .anotation {
-	padding: 20px
+    padding: 20px;
 }
-.anotation p{
-	text-indent: 20px;
+.anotation p {
+    text-indent: 20px;
 }
