@@ -6,7 +6,7 @@ x-logging: &default-logging
 
 services:
   caddy:
-    image: caddy:2
+    image: caddy:2.8.4-alpine
     container_name: caddy
     restart: unless-stopped
     logging: *default-logging
