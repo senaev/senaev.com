@@ -26,7 +26,7 @@ echo "🔄 Deploying on server..."
 ssh -t ubuntu@51.250.80.209 '
     cd /home/ubuntu/docker-compose
     echo "🛑 Stopping containers..."
-    sudo docker compose down || true
+    sudo docker compose down --remove-orphans || true
     echo "🗑️  Removing old image..."
     sudo docker image rm cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest || true
     echo "📥 Pulling latest image..."

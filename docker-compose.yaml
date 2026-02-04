@@ -20,8 +20,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      # todo: use env variable for local path
-      - /home/ubuntu/webdav/data/notes-folder:/app/notes-folder
+      - ${NOTES_FOLDER_PATH}:/app/notes-folder
     environment:
       - NODE_ENV=production
     healthcheck:
