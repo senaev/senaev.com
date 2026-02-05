@@ -1,4 +1,4 @@
-x-scrape-interval: 15s
+x-scrape-interval: &scrape-interval 15s
 
 # Scrape config (Prometheus format, used by VictoriaMetrics)
 scrape_configs:

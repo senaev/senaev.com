@@ -1,12 +1,17 @@
 # TODO: удалить лишний проброс портов, которые не используются
-x-logging: &default-logging
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"
+x-default-service: &default-service
+  restart: unless-stopped
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "3"
+  networks:
+    - web
 
 services:
   caddy:
+    <<: *default-service
     image: caddy:2.8.4-alpine
     container_name: caddy
     ports:
@@ -16,12 +21,9 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
       - caddy_config:/config
-    restart: unless-stopped
-    logging: *default-logging
-    networks:
-      - web
 
   nextjs-app:
+    <<: *default-service
     image: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
     container_name: nextjs-app
     ports:
@@ -36,12 +38,9 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
-    restart: unless-stopped
-    logging: *default-logging
-    networks:
-      - web
 
   webdav:
+    <<: *default-service
     image: bytemark/webdav
     container_name: webdav
     ports:
@@ -52,12 +51,9 @@ services:
       - AUTH_TYPE=Digest
       - USERNAME=admin
       - PASSWORD=${WEBDAV_PASSWORD}
-    restart: unless-stopped
-    logging: *default-logging
-    networks:
-      - web
 
   victoriametrics:
+    <<: *default-service
     image: victoriametrics/victoria-metrics:v1.100.0
     container_name: victoriametrics
     ports:
@@ -71,12 +67,9 @@ services:
       - -retentionPeriod=15d
       - -httpListenAddr=:8428
       - -loggerLevel=WARN
-    restart: unless-stopped
-    logging: *default-logging
-    networks:
-      - web
 
   grafana:
+    <<: *default-service
     image: grafana/grafana:11.2.0
     container_name: grafana
     ports:
@@ -91,12 +84,9 @@ services:
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
     depends_on:
       - victoriametrics
-    restart: unless-stopped
-    logging: *default-logging
-    networks:
-      - web
 
   node-exporter:
+    <<: *default-service
     image: prom/node-exporter:v1.7.0
     container_name: node-exporter
     command:
@@ -110,12 +100,9 @@ services:
       - /:/host/root:ro
     ports:
       - "9100:9100"
-    restart: unless-stopped
-    logging: *default-logging
-    networks:
-      - web
 
   cadvisor:
+    <<: *default-service
     image: gcr.io/cadvisor/cadvisor:v0.47.2
     container_name: cadvisor
     privileged: true
@@ -127,10 +114,6 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
-    restart: unless-stopped
-    logging: *default-logging
-    networks:
-      - web
 
 networks:
   web:
