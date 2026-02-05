@@ -3,6 +3,7 @@ scrape_configs:
   - job_name: "victoriametrics"
     static_configs:
       - targets: ["localhost:8428"]
+    scrape_interval: 15s
 
   - job_name: "nextjs-app"
     metrics_path: "/api/metrics"
