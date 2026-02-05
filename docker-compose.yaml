@@ -102,6 +102,15 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
 
+  xray:
+    <<: *default-service
+    image: teddysun/xray:latest
+    container_name: xray
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./xray-config.json:/etc/xray/config.json:ro
+
 networks:
   web:
 
