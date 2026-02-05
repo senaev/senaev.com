@@ -1,4 +1,3 @@
-# TODO: удалить лишний проброс портов, которые не используются
 x-default-service: &default-service
   restart: unless-stopped
   logging:
@@ -26,8 +25,6 @@ services:
     <<: *default-service
     image: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
     container_name: nextjs-app
-    ports:
-      - "3000:3000"
     volumes:
       - ${NOTES_FOLDER_PATH}:/app/notes-folder
     environment:
@@ -43,8 +40,6 @@ services:
     <<: *default-service
     image: bytemark/webdav
     container_name: webdav
-    ports:
-      - "9050:80"
     volumes:
       - /home/ubuntu/webdav:/var/lib/dav
     environment:
@@ -56,8 +51,6 @@ services:
     <<: *default-service
     image: victoriametrics/victoria-metrics:v1.100.0
     container_name: victoriametrics
-    ports:
-      - "8428:8428"
     volumes:
       - ./scrape.yml:/etc/victoriametrics/scrape.yml:ro
       - victoriametrics_data:/victoriametrics-data
@@ -72,8 +65,6 @@ services:
     <<: *default-service
     image: grafana/grafana:11.2.0
     container_name: grafana
-    ports:
-      - "3001:3000"
     environment:
       - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
@@ -98,16 +89,12 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/host/root:ro
-    ports:
-      - "9100:9100"
 
   cadvisor:
     <<: *default-service
     image: gcr.io/cadvisor/cadvisor:v0.47.2
     container_name: cadvisor
     privileged: true
-    ports:
-      - "8080:8080"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
