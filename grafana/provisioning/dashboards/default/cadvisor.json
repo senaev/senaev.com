@@ -8597,7 +8597,7 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-1w",
     "to": "now"
   },
   "timepicker": {},

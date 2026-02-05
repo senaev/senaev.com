@@ -249,7 +249,7 @@
     "list": []
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-1w",
     "to": "now"
   },
   "timepicker": {},
