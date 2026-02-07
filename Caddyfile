@@ -1,11 +1,7 @@
 {
   email gsacryfice@gmail.com
-  metrics
-}
-
-# Отдельный порт только для метрик (без доступа к admin API)
-:2020 {
-  metrics
+  # Метрики Prometheus на admin API (встроено в Caddy, без кастомной сборки)
+  admin 0.0.0.0:2019
 }
 
 senaev.com {
