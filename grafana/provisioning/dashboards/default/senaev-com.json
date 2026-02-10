@@ -1563,7 +1563,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -1593,7 +1594,7 @@
             "uid": "P4169E866C3094E38"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "sum(rate(nextjs_http_requests_total[$__rate_interval]))",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -2042,6 +2043,7 @@
       "type": "table"
     }
   ],
+  "refresh": "",
   "schemaVersion": 39,
   "tags": [],
   "templating": {
@@ -2055,6 +2057,6 @@
   "timezone": "browser",
   "title": "senaev.com",
   "uid": "dfc4enp1ddv5sf",
-  "version": 16,
+  "version": 17,
   "weekStart": ""
 }
