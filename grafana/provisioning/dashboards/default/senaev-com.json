@@ -1867,7 +1867,6 @@
             }
           },
           "mappings": [],
-          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -2044,7 +2043,6 @@
       "type": "table"
     }
   ],
-  "refresh": "",
   "schemaVersion": 39,
   "tags": [],
   "templating": {
@@ -2058,6 +2056,6 @@
   "timezone": "browser",
   "title": "senaev.com",
   "uid": "dfc4enp1ddv5sf",
-  "version": 14,
+  "version": 15,
   "weekStart": ""
 }
