@@ -1867,7 +1867,6 @@
             }
           },
           "mappings": [],
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2056,6 +2055,6 @@
   "timezone": "browser",
   "title": "senaev.com",
   "uid": "dfc4enp1ddv5sf",
-  "version": 15,
+  "version": 16,
   "weekStart": ""
 }
