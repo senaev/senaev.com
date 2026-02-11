@@ -12,7 +12,23 @@ echo "🚀 Starting deployment to production server..."
 
 # Ensure directory exists on server
 echo "📁 Ensuring docker-compose directory exists on server..."
+# ❗️ TODO: move hostname to variable
 ssh ubuntu@51.250.80.209 "mkdir -p $DOCKER_COMPOSE_DIR"
+
+# One-time Datadog host agent install: if script is not on server, upload, make executable, run
+DATADOG_SCRIPT_PATH="$DOCKER_COMPOSE_DIR/scripts/datadog-install.sh"
+if ! ssh ubuntu@51.250.80.209 "test -f $DATADOG_SCRIPT_PATH"; then
+  echo "📤 Uploading Datadog install script (one-time setup)..."
+  ssh ubuntu@51.250.80.209 "mkdir -p $DOCKER_COMPOSE_DIR/scripts"
+  scp $SCRIPT_DIR/scripts/datadog-install.sh ubuntu@51.250.80.209:$DATADOG_SCRIPT_PATH
+  echo "🔧 Making script executable..."
+  ssh ubuntu@51.250.80.209 "chmod +x $DATADOG_SCRIPT_PATH"
+  echo "🚀 Running Datadog install..."
+  ssh -t ubuntu@51.250.80.209 "$DATADOG_SCRIPT_PATH"
+  echo "✅ Datadog install completed successfully!"
+else
+  echo "🙈 Datadog install script already on server, skipping."
+fi
 
 # Upload config files to server
 echo "📤 Uploading docker-compose.yaml to server..."

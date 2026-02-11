@@ -16,7 +16,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "127.0.0.1:2019:2019"  # admin API (метрики /metrics) — только localhost
+      - "127.0.0.1:2019:2019" # admin API (метрики /metrics) — только localhost
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
@@ -111,6 +111,25 @@ services:
       - "8443:8443"
     volumes:
       - ./xray-config.json:/etc/xray/config.json:ro
+
+  datadog:
+    image: gcr.io/datadoghq/agent:7
+    container_name: dd-agent
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+      - DD_SITE=datadoghq.eu
+      - DD_ENV=prod
+      - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true
+      - DD_APM_ENABLED=true
+      - DD_APM_NON_LOCAL_TRAFFIC=true
+      - DD_APM_RECEIVER_SOCKET=/var/run/datadog/apm.socket
+      - DD_DOGSTATSD_SOCKET=/var/run/datadog/dsd.socket
+    volumes:
+      - /var/run/datadog:/var/run/datadog
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
 
 networks:
   web:
