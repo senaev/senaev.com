@@ -125,12 +125,14 @@ services:
       - DD_APM_NON_LOCAL_TRAFFIC=true
       - DD_APM_RECEIVER_SOCKET=/var/run/datadog/apm.socket
       - DD_DOGSTATSD_SOCKET=/var/run/datadog/dsd.socket
+      - DD_PROCESS_CONFIG_PROCESS_COLLECTION_ENABLED=true
     volumes:
       - /var/run/datadog:/var/run/datadog
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /proc/:/host/proc/:ro
       - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /etc/passwd:/etc/passwd:ro
 
 networks:
   web:
