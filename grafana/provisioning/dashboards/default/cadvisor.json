@@ -8488,7 +8488,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": "5s",
   "schemaVersion": 39,
   "tags": ["cadvisor", "docker", "prometheus", "container"],
   "templating": {

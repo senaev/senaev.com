@@ -141,7 +141,12 @@
       "id": 6,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_threads{job=\"caddy\"}", "legendFormat": "threads", "refId": "A" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_threads{job=\"caddy\"}",
+          "legendFormat": "threads",
+          "refId": "A"
+        }
       ],
       "title": "OS threads",
       "type": "timeseries"
@@ -153,10 +158,30 @@
       "id": 7,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_heap_inuse_bytes{job=\"caddy\"}", "legendFormat": "heap inuse", "refId": "A" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_heap_idle_bytes{job=\"caddy\"}", "legendFormat": "heap idle", "refId": "B" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_heap_sys_bytes{job=\"caddy\"}", "legendFormat": "heap sys", "refId": "C" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_heap_released_bytes{job=\"caddy\"}", "legendFormat": "heap released", "refId": "D" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_heap_inuse_bytes{job=\"caddy\"}",
+          "legendFormat": "heap inuse",
+          "refId": "A"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_heap_idle_bytes{job=\"caddy\"}",
+          "legendFormat": "heap idle",
+          "refId": "B"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_heap_sys_bytes{job=\"caddy\"}",
+          "legendFormat": "heap sys",
+          "refId": "C"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_heap_released_bytes{job=\"caddy\"}",
+          "legendFormat": "heap released",
+          "refId": "D"
+        }
       ],
       "title": "Heap memory",
       "type": "timeseries"
@@ -168,8 +193,18 @@
       "id": 8,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_heap_objects{job=\"caddy\"}", "legendFormat": "heap objects", "refId": "A" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_next_gc_bytes{job=\"caddy\"}", "legendFormat": "next GC (bytes)", "refId": "B" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_heap_objects{job=\"caddy\"}",
+          "legendFormat": "heap objects",
+          "refId": "A"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_next_gc_bytes{job=\"caddy\"}",
+          "legendFormat": "next GC (bytes)",
+          "refId": "B"
+        }
       ],
       "title": "Heap objects & next GC",
       "type": "timeseries"
@@ -181,15 +216,60 @@
       "id": 9,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_stack_inuse_bytes{job=\"caddy\"}", "legendFormat": "stack inuse", "refId": "A" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_stack_sys_bytes{job=\"caddy\"}", "legendFormat": "stack sys", "refId": "B" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_mspan_inuse_bytes{job=\"caddy\"}", "legendFormat": "mspan inuse", "refId": "C" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_mspan_sys_bytes{job=\"caddy\"}", "legendFormat": "mspan sys", "refId": "D" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_mcache_inuse_bytes{job=\"caddy\"}", "legendFormat": "mcache inuse", "refId": "E" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_mcache_sys_bytes{job=\"caddy\"}", "legendFormat": "mcache sys", "refId": "F" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_buck_hash_sys_bytes{job=\"caddy\"}", "legendFormat": "buck_hash sys", "refId": "G" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_gc_sys_bytes{job=\"caddy\"}", "legendFormat": "gc_sys", "refId": "H" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_other_sys_bytes{job=\"caddy\"}", "legendFormat": "other_sys", "refId": "I" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_stack_inuse_bytes{job=\"caddy\"}",
+          "legendFormat": "stack inuse",
+          "refId": "A"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_stack_sys_bytes{job=\"caddy\"}",
+          "legendFormat": "stack sys",
+          "refId": "B"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_mspan_inuse_bytes{job=\"caddy\"}",
+          "legendFormat": "mspan inuse",
+          "refId": "C"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_mspan_sys_bytes{job=\"caddy\"}",
+          "legendFormat": "mspan sys",
+          "refId": "D"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_mcache_inuse_bytes{job=\"caddy\"}",
+          "legendFormat": "mcache inuse",
+          "refId": "E"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_mcache_sys_bytes{job=\"caddy\"}",
+          "legendFormat": "mcache sys",
+          "refId": "F"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_buck_hash_sys_bytes{job=\"caddy\"}",
+          "legendFormat": "buck_hash sys",
+          "refId": "G"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_gc_sys_bytes{job=\"caddy\"}",
+          "legendFormat": "gc_sys",
+          "refId": "H"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_other_sys_bytes{job=\"caddy\"}",
+          "legendFormat": "other_sys",
+          "refId": "I"
+        }
       ],
       "title": "Memstats (stack, mspan, mcache, sys)",
       "type": "timeseries"
@@ -201,21 +281,43 @@
       "id": 10,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "rate(go_memstats_alloc_bytes_total{job=\"caddy\"}[5m])", "legendFormat": "alloc rate", "refId": "A" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "rate(go_memstats_mallocs_total{job=\"caddy\"}[5m])", "legendFormat": "mallocs/s", "refId": "B" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "rate(go_memstats_frees_total{job=\"caddy\"}[5m])", "legendFormat": "frees/s", "refId": "C" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "rate(go_memstats_alloc_bytes_total{job=\"caddy\"}[5m])",
+          "legendFormat": "alloc rate",
+          "refId": "A"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "rate(go_memstats_mallocs_total{job=\"caddy\"}[5m])",
+          "legendFormat": "mallocs/s",
+          "refId": "B"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "rate(go_memstats_frees_total{job=\"caddy\"}[5m])",
+          "legendFormat": "frees/s",
+          "refId": "C"
+        }
       ],
       "title": "Alloc & mallocs/frees rate",
       "type": "timeseries"
     },
     {
       "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
-      "fieldConfig": { "defaults": { "color": { "mode": "palette-classic" }, "unit": "percentunit" } },
+      "fieldConfig": {
+        "defaults": { "color": { "mode": "palette-classic" }, "unit": "percentunit" }
+      },
       "gridPos": { "h": 8, "w": 12, "x": 0, "y": 40 },
       "id": 11,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "rate(process_cpu_seconds_total{job=\"caddy\"}[5m])", "legendFormat": "CPU", "refId": "A" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "rate(process_cpu_seconds_total{job=\"caddy\"}[5m])",
+          "legendFormat": "CPU",
+          "refId": "A"
+        }
       ],
       "title": "Process CPU usage",
       "type": "timeseries"
@@ -227,8 +329,18 @@
       "id": 12,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "process_resident_memory_bytes{job=\"caddy\"}", "legendFormat": "RSS", "refId": "A" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "process_virtual_memory_bytes{job=\"caddy\"}", "legendFormat": "virtual", "refId": "B" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "process_resident_memory_bytes{job=\"caddy\"}",
+          "legendFormat": "RSS",
+          "refId": "A"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "process_virtual_memory_bytes{job=\"caddy\"}",
+          "legendFormat": "virtual",
+          "refId": "B"
+        }
       ],
       "title": "Process memory (RSS & virtual)",
       "type": "timeseries"
@@ -240,8 +352,18 @@
       "id": 13,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "process_open_fds{job=\"caddy\"}", "legendFormat": "open fds", "refId": "A" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "process_max_fds{job=\"caddy\"}", "legendFormat": "max fds", "refId": "B" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "process_open_fds{job=\"caddy\"}",
+          "legendFormat": "open fds",
+          "refId": "A"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "process_max_fds{job=\"caddy\"}",
+          "legendFormat": "max fds",
+          "refId": "B"
+        }
       ],
       "title": "Process file descriptors",
       "type": "timeseries"
@@ -253,7 +375,12 @@
       "id": 14,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "time() - process_start_time_seconds{job=\"caddy\"}", "legendFormat": "uptime", "refId": "A" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "time() - process_start_time_seconds{job=\"caddy\"}",
+          "legendFormat": "uptime",
+          "refId": "A"
+        }
       ],
       "title": "Process uptime",
       "type": "timeseries"
@@ -265,7 +392,12 @@
       "id": 15,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "rate(promhttp_metric_handler_requests_total{job=\"caddy\"}[5m])", "legendFormat": "{{ code }}", "refId": "A" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "rate(promhttp_metric_handler_requests_total{job=\"caddy\"}[5m])",
+          "legendFormat": "{{ code }}",
+          "refId": "A"
+        }
       ],
       "title": "Prometheus /metrics scrapes (rate)",
       "type": "timeseries"
@@ -277,7 +409,12 @@
       "id": 16,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "promhttp_metric_handler_requests_in_flight{job=\"caddy\"}", "legendFormat": "in flight", "refId": "A" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "promhttp_metric_handler_requests_in_flight{job=\"caddy\"}",
+          "legendFormat": "in flight",
+          "refId": "A"
+        }
       ],
       "title": "Prometheus handler requests in flight",
       "type": "timeseries"
@@ -289,9 +426,24 @@
       "id": 17,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_gc_duration_seconds{job=\"caddy\",quantile=\"0.5\"}", "legendFormat": "p50", "refId": "A" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_gc_duration_seconds{job=\"caddy\",quantile=\"0.75\"}", "legendFormat": "p75", "refId": "B" },
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_gc_duration_seconds{job=\"caddy\",quantile=\"1\"}", "legendFormat": "max", "refId": "C" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_gc_duration_seconds{job=\"caddy\",quantile=\"0.5\"}",
+          "legendFormat": "p50",
+          "refId": "A"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_gc_duration_seconds{job=\"caddy\",quantile=\"0.75\"}",
+          "legendFormat": "p75",
+          "refId": "B"
+        },
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_gc_duration_seconds{job=\"caddy\",quantile=\"1\"}",
+          "legendFormat": "max",
+          "refId": "C"
+        }
       ],
       "title": "GC duration (quantiles)",
       "type": "timeseries"
@@ -303,13 +455,18 @@
       "id": 18,
       "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true } },
       "targets": [
-        { "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" }, "expr": "go_memstats_lookups_total{job=\"caddy\"}", "legendFormat": "lookups", "refId": "A" }
+        {
+          "datasource": { "type": "prometheus", "uid": "P4169E866C3094E38" },
+          "expr": "go_memstats_lookups_total{job=\"caddy\"}",
+          "legendFormat": "lookups",
+          "refId": "A"
+        }
       ],
       "title": "Pointer lookups (total)",
       "type": "timeseries"
     }
   ],
-  "refresh": "10s",
+  "refresh": "5s",
   "schemaVersion": 38,
   "style": "dark",
   "tags": ["caddy"],
