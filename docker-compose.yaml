@@ -113,6 +113,7 @@ services:
       - ./xray-config.json:/etc/xray/config.json:ro
 
   datadog:
+    <<: *default-service
     image: gcr.io/datadoghq/agent:7
     container_name: dd-agent
     environment:
