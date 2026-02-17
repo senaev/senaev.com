@@ -1,0 +1,89 @@
+# Traefik dynamic configuration (file provider)
+
+http:
+  routers:
+    # Dashboard/API only on entryPoint "dashboard" (port 8080, bound to 127.0.0.1)
+    dashboard:
+      rule: "PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
+      entryPoints: [dashboard]
+      service: api@internal
+
+    # --- nextjs-app (senaev.com, senaev.ru) ---
+    nextjs-http:
+      rule: "Host(`senaev.com`) || Host(`senaev.ru`)"
+      entryPoints: [web]
+      middlewares: [redirect-to-https]
+      service: nextjs
+    nextjs-https:
+      rule: "Host(`senaev.com`) || Host(`senaev.ru`)"
+      entryPoints: [websecure]
+      service: nextjs
+      tls:
+        certResolver: letsencrypt
+
+    # --- grafana ---
+    grafana-http:
+      rule: "Host(`grafana.senaev.com`)"
+      entryPoints: [web]
+      middlewares: [redirect-to-https]
+      service: grafana
+    grafana-https:
+      rule: "Host(`grafana.senaev.com`)"
+      entryPoints: [websecure]
+      service: grafana
+      tls:
+        certResolver: letsencrypt
+
+    # --- webdav ---
+    webdav-http:
+      rule: "Host(`webdav.senaev.com`)"
+      entryPoints: [web]
+      middlewares: [redirect-to-https]
+      service: webdav
+    webdav-https:
+      rule: "Host(`webdav.senaev.com`)"
+      entryPoints: [websecure]
+      service: webdav
+      tls:
+        certResolver: letsencrypt
+
+    # --- test.senaev.com (static response) ---
+    test-http:
+      rule: "Host(`test.senaev.com`)"
+      entryPoints: [web]
+      middlewares: [redirect-to-https]
+      service: test-echo
+    test-https:
+      rule: "Host(`test.senaev.com`)"
+      entryPoints: [websecure]
+      service: test-echo
+      tls:
+        certResolver: letsencrypt
+
+  middlewares:
+    redirect-to-https:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    nextjs:
+      loadBalancer:
+        servers:
+          - url: "http://nextjs-app:3000"
+        passHostHeader: true
+    grafana:
+      loadBalancer:
+        servers:
+          - url: "http://grafana:3000"
+        passHostHeader: true
+    webdav:
+      loadBalancer:
+        servers:
+          - url: "http://webdav:80"
+        passHostHeader: true
+    test-echo:
+      loadBalancer:
+        servers:
+          - url: "http://test-echo:80"
+        passHostHeader: true

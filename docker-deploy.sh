@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Deploy senaev.com to production server
-# This script uploads docker-compose file, pulls latest image, and runs docker compose
+# This script uploads required files, pulls latest image, and runs docker compose
 
 set -e  # Exit on any error
 
@@ -33,8 +33,9 @@ fi
 # Upload config files to server
 echo "📤 Uploading docker-compose.yaml to server..."
 scp $SCRIPT_DIR/docker-compose.yaml ubuntu@51.250.80.209:$DOCKER_COMPOSE_DIR/
-echo "📤 Uploading Caddyfile to server..."
-scp $SCRIPT_DIR/Caddyfile ubuntu@51.250.80.209:$DOCKER_COMPOSE_DIR/
+echo "📤 Uploading Traefik config to server..."
+scp $SCRIPT_DIR/traefik.yml ubuntu@51.250.80.209:$DOCKER_COMPOSE_DIR/
+scp $SCRIPT_DIR/traefik-dynamic.yml ubuntu@51.250.80.209:$DOCKER_COMPOSE_DIR/
 echo "📤 Uploading scrape.yml to server..."
 scp $SCRIPT_DIR/scrape.yml ubuntu@51.250.80.209:$DOCKER_COMPOSE_DIR/
 echo "📤 Uploading grafana/ to server..."

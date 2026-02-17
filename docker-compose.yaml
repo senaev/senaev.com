@@ -9,18 +9,25 @@ x-default-service: &default-service
     - web
 
 services:
-  caddy:
+  traefik:
     <<: *default-service
-    image: caddy:2.8.4-alpine
-    container_name: caddy
+    image: traefik:v3.2
+    container_name: traefik
     ports:
       - "80:80"
       - "443:443"
-      - "127.0.0.1:2019:2019" # admin API (метрики /metrics) — только localhost
+      - "127.0.0.1:8080:8080"   # dashboard (metrics / UI) — localhost only
+    command: --configFile=/etc/traefik/traefik.yml
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
+      - ./traefik.yml:/etc/traefik/traefik.yml:ro
+      - ./traefik-dynamic.yml:/etc/traefik/dynamic.yml:ro
+      - traefik_acme:/etc/traefik/acme
+
+  test-echo:
+    <<: *default-service
+    image: hashicorp/http-echo:0.2.3
+    container_name: test-echo
+    command: ["-listen=:80", "-text=Hello World from Traefik (TLS ok)\n"]
 
   nextjs-app:
     <<: *default-service
@@ -138,7 +145,6 @@ networks:
   web:
 
 volumes:
-  caddy_data:
-  caddy_config:
+  traefik_acme:
   victoriametrics_data:
   grafana_data:

@@ -1,0 +1,31 @@
+# Traefik static configuration (file provider, Let's Encrypt, dashboard)
+# https://doc.traefik.io/traefik/reference/static-configuration/file/
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+  dashboard:
+    address: ":8080"
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: gsacryfice@gmail.com
+      storage: /etc/traefik/acme/acme.json
+      httpChallenge:
+        entryPoint: web
+
+providers:
+  file:
+    filename: /etc/traefik/dynamic.yml
+    watch: true
+
+api:
+  dashboard: true
+
+log:
+  level: INFO
+
+accessLog: {}
