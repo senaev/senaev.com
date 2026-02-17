@@ -38,6 +38,9 @@ scp $SCRIPT_DIR/traefik.yml ubuntu@51.250.80.209:$DOCKER_COMPOSE_DIR/
 scp $SCRIPT_DIR/traefik-dynamic.yml ubuntu@51.250.80.209:$DOCKER_COMPOSE_DIR/
 echo "📤 Uploading scrape.yml to server..."
 scp $SCRIPT_DIR/scrape.yml ubuntu@51.250.80.209:$DOCKER_COMPOSE_DIR/
+
+echo "🧹 Cleaning remote grafana/ (provisioned dashboards) before upload..."
+ssh ubuntu@51.250.80.209 "rm -rf $DOCKER_COMPOSE_DIR/grafana"
 echo "📤 Uploading grafana/ to server..."
 scp -r $SCRIPT_DIR/grafana ubuntu@51.250.80.209:$DOCKER_COMPOSE_DIR/
 
