@@ -20,4 +20,10 @@ kubectl create secret generic app-secrets -n "$NAMESPACE" \
   --from-literal=GRAFANA_ROOT_URL="${GRAFANA_ROOT_URL}" \
   --dry-run=client -o yaml | kubectl apply -f -
 
+kubectl -n senaev-com create secret docker-registry ycr-pull \
+  --docker-server=cr.yandex \
+  --docker-username=oauth \
+  --docker-password="$(yc iam create-token)" \
+  --docker-email=unused@example.com
+
 echo "✅ Secrets app-secrets applied in namespace $NAMESPACE."

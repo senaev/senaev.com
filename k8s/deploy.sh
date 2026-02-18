@@ -18,17 +18,22 @@ set +a
 
 echo "🚀 Deploying k8s stack to server (namespace: $NAMESPACE)..."
 
-echo "📁 Ensuring remote base directory exists..."
+echo "📁 Ensuring remote base directory k8s exists..."
 ssh "$DEPLOY_HOST" "mkdir -p $K3S_CLUSTER_DIR/k8s"
-echo "✅ Remote base directory created."
+echo "✅ Remote base directory k8s created."
 
 echo "🧹 Cleaning remote deploy directory..."
 ssh "$DEPLOY_HOST" "rm -rf $K3S_CLUSTER_DIR/k8s/*"
 echo "✅ Remote deploy directory cleaned."
 
 echo "📤 Uploading k8s/ files to server..."
-scp -r "$REPO_ROOT/k8s" "$DEPLOY_HOST:$K3S_CLUSTER_DIR/k8s/"
+scp -r "$REPO_ROOT/k8s" "$DEPLOY_HOST:$K3S_CLUSTER_DIR/"
 echo "✅ k8s/ files uploaded to server."
+
+
+echo "📁 Ensuring remote base directory grafana exists..."
+ssh "$DEPLOY_HOST" "mkdir -p $K3S_CLUSTER_DIR/grafana"
+echo "✅ Remote base directory grafana created."
 
 echo "📤 Uploading grafana/provisioning/ files to server..."
 scp -r "$REPO_ROOT/grafana/provisioning" "$DEPLOY_HOST:$K3S_CLUSTER_DIR/grafana/"
@@ -38,11 +43,7 @@ echo "🔄 Applying on server..."
 ssh -t "$DEPLOY_HOST" "
     set -e
     cd $K3S_CLUSTER_DIR
-    echo '📋 Creating/updating Grafana dashboards ConfigMap...'
-    kubectl create configmap grafana-dashboards \
-      --from-file=grafana/provisioning/dashboards/default \
-      -n $NAMESPACE --dry-run=client -o yaml | kubectl apply -f -
-    echo '📋 Applying k8s manifests...'
+    echo "📋 Applying k8s manifests..."
     kubectl apply -f k8s/
     echo '✅ Apply done.'
 "

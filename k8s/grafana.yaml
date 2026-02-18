@@ -1,5 +1,4 @@
-# Grafana dashboards ConfigMap must be created from repo before apply:
-#   kubectl create configmap grafana-dashboards --from-file=grafana/provisioning/dashboards/default -n senaev-com --dry-run=client -o yaml | kubectl apply -f -
+# Grafana provisioning (datasources, dashboards) mounted from hostPath; deploy script uploads grafana/provisioning to K3S_CLUSTER_DIR/grafana/
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -43,28 +42,17 @@ spec:
           volumeMounts:
             - name: grafana-data
               mountPath: /var/lib/grafana
-            - name: datasources
-              mountPath: /etc/grafana/provisioning/datasources
-              readOnly: true
-            - name: dashboards-provider
-              mountPath: /etc/grafana/provisioning/dashboards
-              readOnly: true
-            - name: dashboards-default
-              mountPath: /etc/grafana/provisioning/dashboards/default
+            - name: grafana-provisioning
+              mountPath: /etc/grafana/provisioning
               readOnly: true
       volumes:
         - name: grafana-data
           persistentVolumeClaim:
             claimName: grafana-data
-        - name: datasources
-          configMap:
-            name: grafana-datasources
-        - name: dashboards-provider
-          configMap:
-            name: grafana-dashboards-provider
-        - name: dashboards-default
-          configMap:
-            name: grafana-dashboards
+        - name: grafana-provisioning
+          hostPath:
+            path: /home/ubuntu/k3s-cluster/grafana/provisioning
+            type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: Service
