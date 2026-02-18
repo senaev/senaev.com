@@ -7,30 +7,37 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-NAMESPACE="senaev-com"
 
 # Same pattern as docker-deploy.sh: adjust host and path for your server
 DEPLOY_HOST="ubuntu@51.250.80.209"
-K8S_REMOTE_DIR="/home/ubuntu/k8s"
+K3S_CLUSTER_DIR="/home/ubuntu/k3s-cluster"
+
+set -a
+source "$REPO_ROOT/.env"
+set +a
 
 echo "🚀 Deploying k8s stack to server (namespace: $NAMESPACE)..."
 
 echo "📁 Ensuring remote base directory exists..."
-ssh "$DEPLOY_HOST" "mkdir -p $K8S_REMOTE_DIR"
+ssh "$DEPLOY_HOST" "mkdir -p $K3S_CLUSTER_DIR/k8s"
+echo "✅ Remote base directory created."
 
 echo "🧹 Cleaning remote deploy directory..."
-ssh "$DEPLOY_HOST" "rm -rf $K8S_REMOTE_DIR/*"
+ssh "$DEPLOY_HOST" "rm -rf $K3S_CLUSTER_DIR/k8s/*"
+echo "✅ Remote deploy directory cleaned."
 
-echo "📤 Uploading k8s/ to server..."
-scp -r "$REPO_ROOT/k8s" "$DEPLOY_HOST:$K8S_REMOTE_DIR/"
+echo "📤 Uploading k8s/ files to server..."
+scp -r "$REPO_ROOT/k8s" "$DEPLOY_HOST:$K3S_CLUSTER_DIR/k8s/"
+echo "✅ k8s/ files uploaded to server."
 
-echo "📤 Uploading grafana/provisioning/ to server..."
-scp -r "$REPO_ROOT/grafana/provisioning" "$DEPLOY_HOST:$K8S_REMOTE_DIR/grafana/"
+echo "📤 Uploading grafana/provisioning/ files to server..."
+scp -r "$REPO_ROOT/grafana/provisioning" "$DEPLOY_HOST:$K3S_CLUSTER_DIR/grafana/"
+echo "✅ grafana/provisioning/ files uploaded to server."
 
 echo "🔄 Applying on server..."
 ssh -t "$DEPLOY_HOST" "
     set -e
-    cd $K8S_REMOTE_DIR
+    cd $K3S_CLUSTER_DIR
     echo '📋 Creating/updating Grafana dashboards ConfigMap...'
     kubectl create configmap grafana-dashboards \
       --from-file=grafana/provisioning/dashboards/default \
