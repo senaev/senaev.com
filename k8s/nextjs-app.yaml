@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app
+  namespace: senaev-com
+  labels:
+    app: nextjs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextjs-app
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+    spec:
+      # imagePullSecrets: [{ name: yandex-cr }]  # uncomment if using private Yandex CR
+      containers:
+        - name: nextjs-app
+          image: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
+          imagePullPolicy: Always
+          env:
+            - name: NODE_ENV
+              value: "production"
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: notes
+              mountPath: /app/notes-folder
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 40
+            periodSeconds: 30
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+      volumes:
+        - name: notes
+          hostPath:
+            path: /home/ubuntu/notes
+            type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextjs-app
+  namespace: senaev-com
+spec:
+  selector:
+    app: nextjs-app
+  ports:
+    - port: 3000
+      targetPort: 3000
+  type: ClusterIP

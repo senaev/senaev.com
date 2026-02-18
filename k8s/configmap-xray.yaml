@@ -1,0 +1,10 @@
+# Replace config.json with your actual xray config (e.g. from xray/xray-config.json)
+# or create at deploy time: kubectl create configmap xray-config --from-file=config.json=xray/xray-config.json -n senaev-com --dry-run=client -o yaml | kubectl apply -f -
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: xray-config
+  namespace: senaev-com
+data:
+  config.json: |
+    {"log":{"loglevel":"warning"},"inbounds":[{"port":8443,"protocol":"vless","settings":{"clients":[{"id":"{USER_UUID}","flow":"xtls-rprx-vision"}],"decryption":"none"},"streamSettings":{"network":"tcp","security":"reality","realitySettings":{"dest":"www.google.com:443","serverNames":["www.google.com"],"privateKey":"{REALITY_PRIVATE_KEY}","shortIds":["","0123456789abcdef"]}},"sniffing":{"enabled":true,"destOverride":["http","tls","quic"],"routeOnly":true}}],"outbounds":[{"protocol":"freedom","tag":"direct"}]}

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xray
+  namespace: senaev-com
+  labels:
+    app: xray
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xray
+  template:
+    metadata:
+      labels:
+        app: xray
+    spec:
+      containers:
+        - name: xray
+          image: teddysun/xray:latest
+          ports:
+            - containerPort: 8443
+          volumeMounts:
+            - name: config
+              mountPath: /etc/xray
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: xray-config
+            items:
+              - key: config.json
+                path: config.json
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: xray
+  namespace: senaev-com
+spec:
+  selector:
+    app: xray
+  ports:
+    - port: 8443
+      targetPort: 8443
+  type: NodePort
+  # Or LoadBalancer if you want a dedicated IP. NodePort exposes 8443 on each node.
