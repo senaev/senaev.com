@@ -14,7 +14,6 @@ echo "🚀 Starting deployment to production server..."
 
 # Ensure directory exists on server
 echo "📁 Ensuring k3s-cluster directory exists on server..."
-# ❗️ TODO: move hostname to variable
 ssh $DEPLOY_HOST "mkdir -p $K3S_CLUSTER_DIR"
 
 # One-time Datadog host agent install: if script is not on server, upload, make executable, run
