@@ -16,4 +16,4 @@ echo "[3/3] 👉 Pushing to registry..."
 docker push "$REGISTRY_IMAGE"
 echo "[3/3] ✅ Push done."
 
-echo "All steps completed successfully."
+echo "✅ All steps completed successfully."
