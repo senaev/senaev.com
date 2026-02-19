@@ -8,7 +8,7 @@
     "start": "next start",
     "docker": "npm run docker:build-and-push && npm run docker:deploy",
     "docker:build-and-push": "./scripts/docker-build-and-push.sh",
-    "k3s:deploy": "./k3s-deploy.sh",
+    "k3s:deploy": "./deploy.sh",
     "connect-to-cursor-ssh": "./connect-to-cursor-ssh.sh",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",

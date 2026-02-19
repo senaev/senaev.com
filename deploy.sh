@@ -31,9 +31,14 @@ else
   echo "🙈 Datadog install script already on server, skipping."
 fi
 
-# Upload config files to server
+
 echo "🔄 Deploying k8s stack to server..."
-./k8s/deploy.sh
+./k8s/deploy-k8s.sh
 echo "✅ k8s stack deployed to server."
+
+
+echo "🔄 Deploying secrets to server..."
+./k8s/deploy-secrets.sh
+echo "✅ Secrets deployed to server."
 
 echo "✅ Deployment completed successfully!"

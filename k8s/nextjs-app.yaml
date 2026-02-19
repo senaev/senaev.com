@@ -17,6 +17,7 @@ spec:
     spec:
       # imagePullSecrets: [{ name: yandex-cr }]  # uncomment if using private Yandex CR
       containers:
+        # ❗️ TODO: migrate to another container registry
         - name: nextjs-app
           image: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
           imagePullPolicy: Always

@@ -43,6 +43,15 @@ echo "🔄 Applying on server..."
 ssh -t "$DEPLOY_HOST" "
     set -e
     cd $K3S_CLUSTER_DIR
+
+    if kubectl get namespace "$NAMESPACE" &>/dev/null; then
+        echo "🤷‍♂️ Namespace $NAMESPACE already exists."
+    else
+        echo "🚀 Creating namespace $NAMESPACE..."
+        kubectl create namespace "$NAMESPACE"
+        echo "✅ Namespace $NAMESPACE created."
+    fi
+
     echo "📋 Applying k8s manifests..."
     kubectl apply -f k8s/
     echo '✅ Apply done.'
