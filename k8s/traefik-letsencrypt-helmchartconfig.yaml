@@ -1,0 +1,17 @@
+# k3s Traefik: add "letsencrypt" certificate resolver so Ingress TLS works.
+# Apply once on the cluster: kubectl apply -f k8s/traefik-letsencrypt-helmchartconfig.yaml
+# Then restart Traefik so it picks up the config: kubectl rollout restart deployment traefik -n kube-system
+#
+# Replace the email with your Let's Encrypt contact email. Storage path /data/acme.json
+# must be writable by Traefik (default k3s Traefik often has a volume for /data).
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    additionalArguments:
+      - "--certificatesresolvers.letsencrypt.acme.email=gsacryfice@gmail.com"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
