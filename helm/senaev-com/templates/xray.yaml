@@ -1,0 +1,47 @@
+{{- if .Values.xray.enabled }}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: xray
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: xray
+spec:
+  selector:
+    matchLabels:
+      app: xray
+  template:
+    metadata:
+      labels:
+        app: xray
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: xray
+          image: "{{ .Values.xray.image.repository }}:{{ .Values.xray.image.tag }}"
+          ports:
+            - containerPort: 8443
+          volumeMounts:
+            - name: config
+              mountPath: /etc/xray/config.json
+              readOnly: true
+      volumes:
+        - name: config
+          hostPath:
+            path: {{ .Values.xray.configHostPath }}
+            type: File
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: xray
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: xray
+  ports:
+    - port: 8443
+      targetPort: 8443
+  type: ClusterIP
+{{- end }}

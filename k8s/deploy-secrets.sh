@@ -15,6 +15,17 @@ ssh -t "$DEPLOY_HOST" "
 
   cd $K3S_CLUSTER_DIR
 
+  echo "🔄 Creating secret docker-registry ycr-pull..."
+
+  kubectl create secret docker-registry ycr-pull \
+    --docker-server=cr.yandex \
+    --docker-username=json_key \
+    --docker-password=\"\$(cat ../key.json | tr -d '\n')\" \
+    --docker-email=unused@example.com \
+    --dry-run=client -o yaml | kubectl apply -f -
+
+  echo "✅ Secret docker-registry ycr-pull created."
+
   source "$K3S_CLUSTER_DIR/.env"
 
   echo "🔄 Creating secrets in namespace=[\$NAMESPACE] from folder=[\$PWD] on server..."

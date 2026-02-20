@@ -1,0 +1,100 @@
+namespace: senaev-com
+
+# Next.js app
+nextjs:
+  enabled: true
+  image:
+    repository: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com
+    tag: latest
+    pullPolicy: Always
+  replicas: 1
+  notesHostPath: /home/ubuntu/notes
+
+# Traefik ingress
+traefik:
+  enabled: true
+  image:
+    repository: traefik
+    tag: v3.2
+  acme:
+    email: gsacryfice@gmail.com
+  # ❗️ TODO: change to INFO in production
+  logLevel: DEBUG
+
+# Grafana
+grafana:
+  enabled: true
+  image:
+    repository: grafana/grafana
+    tag: "11.2.0"
+  provisioningHostPath: /home/ubuntu/k3s-cluster/grafana/provisioning
+
+# WebDAV (uses secret app-secrets key WEBDAV_PASSWORD)
+webdav:
+  enabled: true
+  image:
+    repository: bytemark/webdav
+  hostPath: /home/ubuntu/webdav
+
+# Xray (VLESS)
+xray:
+  enabled: true
+  image:
+    repository: teddysun/xray
+    tag: latest
+  configHostPath: /home/ubuntu/k3s-cluster/xray-config.json
+
+# Test echo (demo)
+testEcho:
+  enabled: true
+  image:
+    repository: hashicorp/http-echo
+    tag: "0.2.3"
+
+# VictoriaMetrics
+victoriametrics:
+  enabled: true
+  image:
+    repository: victoriametrics/victoria-metrics
+    tag: v1.100.0
+  retentionPeriod: 15d
+  storageSize: 10Gi
+
+# Node exporter (DaemonSet)
+nodeExporter:
+  enabled: true
+  image:
+    repository: prom/node-exporter
+    tag: v1.7.0
+
+# Ingress (Traefik) - TLS hosts and rules
+ingress:
+  className: traefik
+  tls:
+    certResolver: letsencrypt
+    hosts:
+      - senaev.com
+      - senaev.ru
+      - grafana.senaev.com
+      - webdav.senaev.com
+      - test.senaev.com
+  hosts:
+    - host: senaev.com
+      service: nextjs-app
+      port: 3000
+    - host: senaev.ru
+      service: nextjs-app
+      port: 3000
+    - host: grafana.senaev.com
+      service: grafana
+      port: 3000
+    - host: webdav.senaev.com
+      service: webdav
+      port: 80
+    - host: test.senaev.com
+      service: test-echo
+      port: 80
+
+# Storage
+grafanaStorageSize: 5Gi
+traefikAcmeStorageSize: 100Mi

@@ -1,0 +1,55 @@
+{{- if .Values.webdav.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webdav
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: webdav
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webdav
+  template:
+    metadata:
+      labels:
+        app: webdav
+    spec:
+      containers:
+        - name: webdav
+          image: {{ .Values.webdav.image.repository }}
+          env:
+            - name: AUTH_TYPE
+              value: Digest
+            - name: USERNAME
+              value: admin
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: WEBDAV_PASSWORD
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/dav
+      volumes:
+        - name: data
+          hostPath:
+            path: {{ .Values.webdav.hostPath }}
+            type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webdav
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: webdav
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
+{{- end }}

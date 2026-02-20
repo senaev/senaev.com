@@ -4,8 +4,6 @@ Install k3s without built-in Traefik (so the Traefik from k8s/ can bind 80/443):
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable traefik" sh -
 ```
 
-Traefik is deployed from k8s/: `traefik-acme-pvc.yaml`, `traefik-rbac.yaml`, `traefik.yaml` (IngressClass + Deployment + Service). Apply with the rest of the stack (`kubectl apply -f k8s/`).
-
 Copy k8s config from `rancher` folder to local one
 (to provide access to the k8s context)
 
@@ -22,6 +20,10 @@ Set `kubectl` default namespace
 ```
 kubectl config set-context --current --namespace=senaev-com
 ```
+
+Install `helm`
+
+https://helm.sh/docs/intro/install/#from-apt-debianubuntu
 
 - Add secrets to access docker registry
 
@@ -46,12 +48,6 @@ yc iam key create \
   --service-account-id "$SA_ID" \
   --output key.json
 
-# add secret to k8s
-kubectl -n senaev-com create secret docker-registry ycr-pull \
-  --docker-server=cr.yandex \
-  --docker-username=json_key \
-  --docker-password="$(cat key.json | tr -d '\n')" \
-  --docker-email=unused@example.com
 
 # add this secret to service account
 kubectl patch serviceaccount default \

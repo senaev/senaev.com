@@ -1,0 +1,27 @@
+{{- if .Values.grafana.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana-data
+  namespace: {{ .Release.Namespace }}
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: {{ .Values.grafanaStorageSize | default "5Gi" }}
+---
+{{- end }}
+{{- if .Values.victoriametrics.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: victoriametrics-data
+  namespace: {{ .Release.Namespace }}
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: {{ .Values.victoriametrics.storageSize | default "10Gi" }}
+{{- end }}

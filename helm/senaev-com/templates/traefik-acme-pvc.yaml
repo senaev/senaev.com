@@ -1,0 +1,13 @@
+{{- if .Values.traefik.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: traefik-acme-data
+  namespace: {{ .Release.Namespace }}
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: {{ .Values.traefikAcmeStorageSize | default "100Mi" }}
+{{- end }}
