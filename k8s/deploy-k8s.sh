@@ -58,8 +58,7 @@ ssh -t "$DEPLOY_HOST" "
       --prune-allowlist=apps/v1/DaemonSet \
       --prune-allowlist=core/v1/Service \
       --prune-allowlist=networking.k8s.io/v1/Ingress \
-      --prune-allowlist=core/v1/ConfigMap \
-      --prune-allowlist=core/v1/PersistentVolumeClaim
+      --prune-allowlist=core/v1/ConfigMap
     echo '✅ Apply done.'
 "
 
