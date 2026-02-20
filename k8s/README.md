@@ -2,6 +2,13 @@
 
 Install kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
+Make symlink to `rancher` folder from a default `kubectl` config folder
+
+```shell
+mkdir -p ~/.kube
+ln -sf /etc/rancher/k3s/k3s.yaml ~/.kube/config
+```
+
 Install `helm` https://helm.sh/docs/intro/install/#from-apt-debianubuntu
 
 ## Install k3s
@@ -9,16 +16,9 @@ Install `helm` https://helm.sh/docs/intro/install/#from-apt-debianubuntu
 Install k3s without built-in Traefik (so the Traefik from k8s/ can bind 80/443):
 
 ```shell
-curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable traefik" sh -
-```
-
-Copy k8s config from `rancher` folder to local one
-(to provide access to the k8s context)
-
-```shell
-mkdir -p ~/.kube
-sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-sudo chown ubuntu:ubuntu ~/.kube/config
+curl -sfL https://get.k3s.io | \
+  INSTALL_K3S_EXEC="server --disable traefik --write-kubeconfig-mode 644" \
+  sh -
 ```
 
 ## Add secrets to access docker registry
