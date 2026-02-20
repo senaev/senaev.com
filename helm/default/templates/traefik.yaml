@@ -53,6 +53,7 @@ spec:
               readOnly: false
       volumes:
         - name: acme-data
+          # ❗️ remake into hostPath to preserve persistence
           persistentVolumeClaim:
             claimName: traefik-acme-data
       initContainers:
