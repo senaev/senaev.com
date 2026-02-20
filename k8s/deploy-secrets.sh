@@ -5,7 +5,7 @@
 set -e
 
 
-NAMESPACE="senaev-com"
+NAMESPACE="default"
 DEPLOY_HOST="ubuntu@51.250.80.209"
 K3S_CLUSTER_DIR="/home/ubuntu/k3s-cluster"
 

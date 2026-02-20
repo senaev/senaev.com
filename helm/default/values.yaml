@@ -1,7 +1,5 @@
-# ❗️ rename to default for simplicity
-namespace: senaev-com
+namespace: default
 
-# Next.js app
 nextjs:
   enabled: true
   image:
@@ -11,7 +9,6 @@ nextjs:
   replicas: 1
   notesHostPath: /home/ubuntu/notes
 
-# Traefik ingress
 traefik:
   enabled: true
   image:
@@ -19,10 +16,8 @@ traefik:
     tag: v3.2
   acme:
     email: gsacryfice@gmail.com
-  # ❗️ TODO: change to INFO in production
-  logLevel: DEBUG
+  logLevel: INFO
 
-# Grafana
 grafana:
   enabled: true
   image:
@@ -30,14 +25,12 @@ grafana:
     tag: "11.2.0"
   provisioningHostPath: /home/ubuntu/k3s-cluster/grafana/provisioning
 
-# WebDAV (uses secret app-secrets key WEBDAV_PASSWORD)
 webdav:
   enabled: true
   image:
     repository: bytemark/webdav
   hostPath: /home/ubuntu/webdav
 
-# Xray (VLESS)
 xray:
   enabled: true
   image:
@@ -45,14 +38,12 @@ xray:
     tag: latest
   configHostPath: /home/ubuntu/k3s-cluster/xray-config.json
 
-# Test echo (demo)
 testEcho:
   enabled: true
   image:
     repository: hashicorp/http-echo
     tag: "0.2.3"
 
-# VictoriaMetrics
 victoriametrics:
   enabled: true
   image:
@@ -61,14 +52,12 @@ victoriametrics:
   retentionPeriod: 15d
   storageSize: 10Gi
 
-# Node exporter (DaemonSet)
 nodeExporter:
   enabled: true
   image:
     repository: prom/node-exporter
     tag: v1.7.0
 
-# Ingress (Traefik) - TLS hosts and rules
 ingress:
   className: traefik
   tls:
@@ -96,6 +85,5 @@ ingress:
       service: test-echo
       port: 80
 
-# Storage
 grafanaStorageSize: 5Gi
 traefikAcmeStorageSize: 100Mi

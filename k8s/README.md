@@ -1,3 +1,11 @@
+## Install tools
+
+Install kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+Install `helm` https://helm.sh/docs/intro/install/#from-apt-debianubuntu
+
+## Install k3s
+
 Install k3s without built-in Traefik (so the Traefik from k8s/ can bind 80/443):
 
 ```shell
@@ -13,19 +21,7 @@ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
 sudo chown ubuntu:ubuntu ~/.kube/config
 ```
 
-Install kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-
-Set `kubectl` default namespace
-
-```
-kubectl config set-context --current --namespace=senaev-com
-```
-
-Install `helm`
-
-https://helm.sh/docs/intro/install/#from-apt-debianubuntu
-
-- Add secrets to access docker registry
+## Add secrets to access docker registry
 
 ```shell
 # create service ccount, if not exists
@@ -48,9 +44,8 @@ yc iam key create \
   --service-account-id "$SA_ID" \
   --output key.json
 
-
-# add this secret to service account
-kubectl patch serviceaccount default \
-  -n senaev-com \
-  -p '{"imagePullSecrets":[{"name":"ycr-pull"}]}'
+# # add this secret to service account
+# kubectl patch serviceaccount default \
+#   -n default \
+#   -p '{"imagePullSecrets":[{"name":"ycr-pull"}]}'
 ```
