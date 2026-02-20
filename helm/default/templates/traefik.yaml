@@ -53,9 +53,9 @@ spec:
               readOnly: false
       volumes:
         - name: acme-data
-          # ❗️ remake into hostPath to preserve persistence
-          persistentVolumeClaim:
-            claimName: traefik-acme-data
+          hostPath:
+            path: {{ .Values.traefik.acmeHostPath }}
+            type: DirectoryOrCreate
       initContainers:
         - name: volume-permissions
           image: busybox:latest
