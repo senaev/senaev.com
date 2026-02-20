@@ -22,15 +22,13 @@ spec:
             - containerPort: 8443
           volumeMounts:
             - name: config
-              mountPath: /etc/xray
+              mountPath: /etc/xray/config.json
               readOnly: true
       volumes:
         - name: config
-          configMap:
-            name: xray-config
-            items:
-              - key: config.json
-                path: config.json
+          hostPath:
+            path: /home/ubuntu/k3s-cluster/xray-config.json
+            type: File
 ---
 apiVersion: v1
 kind: Service
