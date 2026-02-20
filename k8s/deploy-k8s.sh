@@ -39,8 +39,9 @@ echo "📤 Uploading grafana/provisioning/ files to server..."
 scp -r "$REPO_ROOT/grafana/provisioning" "$DEPLOY_HOST:$K3S_CLUSTER_DIR/grafana/"
 echo "✅ grafana/provisioning/ files uploaded to server."
 
-echo "🔄 Applying on server..."
+echo "🔄 Applying..."
 ssh -t "$DEPLOY_HOST" "
+    echo "🔄 Applying on server..."
     set -e
     cd $K3S_CLUSTER_DIR
 
@@ -59,7 +60,7 @@ ssh -t "$DEPLOY_HOST" "
       --prune-allowlist=core/v1/Service \
       --prune-allowlist=networking.k8s.io/v1/Ingress \
       --prune-allowlist=core/v1/ConfigMap
-    echo '✅ Apply done.'
+    echo '✅ Apply on server done.'
 "
 
 echo "✅ Deployment completed successfully!"
