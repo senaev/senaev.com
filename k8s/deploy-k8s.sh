@@ -30,7 +30,6 @@ echo "📤 Uploading k8s/ files to server..."
 scp -r "$REPO_ROOT/k8s" "$DEPLOY_HOST:$K3S_CLUSTER_DIR/"
 echo "✅ k8s/ files uploaded to server."
 
-
 echo "📁 Ensuring remote base directory grafana exists..."
 ssh "$DEPLOY_HOST" "mkdir -p $K3S_CLUSTER_DIR/grafana"
 echo "✅ Remote base directory grafana created."
@@ -54,13 +53,8 @@ ssh -t "$DEPLOY_HOST" "
     fi
 
     echo "📋 Applying k8s manifests..."
-    kubectl apply -f k8s/ --prune -l app \
-      --prune-allowlist=apps/v1/Deployment \
-      --prune-allowlist=apps/v1/DaemonSet \
-      --prune-allowlist=core/v1/Service \
-      --prune-allowlist=networking.k8s.io/v1/Ingress \
-      --prune-allowlist=core/v1/ConfigMap
-    echo '✅ Apply on server done.'
+    for f in k8s/*.yaml; do [ -f "\$f" ] && kubectl apply -f "\$f"; done
+    echo "✅ Apply on server done."
 "
 
 echo "✅ Deployment completed successfully!"

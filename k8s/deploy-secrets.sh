@@ -15,9 +15,11 @@ ssh -t "$DEPLOY_HOST" "
 
   cd $K3S_CLUSTER_DIR
 
-  echo "🔄 Creating secrets in namespace=[\$NAMESPACE] from folder=[\$PWD] on server..."
   source "$K3S_CLUSTER_DIR/.env"
 
+  echo "🔄 Creating secrets in namespace=[\$NAMESPACE] from folder=[\$PWD] on server..."
+
+  # ❗️ TODO: simplify the logic or use Vault for secrets management
   kubectl create secret generic app-secrets -n "\$NAMESPACE" \
     --from-literal=WEBDAV_PASSWORD="\$WEBDAV_PASSWORD" \
     --from-literal=GRAFANA_ADMIN_USER="\$GRAFANA_ADMIN_USER" \

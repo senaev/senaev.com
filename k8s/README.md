@@ -1,6 +1,13 @@
-Install k3s without kubectl
+Install k3s without built-in Traefik (so the Traefik from k8s/ can bind 80/443):
+
+```shell
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable traefik" sh -
+```
+
+Traefik is deployed from k8s/: `traefik-acme-pvc.yaml`, `traefik-rbac.yaml`, `traefik.yaml` (IngressClass + Deployment + Service). Apply with the rest of the stack (`kubectl apply -f k8s/`).
 
 Copy k8s config from `rancher` folder to local one
+(to provide access to the k8s context)
 
 ```shell
 mkdir -p ~/.kube
@@ -8,7 +15,13 @@ sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
 sudo chown ubuntu:ubuntu ~/.kube/config
 ```
 
-- Install kubectl
+Install kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+Set `kubectl` default namespace
+
+```
+kubectl config set-context --current --namespace=senaev-com
+```
 
 - Add secrets to access docker registry
 
@@ -39,4 +52,9 @@ kubectl -n senaev-com create secret docker-registry ycr-pull \
   --docker-username=json_key \
   --docker-password="$(cat key.json | tr -d '\n')" \
   --docker-email=unused@example.com
+
+# add this secret to service account
+kubectl patch serviceaccount default \
+  -n senaev-com \
+  -p '{"imagePullSecrets":[{"name":"ycr-pull"}]}'
 ```

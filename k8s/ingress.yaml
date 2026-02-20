@@ -1,4 +1,4 @@
-# Ingress for Traefik (k3s). Ensure Traefik has a certificate resolver "letsencrypt" (e.g. via HelmChartConfig).
+# Ingress for Traefik (k8s/traefik.yaml). Traefik is configured with certificate resolver "letsencrypt".
 # HTTP->HTTPS redirect can be set in Traefik entrypoint config or via a redirect middleware.
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -6,6 +6,7 @@ metadata:
   name: senaev-com
   namespace: senaev-com
   annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
 spec:

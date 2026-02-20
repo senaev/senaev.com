@@ -5,7 +5,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: traefik-acme-data
-  namespace: kube-system
+  namespace: senaev-com
 spec:
   accessModes: [ReadWriteOnce]
   storageClassName: local-path
