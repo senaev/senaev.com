@@ -53,7 +53,13 @@ ssh -t "$DEPLOY_HOST" "
     fi
 
     echo "📋 Applying k8s manifests..."
-    kubectl apply -f k8s/
+    kubectl apply -f k8s/ --prune -l app \
+      --prune-allowlist=apps/v1/Deployment \
+      --prune-allowlist=apps/v1/DaemonSet \
+      --prune-allowlist=core/v1/Service \
+      --prune-allowlist=networking.k8s.io/v1/Ingress \
+      --prune-allowlist=core/v1/ConfigMap \
+      --prune-allowlist=core/v1/PersistentVolumeClaim
     echo '✅ Apply done.'
 "
 

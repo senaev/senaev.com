@@ -1,12 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: xray
   namespace: senaev-com
   labels:
     app: xray
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: xray
