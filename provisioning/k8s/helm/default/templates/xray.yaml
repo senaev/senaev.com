@@ -23,11 +23,11 @@ spec:
           ports:
             - containerPort: 8443
           volumeMounts:
-            - name: config
+            - name: config-volume
               mountPath: /etc/xray/config.json
               readOnly: true
       volumes:
-        - name: config
+        - name: config-volume
           hostPath:
             path: {{ .Values.xray.configHostPath }}
             type: File

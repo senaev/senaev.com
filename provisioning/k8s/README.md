@@ -9,7 +9,14 @@ mkdir -p ~/.kube
 ln -sf /etc/rancher/k3s/k3s.yaml ~/.kube/config
 ```
 
-Install `helm` https://helm.sh/docs/intro/install/#from-apt-debianubuntu
+Install `helm`
+
+```shell
+wget https://get.helm.sh/helm-v4.1.1-linux-amd64.tar.gz
+tar -zxvf helm-v4.1.1-linux-amd64.tar.gz
+sudo mv linux-amd64/helm /usr/local/bin/helm
+sudo chmod +x /usr/local/bin/helm
+```
 
 ## Install k3s
 
@@ -39,10 +46,10 @@ yc resource-manager folder add-access-binding "$FOLDER_ID" \
   --role container-registry.images.pusher \
   --subject serviceAccount:"$SA_ID"
 
-# create file with secret key
+# create file with secret key in k3s-cluster folder
 yc iam key create \
   --service-account-id "$SA_ID" \
-  --output key.json
+  --output yandex-cloud-key.json
 
 # # add this secret to service account
 # kubectl patch serviceaccount default \

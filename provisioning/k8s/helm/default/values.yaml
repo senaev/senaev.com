@@ -1,5 +1,11 @@
 namespace: default
 
+externalSecrets:
+  # TODO: ❗️ Enable external secrets
+  enabled: false
+  vaultPathApp: "default/app-secrets"
+  vaultPathRegistry: "default/registry"
+
 nextjs:
   enabled: true
   image:
@@ -16,7 +22,7 @@ traefik:
     tag: v3.2
   acme:
     email: gsacryfice@gmail.com
-  acmeHostPath: /home/ubuntu/k3s-cluster/traefik-acme
+  acmeHostPath: /home/ubuntu/k3s-cluster/volumes/traefik-acme
   logLevel: INFO
 
 grafana:
@@ -37,7 +43,7 @@ xray:
   image:
     repository: teddysun/xray
     tag: latest
-  configHostPath: /home/ubuntu/k3s-cluster/xray-config.json
+  configHostPath: /home/ubuntu/k3s-cluster/volumes/xray/xray-config.json
 
 testEcho:
   enabled: true

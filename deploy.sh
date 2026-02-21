@@ -16,29 +16,20 @@ echo "🚀 Starting deployment to production server..."
 echo "📁 Ensuring k3s-cluster directory exists on server..."
 ssh $DEPLOY_HOST "mkdir -p $K3S_CLUSTER_DIR"
 
-# One-time Datadog host agent install: if script is not on server, upload, make executable, run
-DATADOG_SCRIPT_PATH="$K3S_CLUSTER_DIR/scripts/datadog-install.sh"
-if ! ssh $DEPLOY_HOST "test -f $DATADOG_SCRIPT_PATH"; then
-  echo "📤 Uploading Datadog install script (one-time setup)..."
-  ssh $DEPLOY_HOST "mkdir -p $K3S_CLUSTER_DIR/scripts"
-  scp $SCRIPT_DIR/scripts/datadog-install.sh $DEPLOY_HOST:$DATADOG_SCRIPT_PATH
-  echo "🔧 Making script executable..."
-  ssh $DEPLOY_HOST "chmod +x $DATADOG_SCRIPT_PATH"
-  echo "🚀 Running Datadog install..."
-  ssh -t $DEPLOY_HOST "$DATADOG_SCRIPT_PATH"
-  echo "✅ Datadog install completed successfully!"
-else
-  echo "🙈 Datadog install script already on server, skipping."
-fi
+echo "📤 Syncing provisioning files to server..."
+rsync -avz --delete -e ssh "$SCRIPT_DIR/provisioning/" "$DEPLOY_HOST:$K3S_CLUSTER_DIR/provisioning/"
+echo "✅ Provisioning files synced."
 
+# echo "🚀 Running Datadog install..."
+# ssh -t $DEPLOY_HOST "$K3S_CLUSTER_DIR/provisioning/datadog/datadog-install.sh"
+# echo "✅ Datadog install completed successfully!"
 
-echo "🔄 Deploying k8s stack to server..."
-./k8s/deploy-k8s.sh
-echo "✅ k8s stack deployed to server."
+echo "🔄 Deploying k8s cluster to server..."
+ssh "$DEPLOY_HOST" "$K3S_CLUSTER_DIR/provisioning/k8s/scripts/deploy-k8s.sh"
+echo "✅ k8s cluster deployed to server."
 
-
-echo "🔄 Deploying secrets to server..."
-./k8s/deploy-secrets.sh
+echo "🔄 Deploying k8s secrets to server..."
+ssh "$DEPLOY_HOST" "$K3S_CLUSTER_DIR/provisioning/k8s/scripts/deploy-secrets.sh"
 echo "✅ Secrets deployed to server."
 
 echo "✅ Deployment completed successfully!"

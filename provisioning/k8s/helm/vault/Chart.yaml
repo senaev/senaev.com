@@ -1,0 +1,11 @@
+apiVersion: v2
+name: vault-eso
+description: External Secrets Operator + ClusterSecretStore for Vault (install in vault namespace after Vault is running and bootstrapped).
+type: application
+version: 0.1.0
+appVersion: "1"
+kubeVersion: ">=1.21.0"
+dependencies:
+  - name: external-secrets
+    version: "0.9.19"
+    repository: https://charts.external-secrets.io
