@@ -15,7 +15,7 @@ traefik:
     repository: traefik
     tag: v3.2
   acme:
-    email: gsacryfice@gmail.com
+    email: andrei.senaev@gmail.com
   acmeHostPath: /home/ubuntu/k3s-cluster/volumes/traefik-acme
   logLevel: INFO
 
