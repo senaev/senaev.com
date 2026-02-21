@@ -1,0 +1,5 @@
+# Server runs in standalone mode by default (single pod, file storage).
+vault:
+  # Disable the Vault Agent Injector (sidecar injection).
+  injector:
+    enabled: false
