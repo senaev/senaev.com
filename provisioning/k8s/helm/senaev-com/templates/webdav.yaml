@@ -85,7 +85,6 @@ spec:
               mountPath: /var/lib/dav
       volumes:
         - name: data
-          # ❗️ TODO: move to /volumes hostPath
           hostPath:
             path: {{ .Values.webdav.hostPath }}
             type: DirectoryOrCreate
