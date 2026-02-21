@@ -2,7 +2,7 @@
 
 set -e  # Exit on any error
 
-
+# ❗️ TODO: move to secrets
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 K3S_CLUSTER_DIR="/home/ubuntu/k3s-cluster"
 XRAY_VOLUME_DIR="$K3S_CLUSTER_DIR/volumes/xray"

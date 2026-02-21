@@ -13,17 +13,17 @@ set +a
 
 cd $K3S_CLUSTER_DIR
 
-if kubectl get namespace "$NAMESPACE" &>/dev/null; then
-    echo "🤷 Namespace $NAMESPACE already exists."
+if kubectl get namespace "$NS" &>/dev/null; then
+    echo "🤷 Namespace $NS already exists."
 else
-    echo "👉 Creating namespace [$NAMESPACE]..."
-    kubectl create namespace "$NAMESPACE"
-    echo "✅ Namespace=[$NAMESPACE] created."
+    echo "👉 Creating namespace [$NS]..."
+    kubectl create namespace "$NS"
+    echo "✅ Namespace=[$NS] created."
 fi
 
-echo "👉 Helm upgrade --install namespace=[$NAMESPACE] release=[$HELM_RELEASE_NAME]..."
+echo "👉 Helm upgrade --install namespace=[$NS] release=[$HELM_RELEASE_NAME]..."
 helm upgrade --install $HELM_RELEASE_NAME ./provisioning/k8s/helm/default \
-  -n $NAMESPACE \
+  -n $NS \
   -f ./provisioning/k8s/helm/default/values.yaml \
   --take-ownership
 echo "✅ Helm deploy done."
@@ -43,9 +43,9 @@ echo "✅ Helm deploy done."
 # REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 # cd "$REPO_ROOT"
 
-# # Optional: load NAMESPACE from .env
+# # Optional: load NS from .env
 # [[ -f "$REPO_ROOT/.env" ]] && set -a && source "$REPO_ROOT/.env" && set +a
-# NAMESPACE="${NAMESPACE:-default}"
+# NS="${NS:-default}"
 # HELM_RELEASE_DEFAULT="default"
 # HELM_RELEASE_VAULT="vault"
 # HELM_RELEASE_VAULT_ESO="vault-eso"
@@ -76,9 +76,9 @@ echo "✅ Helm deploy done."
 # helm upgrade --install "$HELM_RELEASE_VAULT_ESO" "$REPO_ROOT/helm/vault" -n vault \
 #   -f "$REPO_ROOT/helm/vault/values.yaml"
 
-# echo "🚀 Installing app chart ($HELM_RELEASE_DEFAULT) in namespace $NAMESPACE..."
+# echo "🚀 Installing app chart ($HELM_RELEASE_DEFAULT) in namespace $NS..."
 # helm dependency update "$REPO_ROOT/helm/default" 2>/dev/null || true
-# helm upgrade --install "$HELM_RELEASE_DEFAULT" "$REPO_ROOT/helm/default" -n "$NAMESPACE" --create-namespace \
+# helm upgrade --install "$HELM_RELEASE_DEFAULT" "$REPO_ROOT/helm/default" -n "$NS" --create-namespace \
 #   "${EXTRA_VALUES[@]}" \
 #   --take-ownership
 
