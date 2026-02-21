@@ -1,4 +1,36 @@
 {{- if .Values.webdav.enabled }}
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: webdav
+  namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: webdav-secret-reader
+  namespace: {{ .Release.Namespace }}
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    resourceNames: ["app-secrets"]
+    verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: webdav-secret-reader
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: webdav-secret-reader
+subjects:
+  - kind: ServiceAccount
+    name: webdav
+    namespace: {{ .Release.Namespace }}
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,6 +48,23 @@ spec:
       labels:
         app: webdav
     spec:
+      serviceAccountName: webdav
+      initContainers:
+        - name: wait-for-webdav-secret
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for app-secrets (WEBDAV_PASSWORD)..."
+              NAMESPACE=$$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
+              TOKEN=$$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+              CA=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+              until wget -q -O- --header="Authorization: Bearer $$TOKEN" --ca-certificate="$$CA" "https://kubernetes.default.svc/api/v1/namespaces/$$NAMESPACE/secrets/app-secrets" 2>/dev/null | grep -q '"WEBDAV_PASSWORD"'; do
+                echo "⏳ Secret not ready, retrying in 2s..."
+                sleep 2
+              done
+              echo "✅ Secret app-secrets with WEBDAV_PASSWORD is ready"
       containers:
         - name: webdav
           image: {{ .Values.webdav.image.repository }}
@@ -36,6 +85,7 @@ spec:
               mountPath: /var/lib/dav
       volumes:
         - name: data
+          # ❗️ TODO: move to /volumes hostPath
           hostPath:
             path: {{ .Values.webdav.hostPath }}
             type: DirectoryOrCreate
