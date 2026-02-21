@@ -5,7 +5,6 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 K3S_CLUSTER_DIR="/home/ubuntu/k3s-cluster"
-HELM_RELEASE_NAME="default"
 
 set -a
 source "$REPO_ROOT/.env"

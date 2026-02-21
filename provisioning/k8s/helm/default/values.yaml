@@ -1,4 +1,4 @@
-namespace: default
+namespace: senaev-com
 
 nextjs:
   enabled: true
