@@ -13,6 +13,15 @@ set +a
 
 cd $K3S_CLUSTER_DIR
 
+# ❗️ TODO: remove this step after integrating secrets into a Vault
+echo "👉 Creating namespace=[$NS] if not exists"
+kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f -
+echo "✅ Namespace=[$NS] created"
+
+echo "👉 Deploying k8s secrets to server"
+$SCRIPT_DIR/deploy-secrets.sh
+echo "✅ Secrets deployed to server"
+
 echo "👉 Helm upgrade namespace=[$NS] release=[$HELM_RELEASE_NAME]"
 helm upgrade --install $HELM_RELEASE_NAME ./provisioning/k8s/helm/$NS \
   -n $NS \

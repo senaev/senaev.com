@@ -24,8 +24,4 @@ echo "👉 Deploying k8s cluster to server"
 ssh "$DEPLOY_HOST" "$K3S_CLUSTER_DIR/provisioning/k8s/scripts/deploy-k8s.sh"
 echo "✅ k8s cluster deployed to server"
 
-echo "👉 Deploying k8s secrets to server"
-ssh "$DEPLOY_HOST" "$K3S_CLUSTER_DIR/provisioning/k8s/scripts/deploy-secrets.sh"
-echo "✅ Secrets deployed to server"
-
 echo "✅ Deployment completed successfully!"
