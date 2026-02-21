@@ -31,8 +31,8 @@ helm upgrade --install $HELM_RELEASE_NAME ./provisioning/k8s/helm/$NS \
 echo "✅ Helm deploy done"
 
 # ❗️ unify with senaev-com namespace
-echo "👉 Helm upgrade namespace=[$VAULT_NS]"
-helm upgrade --install $VAULT_NS ./provisioning/k8s/helm/$VAULT_NS \
+echo "👉 Helm upgrade namespace=[$VAULT_NS] release=[$HELM_RELEASE_NAME]"
+helm upgrade --install vault ./provisioning/k8s/helm/$VAULT_NS \
   -n "$VAULT_NS" \
   --create-namespace \
   -f ./provisioning/k8s/helm/$VAULT_NS/values.yaml \
