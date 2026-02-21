@@ -1,11 +1,5 @@
 namespace: default
 
-externalSecrets:
-  # TODO: ❗️ Enable external secrets
-  enabled: false
-  vaultPathApp: "default/app-secrets"
-  vaultPathRegistry: "default/registry"
-
 nextjs:
   enabled: true
   image:

@@ -1,8 +1,0 @@
-# Values for the external-secrets dependency (ESO installed in vault namespace).
-# ClusterSecretStore is rendered from templates/cluster-secret-store.yaml.
-
-external-secrets:
-  installCRDs: true
-  replicas: 1
-  resources: {}
-  affinity: []
