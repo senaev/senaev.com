@@ -24,13 +24,13 @@ grafana:
   image:
     repository: grafana/grafana
     tag: "11.2.0"
-  provisioningHostPath: /home/ubuntu/k3s-cluster/grafana/provisioning
+  provisioningHostPath: /home/ubuntu/k3s-cluster/provisioning/grafana/provisioning
 
 webdav:
   enabled: true
   image:
     repository: bytemark/webdav
-  hostPath: /home/ubuntu/webdav
+  hostPath: /home/ubuntu/k3s-cluster/volumes/webdav
 
 xray:
   enabled: true
