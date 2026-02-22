@@ -1,6 +1,5 @@
 #!/bin/bash
-
-set -e
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
@@ -21,6 +20,10 @@ echo "✅ Namespace=[$NS] created"
 echo "👉 Deploying k8s secrets to server"
 $SCRIPT_DIR/deploy-secrets.sh
 echo "✅ Secrets deployed to server"
+
+echo "👉 Deploying vault"
+$SCRIPT_DIR/deploy-vault.sh
+echo "✅ Vault deployed"
 
 echo "👉 Helm upgrade namespace=[$NS] release=[$HELM_RELEASE_NAME]"
 helm upgrade --install $HELM_RELEASE_NAME ./provisioning/k8s/helm/$NS \
