@@ -1,5 +1,39 @@
-# Server runs in standalone mode by default (single pod, file storage).
+# HashiCorp Vault — standalone, Shamir seal, persistent storage.
 vault:
-  # Disable the Vault Agent Injector (sidecar injection).
+  # Stable resource names: StatefulSet "vault", pod "vault-0"
+  fullnameOverride: "vault"
+
   injector:
     enabled: false
+
+  server:
+    # Standalone mode: single node, file storage (no HA/raft)
+    standalone:
+      enabled: true
+      config: |
+        listener "tcp" {
+          tls_disable = true
+          address = "[::]:8200"
+          cluster_address = "[::]:8201"
+        }
+        storage "file" {
+          path = "/vault/data"
+        }
+
+    service:
+      enabled: true
+
+    # hostPath so data lives on the node and you can copy it (e.g. backup/migrate)
+    dataStorage:
+      enabled: false
+    volumes:
+      - name: vault-data
+        hostPath:
+          path: /home/ubuntu/k3s-cluster/volumes/vault
+          type: DirectoryOrCreate
+    volumeMounts:
+      - name: vault-data
+        mountPath: /vault/data
+
+    # No seal stanza = default Shamir seal (manual unseal)
+    # No dev mode, no auto-unseal (extraEnvironmentVars / seal config omitted)
