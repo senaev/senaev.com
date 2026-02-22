@@ -11,6 +11,7 @@ vault:
     standalone:
       enabled: true
       config: |
+        ui = true
         listener "tcp" {
           tls_disable = true
           address = "[::]:8200"

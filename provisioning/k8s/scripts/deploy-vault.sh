@@ -24,11 +24,21 @@ status_json() {
 }
 
 echo "👉 Checking vault status..."
-STATUS_JSON="$(status_json)"
-if [[ -z "$STATUS_JSON" ]]; then
-  echo "❌ Vault is not responding yet (or CLI can't reach it). Check pod logs/status."
-  exit 1
-fi
+MAX_ATTEMPTS=30
+STATUS_JSON=""
+for i in $(seq 1 "$MAX_ATTEMPTS"); do
+  STATUS_JSON="$(status_json)"
+  if [[ -n "$STATUS_JSON" ]]; then
+    echo "✅ Vault is responding."
+    break
+  fi
+  echo "   ⏳ Pending: waiting for Vault to start... ($i/$MAX_ATTEMPTS)"
+  if [[ "$i" -eq "$MAX_ATTEMPTS" ]]; then
+    echo "❌ Vault did not respond in time. Check pod logs/status."
+    exit 1
+  fi
+  sleep 2
+done
 
 INITIALIZED="$(echo "$STATUS_JSON" | jq -r '.initialized')"
 SEALED="$(echo "$STATUS_JSON" | jq -r '.sealed')"
