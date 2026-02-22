@@ -60,10 +60,9 @@ if [[ "$SEALED" == "true" ]]; then
   fi
 
   echo "👉 Vault is sealed. Unsealing..."
-  for i in 0 1 2; do
-    KEY="$(jq -r ".unseal_keys_b64[$i]" "$INIT_FILE")"
-    vault_exec operator unseal "$KEY" >/dev/null
-  done
+
+  KEY="$(jq -r ".unseal_keys_b64[0]" "$INIT_FILE")"
+  vault_exec operator unseal "$KEY" >/dev/null
   echo "Unseal done."
 else
   echo "Vault is already unsealed."
@@ -71,4 +70,7 @@ fi
 
 echo "👉 Checking final vault status..."
 FINAL_STATUS="$(vault_exec status)"
-echo "✅ FINAL_STATUS=[$FINAL_STATUS]"
+echo "✅ Final vault status:"
+echo "--------------------------------"
+echo "$FINAL_STATUS"
+echo "--------------------------------"
