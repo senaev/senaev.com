@@ -39,4 +39,4 @@ helm upgrade --install vault ./provisioning/k8s/helm/$VAULT_NS \
   --create-namespace \
   -f ./provisioning/k8s/helm/$VAULT_NS/values.yaml \
   --take-ownership
-echo "✅ Vault deploy done"
+echo "✅ Vault helm chart deployed"
