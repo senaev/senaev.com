@@ -1,0 +1,7 @@
+apiVersion: v2
+name: senaev-com
+description: senaev.com services
+type: application
+version: 0.1.0
+appVersion: "1"
+kubeVersion: ">=1.21.0"

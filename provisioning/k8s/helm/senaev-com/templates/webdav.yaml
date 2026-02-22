@@ -1,0 +1,104 @@
+{{- if .Values.webdav.enabled }}
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: webdav
+  namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: webdav-secret-reader
+  namespace: {{ .Release.Namespace }}
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    resourceNames: ["app-secrets"]
+    verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: webdav-secret-reader
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: webdav-secret-reader
+subjects:
+  - kind: ServiceAccount
+    name: webdav
+    namespace: {{ .Release.Namespace }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webdav
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: webdav
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webdav
+  template:
+    metadata:
+      labels:
+        app: webdav
+    spec:
+      serviceAccountName: webdav
+      initContainers:
+        - name: wait-for-webdav-secret
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for app-secrets (WEBDAV_PASSWORD)..."
+              NAMESPACE=$$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
+              TOKEN=$$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+              CA=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+              until wget -q -O- --header="Authorization: Bearer $$TOKEN" --ca-certificate="$$CA" "https://kubernetes.default.svc/api/v1/namespaces/$$NAMESPACE/secrets/app-secrets" 2>/dev/null | grep -q '"WEBDAV_PASSWORD"'; do
+                echo "⏳ [$$(date '+%Y-%m-%dT%H:%M:%S')] Secret not ready, retrying in 2s..."
+                sleep 2
+              done
+              echo "✅ Secret app-secrets with WEBDAV_PASSWORD is ready"
+      containers:
+        - name: webdav
+          image: {{ .Values.webdav.image.repository }}
+          env:
+            - name: AUTH_TYPE
+              value: Digest
+            - name: USERNAME
+              value: admin
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: WEBDAV_PASSWORD
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/dav
+      volumes:
+        - name: data
+          hostPath:
+            path: {{ .Values.webdav.hostPath }}
+            type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webdav
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: webdav
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
+{{- end }}

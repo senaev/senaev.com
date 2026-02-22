@@ -3,6 +3,11 @@
 # Run automatically by docker-deploy.sh if the script is not yet present on the server.
 # https://app.datadoghq.eu/signup/setup/agent/docker
 
+if systemctl is-enabled datadog-agent &>/dev/null || systemctl is-active datadog-agent &>/dev/null; then
+  echo "🤷 Datadog Agent service already present, skipping."
+  exit 0
+fi
+
 set -e
 export DD_APM_INSTRUMENTATION_LIBRARIES=java:1,python:4,js:5,php:1,dotnet:3,ruby:2
 export DD_APM_INSTRUMENTATION_ENABLED=docker
