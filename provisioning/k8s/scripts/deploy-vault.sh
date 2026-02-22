@@ -24,7 +24,7 @@ status_json() {
 }
 
 echo "👉 Checking vault status..."
-MAX_ATTEMPTS=30
+MAX_ATTEMPTS=100
 STATUS_JSON=""
 for i in $(seq 1 "$MAX_ATTEMPTS"); do
   STATUS_JSON="$(status_json)"
@@ -37,7 +37,7 @@ for i in $(seq 1 "$MAX_ATTEMPTS"); do
     echo "❌ Vault did not respond in time. Check pod logs/status."
     exit 1
   fi
-  sleep 2
+  sleep 1
 done
 
 INITIALIZED="$(echo "$STATUS_JSON" | jq -r '.initialized')"

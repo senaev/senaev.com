@@ -47,6 +47,7 @@ testEcho:
 
 victoriametrics:
   enabled: true
+  scrapeInterval: 30s
   image:
     repository: victoriametrics/victoria-metrics
     tag: v1.100.0

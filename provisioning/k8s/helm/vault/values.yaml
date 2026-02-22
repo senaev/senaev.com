@@ -1,6 +1,3 @@
-# HashiCorp Vault — standalone, Shamir seal, persistent storage.
-
-# Ingress for Vault UI (vault.senaev.com)
 ingress:
   enabled: true
   host: vault.senaev.com
@@ -8,15 +5,16 @@ ingress:
   tls:
     certResolver: letsencrypt
 
+external-secrets:
+  installCRDs: true
+
 vault:
-  # Stable resource names: StatefulSet "vault", pod "vault-0"
   fullnameOverride: "vault"
 
   injector:
     enabled: false
 
   server:
-    # Standalone mode: single node, file storage (no HA/raft)
     standalone:
       enabled: true
       config: |
@@ -37,7 +35,6 @@ vault:
     service:
       enabled: true
 
-    # hostPath so data lives on the node and you can copy it (e.g. backup/migrate)
     dataStorage:
       enabled: false
     volumes:
@@ -48,6 +45,3 @@ vault:
     volumeMounts:
       - name: vault-data
         mountPath: /vault/data
-
-    # No seal stanza = default Shamir seal (manual unseal)
-    # No dev mode, no auto-unseal (extraEnvironmentVars / seal config omitted)
