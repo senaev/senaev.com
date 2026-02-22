@@ -28,4 +28,13 @@ data:
         static_configs:
           - targets: ["traefik.{{ .Release.Namespace }}.svc.cluster.local:8080"]
         scrape_interval: 15s
+
+      # ❗️ Setup token for scrape
+      - job_name: "vault"
+        metrics_path: "/v1/sys/metrics"
+        params:
+          format: ["prometheus"]
+        static_configs:
+          - targets: ["vault.vault.svc.cluster.local:8200"]
+        scrape_interval: 15s
 {{- end }}
