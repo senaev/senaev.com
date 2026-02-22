@@ -1,4 +1,13 @@
 # HashiCorp Vault — standalone, Shamir seal, persistent storage.
+
+# Ingress for Vault UI (vault.senaev.com)
+ingress:
+  enabled: true
+  host: vault.senaev.com
+  className: traefik
+  tls:
+    certResolver: letsencrypt
+
 vault:
   # Stable resource names: StatefulSet "vault", pod "vault-0"
   fullnameOverride: "vault"
