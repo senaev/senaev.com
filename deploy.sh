@@ -1,10 +1,5 @@
 #!/bin/bash
-
-# Deploy senaev.com to production server
-# This script uploads required files, pulls latest image, and runs docker compose
-
-set -e  # Exit on any error
-
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 K3S_CLUSTER_DIR="/home/ubuntu/k3s-cluster"

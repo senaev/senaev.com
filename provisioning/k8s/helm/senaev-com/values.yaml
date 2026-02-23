@@ -3,6 +3,7 @@ namespace: senaev-com
 nextjs:
   enabled: true
   image:
+    # ❗️ TODO: use another registry
     repository: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com
     tag: latest
     pullPolicy: Always
