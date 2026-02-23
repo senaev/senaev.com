@@ -57,7 +57,7 @@ spec:
       volumes:
         - name: acme-data
           hostPath:
-            path: {{ .Values.traefik.acmeHostPath }}
+            path: {{ .Values.userRootPath }}/{{ .Values.traefik.acmePath }}
             type: DirectoryOrCreate
       initContainers:
         - name: volume-permissions

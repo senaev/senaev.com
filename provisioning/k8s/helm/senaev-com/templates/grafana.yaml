@@ -51,7 +51,7 @@ spec:
             claimName: grafana-data
         - name: grafana-provisioning
           hostPath:
-            path: {{ .Values.grafana.provisioningHostPath }}
+            path: {{ .Values.userRootPath }}/{{ .Values.grafana.provisioningPath }}
             type: DirectoryOrCreate
 ---
 apiVersion: v1

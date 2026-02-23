@@ -1,5 +1,7 @@
 namespace: senaev-com
 
+userRootPath: /home/ubuntu
+
 nextjs:
   enabled: true
   image:
@@ -8,7 +10,7 @@ nextjs:
     tag: latest
     pullPolicy: Always
   replicas: 1
-  notesHostPath: /home/ubuntu/notes
+  notesPath: notes
 
 traefik:
   enabled: true
@@ -17,7 +19,7 @@ traefik:
     tag: v3.2
   acme:
     email: andrei.senaev@gmail.com
-  acmeHostPath: /home/ubuntu/k3s-cluster/volumes/traefik-acme
+  acmePath: k3s-cluster/volumes/traefik-acme
   logLevel: INFO
 
 grafana:
@@ -25,20 +27,20 @@ grafana:
   image:
     repository: grafana/grafana
     tag: "11.2.0"
-  provisioningHostPath: /home/ubuntu/k3s-cluster/provisioning/grafana/provisioning
+  provisioningPath: k3s-cluster/provisioning/grafana/provisioning
 
 webdav:
   enabled: true
   image:
     repository: bytemark/webdav
-  hostPath: /home/ubuntu/k3s-cluster/volumes/webdav
+  path: k3s-cluster/volumes/webdav
 
 xray:
   enabled: true
   image:
     repository: teddysun/xray
     tag: latest
-  configHostPath: /home/ubuntu/k3s-cluster/secrets/xray/xray-config.json
+  configPath: k3s-cluster/secrets/xray/xray-config.json
 
 testEcho:
   enabled: true

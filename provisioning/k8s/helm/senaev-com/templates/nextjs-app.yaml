@@ -44,7 +44,7 @@ spec:
       volumes:
         - name: notes
           hostPath:
-            path: {{ .Values.nextjs.notesHostPath }}
+            path: {{ .Values.userRootPath }}/{{ .Values.nextjs.notesPath }}
             type: DirectoryOrCreate
 ---
 apiVersion: v1

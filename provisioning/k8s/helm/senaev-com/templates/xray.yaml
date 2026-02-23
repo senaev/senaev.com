@@ -29,7 +29,7 @@ spec:
       volumes:
         - name: config-volume
           hostPath:
-            path: {{ .Values.xray.configHostPath }}
+            path: {{ .Values.userRootPath }}/{{ .Values.xray.configPath }}
             type: File
 ---
 apiVersion: v1

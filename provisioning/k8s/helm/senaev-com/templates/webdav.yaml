@@ -86,7 +86,7 @@ spec:
       volumes:
         - name: data
           hostPath:
-            path: {{ .Values.webdav.hostPath }}
+            path: {{ .Values.userRootPath }}/{{ .Values.webdav.path }}
             type: DirectoryOrCreate
 ---
 apiVersion: v1
