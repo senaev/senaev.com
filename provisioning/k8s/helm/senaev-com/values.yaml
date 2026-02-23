@@ -38,7 +38,7 @@ xray:
   image:
     repository: teddysun/xray
     tag: latest
-  configHostPath: /home/ubuntu/k3s-cluster/volumes/xray/xray-config.json
+  configHostPath: /home/ubuntu/k3s-cluster/secrets/xray/xray-config.json
 
 testEcho:
   enabled: true
