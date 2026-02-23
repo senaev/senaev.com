@@ -1,20 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
-K3S_CLUSTER_DIR="/home/ubuntu/k3s-cluster"
-
-set -a
-source "$REPO_ROOT/.env"
-set +a
+set -a; source "$SCRIPT_DIR/.env"; set +a
+set -a; source "$SECRETS_PATH/.env"; set +a
 
 echo "👉 Creating secret docker-registry ycr-pull in namespace=[$NS] "
 kubectl create secret docker-registry ycr-pull \
   -n "$NS" \
   --docker-server=cr.yandex \
   --docker-username=json_key \
-  --docker-password="$(cat $K3S_CLUSTER_DIR/yandex-cloud-key.json | tr -d '\n')" \
+  --docker-password="$(cat $K3S_CLUSTER_PATH/yandex-cloud-key.json | tr -d '\n')" \
   --docker-email=unused@example.com \
   --dry-run=client -o yaml | kubectl apply -f -
 echo "✅ Secret docker-registry ycr-pull created"
