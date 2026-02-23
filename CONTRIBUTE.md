@@ -22,9 +22,3 @@ docker build --platform linux/arm64 -t senaev.com .
 docker tag senaev.com cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
 docker push cr.yandex/crpnkh51pjbnliqhuqml/senaev.com:latest
 ```
-
-## Remote server
-
-```bash
-ssh ubuntu@51.250.80.209
-```

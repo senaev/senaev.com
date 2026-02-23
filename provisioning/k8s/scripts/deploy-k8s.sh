@@ -1,9 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+
 K3S_CLUSTER_DIR="/home/ubuntu/k3s-cluster"
+PROVISIONING_DIR="$K3S_CLUSTER_DIR/provisioning"
+SECRETS_DIR="$K3S_CLUSTER_DIR/secrets"
+VOLUMES_DIR="$K3S_CLUSTER_DIR/volumes"
+
 HELM_RELEASE_NAME="rev-$(date +%Y-%m-%d-%H-%M-%S)"
 
 set -a
@@ -11,6 +16,14 @@ source "$REPO_ROOT/.env"
 set +a
 
 cd $K3S_CLUSTER_DIR
+
+
+# Ensure directory exists on server and create folder structure (mkdir -p keeps existing content)
+echo "👉 Ensuring k3s-cluster directory and structure exist on server"
+mkdir -p \
+  $PROVISIONING_DIR \
+  $SECRETS_DIR \
+  $VOLUMES_DIR
 
 # ❗️ TODO: remove this step after integrating secrets into a Vault
 echo "👉 Creating namespace=[$NS] if not exists"
