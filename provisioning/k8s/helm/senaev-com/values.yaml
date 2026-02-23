@@ -1,6 +1,6 @@
 namespace: senaev-com
 
-userRootPath: /home/ubuntu
+userRootPath: /root
 
 nextjs:
   enabled: true

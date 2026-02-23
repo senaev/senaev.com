@@ -40,7 +40,7 @@ vault:
     volumes:
       - name: vault-data
         hostPath:
-          path: /home/ubuntu/k3s-cluster/volumes/vault
+          path: /root/k3s-cluster/volumes/vault
           type: DirectoryOrCreate
     volumeMounts:
       - name: vault-data

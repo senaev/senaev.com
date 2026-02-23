@@ -16,7 +16,7 @@
 
 Запустить докер контейнер с Xray
 
-Зайти на сервер в папку `/home/ubuntu/docker-compose`
+Зайти на сервер в папку `$USER_ROOT_PATH/docker-compose`
 
 Сгенерировать `{USER_UUID}` командой `uuidgen`, вывод будет типа такого:
 `ec4249b8-12aa-4ca3-a4cb-693dc48147be`
