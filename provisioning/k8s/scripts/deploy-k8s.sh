@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 set -a; source "$SCRIPT_DIR/.env"; set +a
 set -a; source "$SECRETS_PATH/.env"; set +a
 
-HELM_RELEASE_NAME="rev-$(date +%Y-%m-%d-%H-%M-%S)"
+HELM_RELEASE_NAME="rev-$(date +%Y%m%d%H%M%S)"
 
 cd $K3S_CLUSTER_PATH
 

@@ -61,8 +61,8 @@ spec:
               TOKEN=$$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
               CA=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
               until wget -q -O- --header="Authorization: Bearer $$TOKEN" --ca-certificate="$$CA" "https://kubernetes.default.svc/api/v1/namespaces/$$NAMESPACE/secrets/app-secrets" 2>/dev/null | grep -q '"WEBDAV_PASSWORD"'; do
-                echo "⏳ [$$(date '+%Y-%m-%dT%H:%M:%S')] Secret not ready, retrying in 2s..."
-                sleep 2
+                echo "⏳ [$$(date '+%Y-%m-%dT%H:%M:%S')] Secret not ready, retrying in 1s..."
+                sleep 1
               done
               echo "✅ Secret app-secrets with WEBDAV_PASSWORD is ready"
       containers:
