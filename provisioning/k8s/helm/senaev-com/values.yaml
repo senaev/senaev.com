@@ -5,8 +5,7 @@ userRootPath: /root
 nextjs:
   enabled: true
   image:
-    # ❗️ TODO: use another registry
-    repository: cr.yandex/crpnkh51pjbnliqhuqml/senaev.com
+    repository: ghcr.io/senaev/senaev.com
     tag: latest
     pullPolicy: Always
   replicas: 1
