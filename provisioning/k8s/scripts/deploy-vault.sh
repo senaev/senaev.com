@@ -1,19 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
-K3S_CLUSTER_PATH="/home/ubuntu/k3s-cluster"
-HELM_RELEASE_NAME="rev-$(date +%Y-%m-%d-%H-%M-%S)"
-
-set -a
-source "$REPO_ROOT/.env"
-set +a
+set -a; source "$SCRIPT_DIR/.env"; set +a
+set -a; source "$SECRETS_PATH/.env"; set +a
 
 cd $K3S_CLUSTER_PATH
 
 POD="$VAULT_NS-0"
-INIT_FILE="$K3S_CLUSTER_PATH/vault-unseal-keys.json"
+INIT_FILE="$SECRETS_PATH/vault-unseal-keys.json"
 
 vault_exec() {
   kubectl exec -n "$VAULT_NS" "$POD" -- vault "$@"

@@ -55,7 +55,8 @@ yc resource-manager folder add-access-binding "$FOLDER_ID" \
   --role container-registry.images.pusher \
   --subject serviceAccount:"$SA_ID"
 
-# create file with secret key in k3s-cluster folder
+# create file with secret key in k3s-cluster/secrets folder
+# ❗️: remove when get rid of yandex cloud registry
 yc iam key create \
   --service-account-id "$SA_ID" \
   --output yandex-cloud-key.json

@@ -10,7 +10,7 @@ kubectl create secret docker-registry ycr-pull \
   -n "$NS" \
   --docker-server=cr.yandex \
   --docker-username=json_key \
-  --docker-password="$(cat $K3S_CLUSTER_PATH/yandex-cloud-key.json | tr -d '\n')" \
+  --docker-password="$(cat $SECRETS_PATH/yandex-cloud-key.json | tr -d '\n')" \
   --docker-email=unused@example.com \
   --dry-run=client -o yaml | kubectl apply -f -
 echo "✅ Secret docker-registry ycr-pull created"
