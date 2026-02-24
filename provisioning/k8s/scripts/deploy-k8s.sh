@@ -25,13 +25,26 @@ echo "👉 Deploying k8s secrets to server"
 $SCRIPT_DIR/deploy-secrets.sh
 echo "✅ Secrets deployed to server"
 
-# Vault setup
+# Vault setup (ESO first so CRDs exist before vault chart applies ClusterSecretStore)
 
 echo "👉 Creating namespace=[$VAULT_NS] if not exists"
 kubectl create namespace "$VAULT_NS" --dry-run=client -o yaml | kubectl apply -f -
 echo "✅ Namespace=[$VAULT_NS] created"
 
-echo "👉 Helm upgrade namespace=[$VAULT_NS]"
+echo "👉 Helm upgrade external-secrets (namespace=[$VAULT_NS]) — install ESO first for CRDs"
+
+helm dependency update ./provisioning/k8s/helm/external-secrets 2>/dev/null || true
+helm upgrade --install external-secrets ./provisioning/k8s/helm/external-secrets \
+  -n "$VAULT_NS" \
+  -f ./provisioning/k8s/helm/external-secrets/values.yaml \
+  --take-ownership
+echo "✅ External Secrets Operator deployed"
+
+echo "👉 Waiting for ESO CRDs (ClusterSecretStore) to be established..."
+kubectl wait --for=condition=established crd/clustersecretstores.external-secrets.io --timeout=60s
+echo "✅ ESO CRDs ready"
+
+echo "👉 Helm upgrade namespace=[$VAULT_NS] vault"
 helm upgrade --install vault ./provisioning/k8s/helm/$VAULT_NS \
   -n "$VAULT_NS" \
   -f ./provisioning/k8s/helm/$VAULT_NS/values.yaml \

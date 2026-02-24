@@ -8,9 +8,6 @@ ingress:
   tls:
     certResolver: letsencrypt
 
-external-secrets:
-  installCRDs: true
-
 vault:
   fullnameOverride: "vault"
 
