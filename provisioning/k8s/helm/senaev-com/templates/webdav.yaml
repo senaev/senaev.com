@@ -48,6 +48,7 @@ spec:
       labels:
         app: webdav
     spec:
+      # ❗️ rename to webdav-sa
       serviceAccountName: webdav
       initContainers:
         - name: wait-for-webdav-secret

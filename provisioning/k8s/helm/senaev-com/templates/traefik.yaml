@@ -25,6 +25,7 @@ spec:
       labels:
         app: traefik
     spec:
+      # ❗️ rename to traefik-sa
       serviceAccountName: traefik-ingress-controller
       containers:
         - name: traefik
