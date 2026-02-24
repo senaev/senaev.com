@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if ! command -v jq &>/dev/null; then
+  echo "👉 Installing jq..."
+  sudo apt-get update && sudo apt-get install -y jq
+  echo "✅ jq installed"
+fi
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 set -a; source "$SCRIPT_DIR/.env"; set +a
 set -a; source "$SECRETS_PATH/.env"; set +a

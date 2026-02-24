@@ -36,3 +36,9 @@ curl -sfL https://get.k3s.io | \
   INSTALL_K3S_EXEC="server --disable traefik --write-kubeconfig-mode 644" \
   sh -
 ```
+
+Deploy cluster
+
+```shell
+npm run k3s:deploy
+```
