@@ -142,9 +142,11 @@ path \"${KV_SECRETS_ENGINE_PATH}/metadata/*\" {
 echo "$ESO_POLICY" | kubectl exec -i -n "$VAULT_NS" "$POD" -- env VAULT_TOKEN="$ROOT_TOKEN" vault policy write "$ESO_POLICY_NAME" -
 echo "✅ Policy $ESO_POLICY_NAME written."
 ESO_SA_NAME="${ESO_SA_NAME:-external-secrets}"
+
 vault_exec_with_token write auth/kubernetes/role/eso \
   bound_service_account_names="$ESO_SA_NAME" \
-  bound_service_account_namespaces="$VAULT_NS" \
+  bound_service_account_namespaces="$ESO_NS" \
   policies="$ESO_POLICY_NAME" \
   ttl=1h
 echo "✅ Vault ESO setup done (role=eso, policy=$ESO_POLICY_NAME, SA=$ESO_SA_NAME)."
+
