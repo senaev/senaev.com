@@ -88,49 +88,63 @@ echo "--------------------------------"
 
 echo ""
 echo ""
-echo "⬇️ Setup Vault Secrets Management"
+echo "⬇️ Setup Vault Secrets Management for ESO and Kubernetes auth"
 echo ""
+
+echo "👉 Getting root token from INIT_FILE=[$INIT_FILE]"
+if [[ ! -f "$INIT_FILE" ]]; then
+  echo "❌ INIT_FILE not found"
+  exit 1
+fi
+ROOT_TOKEN="$(jq -r '.root_token' "$INIT_FILE")"
+if [[ -z "$ROOT_TOKEN" || "$ROOT_TOKEN" == "null" ]]; then
+  echo "❌ Root token not found in INIT_FILE"
+  exit 1
+fi
+vault_exec_with_token() {
+  kubectl exec -n "$VAULT_NS" "$POD" -- env VAULT_TOKEN="$ROOT_TOKEN" vault "$@"
+}
+echo "✅ Root token is ready"
+
 
 echo "👉 Setting up Vault Kubernetes auth for ESO (auth method + KV store + ACL policy)"
 K8S_HOST="https://$(kubectl exec -n "$VAULT_NS" "$POD" -- sh -c 'echo "${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"')"
-if ! vault_exec auth list -format=json 2>/dev/null | jq -e '.["kubernetes/"]' &>/dev/null; then
-  vault_exec auth enable kubernetes
+if ! vault_exec_with_token auth list -format=json 2>/dev/null | jq -e '.["kubernetes/"]' &>/dev/null; then
+  vault_exec_with_token auth enable kubernetes
   echo "✅ Kubernetes auth enabled."
 else
   echo "✅ Kubernetes auth already enabled."
 fi
 
 echo "👉 Configuring Kubernetes auth (in-pod token for TokenReview)"
-vault_exec write auth/kubernetes/config kubernetes_host="$K8S_HOST"
+vault_exec_with_token write auth/kubernetes/config kubernetes_host="$K8S_HOST"
 echo "✅ Kubernetes auth configured."
-
-
 
 echo "👉 Enabling KV v2 secrets engine"
 KV_SECRETS_ENGINE_PATH="kv"
-if ! vault_exec secrets list -format=json 2>/dev/null | jq -e ".[\"$KV_SECRETS_ENGINE_PATH/\"]" &>/dev/null; then
-  echo "👉 Enabling KV v2 secrets engine"
-  vault_exec secrets enable -path=$KV_SECRETS_ENGINE_PATH kv-v2
-  echo "✅ KV v2 secrets engine enabled"
+if ! vault_exec_with_token secrets list -format=json 2>/dev/null | jq -e ".[\"${KV_SECRETS_ENGINE_PATH}/\"]" &>/dev/null; then
+  vault_exec_with_token secrets enable -path="$KV_SECRETS_ENGINE_PATH" kv-v2
+  echo "✅ KV v2 enabled at $KV_SECRETS_ENGINE_PATH."
 else
-  echo "✅ KV v2 at kv already enabled."
+  echo "✅ KV v2 at $KV_SECRETS_ENGINE_PATH already enabled."
 fi
 
 echo "👉 Writing ACL policy"
-ESO_POLICY_NAME="eso-reader-acl-policy"
+ESO_POLICY_NAME="${VAULT_ESO_POLICY_NAME:-eso-reader-acl-policy}"
 ESO_POLICY="
-path "$KV_SECRETS_ENGINE_PATH/data/*" {
-  capabilities = ["read", "list"]
+path \"${KV_SECRETS_ENGINE_PATH}/data/*\" {
+  capabilities = [\"read\", \"list\"]
 }
-path "kv/metadata/*" {
-  capabilities = ["read", "list"]
-}'
-echo "$ADMIN_POLICY" | kubectl exec -i -n "$VAULT_NS" "$POD" -- vault policy write admin -
-echo "✅ Admin policy written."
+path \"${KV_SECRETS_ENGINE_PATH}/metadata/*\" {
+  capabilities = [\"read\", \"list\"]
+}
+"
+echo "$ESO_POLICY" | kubectl exec -i -n "$VAULT_NS" "$POD" -- env VAULT_TOKEN="$ROOT_TOKEN" vault policy write "$ESO_POLICY_NAME" -
+echo "✅ Policy $ESO_POLICY_NAME written."
 ESO_SA_NAME="${ESO_SA_NAME:-external-secrets}"
-vault_exec write auth/kubernetes/role/eso \
+vault_exec_with_token write auth/kubernetes/role/eso \
   bound_service_account_names="$ESO_SA_NAME" \
   bound_service_account_namespaces="$VAULT_NS" \
-  policies=admin \
+  policies="$ESO_POLICY_NAME" \
   ttl=1h
-echo "✅ Vault ESO setup done (role=eso, policy=admin, SA=$ESO_SA_NAME)."
+echo "✅ Vault ESO setup done (role=eso, policy=$ESO_POLICY_NAME, SA=$ESO_SA_NAME)."
