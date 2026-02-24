@@ -21,10 +21,7 @@ spec:
           image: "{{ .Values.grafana.image.repository }}:{{ .Values.grafana.image.tag }}"
           env:
             - name: GF_SECURITY_ADMIN_USER
-              valueFrom:
-                secretKeyRef:
-                  name: app-secrets
-                  key: GRAFANA_ADMIN_USER
+              value: "grafana_admin"
             - name: GF_SECURITY_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:

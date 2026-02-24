@@ -3,7 +3,7 @@
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
-  name: webdav-secrets
+  name: senaev-com-kv-secrets
   namespace: {{ .Release.Namespace }}
 spec:
   refreshInterval: 5s
@@ -11,12 +11,12 @@ spec:
     name: vault
     kind: ClusterSecretStore
   target:
-    name: webdav-secrets
+    name: senaev-com-kv-secrets
     creationPolicy: Owner
   data:
     - secretKey: WEBDAV_PASSWORD
       remoteRef:
-        key: webdav
+        key: senaev-com-kv
         property: WEBDAV_PASSWORD
 ---
 apiVersion: apps/v1
@@ -43,15 +43,15 @@ spec:
             - sh
             - -c
             - |
-              echo "Waiting for webdav-secrets (WEBDAV_PASSWORD) on pod..."
-              until [ -f /var/run/secrets/webdav/WEBDAV_PASSWORD ]; do
+              echo "Waiting for senaev-com-kv-secrets.WEBDAV_PASSWORD on pod..."
+              until [ -f /var/run/secrets/eso-secrets-folder/WEBDAV_PASSWORD ]; do
                 echo "⏳ [$$(date '+%Y-%m-%dT%H:%M:%S')] Secret not ready, retrying in 1s..."
                 sleep 1
               done
-              echo "✅ Secret webdav-secrets with WEBDAV_PASSWORD is ready"
+              echo "✅ WEBDAV_PASSWORD is ready"
           volumeMounts:
-            - name: webdav-secrets-volume
-              mountPath: /var/run/secrets/webdav
+            - name: senaev-com-kv-secrets-volume
+              mountPath: /var/run/secrets/eso-secrets-folder
               readOnly: true
       containers:
         - name: webdav
@@ -64,7 +64,7 @@ spec:
             - name: PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: webdav-secrets
+                  name: senaev-com-kv-secrets
                   key: WEBDAV_PASSWORD
           ports:
             - containerPort: 80
@@ -76,9 +76,9 @@ spec:
           hostPath:
             path: {{ .Values.userRootPath }}/{{ .Values.webdav.path }}
             type: DirectoryOrCreate
-        - name: webdav-secrets-volume
+        - name: senaev-com-kv-secrets-volume
           secret:
-            secretName: webdav-secrets
+            secretName: senaev-com-kv-secrets
 ---
 apiVersion: v1
 kind: Service
