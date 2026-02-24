@@ -1,3 +1,6 @@
+vaultAuth:
+  serviceAccountName: vault-sa
+
 ingress:
   enabled: true
   host: vault.senaev.com
@@ -15,6 +18,9 @@ vault:
     enabled: false
 
   server:
+    serviceAccount:
+      create: true
+      name: vault-sa
     standalone:
       enabled: true
       config: |

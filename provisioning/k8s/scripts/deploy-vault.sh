@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if ! command -v jq &>/dev/null; then
-  echo "👉 Installing jq..."
+  echo "👉 Installing jq"
   sudo apt-get update && sudo apt-get install -y jq
   echo "✅ jq installed"
 fi
@@ -24,7 +24,7 @@ status_json() {
   vault_exec status -format=json 2>/dev/null || true
 }
 
-echo "👉 Checking vault status..."
+echo "👉 Checking vault status"
 MAX_ATTEMPTS=100
 STATUS_JSON=""
 for i in $(seq 1 "$MAX_ATTEMPTS"); do
@@ -33,7 +33,7 @@ for i in $(seq 1 "$MAX_ATTEMPTS"); do
     echo "✅ Vault is responding."
     break
   fi
-  echo "   ⏳ Pending: waiting for Vault to start... ($i/$MAX_ATTEMPTS)"
+  echo "   ⏳ Pending: waiting for Vault to start ($i/$MAX_ATTEMPTS)"
   if [[ "$i" -eq "$MAX_ATTEMPTS" ]]; then
     echo "❌ Vault did not respond in time. Check pod logs/status."
     exit 1
@@ -47,7 +47,7 @@ SEALED="$(echo "$STATUS_JSON" | jq -r '.sealed')"
 echo "✅ INITIALIZED=[$INITIALIZED], SEALED=[$SEALED]"
 
 if [[ "$INITIALIZED" != "true" ]]; then
-  echo "👉 Vault is NOT initialised. Initialising with Shamir config..."
+  echo "👉 Vault is NOT initialised. Initialising with Shamir config"
   INIT_JSON="$(vault_exec operator init -key-shares=1 -key-threshold=1 -format=json)"
 
   echo "$INIT_JSON" > "$INIT_FILE"
@@ -58,7 +58,7 @@ else
   echo "✅ Vault is already initialised."
 fi
 
-echo "👉 Refreshing vault status..."
+echo "👉 Refreshing vault status"
 STATUS_JSON="$(status_json)"
 SEALED="$(echo "$STATUS_JSON" | jq -r '.sealed')"
 
@@ -70,7 +70,7 @@ if [[ "$SEALED" == "true" ]]; then
     exit 1
   fi
 
-  echo "👉 Vault is sealed. Unsealing..."
+  echo "👉 Vault is sealed. Unsealing"
 
   KEY="$(jq -r ".unseal_keys_b64[0]" "$INIT_FILE")"
   vault_exec operator unseal "$KEY" >/dev/null
@@ -79,9 +79,58 @@ else
   echo "Vault is already unsealed."
 fi
 
-echo "👉 Checking final vault status..."
+echo "👉 Checking final vault status"
 FINAL_STATUS="$(vault_exec status)"
 echo "✅ Final vault status:"
 echo "--------------------------------"
 echo "$FINAL_STATUS"
 echo "--------------------------------"
+
+echo ""
+echo ""
+echo "⬇️ Setup Vault Secrets Management"
+echo ""
+
+echo "👉 Setting up Vault Kubernetes auth for ESO (auth method + KV store + ACL policy)"
+K8S_HOST="https://$(kubectl exec -n "$VAULT_NS" "$POD" -- sh -c 'echo "${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"')"
+if ! vault_exec auth list -format=json 2>/dev/null | jq -e '.["kubernetes/"]' &>/dev/null; then
+  vault_exec auth enable kubernetes
+  echo "✅ Kubernetes auth enabled."
+else
+  echo "✅ Kubernetes auth already enabled."
+fi
+
+echo "👉 Configuring Kubernetes auth (in-pod token for TokenReview)"
+vault_exec write auth/kubernetes/config kubernetes_host="$K8S_HOST"
+echo "✅ Kubernetes auth configured."
+
+
+
+echo "👉 Enabling KV v2 secrets engine"
+KV_SECRETS_ENGINE_PATH="kv"
+if ! vault_exec secrets list -format=json 2>/dev/null | jq -e ".[\"$KV_SECRETS_ENGINE_PATH/\"]" &>/dev/null; then
+  echo "👉 Enabling KV v2 secrets engine"
+  vault_exec secrets enable -path=$KV_SECRETS_ENGINE_PATH kv-v2
+  echo "✅ KV v2 secrets engine enabled"
+else
+  echo "✅ KV v2 at kv already enabled."
+fi
+
+echo "👉 Writing ACL policy"
+ESO_POLICY_NAME="eso-reader-acl-policy"
+ESO_POLICY="
+path "$KV_SECRETS_ENGINE_PATH/data/*" {
+  capabilities = ["read", "list"]
+}
+path "kv/metadata/*" {
+  capabilities = ["read", "list"]
+}'
+echo "$ADMIN_POLICY" | kubectl exec -i -n "$VAULT_NS" "$POD" -- vault policy write admin -
+echo "✅ Admin policy written."
+ESO_SA_NAME="${ESO_SA_NAME:-external-secrets}"
+vault_exec write auth/kubernetes/role/eso \
+  bound_service_account_names="$ESO_SA_NAME" \
+  bound_service_account_namespaces="$VAULT_NS" \
+  policies=admin \
+  ttl=1h
+echo "✅ Vault ESO setup done (role=eso, policy=admin, SA=$ESO_SA_NAME)."
