@@ -36,12 +36,5 @@ vault:
       enabled: true
 
     dataStorage:
-      enabled: false
-    volumes:
-      - name: vault-data
-        hostPath:
-          path: /root/k3s-cluster/volumes/vault
-          type: DirectoryOrCreate
-    volumeMounts:
-      - name: vault-data
-        mountPath: /vault/data
+      enabled: true
+      size: 10Gi
