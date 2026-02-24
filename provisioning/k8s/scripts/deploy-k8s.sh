@@ -25,16 +25,7 @@ echo "👉 Deploying k8s secrets to server"
 $SCRIPT_DIR/deploy-secrets.sh
 echo "✅ Secrets deployed to server"
 
-echo "👉 Creating namespace=[$NS] if not exists"
-kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f -
-echo "✅ Namespace=[$NS] created"
-
-echo "👉 Helm upgrade namespace=[$NS] release=[$HELM_RELEASE_NAME]"
-helm upgrade --install $HELM_RELEASE_NAME ./provisioning/k8s/helm/$NS \
-  -n $NS \
-  -f ./provisioning/k8s/helm/$NS/values.yaml \
-  --take-ownership
-echo "✅ Helm deploy done"
+# Vault setup
 
 echo "👉 Creating namespace=[$VAULT_NS] if not exists"
 kubectl create namespace "$VAULT_NS" --dry-run=client -o yaml | kubectl apply -f -
@@ -51,3 +42,15 @@ echo "👉 Deploying vault"
 $SCRIPT_DIR/deploy-vault.sh
 echo "✅ Vault deployed"
 
+# App setup
+
+echo "👉 Creating namespace=[$NS] if not exists"
+kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f -
+echo "✅ Namespace=[$NS] created"
+
+echo "👉 Helm upgrade namespace=[$NS] release=[$HELM_RELEASE_NAME]"
+helm upgrade --install $HELM_RELEASE_NAME ./provisioning/k8s/helm/$NS \
+  -n $NS \
+  -f ./provisioning/k8s/helm/$NS/values.yaml \
+  --take-ownership
+echo "✅ Helm deploy done"

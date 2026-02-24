@@ -1,5 +1,24 @@
 {{- if .Values.webdav.enabled }}
 ---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: webdav-secrets
+  namespace: {{ .Release.Namespace }}
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: vault
+    kind: ClusterSecretStore
+  target:
+    name: webdav-secrets
+    creationPolicy: Owner
+  data:
+    - secretKey: WEBDAV_PASSWORD
+      remoteRef:
+        key: webdav
+        property: WEBDAV_PASSWORD
+---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -14,7 +33,7 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["secrets"]
-    resourceNames: ["app-secrets"]
+    resourceNames: ["webdav-secrets"]
     verbs: ["get"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -57,15 +76,15 @@ spec:
             - sh
             - -c
             - |
-              echo "Waiting for app-secrets (WEBDAV_PASSWORD)..."
+              echo "Waiting for webdav-secrets (WEBDAV_PASSWORD)..."
               NAMESPACE=$$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
               TOKEN=$$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
               CA=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-              until wget -q -O- --header="Authorization: Bearer $$TOKEN" --ca-certificate="$$CA" "https://kubernetes.default.svc/api/v1/namespaces/$$NAMESPACE/secrets/app-secrets" 2>/dev/null | grep -q '"WEBDAV_PASSWORD"'; do
+              until wget -q -O- --header="Authorization: Bearer $$TOKEN" --ca-certificate="$$CA" "https://kubernetes.default.svc/api/v1/namespaces/$$NAMESPACE/secrets/webdav-secrets" 2>/dev/null | grep -q '"WEBDAV_PASSWORD"'; do
                 echo "⏳ [$$(date '+%Y-%m-%dT%H:%M:%S')] Secret not ready, retrying in 1s..."
                 sleep 1
               done
-              echo "✅ Secret app-secrets with WEBDAV_PASSWORD is ready"
+              echo "✅ Secret webdav-secrets with WEBDAV_PASSWORD is ready"
       containers:
         - name: webdav
           image: {{ .Values.webdav.image.repository }}
@@ -73,12 +92,11 @@ spec:
             - name: AUTH_TYPE
               value: Digest
             - name: USERNAME
-              # ❗️ TODO: use Vault for secrets management
               value: webdav_admin
             - name: PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
+                  name: webdav-secrets
                   key: WEBDAV_PASSWORD
           ports:
             - containerPort: 80
