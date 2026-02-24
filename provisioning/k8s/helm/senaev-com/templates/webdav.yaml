@@ -43,15 +43,16 @@ spec:
             - sh
             - -c
             - |
-              echo "Waiting for webdav-secrets (WEBDAV_PASSWORD)..."
-              NAMESPACE=$$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
-              TOKEN=$$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-              CA=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-              until wget -q -O- --header="Authorization: Bearer $$TOKEN" --ca-certificate="$$CA" "https://kubernetes.default.svc/api/v1/namespaces/$$NAMESPACE/secrets/webdav-secrets" 2>/dev/null | grep -q '"WEBDAV_PASSWORD"'; do
+              echo "Waiting for webdav-secrets (WEBDAV_PASSWORD) on pod..."
+              until [ -f /var/run/secrets/webdav/WEBDAV_PASSWORD ]; do
                 echo "⏳ [$$(date '+%Y-%m-%dT%H:%M:%S')] Secret not ready, retrying in 1s..."
                 sleep 1
               done
               echo "✅ Secret webdav-secrets with WEBDAV_PASSWORD is ready"
+          volumeMounts:
+            - name: webdav-secrets-volume
+              mountPath: /var/run/secrets/webdav
+              readOnly: true
       containers:
         - name: webdav
           image: {{ .Values.webdav.image.repository }}
@@ -75,6 +76,9 @@ spec:
           hostPath:
             path: {{ .Values.userRootPath }}/{{ .Values.webdav.path }}
             type: DirectoryOrCreate
+        - name: webdav-secrets-volume
+          secret:
+            secretName: webdav-secrets
 ---
 apiVersion: v1
 kind: Service
