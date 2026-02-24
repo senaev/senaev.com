@@ -72,7 +72,8 @@ spec:
             - name: AUTH_TYPE
               value: Digest
             - name: USERNAME
-              value: admin
+              # ❗️ TODO: use Vault for secrets management
+              value: webdav_admin
             - name: PASSWORD
               valueFrom:
                 secretKeyRef:
