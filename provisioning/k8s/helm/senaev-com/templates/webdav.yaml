@@ -1,24 +1,5 @@
 {{- if .Values.webdav.enabled }}
 ---
-apiVersion: external-secrets.io/v1
-kind: ExternalSecret
-metadata:
-  name: senaev-com-kv-secrets
-  namespace: {{ .Release.Namespace }}
-spec:
-  refreshInterval: 5s
-  secretStoreRef:
-    name: vault
-    kind: ClusterSecretStore
-  target:
-    name: senaev-com-kv-secrets
-    creationPolicy: Owner
-  data:
-    - secretKey: WEBDAV_PASSWORD
-      remoteRef:
-        key: senaev-com-kv
-        property: WEBDAV_PASSWORD
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:

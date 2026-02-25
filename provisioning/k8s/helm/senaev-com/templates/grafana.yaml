@@ -22,12 +22,8 @@ spec:
           env:
             - name: GF_SECURITY_ADMIN_USER
               value: "{{ .Values.grafana.username }}"
-            # ❗️ TODO: use secret from file
-            - name: GF_SECURITY_ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: app-secrets
-                  key: GRAFANA_ADMIN_PASSWORD
+            - name: GF_SECURITY_ADMIN_PASSWORD__FILE
+              value: /var/run/secrets/grafana/GRAFANA_ADMIN_PASSWORD
             - name: GF_USERS_ALLOW_SIGN_UP
               value: "false"
             - name: GF_SERVER_ROOT_URL
@@ -40,6 +36,9 @@ spec:
             - name: grafana-provisioning
               mountPath: /etc/grafana/provisioning
               readOnly: true
+            - name: senaev-com-kv-secrets-volume
+              mountPath: /var/run/secrets/grafana
+              readOnly: true
       volumes:
         - name: grafana-volume
           persistentVolumeClaim:
@@ -48,6 +47,9 @@ spec:
           hostPath:
             path: {{ .Values.userRootPath }}/{{ .Values.grafana.provisioningPath }}
             type: DirectoryOrCreate
+        - name: senaev-com-kv-secrets-volume
+          secret:
+            secretName: senaev-com-kv-secrets
 ---
 apiVersion: v1
 kind: Service
