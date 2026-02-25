@@ -158,4 +158,3 @@ if ! vault_exec_with_token kv get "$KV_SECRET" &>/dev/null; then
 else
   echo "✅ Secret $KV_SECRET already exists."
 fi
-
