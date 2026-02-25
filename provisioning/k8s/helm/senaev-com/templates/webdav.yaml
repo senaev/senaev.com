@@ -17,6 +17,8 @@ spec:
       labels:
         app: webdav
     spec:
+      # ❗️ remove init container
+      # ❗️ make the server restart on every secret update
       initContainers:
         - name: wait-for-webdav-secret
           image: busybox:1.36
