@@ -13,7 +13,6 @@ set -a; source "$SCRIPT_DIR/.env"; set +a
 cd $K3S_CLUSTER_PATH
 
 POD="$VAULT_NS-0"
-INIT_FILE="$SECRETS_PATH/vault-unseal-keys.json"
 
 vault_exec() {
   kubectl exec -n "$VAULT_NS" "$POD" -- vault "$@"
@@ -45,6 +44,7 @@ SEALED="$(echo "$STATUS_JSON" | jq -r '.sealed')"
 
 echo "✅ INITIALIZED=[$INITIALIZED], SEALED=[$SEALED]"
 
+INIT_FILE="$K3S_CLUSTER_PATH/vault-unseal-keys.json"
 if [[ "$INITIALIZED" != "true" ]]; then
   echo "👉 Vault is NOT initialised. Initialising with Shamir config"
   INIT_JSON="$(vault_exec operator init -key-shares=1 -key-threshold=1 -format=json)"
@@ -87,7 +87,7 @@ echo "--------------------------------"
 
 echo ""
 echo ""
-echo "⬇️ Setup Vault Secrets Management for ESO and Kubernetes auth"
+echo "⬇️ Setup Vault Secrets Management for External Secrets Operator and Kubernetes auth"
 echo ""
 
 echo "👉 Getting root token from INIT_FILE=[$INIT_FILE]"
@@ -106,7 +106,7 @@ vault_exec_with_token() {
 echo "✅ Root token is ready"
 
 
-echo "👉 Setting up Vault Kubernetes auth for ESO (auth method + KV store + ACL policy)"
+echo "👉 Setting up Vault Kubernetes auth for External Secrets Operator (auth method + KV store + ACL policy)"
 K8S_HOST="https://$(kubectl exec -n "$VAULT_NS" "$POD" -- sh -c 'echo "${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"')"
 if ! vault_exec_with_token auth list -format=json 2>/dev/null | jq -e '.["kubernetes/"]' &>/dev/null; then
   vault_exec_with_token auth enable kubernetes
@@ -129,8 +129,8 @@ else
 fi
 
 echo "👉 Writing ACL policy"
-ESO_POLICY_NAME="${VAULT_ESO_POLICY_NAME:-eso-reader-acl-policy}"
-ESO_POLICY="
+EXTERNAL_SECRETS_POLICY_NAME="external-secrets-reader-acl-policy"
+EXTERNAL_SECRETS_POLICY="
 path \"${KV_SECRETS_ENGINE_PATH}/data/*\" {
   capabilities = [\"read\", \"list\"]
 }
@@ -138,14 +138,24 @@ path \"${KV_SECRETS_ENGINE_PATH}/metadata/*\" {
   capabilities = [\"read\", \"list\"]
 }
 "
-echo "$ESO_POLICY" | kubectl exec -i -n "$VAULT_NS" "$POD" -- env VAULT_TOKEN="$ROOT_TOKEN" vault policy write "$ESO_POLICY_NAME" -
-echo "✅ Policy $ESO_POLICY_NAME written."
-ESO_SA_NAME="${ESO_SA_NAME:-external-secrets}"
+echo "$EXTERNAL_SECRETS_POLICY" | kubectl exec -i -n "$VAULT_NS" "$POD" -- env VAULT_TOKEN="$ROOT_TOKEN" vault policy write "$EXTERNAL_SECRETS_POLICY_NAME" -
+echo "✅ Policy $EXTERNAL_SECRETS_POLICY_NAME written."
 
-vault_exec_with_token write auth/kubernetes/role/eso \
-  bound_service_account_names="$ESO_SA_NAME" \
-  bound_service_account_namespaces="$ESO_NS" \
-  policies="$ESO_POLICY_NAME" \
+EXTERNAL_SECRETS_ROLE_NAME="external-secrets-role"
+
+vault_exec_with_token write auth/kubernetes/role/$EXTERNAL_SECRETS_ROLE_NAME \
+  bound_service_account_names="$EXTERNAL_SECRETS_NS" \
+  bound_service_account_namespaces="$EXTERNAL_SECRETS_NS" \
+  policies="$EXTERNAL_SECRETS_POLICY_NAME" \
   ttl=1h
-echo "✅ Vault ESO setup done (role=eso, policy=$ESO_POLICY_NAME, SA=$ESO_SA_NAME)."
+echo "✅ Vault External Secrets Operator setup done role=[$EXTERNAL_SECRETS_ROLE_NAME] policy=[$EXTERNAL_SECRETS_POLICY_NAME] SA=[$EXTERNAL_SECRETS_NS]"
+
+KV_SECRET="$KV_SECRETS_ENGINE_PATH/senaev-com-kv"
+echo "👉 Ensuring secret $KV_SECRET exists"
+if ! vault_exec_with_token kv get "$KV_SECRET" &>/dev/null; then
+  vault_exec_with_token kv put "$KV_SECRET" _placeholder=""
+  echo "✅ Secret $KV_SECRET created."
+else
+  echo "✅ Secret $KV_SECRET already exists."
+fi
 

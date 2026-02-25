@@ -25,14 +25,14 @@ spec:
             - -c
             - |
               echo "Waiting for senaev-com-kv-secrets.WEBDAV_PASSWORD on pod..."
-              until [ -f /var/run/secrets/eso-secrets-folder/WEBDAV_PASSWORD ]; do
+              until [ -f /var/run/secrets/external-secrets-folder/WEBDAV_PASSWORD ]; do
                 echo "⏳ [$$(date '+%Y-%m-%dT%H:%M:%S')] Secret not ready, retrying in 1s..."
                 sleep 1
               done
               echo "✅ WEBDAV_PASSWORD is ready"
           volumeMounts:
             - name: senaev-com-kv-secrets-volume
-              mountPath: /var/run/secrets/eso-secrets-folder
+              mountPath: /var/run/secrets/external-secrets-folder
               readOnly: true
       containers:
         - name: webdav

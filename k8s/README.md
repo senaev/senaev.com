@@ -27,17 +27,7 @@ sudo mv k9s /usr/local/bin/
 sudo chmod +x /usr/local/bin/k9s
 ```
 
-## Install k3s
-
-Install k3s without built-in Traefik (so the Traefik from k8s/ can bind 80/443):
-
-```shell
-curl -sfL https://get.k3s.io | \
-  INSTALL_K3S_EXEC="server --disable traefik --write-kubeconfig-mode 644" \
-  sh -
-```
-
-Deploy cluster
+## Deploy cluster
 
 ```shell
 npm run k3s:deploy
