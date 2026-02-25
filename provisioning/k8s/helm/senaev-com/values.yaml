@@ -23,6 +23,8 @@ traefik:
 
 grafana:
   enabled: true
+  username: grafana_admin
+  rootUrl: https://grafana.senaev.com
   image:
     repository: grafana/grafana
     tag: "11.2.0"

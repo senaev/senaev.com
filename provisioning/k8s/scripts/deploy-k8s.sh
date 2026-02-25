@@ -59,7 +59,7 @@ kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f -
 echo "✅ Namespace=[$NS] created"
 
 echo "👉 Helm upgrade namespace=[$NS] release=[$HELM_RELEASE_NAME]"
-helm upgrade --install $HELM_RELEASE_NAME ./provisioning/k8s/helm/$NS \
+helm upgrade --install senaev-com ./provisioning/k8s/helm/$NS \
   -n $NS \
   -f ./provisioning/k8s/helm/$NS/values.yaml \
   --take-ownership

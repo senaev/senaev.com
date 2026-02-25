@@ -31,15 +31,15 @@ spec:
             - name: config
               mountPath: /etc/victoriametrics
               readOnly: true
-            - name: data
+            - name: victoriametrics-volume
               mountPath: /victoriametrics-data
       volumes:
         - name: config
           configMap:
             name: victoriametrics-scrape
-        - name: data
+        - name: victoriametrics-volume
           persistentVolumeClaim:
-            claimName: victoriametrics-data
+            claimName: victoriametrics-pvc
 ---
 apiVersion: v1
 kind: Service

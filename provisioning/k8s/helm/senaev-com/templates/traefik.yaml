@@ -31,6 +31,7 @@ spec:
         - name: traefik
           image: "{{ .Values.traefik.image.repository }}:{{ .Values.traefik.image.tag }}"
           args:
+            # ❗️ TODO: repair dash
             - "--api.dashboard=true"
             - "--log.level={{ .Values.traefik.logLevel }}"
             - "--accesslog=true"
