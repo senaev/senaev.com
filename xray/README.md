@@ -1,3 +1,5 @@
+❗️ update readme
+
 # Xray — VLESS + Reality
 
 Сервер настроен на протокол **VLESS** с **Reality**: трафик выглядит как обычный TLS до google.com, что помогает обходить блокировки.
