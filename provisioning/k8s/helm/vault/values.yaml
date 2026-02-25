@@ -1,7 +1,6 @@
 vaultAuth:
   serviceAccountName: vault-sa
 
-# Namespace where ESO runs (ClusterSecretStore uses this for serviceAccountRef).
 externalSecretsNamespace: external-secrets
 
 ingress:
