@@ -24,13 +24,15 @@ spec:
             - containerPort: 8443
           volumeMounts:
             - name: config-volume
-              mountPath: /etc/xray/config.json
+              mountPath: /etc/xray
               readOnly: true
       volumes:
         - name: config-volume
-          hostPath:
-            path: {{ .Values.userRootPath }}/{{ .Values.xray.configPath }}
-            type: File
+          secret:
+            secretName: senaev-com-kv-secrets
+            items:
+              - key: XRAY_CONFIG
+                path: config.json
 ---
 apiVersion: v1
 kind: Service

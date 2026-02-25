@@ -41,7 +41,6 @@ xray:
   image:
     repository: teddysun/xray
     tag: latest
-  configPath: k3s-cluster/secrets/xray/xray-config.json
 
 testEcho:
   enabled: true

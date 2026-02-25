@@ -3,9 +3,6 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 set -a; source "$SCRIPT_DIR/.env"; set +a
-set -a; source "$SECRETS_PATH/.env"; set +a
-
-HELM_RELEASE_NAME="rev-$(date +%Y%m%d%H%M%S)"
 
 cd $K3S_CLUSTER_PATH
 
@@ -20,10 +17,6 @@ echo "✅ k3s-cluster directory and structure exist on server"
 echo "👉 Creating namespace=[$NS] if not exists"
 kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f -
 echo "✅ Namespace=[$NS] created"
-
-echo "👉 Deploying k8s secrets to server"
-$SCRIPT_DIR/deploy-secrets.sh
-echo "✅ Secrets deployed to server"
 
 # Vault setup (ESO first in its own namespace, then vault)
 echo "👉 Creating namespace=[$ESO_NS] if not exists (External Secrets Operator)"
@@ -58,7 +51,7 @@ echo "👉 Creating namespace=[$NS] if not exists"
 kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f -
 echo "✅ Namespace=[$NS] created"
 
-echo "👉 Helm upgrade namespace=[$NS] release=[$HELM_RELEASE_NAME]"
+echo "👉 Helm upgrade namespace=[$NS]"
 helm upgrade --install senaev-com ./provisioning/k8s/helm/$NS \
   -n $NS \
   -f ./provisioning/k8s/helm/$NS/values.yaml \
