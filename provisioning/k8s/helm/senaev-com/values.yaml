@@ -9,7 +9,6 @@ nextjs:
     tag: latest
     pullPolicy: Always
   replicas: 1
-  notesPath: notes
 
 traefik:
   enabled: true

@@ -15,11 +15,11 @@ if ! grep -q '"ghcr.io"' "${DOCKER_CONFIG:-$HOME/.docker}/config.json" 2>/dev/nu
 fi
 echo "✅ Logged in to ghcr.io"
 
-echo "[1/3] 👉 Building Docker image (linux/amd64)"
+echo "[1/3] 👉 Building Docker image (linux/amd64) (run 'colima start' if this step fails)"
 docker build --platform linux/amd64 -t "$IMAGE_NAME" .
 echo "[1/3] ✅ Build done."
 
-echo "[2/3] 👉 Tagging image for registry (run 'colima start' if this step fails)"
+echo "[2/3] 👉 Tagging image for registry"
 docker tag "$IMAGE_NAME" "$REGISTRY_IMAGE"
 echo "[2/3] ✅ Tag done."
 
