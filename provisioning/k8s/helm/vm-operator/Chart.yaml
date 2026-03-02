@@ -8,5 +8,4 @@ kubeVersion: ">=1.25.0"
 dependencies:
   - name: victoria-metrics-operator
     version: "0.59.0"
-    # ❗️ Make local
-    repository: "https://victoriametrics.github.io/helm-charts/"
+    repository: "./charts/victoria-metrics-operator-0.59.0.tgz"

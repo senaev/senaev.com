@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: test-echo
-          image: "{{ .Values.testEcho.image.repository }}:{{ .Values.testEcho.image.tag }}"
+          image: "{{ .Values.testEcho.image }}"
           args:
             - -listen=:80
             - -text=Hello World from Traefik (TLS ok)\n

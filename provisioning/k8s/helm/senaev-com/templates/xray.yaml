@@ -21,7 +21,16 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: xray
-          image: "{{ .Values.xray.image.repository }}:{{ .Values.xray.image.tag }}"
+          image: "{{ .Values.xray.image }}"
+          # Dummy env var to force CreateContainerConfigError if secret is missing
+          # (to avoid initialization without secret and run when secret is in Vault)
+          env:
+            - name: _REQUIRED_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: senaev-com-kv-secrets
+                  key: XRAY_CONFIG
+                  optional: false
           ports:
             - containerPort: 8443
           volumeMounts:

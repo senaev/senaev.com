@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: nextjs-app
-          image: "{{ .Values.nextjs.image.repository }}:{{ .Values.nextjs.image.tag }}"
-          imagePullPolicy: {{ .Values.nextjs.image.pullPolicy }}
+          image: "{{ .Values.nextjs.image }}"
+          imagePullPolicy: Always
           env:
             - name: NODE_ENV
               value: "production"

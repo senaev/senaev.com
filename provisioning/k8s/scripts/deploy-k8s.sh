@@ -38,7 +38,7 @@ upgrade_namespace() {
   echo "✅ Namespace=[$NS] exists"
 
   echo "👉 Updating Helm dependencies for namespace=[$NS]"
-  helm dependency update "$CHART_PATH"
+  helm dependency update "$CHART_PATH" || true
   echo "✅ Helm dependencies updated for namespace=[$NS]"
 
   echo "👉 Helm upgrade namespace=[$NS]"

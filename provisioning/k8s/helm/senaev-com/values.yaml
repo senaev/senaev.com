@@ -4,17 +4,12 @@ userRootPath: /root
 
 nextjs:
   enabled: true
-  image:
-    repository: ghcr.io/senaev/senaev.com
-    tag: latest
-    pullPolicy: Always
+  image: ghcr.io/senaev/senaev.com:latest
   replicas: 1
 
 traefik:
   enabled: true
-  image:
-    repository: traefik
-    tag: v3.2
+  image: traefik:v3.2
   acme:
     email: andrei.senaev@gmail.com
   acmePath: k3s-cluster/volumes/traefik-acme
@@ -28,15 +23,11 @@ webdav:
 
 xray:
   enabled: true
-  image:
-    repository: teddysun/xray
-    tag: latest
+  image: teddysun/xray:latest
 
 testEcho:
   enabled: true
-  image:
-    repository: hashicorp/http-echo
-    tag: "0.2.3"
+  image: hashicorp/http-echo:0.2.3
 
 ingress:
   className: traefik

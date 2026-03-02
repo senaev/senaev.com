@@ -29,7 +29,7 @@ spec:
       serviceAccountName: traefik-ingress-controller
       containers:
         - name: traefik
-          image: "{{ .Values.traefik.image.repository }}:{{ .Values.traefik.image.tag }}"
+          image: "{{ .Values.traefik.image }}"
           args:
             # ❗️ TODO: repair dash
             - "--api.dashboard=true"
