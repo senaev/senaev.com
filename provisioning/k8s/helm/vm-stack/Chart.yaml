@@ -8,5 +8,4 @@ kubeVersion: ">=1.25.0"
 dependencies:
   - name: victoria-metrics-k8s-stack
     version: "0.72.2"
-    # ❗️ Make local
-    repository: "https://victoriametrics.github.io/helm-charts/"
+    repository: "./charts/victoria-metrics-k8s-stack-0.72.2.tgz"
