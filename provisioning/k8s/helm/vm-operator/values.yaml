@@ -1,0 +1,3 @@
+# https://docs.victoriametrics.com/helm/victoria-metrics-k8s-stack/#install-operator-separately
+crds:
+  plain: true

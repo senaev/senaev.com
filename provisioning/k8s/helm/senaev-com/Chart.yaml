@@ -4,8 +4,4 @@ description: senaev.com services
 type: application
 version: 0.1.0
 appVersion: "1"
-kubeVersion: ">=1.21.0"
-dependencies:
-  - name: reloader
-    version: "1.0.0"   # use the version from the tgz filename, e.g. reloader-1.0.0.tgz
-    repository: "file://./charts/reloader-1.0.0.tgz"
+kubeVersion: ">=1.25.0"

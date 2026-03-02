@@ -20,15 +20,6 @@ traefik:
   acmePath: k3s-cluster/volumes/traefik-acme
   logLevel: INFO
 
-grafana:
-  enabled: true
-  username: grafana_admin
-  rootUrl: https://grafana.senaev.com
-  image:
-    repository: grafana/grafana
-    tag: "11.2.0"
-  provisioningPath: k3s-cluster/provisioning/grafana/provisioning
-
 webdav:
   enabled: true
   image:
@@ -46,21 +37,6 @@ testEcho:
   image:
     repository: hashicorp/http-echo
     tag: "0.2.3"
-
-victoriametrics:
-  enabled: true
-  scrapeInterval: 30s
-  image:
-    repository: victoriametrics/victoria-metrics
-    tag: v1.100.0
-  retentionPeriod: 15d
-  storageSize: 10Gi
-
-nodeExporter:
-  enabled: true
-  image:
-    repository: prom/node-exporter
-    tag: v1.7.0
 
 ingress:
   className: traefik
@@ -89,5 +65,4 @@ ingress:
       service: test-echo
       port: 80
 
-grafanaStorageSize: 5Gi
 traefikAcmeStorageSize: 100Mi

@@ -1,0 +1,46 @@
+victoria-metrics-k8s-stack:
+  # https://docs.victoriametrics.com/helm/victoria-metrics-k8s-stack/#install-operator-separately
+  victoria-metrics-operator:
+    enabled: false
+    crds:
+      cleanup:
+        enabled: false
+
+  grafana:
+    enabled: true
+    nodeSelector:
+      node: control-plane
+    annotations:
+      secret.reloader.stakater.com/reload: "senaev-com-kv-secrets"
+    admin:
+      existingSecret: senaev-com-kv-secrets
+      userKey: GRAFANA_ADMIN_USER
+      passwordKey: GRAFANA_ADMIN_PASSWORD
+
+  vmsingle:
+    spec:
+      nodeSelector:
+        node: control-plane
+
+  vmagent:
+    spec:
+      nodeSelector:
+        node: control-plane
+
+  alertmanager:
+    spec:
+      nodeSelector:
+        node: control-plane
+
+  vmalert:
+    spec:
+      nodeSelector:
+        node: control-plane
+
+  prometheus-node-exporter:
+    nodeSelector:
+      node: control-plane
+
+  kube-state-metrics:
+    nodeSelector:
+      node: control-plane

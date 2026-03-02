@@ -11,13 +11,6 @@ sudo mv linux-amd64/helm /usr/local/bin/helm
 sudo chmod +x /usr/local/bin/helm
 ```
 
-Make symlink to `rancher` folder from a default `kubectl` config folder (for `k9s`)
-
-```shell
-mkdir -p ~/.kube
-ln -sf /etc/rancher/k3s/k3s.yaml ~/.kube/config
-```
-
 Install `k9s`
 
 ```shell

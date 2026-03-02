@@ -4,8 +4,12 @@ description: HashiCorp Vault (server only, no injector). ESO is installed separa
 type: application
 version: 0.1.0
 appVersion: "1"
-kubeVersion: ">=1.21.0"
+kubeVersion: ">=1.25.0"
 dependencies:
   - name: vault
     version: "0.32.0"
     repository: "file://./charts/vault-0.32.0.tgz"
+  # Cluster-wide tool for reloading pods when secrets change
+  - name: reloader
+    version: "2.2.8"
+    repository: "./charts/reloader-2.2.8.tgz"

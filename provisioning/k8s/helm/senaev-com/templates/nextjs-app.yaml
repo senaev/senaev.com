@@ -52,6 +52,8 @@ kind: Service
 metadata:
   name: nextjs-app
   namespace: {{ .Release.Namespace }}
+  labels:
+    app: nextjs-app
 spec:
   selector:
     app: nextjs-app
