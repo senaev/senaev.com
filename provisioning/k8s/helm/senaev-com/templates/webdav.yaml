@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: webdav
-          image: {{ .Values.webdav.image.repository }}
+          image: {{ .Values.webdav.image }}
           env:
             - name: AUTH_TYPE
               value: Digest
@@ -40,7 +40,7 @@ spec:
       volumes:
         - name: data
           hostPath:
-            path: {{ .Values.userRootPath }}/{{ .Values.webdav.path }}
+            path: {{ .Values.userRootPath }}/{{ .Values.webdav.volumePath }}
             type: DirectoryOrCreate
 ---
 apiVersion: v1

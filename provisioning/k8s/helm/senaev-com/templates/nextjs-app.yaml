@@ -7,7 +7,7 @@ metadata:
   labels:
     app: nextjs-app
 spec:
-  replicas: {{ .Values.nextjs.replicas }}
+  replicas: 1
   selector:
     matchLabels:
       app: nextjs-app
@@ -61,4 +61,17 @@ spec:
     - port: 3000
       targetPort: 3000
   type: ClusterIP
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: nextjs-app
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: nextjs-app
+  endpoints:
+    - path: /api/metrics
+      targetPort: 3000
 {{- end }}

@@ -4,13 +4,11 @@ userRootPath: /root
 nextjs:
   enabled: true
   image: ghcr.io/senaev/senaev.com:latest
-  replicas: 1
 
 webdav:
   enabled: true
-  image:
-    repository: bytemark/webdav
-  path: k3s-cluster/volumes/webdav
+  image: bytemark/webdav
+  volumePath: k3s-cluster/volumes/webdav
 
 xray:
   enabled: true
