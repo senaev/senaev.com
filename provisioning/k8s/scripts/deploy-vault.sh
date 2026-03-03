@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# ❗️ Use something like terraform to deploy vault configuration
+
 if ! command -v jq &>/dev/null; then
   echo "👉 Installing jq"
   sudo apt-get update && sudo apt-get install -y jq
@@ -86,7 +88,6 @@ echo "$FINAL_STATUS"
 echo "--------------------------------"
 
 echo ""
-echo ""
 echo "⬇️ Setup Vault Secrets Management for External Secrets Operator and Kubernetes auth"
 echo ""
 
@@ -142,7 +143,7 @@ echo "$EXTERNAL_SECRETS_POLICY" | kubectl exec -i -n "$VAULT_NS" "$POD" -- env V
 echo "✅ Policy $EXTERNAL_SECRETS_POLICY_NAME written."
 
 EXTERNAL_SECRETS_ROLE_NAME="external-secrets-role"
-
+echo "👉 Writing Kubernetes role"
 vault_exec_with_token write auth/kubernetes/role/$EXTERNAL_SECRETS_ROLE_NAME \
   bound_service_account_names="$EXTERNAL_SECRETS_NS" \
   bound_service_account_namespaces="$EXTERNAL_SECRETS_NS" \
