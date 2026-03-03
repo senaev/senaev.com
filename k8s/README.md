@@ -1,7 +1,5 @@
 ## Install tools
 
-Install kubectl https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-
 Install `helm`
 
 ```shell
