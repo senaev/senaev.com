@@ -17,6 +17,8 @@ spec:
       annotations:
         secret.reloader.stakater.com/reload: "senaev-com-kv-secrets"
     spec:
+      nodeSelector:
+        location: de
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
