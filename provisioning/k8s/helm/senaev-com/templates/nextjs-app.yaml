@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: nextjs-app
-          image: "{{ .Values.nextjs.image }}"
+          image: {{ .Values.nextjs.image }}
           imagePullPolicy: Always
           env:
             - name: NODE_ENV
@@ -32,8 +32,8 @@ spec:
             httpGet:
               path: /api/health
               port: 3000
-            initialDelaySeconds: 40
-            periodSeconds: 30
+            initialDelaySeconds: 10
+            periodSeconds: 10
             timeoutSeconds: 10
           readinessProbe:
             httpGet:
@@ -44,7 +44,7 @@ spec:
       volumes:
         - name: notes
           hostPath:
-            path: {{ .Values.userRootPath }}/{{ .Values.webdav.path }}/data/notes-folder
+            path: {{ .Values.userRootPath }}/{{ .Values.webdav.volumePath }}/data/notes-folder
             type: DirectoryOrCreate
 ---
 apiVersion: v1
