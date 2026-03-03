@@ -19,6 +19,7 @@ spec:
     spec:
       nodeSelector:
         location: de
+      # ❗️ Try to proxy via Traefik on 443 port
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
@@ -53,11 +54,10 @@ metadata:
   name: xray
   namespace: {{ .Release.Namespace }}
 spec:
+  type: ClusterIP
   selector:
     app: xray
   ports:
     - port: 8443
       targetPort: 8443
-  # ❗️ Try to proxy via Traefik on 443 port
-  type: ClusterIP
 {{- end }}

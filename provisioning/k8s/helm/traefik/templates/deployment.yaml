@@ -38,6 +38,7 @@ spec:
               containerPort: 80
             - name: websecure
               containerPort: 443
+              # ❗️ What's that?
             - name: traefik
               containerPort: 8080
           volumeMounts:

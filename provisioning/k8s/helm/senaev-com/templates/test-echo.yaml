@@ -31,10 +31,10 @@ metadata:
   name: test-echo
   namespace: {{ .Release.Namespace }}
 spec:
+  type: ClusterIP
   selector:
     app: test-echo
   ports:
     - port: 80
       targetPort: 80
-  type: ClusterIP
 {{- end }}

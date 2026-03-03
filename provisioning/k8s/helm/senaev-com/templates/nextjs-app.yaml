@@ -55,12 +55,12 @@ metadata:
   labels:
     app: nextjs-app
 spec:
+  type: ClusterIP
   selector:
     app: nextjs-app
   ports:
     - port: 3000
       targetPort: 3000
-  type: ClusterIP
 ---
 apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMServiceScrape

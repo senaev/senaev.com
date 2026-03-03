@@ -1,5 +1,4 @@
 {{- if .Values.webdav.enabled }}
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -49,10 +48,10 @@ metadata:
   name: webdav
   namespace: {{ .Release.Namespace }}
 spec:
+  type: ClusterIP
   selector:
     app: webdav
   ports:
     - port: 80
       targetPort: 80
-  type: ClusterIP
 {{- end }}
