@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const SENAEV_FULL_NAME = 'Andrei Senaev';
 export const SENAEV_SITE_TITLE = `${SENAEV_FULL_NAME} - personal website`;
 
-export const SENAEV_EMAIL = 'gsacryfice@gmail.com';
+export const SENAEV_EMAIL = 'andrei.senaev@gmail.com';
 export const SENAEV_EMAIL_LINK = `mailto:${SENAEV_EMAIL}`;
 
 export const SENAEV_PHONE = '+79826990400';

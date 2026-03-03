@@ -6,3 +6,4 @@ packages/*
 *.jsx
 .vscode
 package-lock.json
+helm/
