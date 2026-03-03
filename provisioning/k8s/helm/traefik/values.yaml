@@ -1,0 +1,8 @@
+namespace: traefik
+
+userRootPath: /root
+
+image: traefik:v3.2
+
+acme:
+  email: andrei.senaev@gmail.com

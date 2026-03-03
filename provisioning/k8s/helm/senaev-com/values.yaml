@@ -7,14 +7,6 @@ nextjs:
   image: ghcr.io/senaev/senaev.com:latest
   replicas: 1
 
-traefik:
-  enabled: true
-  image: traefik:v3.2
-  acme:
-    email: andrei.senaev@gmail.com
-  acmePath: k3s-cluster/volumes/traefik-acme
-  logLevel: INFO
-
 webdav:
   enabled: true
   image:
@@ -36,7 +28,6 @@ ingress:
     hosts:
       - senaev.com
       - senaev.ru
-      - grafana.senaev.com
       - webdav.senaev.com
       - test.senaev.com
   hosts:
@@ -46,9 +37,6 @@ ingress:
     - host: senaev.ru
       service: nextjs-app
       port: 3000
-    - host: grafana.senaev.com
-      service: grafana
-      port: 3000
     - host: webdav.senaev.com
       service: webdav
       port: 80
@@ -56,4 +44,3 @@ ingress:
       service: test-echo
       port: 80
 
-traefikAcmeStorageSize: 100Mi

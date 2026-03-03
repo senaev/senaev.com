@@ -6,6 +6,7 @@ import styles from './index.module.css';
 import type { JSX } from 'react';
 
 const PAGES = {
+    // ❗️ All links to uptime robot
     '🏠': {
         href: '/',
     },

@@ -49,6 +49,8 @@ upgrade_namespace() {
   echo "✅ Helm upgrade namespace=[$NS]"
 }
 
+upgrade_namespace $TRAEFIK_NS
+
 upgrade_namespace $EXTERNAL_SECRETS_NS
 
 echo "👉 Waiting for ESO webhook to be ready (required for ClusterSecretStore validation by Vault)"

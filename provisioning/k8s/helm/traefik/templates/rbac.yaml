@@ -1,4 +1,3 @@
-{{- if .Values.traefik.enabled }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -35,4 +34,3 @@ subjects:
   - kind: ServiceAccount
     name: traefik-ingress-controller
     namespace: {{ .Release.Namespace }}
-{{- end }}
