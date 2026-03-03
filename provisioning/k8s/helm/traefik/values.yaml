@@ -1,5 +1,4 @@
-namespace: traefik
-
+# ❗️ Remove duplications using helmfile
 userRootPath: /root
 
 image: traefik:v3.2

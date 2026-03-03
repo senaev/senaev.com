@@ -1,5 +1,4 @@
-namespace: senaev-com
-
+# ❗️ Remove duplications using helmfile
 userRootPath: /root
 
 nextjs:
