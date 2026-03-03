@@ -1,4 +1,5 @@
 victoria-metrics-k8s-stack:
+  # Victoria Metrics Operator is installed separately
   # https://docs.victoriametrics.com/helm/victoria-metrics-k8s-stack/#install-operator-separately
   victoria-metrics-operator:
     enabled: false
@@ -16,6 +17,20 @@ victoria-metrics-k8s-stack:
       existingSecret: senaev-com-kv-secrets
       userKey: GRAFANA_ADMIN_USER
       passwordKey: GRAFANA_ADMIN_PASSWORD
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      path: /
+      pathType: Prefix
+      hosts:
+        - grafana.senaev.com
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
+      tls:
+        - hosts:
+            - grafana.senaev.com
 
   vmsingle:
     spec:
