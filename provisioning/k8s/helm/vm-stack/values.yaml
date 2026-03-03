@@ -9,6 +9,7 @@ victoria-metrics-k8s-stack:
 
   grafana:
     enabled: true
+    # ❗️ Remove duplications using helmfile
     nodeSelector:
       node: control-plane
     annotations:
@@ -35,28 +36,34 @@ victoria-metrics-k8s-stack:
 
   vmsingle:
     spec:
+      # ❗️ Remove duplications using helmfile
       nodeSelector:
         node: control-plane
 
   vmagent:
     spec:
+      # ❗️ Remove duplications using helmfile
       nodeSelector:
         node: control-plane
 
   alertmanager:
     spec:
+      # ❗️ Remove duplications using helmfile
       nodeSelector:
         node: control-plane
 
   vmalert:
     spec:
+      # ❗️ Remove duplications using helmfile
       nodeSelector:
         node: control-plane
 
   prometheus-node-exporter:
+    # ❗️ Remove duplications using helmfile
     nodeSelector:
       node: control-plane
 
   kube-state-metrics:
+    # ❗️ Remove duplications using helmfile
     nodeSelector:
       node: control-plane
