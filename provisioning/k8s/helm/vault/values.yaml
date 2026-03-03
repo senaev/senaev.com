@@ -7,8 +7,6 @@ ingress:
   enabled: true
   host: vault.senaev.com
   className: traefik
-  tls:
-    certResolver: letsencrypt
 
 vault:
   fullnameOverride: "vault"

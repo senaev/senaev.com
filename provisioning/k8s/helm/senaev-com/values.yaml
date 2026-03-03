@@ -24,7 +24,6 @@ testEcho:
 ingress:
   className: traefik
   tls:
-    certResolver: letsencrypt
     hosts:
       - senaev.com
       - senaev.ru
