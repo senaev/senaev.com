@@ -20,7 +20,6 @@ spec:
         - name: traefik
           image: "{{ .Values.image }}"
           args:
-            - "--api.dashboard=true"
             - "--log.level=INFO"
             - "--accesslog=true"
             - "--accesslog.filepath=/dev/stdout"
@@ -38,9 +37,6 @@ spec:
               containerPort: 80
             - name: websecure
               containerPort: 443
-              # ❗️ What's that?
-            - name: traefik
-              containerPort: 8080
           volumeMounts:
             - name: acme-data
               mountPath: /acme-data
