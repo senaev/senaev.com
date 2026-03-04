@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 'use client';
 
-import clsx from 'clsx';
+import classnames from 'classnames';
 import {
     useEffect, useRef, type JSX,
 } from 'react';
@@ -129,7 +129,7 @@ export default function Page (): JSX.Element {
                 >
                     <div
                         ref={sizerRightRef}
-                        className={clsx(styles.sizer, styles.sizer_right)}
+                        className={classnames(styles.sizer, styles.sizer_right)}
                     >
                         {'###'}
                     </div>
@@ -144,7 +144,7 @@ export default function Page (): JSX.Element {
                     </div>
                     <div
                         ref={sizerBottomRef}
-                        className={clsx(styles.sizer, styles.sizer_bottom)}
+                        className={classnames(styles.sizer, styles.sizer_bottom)}
                     >
                         {'###'}
                     </div>
