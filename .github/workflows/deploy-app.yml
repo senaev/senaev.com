@@ -40,3 +40,14 @@ jobs:
           tags: ${{ env.REGISTRY_IMAGE }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Restart deployment via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          script: |
+            set -e
+            kubectl -n senaev-com rollout restart deployment/nextjs-app
+            kubectl -n senaev-com rollout status deployment/nextjs-app --timeout=180s
