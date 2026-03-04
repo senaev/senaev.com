@@ -9,6 +9,7 @@
     "docker": "./scripts/docker-build-and-push.sh",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "simple-checks": "npm run lint && npm run typecheck && npm run test:run",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run"

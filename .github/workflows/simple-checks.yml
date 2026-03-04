@@ -1,0 +1,27 @@
+name: Simple Checks
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  simple-checks:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [v24.14.0]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js version=[${{ matrix.node-version }}]
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test:run
