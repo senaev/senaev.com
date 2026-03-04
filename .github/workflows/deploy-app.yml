@@ -2,8 +2,7 @@ name: Deploy App
 
 on:
   push:
-    # ❗️ Remove "automate-deploy" branch after testing.
-    branches: [main, master, automate-deploy]
+    branches: [main, master]
   workflow_dispatch: # Allow manual run from Actions tab
 
 env:
