@@ -1,7 +1,4 @@
-# Build Docker image and push to GitHub Container Registry (ghcr.io).
-# Mirrors what scripts/docker-build-and-push.sh does locally.
-
-name: Docker Build and Push
+name: Deploy App
 
 on:
   push:
