@@ -15,7 +15,7 @@ if ! grep -q '"ghcr.io"' "${DOCKER_CONFIG:-$HOME/.docker}/config.json" 2>/dev/nu
 fi
 echo "✅ Logged in to ghcr.io"
 
-echo "[1/3] 👉 Building Docker image (linux/amd64) (run 'colima start' if this step fails)"
+echo "[1/3] 👉 Building Docker image (linux/amd64) (run 'colima start --memory 8' if this step fails)"
 docker build --platform linux/amd64 -t "$IMAGE_NAME" .
 echo "[1/3] ✅ Build done."
 

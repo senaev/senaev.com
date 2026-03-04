@@ -13,10 +13,8 @@
 - Telegram: [@senaev](https://senaev.t.me)
 - Email: [andrei.senaev@gmail.com](mailto:andrei.senaev@gmail.com)
 - Phone: [+7 (982) 699-04-00](tel:+79826990400)
-- Habr: [@senaev](https://habr.com/ru/users/senaev/publications/articles/)
-- Github: [@senaev](https://github.com/senaev/senaev.com)
 
-## My CV
+## Resume
 
-- [Short](/cv/1min) reading
-- [Detailed](/cv/5min) reading
+- [Short](https://senaev.com/cv/1min)
+- [Detailed](https://senaev.com/cv/5min)

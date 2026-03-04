@@ -39,4 +39,5 @@ type g = AssertTypesCompatible<
 >;
 
 // @ts-expect-error ignore unused type
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type unused = AssertTypesCompatible<unknown[], [a, b, c, d, e, f, g]>;
