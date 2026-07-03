@@ -50,3 +50,20 @@ jobs:
             set -e
             kubectl -n senaev-com rollout restart deployment/nextjs-app
             kubectl -n senaev-com rollout status deployment/nextjs-app --timeout=180s
+
+      - name: Notify Telegram
+        if: always()
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            STATUS_ICON="✅"
+          else
+            STATUS_ICON="❌"
+          fi
+
+          TEXT="${STATUS_ICON} Deploy App <a href=\"https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\">built</a>"
+
+          curl -sS -X POST "https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage" \
+            --data-urlencode "chat_id=-1003971743999" \
+            --data-urlencode "parse_mode=HTML" \
+            --data-urlencode "disable_web_page_preview=true" \
+            --data-urlencode "text=${TEXT}"

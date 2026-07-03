@@ -20,7 +20,7 @@ function removeFrontmatter(markdown: string): string {
 }
 
 export async function getNoteFromRemote(noteName: string): Promise<string | null> {
-    const url = `${NOTES_REMOTE_URL}/?note=${encodeURIComponent(noteName)}`;
+    const url = `${NOTES_REMOTE_URL()}/?note=${encodeURIComponent(noteName)}`;
 
     const response = await fetch(url);
 

@@ -6,7 +6,7 @@ import { basename } from 'path';
 export async function GET(request: Request): Promise<NextResponse> {
     const decodedId = decodeURIComponent(basename(request.url));
 
-    const url = `${NOTES_REMOTE_URL}/?file=${encodeURIComponent(decodedId)}`;
+    const url = `${NOTES_REMOTE_URL()}/?file=${encodeURIComponent(decodedId)}`;
     const response = await fetch(url);
 
     if (!response.ok) {
