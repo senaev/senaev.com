@@ -1,11 +1,7 @@
 import classNames from 'classnames';
-import { ErrorPage } from 'components/ErrorPage';
 import { FONT_MERRIWEATHER_CLASSNAMES } from 'const/FONT_MERRIWEATHER_CLASSNAMES/FONT_MERRIWEATHER_CLASSNAMES';
-import { NOTES_FILE_MANAGER } from 'const/NOTES_FILE_MANAGER';
-import { NOTES_FOLDER } from 'const/NOTES_FOLDER';
 import { notFound } from 'next/navigation';
-import { pathExists } from 'path-exists';
-import { getNoteByFilePath } from 'utils/Notes/getNoteByFilePath';
+import { getNoteFromRemote } from 'utils/Notes/getNoteFromRemote';
 import { renderNoteByMarkdownContent } from 'utils/Notes/renderNoteByMarkdownContent';
 import styles from './index.module.css';
 
@@ -17,25 +13,11 @@ export default async function Page({
     const { id } = await params;
     const decodedId = decodeURIComponent(id);
 
-    const doesNotesDirectoryExist = await pathExists(NOTES_FOLDER);
-    if (!doesNotesDirectoryExist) {
-        return <ErrorPage message={'NOTES_FOLDER does not exist'}/>;
-    }
+    const markdownContent = await getNoteFromRemote(decodedId);
 
-    const noteFileName = `${decodedId}.md`;
-    const file = await NOTES_FILE_MANAGER.findFile(noteFileName);
-
-    if (!file) {
-        return <ErrorPage message={`Note=[${noteFileName}] does not exist`}/>;
-    }
-
-    const { path: filePath, isInPublicFolder } = file;
-
-    if (!isInPublicFolder) {
+    if (markdownContent === null) {
         return notFound();
     }
-
-    const markdownContent = await getNoteByFilePath({ filePath });
 
     const markdownComponent = await renderNoteByMarkdownContent({ markdownContent });
 
