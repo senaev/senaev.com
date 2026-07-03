@@ -25,7 +25,7 @@ async function buildPublicNotesSet(noteNames: string[]): Promise<Set<string>> {
         uniqueNames.map(async (name) => {
             const exists = await checkNoteExistsOnRemote(name);
             return exists ? name : null;
-        }),
+        })
     );
     return new Set(results.filter((name): name is string => name !== null));
 }
