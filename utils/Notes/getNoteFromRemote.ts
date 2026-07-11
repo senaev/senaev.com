@@ -25,12 +25,14 @@ export async function getNoteFromRemote(noteName: string): Promise<string | null
     const response = await fetch(url);
 
     if (response.status === 404) {
-        await response.body?.cancel();
+        // Drain the body instead of response.body?.cancel(): cancel() can hang
+        // indefinitely against a keep-alive connection, stalling the request.
+        await response.text();
         return null;
     }
 
     if (!response.ok) {
-        await response.body?.cancel();
+        await response.text();
         throw new Error(`Failed to fetch note "${noteName}": HTTP ${response.status}`);
     }
 
