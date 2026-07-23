@@ -12,9 +12,6 @@ const PAGES = {
     '💬': {
         href: '/socials',
     },
-    '10x10': {
-        href: '/10x10',
-    },
     // 'ads': {
     //     href: '/ads',
     //     className: undefined,
