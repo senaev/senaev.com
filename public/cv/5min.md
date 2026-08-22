@@ -4,13 +4,13 @@
 
 ### Datadog <time>Jun 1, 2026 — present</time>
 
-#### Senior Full-Stack Engineer in Flex Logs <time>Jun 2026 - present</time>
+#### Senior Full-Stack Engineer in Flex Logs
 
-I work on [Flex Logs](https://docs.datadoghq.com/logs/log_configuration/flex_logs/) – a high-load big data storage for logs. It is multi-tenant and spread across several data centers, and it separates storage from compute, so customers can keep petabyte-scale log volumes for months and still query them on demand.
+I work on [Flex Logs](https://docs.datadoghq.com/logs/log_configuration/flex_logs/) – a high-load big data storage for logs. It is multi-tenant and spread across several data centers. Customers can keep petabyte-scale log volumes for months and still query them on demand.
 
 The role is genuinely full-stack: React and TypeScript interfaces, Java and Go services, and monitoring infrastructure as code in Terraform.
 
-My main area is Query Pool Observability, which covers both Flex data storage and query compute. It includes compute sizing, concurrency headroom and throttling, as well as billing and usage attribution.
+My main area is Query Pool Observability – how customers see and control the query capacity they pay for. It covers picking the right capacity for a workload, showing how much of it is still free, deciding what happens to queries once it runs out, and measuring the storage and compute each customer actually uses so it can be billed correctly.
 
 I also own a set of service monitors and runbooks, maintain the project documentation and processes, take interrupt handler duty, and write RFCs on the evolution of the product.
 
@@ -58,12 +58,18 @@ I also built the player's telemetry from scratch: a client-server logging pipeli
 
 ### MiraLogic <time>Jun 22, 2015 - Feb 3, 2016</time>
 
+#### Frontend developer in telecom services
+
 At [MiraLogic](https://miralogic.ru/), I worked on router interfaces and a major platform update for [weburg.net](https://weburg.net/). Though the platform project eventually disbanded, this role gave me valuable CSS experience and my first exposure to [Angular.js](https://angularjs.org/). During this time, I was also studying [React.js](https://react.dev/) with [Flux](https://legacy.reactjs.org/blog/2014/05/06/flux.html) architecture. Attending my first tech conference, [Front Talks](https://fronttalks.ru/), proved to be a turning point, leading to interviews with Yandex.
 
 ### Tensor-SBIS <time>Oct 6, 2014 - Jun 19, 2015</time>
 
+#### Frontend developer in the electronic tenders division
+
 After improving my skills in OOP and [Backbone JS](https://backbonejs.org/), I landed a position at [Tensor-SBIS](https://www.tensor-sbis.ru/) by completing a test task using Backbone JS and CSS Animations. I became their first frontend engineer in the electronic tenders division, working in a small team of three. I was learning internal frameworks based on [Ext.js](https://www.sencha.com/products/extjs/) while developing pet projects in my spare time.
 
 ### iTaxio <time>Oct 4, 2013 - Aug 7, 2014</time>
+
+#### Frontend developer for mobile applications
 
 My first real break came with [iTaxio](https://vk.com/itaxio), a [Yandex Taxi](https://go.yandex/) competitor. I had to quickly switch from PHP to JavaScript, learning everything through trial and error. The salary was decent at 25-35 thousand rubles, and I gained valuable experience with [KnockoutJS](https://knockoutjs.com/), [jQuery](https://jquery.com/), and [Apache Cordova](https://cordova.apache.org/) (Phonegap).
