@@ -9,7 +9,7 @@ export const SENAEV_EMAIL_LINK = `mailto:${SENAEV_EMAIL}`;
 export const SENAEV_PHONE = '+79826990400';
 export const SENAEV_PHONE_LINK = `tel:${SENAEV_PHONE}`;
 
-export const SENAEV_LOCATION = 'Belgrade, Serbia';
+export const SENAEV_LOCATION = 'Madrid, Spain';
 
 export const SENAEV_TELEGRAM_NICKNAME = 'senaev';
 export const SENAEV_TELEGRAM_LINK = `https://t.me/${SENAEV_TELEGRAM_NICKNAME}`;
@@ -20,9 +20,9 @@ export const ME_PAGE_LINK = '/me';
 export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.webp';
 
 export const SENAEV_ELEVATOR_PITCH = [
-    'I\'m a Full-Stack Engineering Leader with over a decade of revenue-driven experience in Ad Tech and Digital Media. At Yandex, I advanced from developer to team leader, where I managed video advertising technology.',
-    'Recently, I built and led a 20+ person international team developing a new advertising network—establishing the architecture from scratch.',
-    'Throughout my career, I\'ve conducted 250+ interviews, hired 20+ team members, delivered major public presentations, and maintained an unwavering focus on creating measurable business results.',
+    'I\'m a Senior Full-Stack Engineer with over a decade of revenue-driven experience in Ad Tech, Digital Media and Observability. At Datadog, I build Flex Logs—a large-scale log storage and querying platform.',
+    'Before that, I spent ten years at Yandex, where I advanced from developer to team leader and delivered a new international advertising network—establishing the architecture from scratch.',
+    'Throughout my career, I\'ve built and led a 20+ person international team, conducted 250+ interviews, hired 50+ engineers, delivered major public presentations, and maintained a focus on creating measurable business results.',
 ];
 
 export const SENAEV_AVAILABLE_CV_VERSIONS = [
@@ -36,8 +36,8 @@ export const SENAEV_AVAILABLE_CV_VERSIONS = [
     },
 ];
 
-export const SENAEV_CURRENT_DUTY = 'Team Leader of Yandex International Advertising Interfaces';
-export const SENAEV_CURRENT_DUTY_SHORT = 'Full-Stack Engineer, Team Leader';
+export const SENAEV_CURRENT_DUTY = 'Senior Full-Stack Engineer at Datadog';
+export const SENAEV_CURRENT_DUTY_SHORT = 'Senior Full-Stack Engineer';
 
 type Contact = {
     header: string;
@@ -156,6 +156,9 @@ export const SENAEV_SKILLS: Record<string, string[]> = {
         'HTML / CSS / JavaScript / TypeScript',
         'React.js / Webpack',
         'Node.js',
+        'Java / Kotlin / Go',
+        'Kubernetes / Docker / Terraform',
+        'Observability (Logs, Metrics, Tracing)',
         'Multimedia in browser (MSE, DRM, Encoding)',
         'Jest / Selenium / Playwright',
         'A/B Testing, Availability',

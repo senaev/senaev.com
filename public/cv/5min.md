@@ -2,9 +2,21 @@
 
 ## Experience
 
-### Yandex <time>Feb 8, 2016 — present</time>
+### Datadog <time>Jun 1, 2026 — present</time>
 
-#### Leading Yandex International Advertising Interfaces <time>Dec 2022 - present</time>
+#### Senior Full-Stack Engineer in Flex Logs <time>Jun 2026 - present</time>
+
+I work on [Flex Logs](https://docs.datadoghq.com/logs/log_configuration/flex_logs/) – a high-load big data storage for logs. It is multi-tenant and spread across several data centers, and it separates storage from compute, so customers can keep petabyte-scale log volumes for months and still query them on demand.
+
+The role is genuinely full-stack: React and TypeScript interfaces, Java and Go services, and monitoring infrastructure as code in Terraform.
+
+My main area is Query Pool Observability, which covers both Flex data storage and query compute. It includes compute sizing, concurrency headroom and throttling, as well as billing and usage attribution.
+
+I also own a set of service monitors and runbooks, maintain the project documentation and processes, take interrupt handler duty, and write RFCs on the evolution of the product.
+
+### Yandex <time>Feb 8, 2016 — May 31, 2026</time>
+
+#### Leading Yandex International Advertising Interfaces <time>Dec 2022 - May 2026</time>
 
 In December 2022, I embraced an opportunity at Yandex's International Advertising department in Belgrade, Serbia. I was tasked with building a team and developing infrastructure for a new advertising network interfaces. I was leading both Frontend and Backend teams, focusing primarily on recruitment and architectural decisions.
 
@@ -12,11 +24,11 @@ We had chosen cloud infrastructure for our services, and by the four-month mark,
 
 Our technical infrastructure combined [ClickHouse](https://clickhouse.com/), [YTsaurus](https://ytsaurus.tech/), and [echarts](https://echarts.apache.org/en/index.html) for statistics, with [KeyCloak](https://www.keycloak.org/) handling authentication. We built a modern tech stack using React.js, Typescript, Java, Kotlin, and various other technologies, successfully decoupling our banner rendering infrastructure from Yandex's integrated tools within nine months.
 
-Early 2024 brought significant restructuring as we organized into three specialized departments. We improved billing features, and integrated with CRM. My team has grown to 20 people.
+Early 2024 brought significant restructuring as we organized into three specialized departments. We improved billing features, and integrated with CRM. My team grew to 20 people.
 
 (🤷‍♂️ This part of the document is missing because the information is too recent. Please contact me if you would like to clarify the details.)
 
-Over my career in Yandex, I've conducted more than 250 job interviews and hired about 20 people for my teams. I've given three public speeches in English and even created a programming championship task that's been solved over 1,500 times.
+Over my career in Yandex, I conducted more than 250 job interviews and hired more than 50 engineers for my teams. I gave three public speeches in English and even created a programming championship task that's been solved over 1,500 times.
 
 #### Leading Yandex Advertising Player <time>Sep 2019 - Dec 2022</time>
 
