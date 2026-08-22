@@ -20,9 +20,9 @@ export const ME_PAGE_LINK = '/me';
 export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.webp';
 
 export const SENAEV_ELEVATOR_PITCH = [
-    'I\'m a Senior Full-Stack Engineer with over a decade of revenue-driven experience in Ad Tech, Digital Media and Observability. At Datadog, I build Flex Logs—a large-scale log storage and querying platform.',
-    'Before that, I spent ten years at Yandex, where I advanced from developer to team leader and delivered a new international advertising network—establishing the architecture from scratch.',
-    'Throughout my career, I\'ve built and led a 20+ person international team, conducted 250+ interviews, hired 50+ engineers, delivered major public presentations, and maintained a focus on creating measurable business results.',
+    'I\'m a Senior Full-Stack Engineer with over a decade of building revenue-critical systems in Ad Tech, Digital Media and Observability. At Datadog, I work on Flex Logs—a multi-tenant, multi-datacenter log storage that keeps petabyte-scale data queryable on demand.',
+    'At Yandex, I owned the video advertising player used across all Yandex services: I wrote the creative rendering system that made half of the legacy inventory twice as fast, built the infrastructure that recovered about 12% of video ad revenue lost to ad blockers, and authored the video creative standard still used company-wide.',
+    'I then spent three years building a new international advertising network from scratch—defining its architecture, and growing the team that delivered it to 20+ engineers. Along the way I conducted 250+ interviews, hired 50+ engineers, and delivered major public presentations.',
 ];
 
 export const SENAEV_AVAILABLE_CV_VERSIONS = [
@@ -153,16 +153,16 @@ export const SENAEV_LANGUAGE_LEVELS: {
 
 export const SENAEV_SKILLS: Record<string, string[]> = {
     Hard: [
-        'HTML / CSS / JavaScript / TypeScript',
-        'React.js / Webpack',
-        'Node.js',
+        'Distributed Storage and Query Systems at Scale',
+        'Observability (Logs, Metrics, Tracing)',
         'Java / Kotlin / Go',
         'Kubernetes / Docker / Terraform',
-        'Observability (Logs, Metrics, Tracing)',
+        'TypeScript / JavaScript / Node.js',
+        'React.js / Webpack / HTML / CSS',
+        'Performance Optimization and Telemetry',
+        'A/B Testing, Availability, Incident Response',
         'Multimedia in browser (MSE, DRM, Encoding)',
         'Jest / Selenium / Playwright',
-        'A/B Testing, Availability',
-        'Browser Telemetry and Performance Optimization',
 
     ],
     Soft: [
