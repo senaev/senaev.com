@@ -39,7 +39,7 @@
 .MainPage__container {
     display: flex;
     justify-content: center;
-    margin-bottom: 3em;
+    padding-bottom: 5em;
 }
 
 .MainPage__container h1,
