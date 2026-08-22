@@ -21,8 +21,7 @@ export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.webp';
 
 export const SENAEV_ELEVATOR_PITCH = [
     'I\'m a Senior Full-Stack Engineer with over a decade of building revenue-critical systems in Ad Tech, Digital Media and Observability. At Datadog, I work on Flex Logs—a multi-tenant, multi-datacenter log storage that keeps petabyte-scale data queryable on demand.',
-    'At Yandex, I owned the video advertising player used across all Yandex services: I wrote the creative rendering system that made half of the legacy inventory twice as fast, built the infrastructure that recovered about 12% of video ad revenue lost to ad blockers, and authored the video creative standard still used company-wide.',
-    'I then spent three years building a new international advertising network from scratch—defining its architecture, and growing the team that delivered it to 20+ engineers. Along the way I conducted 250+ interviews, hired 50+ engineers, and delivered major public presentations.',
+    'Before that I spent ten years at Yandex, where I owned the video advertising player behind all Yandex services and authored the video creative standard still used company-wide, then built a new international advertising network from scratch—defining its architecture and growing the team that delivered it.',
 ];
 
 export const SENAEV_AVAILABLE_CV_VERSIONS = [
