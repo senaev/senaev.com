@@ -56,11 +56,13 @@ jobs:
         run: |
           if [ "${{ job.status }}" = "success" ]; then
             STATUS_ICON="✅"
+            STATUS_TEXT="senaev.com website built"
           else
             STATUS_ICON="❌"
+            STATUS_TEXT="senaev.com website build failed"
           fi
 
-          TEXT="${STATUS_ICON} Deploy App <a href=\"https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\">built</a>"
+          TEXT="${STATUS_ICON} <a href=\"https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\">${STATUS_TEXT}</a>"
 
           curl -sS -X POST "https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage" \
             --data-urlencode "chat_id=-1003971743999" \
