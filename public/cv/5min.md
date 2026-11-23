@@ -14,6 +14,8 @@ My main area is Query Pool Observability – how customers see and control the q
 
 I also own a set of service monitors and runbooks, maintain the project documentation and processes, take interrupt handler duty, and write RFCs on the evolution of the product.
 
+I found and removed about 3 PB of stored logs that customers could no longer access, with no impact on any customer.
+
 ### Yandex <time>Feb 8, 2016 — May 31, 2026</time>
 
 #### Leading Yandex International Advertising Interfaces <time>Dec 2022 - May 2026</time>
@@ -72,4 +74,4 @@ After improving my skills in OOP and [Backbone JS](https://backbonejs.org/), I l
 
 #### Frontend developer for mobile applications
 
-My first real break came with [iTaxio](https://vk.com/itaxio), a [Yandex Taxi](https://go.yandex/) competitor. I had to quickly switch from PHP to JavaScript, learning everything through trial and error. The salary was decent at 25-35 thousand rubles, and I gained valuable experience with [KnockoutJS](https://knockoutjs.com/), [jQuery](https://jquery.com/), and [Apache Cordova](https://cordova.apache.org/) (Phonegap).
+My first real break came with [iTaxio](https://vk.com/itaxio), a [Yandex Taxi](https://go.yandex/) competitor. I had to quickly switch from PHP to JavaScript, learning everything through trial and error. There I gained valuable experience with [KnockoutJS](https://knockoutjs.com/), [jQuery](https://jquery.com/), and [Apache Cordova](https://cordova.apache.org/) (Phonegap).

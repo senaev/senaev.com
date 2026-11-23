@@ -21,7 +21,7 @@ export const SENAEV_SITE_IMAGE_URL = '/img/avatar-head.webp';
 
 export const SENAEV_ELEVATOR_PITCH = [
     'I\'m a Senior Full-Stack Engineer with over a decade of building revenue-critical systems in Ad Tech, Digital Media and Observability. At Datadog, I work on Flex Logs—a multi-tenant, multi-datacenter log storage that keeps petabyte-scale data queryable on demand.',
-    'Before that I spent ten years at Yandex, where I owned the video advertising player behind all Yandex services and authored the video creative standard still used company-wide, then built a new international advertising network from scratch—defining its architecture and growing the team that delivered it.',
+    'Before that I spent ten years at Yandex, where I owned the video advertising player behind all Yandex services and authored the video creative standard still used company-wide, then built the interfaces of a new international advertising network from scratch—defining their architecture and growing the team that delivered them. I measure my work in money and reliability.',
 ];
 
 export const SENAEV_AVAILABLE_CV_VERSIONS = [
@@ -104,6 +104,16 @@ export const SENEAV_CONTACTS: Contact[] = [
         link: SENAEV_PHONE_LINK,
     },
     {
+        header: 'GitHub',
+        title: 'github.com/senaev',
+        link: 'https://github.com/senaev',
+    },
+    {
+        header: 'LinkedIn',
+        title: 'linkedin.com/in/senaev',
+        link: 'https://www.linkedin.com/in/senaev/',
+    },
+    {
         header: 'Location',
         title: SENAEV_LOCATION,
     },
@@ -154,7 +164,8 @@ export const SENAEV_SKILLS: Record<string, string[]> = {
     Hard: [
         'Distributed Storage and Query Systems at Scale',
         'Observability (Logs, Metrics, Tracing)',
-        'Java / Kotlin / Go',
+        'Java / Kotlin / Go (Golang)',
+        'Distributed Systems / Microservices',
         'Kubernetes / Docker / Terraform',
         'TypeScript / JavaScript / Node.js',
         'React.js / Webpack / HTML / CSS',
