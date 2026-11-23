@@ -9,10 +9,12 @@ import {
     SENAEV_ELEVATOR_PITCH,
     SENAEV_LANGUAGE_LEVELS,
     SENAEV_SKILLS,
+    SENAEV_FULL_NAME,
     SENEAV_CONTACTS,
 } from 'const/const';
 import { FONT_MERRIWEATHER_CLASSNAMES } from 'const/FONT_MERRIWEATHER_CLASSNAMES/FONT_MERRIWEATHER_CLASSNAMES';
 import { NON_BREAKING_SPACE } from 'const/NON_BREAKING_SPACE';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { resolve } from 'path';
@@ -25,6 +27,11 @@ import './index.css';
 import styles from './index.module.css';
 
 const AVATAR_SIZE = 150;
+
+/** Browsers name a printed or saved PDF after the page title. */
+export const metadata: Metadata = {
+    title: `${SENAEV_FULL_NAME} - CV`,
+};
 
 export default async function Page ({
     params,
