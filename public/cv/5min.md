@@ -16,9 +16,9 @@ I also own a set of service monitors and runbooks, maintain the project document
 
 I found and removed about 3 PB of stored logs that customers could no longer access, with no impact on any customer.
 
-### Yandex <time>Feb 8, 2016 — May 31, 2026</time>
+### Yandex <time>Feb 8, 2016 — Apr 30, 2026</time>
 
-#### Leading Yandex International Advertising Interfaces <time>Dec 2022 - May 2026</time>
+#### Leading Yandex International Advertising Interfaces <time>Dec 2022 - Apr 2026</time>
 
 In December 2022, I embraced an opportunity at Yandex's International Advertising department in Belgrade, Serbia. I was tasked with building a team and developing infrastructure for a new advertising network interfaces. I was leading both Frontend and Backend teams, focusing primarily on recruitment and architectural decisions.
 

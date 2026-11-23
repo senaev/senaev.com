@@ -4,7 +4,7 @@
 
 Senior Full-Stack Engineer in Flex Logs
 
-### [Yandex](https://ya.ru/) <time>Feb 2016 - May 2026</time>
+### [Yandex](https://ya.ru/) <time>Feb 2016 - Apr 2026</time>
 
 #### Leading Yandex International Advertising Interfaces <time>(from Dec 2022)</time>
 
