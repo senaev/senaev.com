@@ -2,13 +2,13 @@
 
 ### [Datadog](https://www.datadoghq.com/) <time>Jun 2026 - present</time>
 
-Senior Full-Stack Engineer in Flex Logs
+Senior Software Engineer (Full-Stack) in Flex Logs
 
-### [Yandex](https://ya.ru/) <time>Feb 2016 - May 2026</time>
+### [Yandex](https://ya.ru/) <time>Feb 2016 - Apr 2026</time>
 
 #### Leading Yandex International Advertising Interfaces <time>(from Dec 2022)</time>
 
-Architecture and delivery of a new advertising network, built from scratch to a team of 20+
+Architecture and delivery of the interfaces of a new advertising network, built from scratch to a team of 20+
 
 #### Leading Yandex Advertising Player <time>(from Sep 2019)</time>
 
