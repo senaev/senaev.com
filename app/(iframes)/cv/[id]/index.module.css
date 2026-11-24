@@ -141,3 +141,72 @@
         padding: 0;
     }
 }
+/*
+ * Print and "Save as PDF": one column on white, dark text, no photo.
+ * Browsers drop backgrounds by default when printing, so nothing may rely on
+ * a background colour; and ATS parsers read a one-column PDF in the right order.
+ */
+@media print {
+    .Container {
+        display: block;
+        font-size: 10.5pt;
+        line-height: 1.45em;
+    }
+
+    .Sidebar {
+        position: static;
+        height: auto;
+        overflow: visible;
+        background: none;
+        color: #000;
+        font-size: 1em;
+        line-height: 1.45em;
+    }
+
+    .Sidebar .AvatarContainer {
+        display: none;
+    }
+
+    .Sidebar .SidebarContent {
+        padding-left: 0;
+    }
+
+    .Sidebar h1 {
+        font-size: 1.9em;
+    }
+
+    .Sidebar h2 {
+        font-size: 1.15em;
+        margin: 0.8em 0 0.2em 0;
+        border-bottom-color: #2c3e50;
+    }
+
+    .Sidebar a {
+        color: #000;
+    }
+
+    .Content {
+        padding: 0;
+        margin: 0;
+        max-width: none;
+    }
+
+    .Content__noPrint {
+        display: none;
+    }
+
+    .Content h2,
+    .Content h3 {
+        break-after: avoid;
+    }
+
+    .Content .EducationItem {
+        break-inside: avoid;
+    }
+
+    .Content li {
+        color: #000;
+        background: none;
+        border: 1px solid #3498db;
+    }
+}

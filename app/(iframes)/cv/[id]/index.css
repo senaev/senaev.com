@@ -17,3 +17,23 @@
     font-family: 'Ubuntu Mono', monospace;
     color: #333;
 }
+
+@page {
+    size: A4;
+    margin: 15mm;
+}
+
+@media print {
+    /* The hidden "#" heading anchors would stay in the PDF text and in what an ATS reads. */
+    .CvPage_container .MarkdownContainer_anchor {
+        display: none;
+    }
+
+    .CvPage_container :is(h1, h2, h3, h4, h5, h6) {
+        break-after: avoid;
+    }
+
+    .CvPage_container a {
+        color: inherit;
+    }
+}
