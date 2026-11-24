@@ -1,7 +1,0 @@
-node_modules
-.next
-.DS_Store
-.idea
-.eslintcache
-tsconfig.tsbuildinfo
-.env.local

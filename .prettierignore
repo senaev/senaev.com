@@ -1,9 +1,0 @@
-packages/*
-.next/*
-*.tsx
-*.ts
-*.js
-*.jsx
-.vscode
-package-lock.json
-helm/
