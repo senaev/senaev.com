@@ -24,16 +24,7 @@ export const SENAEV_ELEVATOR_PITCH = [
     'Before that I spent ten years at Yandex, where I owned the video advertising player behind all Yandex services and authored the video creative standard still used company-wide, then built the interfaces of a new international advertising network from scratch—defining their architecture and growing the team that delivered them. I measure my work in money and reliability.',
 ];
 
-export const SENAEV_AVAILABLE_CV_VERSIONS = [
-    {
-        name: 'Short',
-        id: '1min',
-    },
-    {
-        name: 'Detailed',
-        id: '5min',
-    },
-];
+export const SENAEV_CV_LINK = '/cv';
 
 export const SENAEV_CURRENT_DUTY = 'Senior Full-Stack Engineer at Datadog';
 export const SENAEV_CURRENT_DUTY_SHORT = 'Senior Full-Stack Engineer';

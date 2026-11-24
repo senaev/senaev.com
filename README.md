@@ -16,8 +16,7 @@
 
 ## Resume
 
-- [Short](https://senaev.com/cv/1min)
-- [Detailed](https://senaev.com/cv/5min)
+- [CV](https://senaev.com/cv)
 
 ## VPN diagnostic response
 

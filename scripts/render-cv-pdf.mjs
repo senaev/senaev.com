@@ -1,5 +1,5 @@
-// Renders the CV pages of a running site to PDF, as a browser's "Save as PDF"
-// does with default settings (no background graphics), plus a PNG of the first page.
+// Renders the CV page of a running site to PDF, as a browser's "Save as PDF"
+// does with default settings (no background graphics), plus screen and print previews, and checks the old CV addresses.
 // Usage: node scripts/render-cv-pdf.mjs <base URL> <output folder>
 import { chromium } from 'playwright';
 import { mkdir } from 'node:fs/promises';

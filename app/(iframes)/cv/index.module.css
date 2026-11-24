@@ -1,0 +1,153 @@
+.Container {
+    --line-width: 2px;
+
+    font-size: 18px;
+    line-height: 1.7em;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 2em 1.5em 3em 1.5em;
+}
+
+.Header {
+    display: flex;
+    gap: 1.5em;
+    align-items: center;
+    padding-bottom: 1em;
+    border-bottom: var(--line-width) solid #2c3e50;
+}
+
+.Header h1 {
+    font-size: 2em;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.Title {
+    font-style: italic;
+    margin: 0.1em 0 0.4em 0;
+}
+
+.Avatar {
+    flex: 0 0 auto;
+}
+
+.Avatar img {
+    border-radius: 50%;
+    display: block;
+}
+
+.Header .Contacts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8em;
+    line-height: 1.6em;
+}
+
+.Header .Contacts li {
+    display: inline;
+}
+
+.Header .Contacts li:not(:last-child)::after {
+    content: " · ";
+}
+
+.Header .Contacts a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+.Header .Contacts a:hover {
+    text-decoration: underline;
+}
+
+.Content ul {
+    padding-left: 0;
+}
+
+.Content .EducationItem {
+    margin: 1em 0;
+}
+
+.Content .EducationItem p {
+    margin: 0;
+}
+
+.Content .EducationItem__degree {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Content h2 {
+    border-bottom: var(--line-width) solid #3498db;
+    padding-bottom: 0.2em;
+    color: #2c3e50;
+}
+
+.Content h3 {
+    margin: 0.2em 0;
+    color: #3498db;
+}
+
+.Content li {
+    color: #fff;
+    background: #3498db;
+    border-radius: 0.7em;
+    margin: 0.2em;
+    padding: 0em 0.8em;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 0.7em;
+    font-weight: 600;
+    display: inline-block;
+}
+
+@media (max-width: 850px) {
+    .Container {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .Header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/*
+ * Print and "Save as PDF": the same one column on white, without the photo.
+ * Browsers drop backgrounds by default when printing, so nothing may rely on
+ * a background colour.
+ */
+@media print {
+    .Container {
+        font-size: 10.5pt;
+        line-height: 1.45em;
+        max-width: none;
+        padding: 0;
+    }
+
+    .Avatar,
+    .Content__noPrint {
+        display: none;
+    }
+
+    .Header .Contacts a {
+        color: #000;
+    }
+
+    .Content h2,
+    .Content h3 {
+        break-after: avoid;
+    }
+
+    .Content .EducationItem {
+        break-inside: avoid;
+    }
+
+    .Content li {
+        color: #000;
+        background: none;
+        border: 1px solid #3498db;
+    }
+}

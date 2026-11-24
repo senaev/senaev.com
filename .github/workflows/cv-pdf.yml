@@ -5,6 +5,8 @@ on:
     branches: ["**"]
     paths:
       - "app/(iframes)/cv/**"
+      - "app/(pages)/page.tsx"
+      - "next.config.js"
       - "public/cv/**"
       - "const/**"
       - "components/**"
@@ -24,10 +26,10 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run build
-      - name: Render the CV pages to PDF
+      - name: Render the CV page to PDF
         run: |
           npx next start -p 3000 &
-          npx --yes wait-on --timeout 60000 http://localhost:3000/cv/5min
+          npx --yes wait-on --timeout 60000 http://localhost:3000/cv
           node scripts/render-cv-pdf.mjs http://localhost:3000 cv-pdf
       - name: Extract the PDF text, as an ATS reads it
         run: |
