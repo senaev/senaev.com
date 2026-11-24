@@ -4,7 +4,7 @@
 
 ### Datadog <time>Jun 1, 2026 — present</time>
 
-#### Senior Full-Stack Engineer in Flex Logs
+#### Senior Software Engineer (Full-Stack) in Flex Logs
 
 I work on [Flex Logs](https://docs.datadoghq.com/logs/log_configuration/flex_logs/) – a high-load big data storage for logs. It is multi-tenant and spread across several data centers. Customers can keep petabyte-scale log volumes for months and still query them on demand.
 
@@ -15,6 +15,8 @@ My main area is Query Pool Observability – how customers see and control the q
 I also own a set of service monitors and runbooks, maintain the project documentation and processes, take interrupt handler duty, and write RFCs on the evolution of the product.
 
 I found and removed about 3 PB of stored logs that customers could no longer access, with no impact on any customer.
+
+I also lead the alignment of public Logs API rate limits across data centers: I wrote the RFC and run the staged rollout.
 
 ### Yandex <time>Feb 8, 2016 — Apr 30, 2026</time>
 
@@ -46,7 +48,7 @@ The largest piece of engineering I owned personally was a new rendering system f
 
 I also built the infrastructure that kept video ads serving to users running ad blockers, which recovered roughly 12% of video ad revenue, and designed "AdCreative", a single Yandex-wide standard for video creatives covering VPAID, [OMID](https://iabtechlab.com/standards/open-measurement-sdk/) and [SIMID](https://iabtechlab.com/standards/simid/). Every video creative at Yandex still ships in that format. Around it I wrote a VPAID decorator that wraps any third-party creative to add [MRC-compliant](https://mediaratingcouncil.org/) viewability measurement, and a Safe-Frame for running external DSP creatives on Yandex domains.
 
-Performance was a constant thread. Changing how the player selected media files cut first-frame load time by 30%, preloading video and static assets added about 25% of outstream ad revenue, and replacing image-pixel tracking with sendBeacon removed a 100ms delay at the end of every creative. Adding video to image banners lifted revenue on those creatives by 15%. We also built quality telemetry with human assessors and doubled measured playback quality, benchmarked against YouTube.
+Performance was a constant thread. Changing how the player selected media files cut first-frame load time by 30%, a first-frame image cut it by 2 seconds at p95, preloading video and static assets added about 25% of outstream ad revenue, and replacing image-pixel tracking with sendBeacon removed a 100ms delay at the end of every creative. Adding video to image banners lifted revenue on those creatives by 15%. We also built quality telemetry with human assessors and doubled measured playback quality, benchmarked against YouTube.
 
 From 2021 we focused on attracting major international clients through brand safety and anti-fraud tooling. We reached [MRC standards](https://www.iab.com/wp-content/uploads/2015/06/MRC-Viewable-Ad-Impression-Measurement-Guideline.pdf) compliance for [Yandex Direct](https://yandex.com/support/direct/technologies-and-services/iab-compliance.html) and [AdFox](https://yandex.ru/adv/news/daydzhest-dlya-pablisherov-pryamye-razmescheniya-po-mezhdunarodnym-standartam-v-adfox-i-novye-obuchayuschie-roliki) and integrated multiple [verification services](https://clearcode.cc/blog/ad-verification/). I introduced a Zero Bug Policy, and the service then ran without a single incident from July 2022 through 2024 — before it, we had been losing significant money to three or four major incidents a year.
 
